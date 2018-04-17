@@ -1,10 +1,12 @@
 # The Construct
 Adds a new character for Slay The Spire, complete with 50+ new cards.
-More cards and relics coming soon!
+More cards and relics coming soon! Right now everything is unlocked at the start.
 
 The Construct is a mix of the many robotic enemies you'll find in the Spire, and uses familiar abilities like Mode Shift, supporting Orbs, and of course the Hyper Beam. Its main strength is adaptability; the new Cycle keyword gives you some control over the composition of your hand at any given time, and your starter Mode Shift cards allow you to switch between attack and defense on the fly.
 
 This character is meant to feel as close to an official character as possible, with multiple potential deck archetypes and rewarding interactions between cards. Balance is an ongoing process and cards/relics may change over time.
+
+![Character Select Image](github_resources/charselect.png)
 
 ## New Keyword: Cycle ##
 **Definition:** When drawn, discard this and draw another card if the cycle condition is met. Only works once per card per turn.
@@ -12,6 +14,8 @@ This character is meant to feel as close to an official character as possible, w
 * Reactive Shield: Cycle if no enemy intends to attack. Gain 8 Block.
 * Flak Barrage: Cycle if your Strength < 1. Deal 0 damage to a random enemy 5 times.
 * Guard Orb: Cycle. When cycled, gain 2 Block.
+
+![Gameplay Image](github_resources/gameplay.png)
 
 ## Requirements ##
 Copied from https://github.com/gskleres/FruityMod-StS

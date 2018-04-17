@@ -47,8 +47,8 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     public ConstructMod() {
         BaseMod.subscribe(this);
 		
-		logger.info("creating the color " + AbstractCardEnum.CONSTRUCT_MOD_COLOR.toString());
-        BaseMod.addColor(AbstractCardEnum.CONSTRUCT_MOD_COLOR.toString(),
+		logger.info("creating the color " + AbstractCardEnum.CONSTRUCTMOD.toString());
+        BaseMod.addColor(AbstractCardEnum.CONSTRUCTMOD.toString(),
         		CONSTRUCT_MOD_COLOR, CONSTRUCT_MOD_COLOR, CONSTRUCT_MOD_COLOR, CONSTRUCT_MOD_COLOR, CONSTRUCT_MOD_COLOR, CONSTRUCT_MOD_COLOR, CONSTRUCT_MOD_COLOR,
         		"img/512/bg_attack_gold.png", "img/512/bg_skill_gold.png",
         		"img/512/bg_power_gold.png", "img/512/card_gold_orb.png",
@@ -99,9 +99,9 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		
 		logger.info("add " + TheConstructEnum.THE_CONSTRUCT_MOD.toString());
 		BaseMod.addCharacter(TheConstruct.class, "The Construct", "Construct class string",
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR.toString(), "The Construct",
+				AbstractCardEnum.CONSTRUCTMOD.toString(), "The Construct",
 				"img/charSelect/constructButton.png", "img/charSelect/constructPortrait.jpg",
-				TheConstructEnum.THE_CONSTRUCT_MOD.toString());
+				"Construct");
 		
 		logger.info("done editting characters");
 	}

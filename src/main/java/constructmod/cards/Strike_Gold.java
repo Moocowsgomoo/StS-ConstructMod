@@ -29,7 +29,7 @@ public class Strike_Gold extends AbstractCycleCard {
 
 	public Strike_Gold() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.ATTACK,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.ENEMY, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.ENEMY, POOL);
 		this.damage = this.baseDamage = ATTACK_DMG;
 	}
 	

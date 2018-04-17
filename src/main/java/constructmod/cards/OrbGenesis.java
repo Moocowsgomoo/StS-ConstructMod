@@ -23,14 +23,14 @@ public class OrbGenesis extends CustomCard {
 	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	private static final int COST = 1;
 	private static final int ADD_ORBS = 2;
-	private static final int UPGRADE_ADD_ORBS = 2;
+	private static final int UPGRADE_ADD_ORBS = 1;
 	private static final int POOL = 1;
 	
 	private final ArrayList<AbstractCard> list = new ArrayList<AbstractCard>();
 
 	public OrbGenesis() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.SELF, POOL);
 		this.magicNumber = this.baseMagicNumber = ADD_ORBS;
 	}
 

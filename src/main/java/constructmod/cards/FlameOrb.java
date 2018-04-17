@@ -34,7 +34,7 @@ public class FlameOrb extends AbstractCycleCard {
 
 	public FlameOrb() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF, POOL);
 		this.baseMagicNumber = this.magicNumber = HP_DMG;
 	}
 	

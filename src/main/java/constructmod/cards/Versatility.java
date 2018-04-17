@@ -39,7 +39,7 @@ public class Versatility extends CustomCard {
 
 	public Versatility() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.ATTACK,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF_AND_ENEMY, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF_AND_ENEMY, POOL);
 		this.damage = this.baseDamage = ATTACK_DMG;
 		this.block = this.baseBlock = BLOCK_AMT;
 	}

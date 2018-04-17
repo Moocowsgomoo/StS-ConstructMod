@@ -24,7 +24,7 @@ public class SiegeForm extends CustomCard {
 
 	public SiegeForm() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.POWER,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.SELF, POOL);
 		this.magicNumber = this.baseMagicNumber = POWER_DAMAGE;
 	}
 

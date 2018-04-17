@@ -38,7 +38,7 @@ public class BatteryAcid extends CustomCard {
 
 	public BatteryAcid() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.NONE, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.NONE, POOL);
 		this.magicNumber = this.baseMagicNumber = ENERGY_GAIN;
 	}
 

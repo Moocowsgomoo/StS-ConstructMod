@@ -21,7 +21,7 @@ public class BatteryOrb extends AbstractCycleCard {
 
 	public BatteryOrb() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.NONE, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.NONE, POOL);
 		this.baseMagicNumber = this.magicNumber = DISCOUNT;
 	}
 	

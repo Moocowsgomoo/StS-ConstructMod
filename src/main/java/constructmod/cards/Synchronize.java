@@ -23,7 +23,7 @@ public class Synchronize extends CustomCard {
 
 	public Synchronize() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.POWER,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.SELF, POOL);
 		this.magicNumber = this.baseMagicNumber = POWER_DAMAGE;
 	}
 

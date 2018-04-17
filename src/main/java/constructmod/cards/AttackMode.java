@@ -25,7 +25,7 @@ public class AttackMode extends CustomCard {
 
 	public AttackMode() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.SELF, POOL);
 		this.magicNumber = this.baseMagicNumber = STR_AMOUNT;
 		this.retain = true;
 	}

@@ -31,7 +31,7 @@ public class VentSteam extends CustomCard {
 
 	public VentSteam() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.ENEMY, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.ENEMY, POOL);
 		this.magicNumber = this.baseMagicNumber = DEBUFF_AMT;
 	}
 

@@ -26,7 +26,7 @@ public class Defend_Gold extends AbstractCycleCard {
 
 	public Defend_Gold() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.SELF, POOL);
 		this.baseBlock = BLOCK_AMT;
 	}
 	

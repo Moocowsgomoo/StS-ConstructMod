@@ -39,7 +39,7 @@ public class CripplingShot extends CustomCard {
 
 	public CripplingShot() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.ATTACK,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.ENEMY, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.ENEMY, POOL);
 		this.magicNumber = this.baseMagicNumber = WEAK;
 		this.damage = this.baseDamage = ATTACK_DMG;
 		this.exhaust = true;

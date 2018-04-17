@@ -26,12 +26,12 @@ public class Disruptor extends CustomCard {
 
 	public Disruptor() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.POWER,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.SELF, POOL);
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new DisruptorPower(p)));
+		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new DisruptorPower(p,1), 1));
 	}
 
 	@Override

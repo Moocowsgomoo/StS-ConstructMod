@@ -26,7 +26,7 @@ public class HastyRepair extends CustomCard {
 
 	public HastyRepair() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.SELF, POOL);
 		this.magicNumber = this.baseMagicNumber = HEAL_AMT;
 		this.exhaust = true;
 	}

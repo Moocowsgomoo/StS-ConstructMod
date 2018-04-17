@@ -33,7 +33,7 @@ public class Antimatter extends CustomCard {
 
 	public Antimatter() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.ATTACK,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.ENEMY, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.ENEMY, POOL);
 		this.baseDamage = this.damage = 0;
 		this.magicNumber = this.baseMagicNumber = CARD_DMG;
 	}

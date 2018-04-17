@@ -7,6 +7,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+
 import basemod.abstracts.CustomCard;
 import constructmod.patches.AbstractCardEnum;
 import constructmod.powers.AutoturretPower;
@@ -19,18 +21,20 @@ public class SpinDrive extends CustomCard {
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-	private static final int COST = 2;
-	private static final int UPGRADE_NEW_COST = 1;
+	private static final int COST = 3;
+	private static final int UPGRADE_NEW_COST = 2;
+	private static final int FREE_DRAWS = 3;
 	private static final int POOL = 1;
 
 	public SpinDrive() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.POWER,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.SELF, POOL);
+		this.baseMagicNumber = this.magicNumber = FREE_DRAWS;
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new SpinDrivePower(p)));
+		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new SpinDrivePower(p,this.magicNumber),this.magicNumber));
 	}
 
 	@Override

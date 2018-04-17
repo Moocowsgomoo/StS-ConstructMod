@@ -26,7 +26,7 @@ public class Hazardproof extends CustomCard {
 
 	public Hazardproof() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.SELF, POOL);
 		this.baseBlock = BLOCK_AMT;
 		this.magicNumber = this.baseMagicNumber = ARTIFACT_AMT;
 	}

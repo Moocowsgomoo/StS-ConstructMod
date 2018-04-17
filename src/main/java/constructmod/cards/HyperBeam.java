@@ -35,7 +35,7 @@ public class HyperBeam extends CustomCard {
 
 	public HyperBeam() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.ATTACK,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.ENEMY, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.ENEMY, POOL);
 		this.magicNumber = this.baseMagicNumber = DAZED_AMT;
 		this.damage = this.baseDamage = ATTACK_DMG;
 		this.isEthereal = !this.upgraded;

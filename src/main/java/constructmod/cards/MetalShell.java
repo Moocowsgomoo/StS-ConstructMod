@@ -32,7 +32,7 @@ public class MetalShell extends CustomCard {
 
 	public MetalShell() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF, POOL);
 		this.baseBlock = BLOCK_AMT;
 		this.magicNumber = this.baseMagicNumber = METALLICIZE_AMT;
 	}

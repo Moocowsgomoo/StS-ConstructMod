@@ -32,7 +32,7 @@ public class Backfire extends CustomCard {
 
 	public Backfire() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.ATTACK,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF_AND_ENEMY, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF_AND_ENEMY, POOL);
 		this.damage = this.baseDamage = ATTACK_DMG;
 		this.magicNumber = this.baseMagicNumber = SELF_DMG;
 	}

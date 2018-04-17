@@ -22,7 +22,7 @@ public class GuardOrb extends AbstractCycleCard {
 
 	public GuardOrb() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF, POOL);
 		this.baseBlock = this.block = GAIN_BLOCK;
 	}
 	

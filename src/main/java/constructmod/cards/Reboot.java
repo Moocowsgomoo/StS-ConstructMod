@@ -25,7 +25,7 @@ public class Reboot extends CustomCard {
 
 	public Reboot() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.NONE, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.NONE, POOL);
 		this.magicNumber = this.baseMagicNumber = DRAW_CARDS;
 		this.exhaust = true;
 	}

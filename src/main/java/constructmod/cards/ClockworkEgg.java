@@ -40,7 +40,7 @@ public class ClockworkEgg extends CustomCard {
 	
 	public ClockworkEgg(final int upgrades) {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.SELF, POOL);
 		for (int i=0;i<upgrades;i++) {
 			upgrade();
 		}

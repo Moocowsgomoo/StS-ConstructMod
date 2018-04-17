@@ -22,8 +22,9 @@ public class DiscountRandomCardAction extends AbstractGameAction
             }
         }
     	if (tmp.size() > 0) {
-    		tmp.getTopCard().flash();
-    		tmp.getTopCard().setCostForTurn(-amount);
+    		AbstractCard c2 = tmp.getTopCard();
+    		c2.flash();
+    		c2.setCostForTurn(c2.costForTurn-amount);
     	}
         this.isDone = true;
     }

@@ -120,8 +120,8 @@
 	},
 	"Backup": {
 		"NAME": "Backup",
-		"DESCRIPTION": "Retain. NL Choose a non-rare card from your hand. Put !M! copy on top of your draw pile.",
-		"UPGRADE_DESCRIPTION": "Retain. NL Choose a non-rare card from your hand. Put !M! copies on top of your draw pile.",
+		"DESCRIPTION": "Choose a non-rare card from your hand. Put !M! copies into your discard pile.",
+		"UPGRADE_DESCRIPTION": "Retain. NL Choose a non-rare card from your hand. Put !M! copies into your discard pile.",
 		"EXTENDED_DESCRIPTION": [
 			"No non-rare cards in hand."	
 		]
@@ -185,7 +185,7 @@
 	},
 	"SpinDrive": {
 		"NAME": "Spin Drive",
-		"DESCRIPTION": "When you play a card, draw a card."
+		"DESCRIPTION": "When you play a card, draw a card. NL Works !M! times per turn."
 	},
 	"Disruptor": {
 		"NAME": "Disruptor",

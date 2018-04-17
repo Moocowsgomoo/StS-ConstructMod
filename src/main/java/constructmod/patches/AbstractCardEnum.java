@@ -6,6 +6,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 public class AbstractCardEnum {
 
 	@SpireEnum
-	public static AbstractCard.CardColor CONSTRUCT_MOD_COLOR;
+	public static AbstractCard.CardColor CONSTRUCTMOD;
 	
 }

@@ -39,7 +39,7 @@ public class OneWayMirror extends CustomCard {
 
 	public OneWayMirror() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.ALL, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.ALL, POOL);
 		this.baseBlock = this.block = BLOCK_AMT;
 		this.baseMagicNumber = this.magicNumber = VULN_AMT;
 	}

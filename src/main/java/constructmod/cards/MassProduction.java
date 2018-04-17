@@ -17,7 +17,7 @@ import com.megacrit.cardcrawl.powers.VulnerablePower;
 
 import basemod.abstracts.CustomCard;
 import constructmod.ConstructMod;
-import constructmod.actions.CopyCardToDrawPileAction;
+import constructmod.actions.CopyCardToDiscardPileAction;
 import constructmod.actions.MassProductionAction;
 import constructmod.patches.AbstractCardEnum;
 
@@ -33,7 +33,7 @@ public class MassProduction extends CustomCard {
 
 	public MassProduction() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.SELF, POOL);
 		this.exhaust = true;
 	}
 

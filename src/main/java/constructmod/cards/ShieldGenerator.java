@@ -31,7 +31,7 @@ public class ShieldGenerator extends CustomCard {
 
 	public ShieldGenerator() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.POWER,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.SELF, POOL);
 		//this.baseBlock = BLOCK_AMT;
 		this.magicNumber = this.baseMagicNumber = BLUR_AMT;
 	}

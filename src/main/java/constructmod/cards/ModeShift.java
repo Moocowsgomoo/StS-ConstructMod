@@ -32,7 +32,7 @@ public class ModeShift extends CustomCard {
 
 	public ModeShift() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF, POOL);
 		this.baseMagicNumber = this.magicNumber = DRAW_AMT;
 		this.retain = true;
 	}
@@ -47,8 +47,8 @@ public class ModeShift extends CustomCard {
 		//AbstractDungeon.actionManager.addToBottom(new SFXAction("THUNDERCLAP", 0.05f));
 		final int str = p.hasPower("Strength")?p.getPower("Strength").amount:0;
 		final int dex = p.hasPower("Dexterity")?p.getPower("Dexterity").amount:0;
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthPower(p, dex-str), dex-str));
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new DexterityPower(p, str-dex), str-dex));
+		if (dex-str != 0) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthPower(p, dex-str), dex-str));
+		if (str-dex != 0) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new DexterityPower(p, str-dex), str-dex));
 		AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p,DRAW_AMT));
 	}
 

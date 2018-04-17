@@ -30,7 +30,7 @@ public class DefenseMode extends CustomCard {
 
 	public DefenseMode() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.SELF, POOL);
 		this.magicNumber = this.baseMagicNumber = DEX_AMOUNT;
 		this.retain = true;
 	}

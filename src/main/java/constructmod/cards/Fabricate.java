@@ -29,7 +29,7 @@ public class Fabricate extends CustomCard {
 
 	public Fabricate() {
 		super(ID, NAME, "img/cards/Fabricate.png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCT_MOD_COLOR, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF, POOL);
 		this.magicNumber = this.baseMagicNumber = COPY_AMT;
 	}
 

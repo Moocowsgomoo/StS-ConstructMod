@@ -27,7 +27,7 @@ public class DisruptorPower extends AbstractPower {
 			"After you take attack damage, gain that much Block.",
 	};
 	
-	public DisruptorPower(AbstractCreature owner) {
+	public DisruptorPower(AbstractCreature owner, int amount) {
 		this.name = NAME;
 		this.ID = POWER_ID;
 		this.owner = owner;

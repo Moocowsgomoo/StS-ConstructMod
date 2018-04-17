@@ -58,9 +58,9 @@ public class ClockworkEgg extends CustomCard {
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		if (this.timesUpgraded == 1) {
 			final AttackMode a = new AttackMode();
-			a.upgrade();
+			//a.upgrade();
 			final DefenseMode d = new DefenseMode();
-			d.upgrade();
+			//d.upgrade();
 			AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(a));
 			AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(d));
 		}

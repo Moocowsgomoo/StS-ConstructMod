@@ -197,8 +197,8 @@
 	},
 	"ShieldBurst": {
 		"NAME": "Shield Burst",
-		"DESCRIPTION": "Lose all Block. NL Deal twice that much damage.",
-		"UPGRADE_DESCRIPTION": "Lose all Block. NL Deal three times that much damage.",
+		"DESCRIPTION": "Lose all your Block. NL Deal twice that much damage.",
+		"UPGRADE_DESCRIPTION": "Lose all your Block. NL Deal three times that much damage.",
 		"EXTENDED_DESCRIPTION": [
 			" NL (Deals !D! damage.)"	
 		]
@@ -215,7 +215,7 @@
 		"NAME": "Clockwork Egg",
 		"DESCRIPTION": "Unplayable. NL Can be upgraded 4 more times.",
 		"EXTENDED_DESCRIPTION": [
-			"Add an upgraded Attack Mode and Defense Mode to your hand. NL Can be upgraded 3 more times.",
+			"Add an Attack Mode and Defense Mode to your hand. NL Can be upgraded 3 more times.",
 			"Gain 2 Strength. NL Gain 2 Dexterity. NL Can be upgraded 2 more times.",
 			"Next turn, gain NL [R] [R] [R] and draw NL 3 more cards. NL Can be upgraded 1 more time.",
 			"Gain 3 random relics at the end of combat. NL Permanently remove this card from your deck. "

@@ -39,6 +39,11 @@ Copied from https://github.com/gskleres/FruityMod-StS
 
 Here is a great video showing how to install mods, by Xterminator: https://www.youtube.com/watch?v=r2m2aL1eEjw
 
+## Special Thanks ##
+1. Thanks to the [devs](https://www.megacrit.com/) of **SlayTheSpire** for making such and awesome game, allowing us to mod it, and allowing us to use recolored versions of their art assets in our mod
+2. Thanks to t-larson and contributors (https://github.com/t-larson) for BaseMod!!
+3. Thanks to kiooeht and contributors (https://github.com/kiooeht) for ModTheSpire!!
+
 ## Other Mods ##
 There are lots of fantastic mods that already exist for Slay the Spire. An updated list can be found at:
 * https://github.com/kiooeht/ModTheSpire/wiki/List-of-Known-Mods

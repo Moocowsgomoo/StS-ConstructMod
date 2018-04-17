@@ -1,10 +1,13 @@
 # The Construct
 Adds a new character for Slay The Spire, complete with 50+ new cards.
-More cards and relics coming soon! Right now everything is unlocked at the start.
+* More cards and relics coming soon!
+* Right now everything is unlocked at the start, so unlocks don't do anything.
 
 The Construct is a mix of the many robotic enemies you'll find in the Spire, and uses familiar abilities like Mode Shift, supporting Orbs, and of course the Hyper Beam. Its main strength is adaptability; the new Cycle keyword gives you some control over the composition of your hand at any given time, and your starter Mode Shift cards allow you to switch between attack and defense on the fly.
 
 This character is meant to feel as close to an official character as possible, with multiple potential deck archetypes and rewarding interactions between cards. Balance is an ongoing process and cards/relics may change over time.
+
+A card list is coming soon, and will be hosted right here. Meanwhile, you can find the card descriptions in the main/resources/localization file.
 
 ![Character Select Image](github_resources/charselect.png)
 

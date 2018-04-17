@@ -1,0 +1,9 @@
+{
+  "Cogwheel": {
+    "NAME": "Cogwheel",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "Gain 1 #yArtifact at the start of each combat."
+    ]
+  }
+}

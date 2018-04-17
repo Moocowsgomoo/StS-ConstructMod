@@ -23,6 +23,7 @@ public class Analyze extends CustomCard {
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	private static final int COST = 1;
 	private static final int DRAW_AMT = 1;
 	private static final int ENERGIZE_AMT = 1;
@@ -40,7 +41,7 @@ public class Analyze extends CustomCard {
 		AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.common.ApplyPowerAction(p, p, new EnergizedPower(p, 1), 1));
 		AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.common.ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, this.magicNumber), this.magicNumber));
 	}
-
+	
 	@Override
 	public AbstractCard makeCopy() {
 		return new Analyze();
@@ -50,6 +51,8 @@ public class Analyze extends CustomCard {
 	public void upgrade() {
 		if (!this.upgraded) {
 			this.upgradeName();
+			this.rawDescription = UPGRADE_DESCRIPTION;
+			this.initializeDescription();
 			this.upgradeMagicNumber(UPGRADE_PLUS_DRAW_AMT);
 		}
 	}

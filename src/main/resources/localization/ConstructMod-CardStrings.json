@@ -34,7 +34,8 @@
 	},
 	"Analyze": {
 		"NAME": "Analyze",
-		"DESCRIPTION": "Next turn, gain [R]  and draw 1  more card."
+		"DESCRIPTION": "Next turn, gain [R]  and draw !M!  more card.",
+		"UPGRADE_DESCRIPTION": "Next turn, gain [R]  and draw !M!  more cards."
 	},
 	"VentSteam": {
 		"NAME": "Vent Steam",

@@ -45,7 +45,7 @@ public class DisruptorPower extends AbstractPower {
 	
 	@Override
 	public int onAttacked(final DamageInfo info, final int damageAmount) {
-		AbstractDungeon.actionManager.addToTop(new GainBlockAction(owner, owner, this.amount * (damageAmount-owner.currentBlock)));
+		AbstractDungeon.actionManager.addToTop(new GainBlockAction(owner, owner, this.amount * (damageAmount)));
         return damageAmount;
     }
 }

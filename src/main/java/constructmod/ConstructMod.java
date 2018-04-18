@@ -197,7 +197,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 	
 	public void receiveEditRelics() {
 		logger.info("Adding Construct Relics");
-		RelicLibrary.add(new Cogwheel());
-		RelicLibrary.add(new GenesisOrb());
+		BaseMod.addRelicToCustomPool(new Cogwheel(), AbstractCardEnum.CONSTRUCTMOD.toString());
+		BaseMod.addRelicToCustomPool(new GenesisOrb(), AbstractCardEnum.CONSTRUCTMOD.toString());
 	}
 }

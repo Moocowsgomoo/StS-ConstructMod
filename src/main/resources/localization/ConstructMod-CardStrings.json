@@ -75,12 +75,12 @@
 	"FlameOrb": {
 		"NAME": "Flame Orb",
 		"DESCRIPTION": "Cycle. When cycled: NL A random enemy loses !M! HP.",
-		"UPGRADE_DESCRIPTION": " NL Put a Flame Orb into your discard pile."
+		"UPGRADE_DESCRIPTION": "Cycle. When cycled: NL A random enemy loses !M! HP and gains 1 Vulnerable."
 	},
 	"ShockOrb": {
 		"NAME": "Shock Orb",
 		"DESCRIPTION": "Cycle. When cycled: NL ALL enemies NL lose !M! HP.",
-		"UPGRADE_DESCRIPTION": " NL Put a Shock Orb into your discard pile."
+		"UPGRADE_DESCRIPTION": "Cycle. When cycled: NL ALL enemies NL lose !M! HP and you gain !B! Block."
 	},
 	"GuardOrb": {
 		"NAME": "Guard Orb",
@@ -95,7 +95,7 @@
 	"BatteryOrb": {
 		"NAME": "Battery Orb",
 		"DESCRIPTION": "Cycle. When cycled: NL A card in your hand costs 1  less this turn.",
-		"UPGRADE_DESCRIPTION": " NL Put a Battery Orb into your discard pile."
+		"UPGRADE_DESCRIPTION": "Cycle. When cycled: NL A card in your hand costs 1  less this turn. NL Put a random Orb into your discard pile."
 	},
 	"OrbGenesis": {
 		"NAME": "Orb Genesis",
@@ -164,7 +164,8 @@
 	},
 	"HammerDown": {
 		"NAME": "Hammer Down",
-		"DESCRIPTION": "Deal !D! damage. NL Double your Strength and Dexterity. NL Exhaust."
+		"DESCRIPTION": "Deal !D! damage. NL Double your Strength and Dexterity. NL Exhaust.",
+		"UPGRADE_DESCRIPTION": "Deal !D! damage. NL Double your Strength and Dexterity."
 	},
 	"Enhance": {
 		"NAME": "Enhance",

@@ -24,14 +24,14 @@ public class HammerDown extends CustomCard {
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	private static final int COST = 2;
 	private static final int ATTACK_DMG = 12;
-	private static final int UPGRADE_PLUS_ATTACK_DMG = 4;
 	private static final int POOL = 1;
 
 	public HammerDown() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.ATTACK,
-				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.ENEMY, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.ENEMY, POOL);
 		this.baseDamage = this.damage = ATTACK_DMG;
 		this.exhaust = true;
 	}
@@ -55,7 +55,10 @@ public class HammerDown extends CustomCard {
 	public void upgrade() {
 		if (!this.upgraded) {
 			this.upgradeName();
-			this.upgradeDamage(UPGRADE_PLUS_ATTACK_DMG);
+			this.rawDescription = UPGRADE_DESCRIPTION;
+			this.initializeDescription();
+			//this.upgradeDamage(UPGRADE_PLUS_ATTACK_DMG);
+			this.exhaust = false;
 		}
 	}
 }

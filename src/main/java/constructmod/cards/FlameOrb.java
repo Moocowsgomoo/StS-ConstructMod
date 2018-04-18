@@ -1,6 +1,8 @@
 package constructmod.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
 import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
@@ -14,6 +16,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ThornsPower;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 
@@ -34,7 +37,7 @@ public class FlameOrb extends AbstractCycleCard {
 
 	public FlameOrb() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.SELF, POOL);
 		this.baseMagicNumber = this.magicNumber = HP_DMG;
 	}
 	
@@ -51,9 +54,11 @@ public class FlameOrb extends AbstractCycleCard {
 		
 		flash();
 		
-		if (upgraded) AbstractDungeon.player.discardPile.addToTop(new FlameOrb());
-		AbstractDungeon.actionManager.addToBottom(new DamageRandomEnemyAction(
-			new DamageInfo(p, this.magicNumber, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE));
+		final AbstractMonster mo = AbstractDungeon.getMonsters().getRandomMonster(true);
+		AbstractDungeon.actionManager.addToBottom(new DamageAction(
+				mo, new DamageInfo(p, this.magicNumber, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE));
+		if (upgraded) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
+				mo,p,new VulnerablePower(mo, 1, false),1,true,AbstractGameAction.AttackEffect.NONE));
 		
 		cycle();
 		//if (upgraded) AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(this.makeStatEquivalentCopy(),1));
@@ -62,9 +67,11 @@ public class FlameOrb extends AbstractCycleCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		if (upgraded) AbstractDungeon.player.discardPile.addToTop(new FlameOrb());
-		AbstractDungeon.actionManager.addToBottom(new DamageRandomEnemyAction(
-			new DamageInfo(p, this.magicNumber, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE));
+		final AbstractMonster mo = AbstractDungeon.getMonsters().getRandomMonster(true);
+		AbstractDungeon.actionManager.addToBottom(new DamageAction(
+				mo, new DamageInfo(p, this.magicNumber, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE));
+		if (upgraded) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
+				mo,p,new VulnerablePower(mo, 1, false),1,true,AbstractGameAction.AttackEffect.NONE));
 		//if (upgraded) AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(this.makeStatEquivalentCopy(),1));
 	}
 
@@ -77,7 +84,7 @@ public class FlameOrb extends AbstractCycleCard {
 	public void upgrade() {
 		if (!this.upgraded) {
 			this.upgradeName();
-			this.rawDescription = DESCRIPTION + UPGRADE_DESCRIPTION;
+			this.rawDescription = UPGRADE_DESCRIPTION;
 			this.initializeDescription();
 			//this.upgradeMagicNumber(UPGRADE_PLUS_HP_DMG);
 		}

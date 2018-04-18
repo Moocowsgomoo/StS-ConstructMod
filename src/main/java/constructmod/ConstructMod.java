@@ -90,7 +90,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     	BaseMod.addKeyword(pArmor, "Gain Block at the end of each turn. Reduced when you take unblocked damage.");
     	final String[] slimed = {"slimed"};
     	BaseMod.addKeyword(slimed, "Slimed is a status card that costs [R] to exhaust.");
-    	final String[] orbs = {"orbs"};
+    	final String[] orbs = {"orb","orbs"};
     	BaseMod.addKeyword(orbs, "Orbs are cards that cycle and apply a small bonus effect.");
     }
 	
@@ -139,12 +139,11 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		//	Skills (Defensive)
 		BaseMod.addCard(new Reinforce());	// block
 		BaseMod.addCard(new ReactiveShield()); // block (cycle)
-		BaseMod.addCard(new GuardOrb());	// cycle, block
+		//BaseMod.addCard(new GuardOrb());	// cycle, block
 		BaseMod.addCard(new MetalShell());	// block
 		BaseMod.addCard(new Anticipate());	// block
 		//	Skills (Misc.)
 		BaseMod.addCard(new Analyze()); 	// draw/energy next turn
-		BaseMod.addCard(new FlameOrb());	// cycle, atk
 		BaseMod.addCard(new ShockOrb());	// cycle, atk
 		BaseMod.addCard(new VentSteam());	// debuff, exhaust
 		BaseMod.addCard(new ModeShift()); 	// modes, draw
@@ -159,15 +158,14 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new ChargeShot());	// atk (retain)
 		BaseMod.addCard(new CripplingShot());//atk, debuff
 		BaseMod.addCard(new Electrocute()); // atk, debuff
-		BaseMod.addCard(new HammerDown());	// atk, modes
 		BaseMod.addCard(new Antimatter());	// atk
 		BaseMod.addCard(new FlakBarrage());	// atk (cycle)
 		//	Skills (Defensive)
 		BaseMod.addCard(new Disorient());	// debuff
 		BaseMod.addCard(new OneWayMirror());// block
 		//	Skills (Misc.)
-		BaseMod.addCard(new ScopeOrb());	// debuff
-		BaseMod.addCard(new BatteryOrb());	// energy
+		BaseMod.addCard(new FlameOrb());	// cycle, atk
+		//BaseMod.addCard(new ScopeOrb());	// debuff
 		BaseMod.addCard(new Backup());		// copy
 		BaseMod.addCard(new BatteryAcid()); // energy
 		BaseMod.addCard(new Reboot());	 	// exhaust
@@ -183,12 +181,14 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new GoldenBullet());// atk
 		BaseMod.addCard(new ShieldBurst());	// atk from block
 		BaseMod.addCard(new GatlingGun());	// atk, X-cost
+		BaseMod.addCard(new HammerDown());	// atk, modes
 		//	Skills
-		BaseMod.addCard(new OrbGenesis());	// copy
+		//BaseMod.addCard(new OrbGenesis());	// copy
 		BaseMod.addCard(new MassProduction());//copy
 		BaseMod.addCard(new ClockworkEgg());// egg
 		BaseMod.addCard(new HastyRepair()); // heal
 		BaseMod.addCard(new Hazardproof()); // block, buff
+		BaseMod.addCard(new BatteryOrb());	// energy
 		//	Powers
 		BaseMod.addCard(new SiegeForm());	// buff, atk-based
 		BaseMod.addCard(new PanicFire()); 	// atk from cycle
@@ -198,5 +198,6 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 	public void receiveEditRelics() {
 		logger.info("Adding Construct Relics");
 		RelicLibrary.add(new Cogwheel());
+		RelicLibrary.add(new GenesisOrb());
 	}
 }

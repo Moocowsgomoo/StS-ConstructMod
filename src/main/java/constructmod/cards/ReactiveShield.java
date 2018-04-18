@@ -44,7 +44,7 @@ public class ReactiveShield extends AbstractCycleCard {
 		for (int i = 0; i < temp; i++) {
 			AbstractMonster targetMonster = (AbstractMonster)AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
 			if ((!targetMonster.isDying) && (targetMonster.currentHealth > 0) && (!targetMonster.isEscaping)) {
-				if ((targetMonster.intent == AbstractMonster.Intent.ATTACK) || (targetMonster.intent == AbstractMonster.Intent.ATTACK_BUFF) || (targetMonster.intent == AbstractMonster.Intent.ATTACK_DEBUFF) || (targetMonster.intent == AbstractMonster.Intent.ATTACK_DEFEND)){
+				if ((targetMonster.intent == AbstractMonster.Intent.ATTACK) || (targetMonster.intent == AbstractMonster.Intent.ATTACK_BUFF) || (targetMonster.intent == AbstractMonster.Intent.ATTACK_DEBUFF) || (targetMonster.intent == AbstractMonster.Intent.ATTACK_DEFEND) ||  targetMonster.intent == AbstractMonster.Intent.DEBUG){
 					noneAttacking = false;
 					break;
 				}

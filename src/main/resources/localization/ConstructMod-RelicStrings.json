@@ -5,5 +5,12 @@
     "DESCRIPTIONS": [
       "Gain 1 #yArtifact at the start of each combat."
     ]
+  },
+  "GenesisOrb": {
+    "NAME": "Genesis Orb",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "At the start of combat, duplicate all #yOrbs in your draw pile."
+    ]
   }
 }

@@ -1,5 +1,9 @@
 package constructmod.cards;
 
+import java.util.ArrayList;
+
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -18,10 +22,12 @@ public class BatteryOrb extends AbstractCycleCard {
 	private static final int COST = 0;
 	private static final int DISCOUNT = 1;
 	private static final int POOL = 1;
+	
+	private final ArrayList<AbstractCard> list = new ArrayList<AbstractCard>();
 
 	public BatteryOrb() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.NONE, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.NONE, POOL);
 		this.baseMagicNumber = this.magicNumber = DISCOUNT;
 	}
 	
@@ -39,7 +45,11 @@ public class BatteryOrb extends AbstractCycleCard {
 		flash();
 		
 		AbstractDungeon.actionManager.addToBottom(new DiscountRandomCardAction(this.magicNumber));
-		if (upgraded) AbstractDungeon.player.discardPile.addToTop(new BatteryOrb());
+		
+		if (upgraded) {
+			AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(
+					list.get(AbstractDungeon.cardRandomRng.random(list.size() - 1)),1));
+		}
 		
 		cycle();
 		//if (upgraded) AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(this.makeStatEquivalentCopy(),1));
@@ -49,7 +59,11 @@ public class BatteryOrb extends AbstractCycleCard {
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		AbstractDungeon.actionManager.addToBottom(new DiscountRandomCardAction(this.magicNumber));
-		if (upgraded) AbstractDungeon.player.discardPile.addToTop(new BatteryOrb());
+		
+		if (upgraded) {
+			AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(
+					list.get(AbstractDungeon.cardRandomRng.random(list.size() - 1)),1));
+		}
 		//if (upgraded) AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(this.makeStatEquivalentCopy(),1));
 	}
 
@@ -62,8 +76,15 @@ public class BatteryOrb extends AbstractCycleCard {
 	public void upgrade() {
 		if (!this.upgraded) {
 			this.upgradeName();
-			this.rawDescription = DESCRIPTION + UPGRADE_DESCRIPTION;
+			this.rawDescription = UPGRADE_DESCRIPTION;
 			this.initializeDescription();
+			
+			list.clear();
+			list.add(new FlameOrb());
+		    list.add(new FlameOrb());
+		    list.add(new ShockOrb());
+		    list.add(new ShockOrb());
+		    list.add(new BatteryOrb());
 			//this.upgradeMagicNumber(UPGRADE_PLUS_VULN);
 		}
 	}

@@ -28,7 +28,7 @@ public class ScopeOrb extends AbstractCycleCard {
 
 	public ScopeOrb() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.ALL_ENEMY, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.ALL_ENEMY, POOL);
 		this.baseMagicNumber = this.magicNumber = VULN;
 	}
 	
@@ -48,7 +48,7 @@ public class ScopeOrb extends AbstractCycleCard {
 		final AbstractMonster mo = AbstractDungeon.getMonsters().getRandomMonster(true);
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
 			mo,p,new VulnerablePower(mo, 1, false),1,true,AbstractGameAction.AttackEffect.NONE));
-		if (upgraded) AbstractDungeon.player.discardPile.addToTop(new ScopeOrb());
+		if (upgraded) AbstractDungeon.player.discardPile.addToTop(this.makeCopy());
 		
 		cycle();
 		//if (upgraded) AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(this.makeStatEquivalentCopy(),1));
@@ -60,7 +60,7 @@ public class ScopeOrb extends AbstractCycleCard {
 		final AbstractMonster mo = AbstractDungeon.getMonsters().getRandomMonster(true);
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
 			mo,p,new VulnerablePower(mo, 1, false),1,true,AbstractGameAction.AttackEffect.NONE));
-		if (upgraded) AbstractDungeon.player.discardPile.addToTop(new ScopeOrb());
+		if (upgraded) AbstractDungeon.player.discardPile.addToTop(this.makeCopy());
 		//if (upgraded) AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(this.makeStatEquivalentCopy(),1));
 	}
 

@@ -92,7 +92,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     	BaseMod.addKeyword(slimed, "Slimed is a status card that costs [R] to exhaust.");
     	final String[] vol = {"broken"};
     	BaseMod.addKeyword(vol, "Broken orbs are unplayable status cards. When one cycles, you lose 1 HP.");
-    	final String[] orbs = {"orb","orbs"};
+    	final String[] orbs = {"orbs"};
     	BaseMod.addKeyword(orbs, "Orbs are cards that cycle and apply a small bonus effect.");
     	final String[] eggs = {"egg","eggs"};
     	BaseMod.addKeyword(eggs, "Eggs are relics that automatically upgrade cards when you acquire them.");
@@ -168,7 +168,6 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new ShockOrb());	// cycle, atk
 		BaseMod.addCard(new FlameOrb());	// cycle, atk
 		BaseMod.addCard(new GuardOrb());	// cycle, block
-		//BaseMod.addCard(new ScopeOrb());	// debuff
 		BaseMod.addCard(new Backup());		// copy
 		BaseMod.addCard(new BatteryAcid()); // energy
 		BaseMod.addCard(new Reboot());	 	// exhaust
@@ -192,6 +191,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new MassProduction());//copy
 		BaseMod.addCard(new ClockworkEgg());// egg
 		BaseMod.addCard(new Hazardproof()); // block, buff
+		BaseMod.addCard(new ScopeOrb());	// debuff
 		BaseMod.addCard(new BatteryOrb());	// energy
 		//	Powers
 		BaseMod.addCard(new SiegeForm());	// buff, atk-based

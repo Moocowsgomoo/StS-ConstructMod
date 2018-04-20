@@ -40,17 +40,15 @@ public class GuardOrb extends AbstractCycleCard {
 		flash();
 		
 		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p,p,this.block));
-		//if (upgraded) AbstractDungeon.player.discardPile.addToTop(new GuardOrb());
+		if (upgraded) AbstractDungeon.player.discardPile.addToTop(this.makeCopy());
 		
 		cycle();
-		//if (upgraded) AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(this.makeStatEquivalentCopy(),1));
-		//AbstractDungeon.player.onCycle(this);
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p,p,this.block));
-		//if (upgraded) AbstractDungeon.player.discardPile.addToTop(new GuardOrb());
+		if (upgraded) AbstractDungeon.player.discardPile.addToTop(this.makeCopy());
 		//if (upgraded) AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(this.makeStatEquivalentCopy(),1));
 	}
 
@@ -63,9 +61,9 @@ public class GuardOrb extends AbstractCycleCard {
 	public void upgrade() {
 		if (!this.upgraded) {
 			this.upgradeName();
-			//this.rawDescription = DESCRIPTION + UPGRADE_DESCRIPTION;
-			//this.initializeDescription();
-			this.upgradeBlock(UPGRADE_PLUS_GAIN_BLOCK);
+			this.rawDescription = DESCRIPTION + UPGRADE_DESCRIPTION;
+			this.initializeDescription();
+			//this.upgradeBlock(UPGRADE_PLUS_GAIN_BLOCK);
 		}
 	}
 }

@@ -31,7 +31,7 @@ public class FlameOrb extends AbstractCycleCard {
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	private static final int COST = 0;
-	private static final int HP_DMG = 3;
+	private static final int HP_DMG = 2;
 	//private static final int UPGRADE_PLUS_HP_DMG = 2;
 	private static final int POOL = 1;
 
@@ -57,8 +57,9 @@ public class FlameOrb extends AbstractCycleCard {
 		final AbstractMonster mo = AbstractDungeon.getMonsters().getRandomMonster(true);
 		AbstractDungeon.actionManager.addToBottom(new DamageAction(
 				mo, new DamageInfo(p, this.magicNumber, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE));
-		if (upgraded) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
-				mo,p,new VulnerablePower(mo, 1, false),1,true,AbstractGameAction.AttackEffect.NONE));
+		if (upgraded) AbstractDungeon.player.discardPile.addToTop(this.makeCopy());
+		//if (upgraded) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
+				//mo,p,new VulnerablePower(mo, 1, false),1,true,AbstractGameAction.AttackEffect.NONE));
 		
 		cycle();
 		//if (upgraded) AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(this.makeStatEquivalentCopy(),1));
@@ -70,9 +71,9 @@ public class FlameOrb extends AbstractCycleCard {
 		final AbstractMonster mo = AbstractDungeon.getMonsters().getRandomMonster(true);
 		AbstractDungeon.actionManager.addToBottom(new DamageAction(
 				mo, new DamageInfo(p, this.magicNumber, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE));
-		if (upgraded) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
-				mo,p,new VulnerablePower(mo, 1, false),1,true,AbstractGameAction.AttackEffect.NONE));
-		//if (upgraded) AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(this.makeStatEquivalentCopy(),1));
+		if (upgraded) AbstractDungeon.player.discardPile.addToTop(this.makeCopy());
+		//if (upgraded) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
+		//mo,p,new VulnerablePower(mo, 1, false),1,true,AbstractGameAction.AttackEffect.NONE));
 	}
 
 	@Override
@@ -84,7 +85,7 @@ public class FlameOrb extends AbstractCycleCard {
 	public void upgrade() {
 		if (!this.upgraded) {
 			this.upgradeName();
-			this.rawDescription = UPGRADE_DESCRIPTION;
+			this.rawDescription = DESCRIPTION + UPGRADE_DESCRIPTION;
 			this.initializeDescription();
 			//this.upgradeMagicNumber(UPGRADE_PLUS_HP_DMG);
 		}

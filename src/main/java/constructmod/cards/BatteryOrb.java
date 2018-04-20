@@ -45,26 +45,19 @@ public class BatteryOrb extends AbstractCycleCard {
 		flash();
 		
 		AbstractDungeon.actionManager.addToBottom(new DiscountRandomCardAction(this.magicNumber));
-		
-		if (upgraded) {
+		if (upgraded) AbstractDungeon.player.discardPile.addToTop(this.makeCopy());
+		/*if (upgraded) {
 			AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(
 					list.get(AbstractDungeon.cardRandomRng.random(list.size() - 1)),1));
-		}
+		}*/
 		
 		cycle();
-		//if (upgraded) AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(this.makeStatEquivalentCopy(),1));
-		//AbstractDungeon.player.onCycle(this);
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		AbstractDungeon.actionManager.addToBottom(new DiscountRandomCardAction(this.magicNumber));
-		
-		if (upgraded) {
-			AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(
-					list.get(AbstractDungeon.cardRandomRng.random(list.size() - 1)),1));
-		}
-		//if (upgraded) AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(this.makeStatEquivalentCopy(),1));
+		if (upgraded) AbstractDungeon.player.discardPile.addToTop(this.makeCopy());
 	}
 
 	@Override
@@ -76,17 +69,17 @@ public class BatteryOrb extends AbstractCycleCard {
 	public void upgrade() {
 		if (!this.upgraded) {
 			this.upgradeName();
-			this.rawDescription = UPGRADE_DESCRIPTION;
+			this.rawDescription = DESCRIPTION + UPGRADE_DESCRIPTION;
 			this.initializeDescription();
 			
-			list.clear();
+			/*list.clear();
 			list.add(new FlameOrb());
 		    list.add(new FlameOrb());
 		    list.add(new ShockOrb());
 		    list.add(new ShockOrb());
 		    list.add(new GuardOrb());
 		    list.add(new GuardOrb());
-		    list.add(new BatteryOrb());
+		    list.add(new BatteryOrb());*/
 			//this.upgradeMagicNumber(UPGRADE_PLUS_VULN);
 		}
 	}

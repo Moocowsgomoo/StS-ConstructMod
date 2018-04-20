@@ -5,12 +5,8 @@ import com.megacrit.cardcrawl.cards.*;
 import com.megacrit.cardcrawl.characters.*;
 import com.megacrit.cardcrawl.ui.panels.*;
 import com.megacrit.cardcrawl.dungeons.*;
-import com.megacrit.cardcrawl.actions.utility.*;
-import com.megacrit.cardcrawl.vfx.combat.*;
-import com.megacrit.cardcrawl.actions.animations.*;
+import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.core.*;
-import com.megacrit.cardcrawl.vfx.*;
-import com.megacrit.cardcrawl.actions.common.*;
 
 public class GatlingGunAction extends AbstractGameAction
 {
@@ -47,7 +43,7 @@ public class GatlingGunAction extends AbstractGameAction
         }
         if (effect > 0) {
         	AbstractDungeon.actionManager.addToBottom(new DealMultiRandomDamageAction(
-    				new DamageInfo(p, this.damage, this.damageType), effect*2, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+    				new DamageInfo(p, this.damage, this.damageType), effect*2, AbstractGameAction.AttackEffect.BLUNT_HEAVY,true));
             /*for (int i = 0; i < effect; ++i) {
                 //AbstractDungeon.actionManager.addToBottom(new SFXAction("ATTACK_HEAVY"));
                 //AbstractDungeon.actionManager.addToBottom(new VFXAction(this.p, new CleaveEffect(), 0.0f));

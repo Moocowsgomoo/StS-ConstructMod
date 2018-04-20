@@ -22,7 +22,7 @@ public class GuardOrb extends AbstractCycleCard {
 
 	public GuardOrb() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.SELF, POOL);
 		this.baseBlock = this.block = GAIN_BLOCK;
 	}
 	
@@ -40,7 +40,7 @@ public class GuardOrb extends AbstractCycleCard {
 		flash();
 		
 		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p,p,this.block));
-		if (upgraded) AbstractDungeon.player.discardPile.addToTop(new GuardOrb());
+		//if (upgraded) AbstractDungeon.player.discardPile.addToTop(new GuardOrb());
 		
 		cycle();
 		//if (upgraded) AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(this.makeStatEquivalentCopy(),1));
@@ -50,7 +50,7 @@ public class GuardOrb extends AbstractCycleCard {
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p,p,this.block));
-		if (upgraded) AbstractDungeon.player.discardPile.addToTop(new GuardOrb());
+		//if (upgraded) AbstractDungeon.player.discardPile.addToTop(new GuardOrb());
 		//if (upgraded) AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(this.makeStatEquivalentCopy(),1));
 	}
 
@@ -63,9 +63,9 @@ public class GuardOrb extends AbstractCycleCard {
 	public void upgrade() {
 		if (!this.upgraded) {
 			this.upgradeName();
-			this.rawDescription = DESCRIPTION + UPGRADE_DESCRIPTION;
-			this.initializeDescription();
-			//this.upgradeBlock(UPGRADE_PLUS_GAIN_BLOCK);
+			//this.rawDescription = DESCRIPTION + UPGRADE_DESCRIPTION;
+			//this.initializeDescription();
+			this.upgradeBlock(UPGRADE_PLUS_GAIN_BLOCK);
 		}
 	}
 }

@@ -22,7 +22,7 @@ public class GoldenBullet extends CustomCard {
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	private static final int COST = 1;
-	private static final int ATTACK_DMG = 15;
+	private static final int ATTACK_DMG = 18;
 	private static final int UPGRADE_PLUS_ATTACK_DMG = 4;
 	private static final int LOSE_GOLD_AMT = 20;
 	private static final int UPGRADE_PLUS_LOSE_GOLD_AMT = -5;
@@ -54,7 +54,7 @@ public class GoldenBullet extends CustomCard {
 		if (!this.upgraded) {
 			this.upgradeName();
 			this.upgradeDamage(UPGRADE_PLUS_ATTACK_DMG);
-			this.upgradeBlock(UPGRADE_PLUS_LOSE_GOLD_AMT);
+			this.upgradeMagicNumber(UPGRADE_PLUS_LOSE_GOLD_AMT);
 		}
 	}
 }

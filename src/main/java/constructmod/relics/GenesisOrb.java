@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import constructmod.ConstructMod;
 import constructmod.cards.BatteryOrb;
 import constructmod.cards.FlameOrb;
+import constructmod.cards.GuardOrb;
 import constructmod.cards.ShockOrb;
 
 public class GenesisOrb extends CustomRelic {
@@ -28,7 +29,7 @@ public class GenesisOrb extends CustomRelic {
     public void atBattleStart() {
     	boolean didSomething = false;
         for (AbstractCard c : AbstractDungeon.player.drawPile.group) {
-        	if (c instanceof FlameOrb || c instanceof ShockOrb || c instanceof BatteryOrb) {
+        	if (c instanceof FlameOrb || c instanceof ShockOrb || c instanceof GuardOrb || c instanceof BatteryOrb) {
         		didSomething = true;
         		AbstractDungeon.actionManager.addToTop(new MakeTempCardInDrawPileAction(
         				AbstractDungeon.player,AbstractDungeon.player,c.makeStatEquivalentCopy(),1,true,false));

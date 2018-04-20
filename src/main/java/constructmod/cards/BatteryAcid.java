@@ -32,7 +32,7 @@ public class BatteryAcid extends CustomCard {
 	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	private static final int COST = 0;
 	private static final int ENERGY_GAIN = 1;
-	private static final int SLIMED_AMT = 2;
+	private static final int SLIMED_AMT = 1;
 	private static final int UPGRADE_PLUS_ENERGY_GAIN = 1;
 	private static final int POOL = 1;
 
@@ -46,7 +46,7 @@ public class BatteryAcid extends CustomCard {
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		//AbstractDungeon.actionManager.addToBottom(new SFXAction("THUNDERCLAP", 0.05f));
 		AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(this.magicNumber));
-		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new Slimed(), 2));
+		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new Slimed(), SLIMED_AMT));
 	}
 
 	@Override

@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.*;
 import com.megacrit.cardcrawl.cards.*;
 import com.megacrit.cardcrawl.core.*;
 import com.megacrit.cardcrawl.dungeons.*;
+import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.vfx.combat.*;
 import com.megacrit.cardcrawl.actions.utility.*;
 
@@ -13,6 +14,7 @@ public class DealMultiRandomDamageAction extends AbstractGameAction
     private static final float DURATION = 0.01f;
     private static final float POST_ATTACK_WAIT_DUR = 0.2f;
     private int numTimes;
+    private boolean shakeScreen = false;
     
     public DealMultiRandomDamageAction(final DamageInfo info, final int numTimes, final AttackEffect atkEffect) {
         this.info = info;
@@ -23,8 +25,14 @@ public class DealMultiRandomDamageAction extends AbstractGameAction
         this.numTimes = numTimes;
     }
     
+    public DealMultiRandomDamageAction(final DamageInfo info, final int numTimes, final AttackEffect atkEffect, final boolean shakeScreen) {
+        this(info,numTimes,atkEffect);
+        this.shakeScreen = shakeScreen;
+    }
+    
     @Override
     public void update() {
+    	if (shakeScreen) CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT, false);
         if (this.target == null) {
             this.isDone = true;
             return;

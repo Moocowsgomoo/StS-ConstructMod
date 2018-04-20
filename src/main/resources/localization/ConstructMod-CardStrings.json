@@ -102,9 +102,13 @@
 		"DESCRIPTION": "Add !M! random Orbs to your draw pile.",
 		"UPGRADE_DESCRIPTION": "Add !M! random upgraded Orbs to your draw pile."
 	},
-	"PanicFire": {
-		"NAME": "Panic Fire",
-		"DESCRIPTION": "When a card cycles, Exhaust it and deal !M! damage to a random enemy."
+	"OrbAssault": {
+		"NAME": "Orb Assault",
+		"DESCRIPTION": "Shuffle 5 Broken Orbs into your draw pile. NL When a card cycles, deal !M! damage to a random enemy."
+	},
+	"BrokenOrb": {
+		"NAME": "Broken Orb",
+		"DESCRIPTION": "Unplayable. NL Cycle. When cycled: NL Lose !M! HP."
 	},
 	"Autoturret": {
 		"NAME": "Autoturret",
@@ -120,8 +124,8 @@
 	},
 	"Backup": {
 		"NAME": "Backup",
-		"DESCRIPTION": "Choose a non-rare card from your hand. Put !M! copies into your discard pile.",
-		"UPGRADE_DESCRIPTION": "Retain. NL Choose a non-rare card from your hand. Put !M! copies into your discard pile.",
+		"DESCRIPTION": "Choose a non-rare card from your hand. Put a copy into your discard pile.",
+		"UPGRADE_DESCRIPTION": "Retain. NL Choose a non-rare card from your hand. Put a copy into your discard pile.",
 		"EXTENDED_DESCRIPTION": [
 			"No non-rare cards in hand."	
 		]
@@ -214,12 +218,12 @@
 	},
 	"ClockworkEgg": {
 		"NAME": "Clockwork Egg",
-		"DESCRIPTION": "Unplayable. NL Can be upgraded 4 more times.",
+		"DESCRIPTION": "Exhaust. NL Can be upgraded 4 more times.",
 		"EXTENDED_DESCRIPTION": [
-			"Add an Attack Mode and Defense Mode to your hand. NL Can be upgraded 3 more times.",
-			"Gain 2 Strength. NL Gain 2 Dexterity. NL Can be upgraded 2 more times.",
-			"Next turn, gain NL [R] [R] [R] and draw NL 3 more cards. NL Can be upgraded 1 more time.",
-			"Gain 3 random relics at the end of combat. NL Permanently remove this card from your deck. "
+			"Add an Attack Mode+ and Defense Mode+ to your hand. NL Can be upgraded 3 more times.",
+			"Gain 3 Strength. NL Gain 3 Dexterity. NL Can be upgraded 2 more times.",
+			"Next turn, gain NL [R] [R] [R] [R] and draw NL 4 more cards. NL Can be upgraded 1 more time.",
+			"Gain all 3 Egg relics, and a random rare relic after combat. Permanently remove this card from your deck. "
 		]
 	},
 	"HastyRepair": {
@@ -232,8 +236,8 @@
 	},
 	"BatteryAcid": {
 		"NAME": "Battery Acid",
-		"DESCRIPTION": "Gain [R] . Add 2 Slimed to your hand.",
-		"UPGRADE_DESCRIPTION": "Gain [R] [R] . NL Add 2 Slimed to your hand."
+		"DESCRIPTION": "Gain [R] . Add a Slimed to your hand.",
+		"UPGRADE_DESCRIPTION": "Gain [R] [R] . NL Add a Slimed to your hand."
 	},
 	"Bunker": {
 		"NAME": "Bunker",

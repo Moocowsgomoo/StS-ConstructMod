@@ -29,7 +29,7 @@ public class Backup extends CustomCard {
 	public static final String EXTENDED_DESCRIPTION[] = cardStrings.EXTENDED_DESCRIPTION;
 	private static final int COST = 0;
 	private static final int NUM_CARDS = 1;
-	private static final int NUM_COPIES = 2;
+	private static final int NUM_COPIES = 1;
 	private static final int UPGRADE_PLUS_NUM_COPIES = 0;
 	private static final int POOL = 1;
 

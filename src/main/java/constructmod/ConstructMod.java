@@ -90,8 +90,12 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     	BaseMod.addKeyword(pArmor, "Gain Block at the end of each turn. Reduced when you take unblocked damage.");
     	final String[] slimed = {"slimed"};
     	BaseMod.addKeyword(slimed, "Slimed is a status card that costs [R] to exhaust.");
+    	final String[] vol = {"broken"};
+    	BaseMod.addKeyword(vol, "Broken orbs are unplayable status cards. When one cycles, you lose 1 HP.");
     	final String[] orbs = {"orb","orbs"};
     	BaseMod.addKeyword(orbs, "Orbs are cards that cycle and apply a small bonus effect.");
+    	final String[] eggs = {"egg","eggs"};
+    	BaseMod.addKeyword(eggs, "Eggs are relics that automatically upgrade cards when you acquire them.");
     }
 	
 	public void receiveEditCharacters() {
@@ -139,14 +143,11 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		//	Skills (Defensive)
 		BaseMod.addCard(new Reinforce());	// block
 		BaseMod.addCard(new ReactiveShield()); // block (cycle)
-		//BaseMod.addCard(new GuardOrb());	// cycle, block
 		BaseMod.addCard(new MetalShell());	// block
 		BaseMod.addCard(new Anticipate());	// block
 		//	Skills (Misc.)
 		BaseMod.addCard(new Analyze()); 	// draw/energy next turn
-		BaseMod.addCard(new ShockOrb());	// cycle, atk
 		BaseMod.addCard(new VentSteam());	// debuff, exhaust
-		BaseMod.addCard(new ModeShift()); 	// modes, draw
 		//	Powers
 		BaseMod.addCard(new ElectricArmor());// block-based
 		BaseMod.addCard(new BubbleShield());// block-based
@@ -164,11 +165,15 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new Disorient());	// debuff
 		BaseMod.addCard(new OneWayMirror());// block
 		//	Skills (Misc.)
+		BaseMod.addCard(new ShockOrb());	// cycle, atk
 		BaseMod.addCard(new FlameOrb());	// cycle, atk
+		BaseMod.addCard(new GuardOrb());	// cycle, block
 		//BaseMod.addCard(new ScopeOrb());	// debuff
 		BaseMod.addCard(new Backup());		// copy
 		BaseMod.addCard(new BatteryAcid()); // energy
 		BaseMod.addCard(new Reboot());	 	// exhaust
+		BaseMod.addCard(new ModeShift()); 	// modes, draw
+		BaseMod.addCard(new HastyRepair()); // heal
 		// 	Powers
 		BaseMod.addCard(new Synchronize());	// copy-based
 		BaseMod.addCard(new Enhance());		// upgrade
@@ -186,13 +191,15 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		//BaseMod.addCard(new OrbGenesis());	// copy
 		BaseMod.addCard(new MassProduction());//copy
 		BaseMod.addCard(new ClockworkEgg());// egg
-		BaseMod.addCard(new HastyRepair()); // heal
 		BaseMod.addCard(new Hazardproof()); // block, buff
 		BaseMod.addCard(new BatteryOrb());	// energy
 		//	Powers
 		BaseMod.addCard(new SiegeForm());	// buff, atk-based
-		BaseMod.addCard(new PanicFire()); 	// atk from cycle
+		BaseMod.addCard(new OrbAssault()); 	// atk from cycle
 		BaseMod.addCard(new SpinDrive()); 	// cards
+		
+		// MISC.
+		BaseMod.addCard(new BrokenOrb()); // status, cycle
 	}
 	
 	public void receiveEditRelics() {

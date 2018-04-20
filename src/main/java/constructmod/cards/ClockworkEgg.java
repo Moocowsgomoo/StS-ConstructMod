@@ -18,6 +18,9 @@ import com.megacrit.cardcrawl.powers.DrawPower;
 import com.megacrit.cardcrawl.powers.EnergizedPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic.RelicTier;
+import com.megacrit.cardcrawl.relics.FrozenEgg2;
+import com.megacrit.cardcrawl.relics.MoltenEgg2;
+import com.megacrit.cardcrawl.relics.ToxicEgg2;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
@@ -46,38 +49,51 @@ public class ClockworkEgg extends CustomCard {
 		}
 	}
 	
-	@Override
+	/*@Override
     public boolean canUse(final AbstractPlayer p, final AbstractMonster m) {
 		if (this.timesUpgraded > 0) return true;
 		
         this.cantUseMessage = "I can't play this card.";
         return false;
-    }
+    }*/
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		if (this.timesUpgraded == 1) {
+		if (this.timesUpgraded == 0) {
+			this.exhaust = true;
+		}
+		else if (this.timesUpgraded == 1) {
 			final AttackMode a = new AttackMode();
-			//a.upgrade();
+			a.upgrade();
 			final DefenseMode d = new DefenseMode();
-			//d.upgrade();
+			d.upgrade();
 			AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(a));
 			AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(d));
 		}
 		else if (this.timesUpgraded == 2) {
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new StrengthPower(p,2),2));
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new DexterityPower(p,2),2));
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new StrengthPower(p,3),3));
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new DexterityPower(p,3),3));
 		}
 		else if (this.timesUpgraded == 3) {
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new EnergizedPower(p,3),3));
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new DrawCardNextTurnPower(p,3),3));
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new EnergizedPower(p,4),4));
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new DrawCardNextTurnPower(p,4),4));
 		}
 		else if (this.timesUpgraded == 4) {
-			AbstractDungeon.getCurrRoom().addRelicToRewards(RelicTier.COMMON);
-			AbstractDungeon.getCurrRoom().addRelicToRewards(RelicTier.UNCOMMON);
+			if (!p.hasRelic("Molten Egg 2")) {
+				new MoltenEgg2().instantObtain(false);
+				AbstractDungeon.uncommonRelicPool.remove("Molten Egg 2");
+			}
+			if (!p.hasRelic("Toxic Egg 2")) {
+				new ToxicEgg2().instantObtain(false);
+				AbstractDungeon.uncommonRelicPool.remove("Toxic Egg 2");
+			}
+			if (!p.hasRelic("Frozen Egg 2")) {
+				new FrozenEgg2().instantObtain(false);
+				AbstractDungeon.uncommonRelicPool.remove("Frozen Egg 2");
+			}
 			AbstractDungeon.getCurrRoom().addRelicToRewards(RelicTier.RARE);
 			p.masterDeck.removeCard(ID);
-			// should auto-exhaust
+			this.exhaust = true;
 		}
 	}
 
@@ -103,6 +119,8 @@ public class ClockworkEgg extends CustomCard {
 			this.rawDescription = EXTENDED_DESCRIPTION[timesUpgraded-1];
 			this.initializeDescription();
 			if (timesUpgraded == 4) {
+				this.cost = 0;
+				this.costForTurn = 0;
 				this.exhaust = true;
 				this.loadCardImage("img/cards/"+"ClockworkPhoenix"+".png");
 			}

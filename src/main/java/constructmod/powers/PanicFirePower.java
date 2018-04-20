@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import constructmod.ConstructMod;
 
 public class PanicFirePower extends AbstractCyclePower {
-	public static final String POWER_ID = "PanicFire";
+	public static final String POWER_ID = "OrbAssault";
 	public static final String NAME = "Panic Fire";
 	public static final String[] DESCRIPTIONS = new String[] {
 			"Whenever a card cycles, exhaust it and deal ",

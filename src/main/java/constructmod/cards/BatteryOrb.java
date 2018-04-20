@@ -84,6 +84,8 @@ public class BatteryOrb extends AbstractCycleCard {
 		    list.add(new FlameOrb());
 		    list.add(new ShockOrb());
 		    list.add(new ShockOrb());
+		    list.add(new GuardOrb());
+		    list.add(new GuardOrb());
 		    list.add(new BatteryOrb());
 			//this.upgradeMagicNumber(UPGRADE_PLUS_VULN);
 		}

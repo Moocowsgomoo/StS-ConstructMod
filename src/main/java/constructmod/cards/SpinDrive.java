@@ -16,7 +16,7 @@ import constructmod.powers.PanicFirePower;
 import constructmod.powers.SiegeFormPower;
 import constructmod.powers.SpinDrivePower;
 
-public class SpinDrive extends CustomCard {
+public class SpinDrive extends AbstractConstructCard {
 	public static final String ID = "SpinDrive";
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
@@ -24,6 +24,7 @@ public class SpinDrive extends CustomCard {
 	private static final int COST = 3;
 	private static final int UPGRADE_NEW_COST = 2;
 	private static final int FREE_DRAWS = 3;
+	private static final int M_UPGRADE_PLUS_FREE_DRAWS = 2;
 	private static final int POOL = 1;
 
 	public SpinDrive() {
@@ -46,8 +47,10 @@ public class SpinDrive extends CustomCard {
 	public void upgrade() {
 		if (!this.upgraded) {
 			this.upgradeName();
-			//this.upgradeMagicNumber(UPGRADE_POWER_DAMAGE);
 			this.upgradeBaseCost(UPGRADE_NEW_COST);
+		} else if (this.canUpgrade()) {
+			this.megaUpgradeName();
+			this.upgradeMagicNumber(M_UPGRADE_PLUS_FREE_DRAWS);
 		}
 	}
 }

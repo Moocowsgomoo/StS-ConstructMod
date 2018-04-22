@@ -25,6 +25,7 @@ public class Strike_Gold extends AbstractCycleCard {
 	private static final int COST = 1;
 	private static final int ATTACK_DMG = 6;
 	private static final int UPGRADE_PLUS_ATTACK_DMG = 3;
+	private static final int M_UPGRADE_PLUS_ATTACK_DMG = 5;
 	private static final int POOL = 1;
 
 	public Strike_Gold() {
@@ -63,6 +64,9 @@ public class Strike_Gold extends AbstractCycleCard {
 		if (!this.upgraded) {
 			this.upgradeName();
 			this.upgradeDamage(UPGRADE_PLUS_ATTACK_DMG);
+		} else if (canUpgrade()) {
+			this.megaUpgradeName();
+			this.upgradeDamage(M_UPGRADE_PLUS_ATTACK_DMG);
 		}
 	}
 }

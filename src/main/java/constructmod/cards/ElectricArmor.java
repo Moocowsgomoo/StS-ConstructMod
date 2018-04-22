@@ -1,23 +1,15 @@
 package constructmod.cards;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ThornsPower;
-import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.DexterityPower;
 
-
-import basemod.abstracts.CustomCard;
-import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
 public class ElectricArmor extends AbstractCycleCard {
@@ -26,10 +18,11 @@ public class ElectricArmor extends AbstractCycleCard {
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+	public static final String M_UPGRADE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 	private static final int COST = 1;
-	private static final int UPGRADE_NEW_COST = 0;
 	private static final int PLUS_DEX = 0;
 	private static final int UPGRADE_PLUS_DEX = 1;
+	private static final int M_UPGRADE_PLUS_DEX = 1;
 	private static final int POOL = 1;
 
 	public ElectricArmor() {
@@ -56,6 +49,8 @@ public class ElectricArmor extends AbstractCycleCard {
 		if (!p.hasPower("Dexterity")) return;
 		
 		int dex = p.getPower("Dexterity").amount + this.magicNumber;
+		if (megaUpgraded) AbstractDungeon.actionManager.addToBottom(
+				new ApplyPowerAction(p, p, new DexterityPower(p, this.magicNumber), this.magicNumber));
 		if (dex > 0){
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ThornsPower(p, dex), dex));
 		}
@@ -70,10 +65,14 @@ public class ElectricArmor extends AbstractCycleCard {
 	public void upgrade() {
 		if (!this.upgraded) {
 			this.upgradeName();
+			this.upgradeMagicNumber(UPGRADE_PLUS_DEX);
 			this.rawDescription = UPGRADE_DESCRIPTION;
 			this.initializeDescription();
-			this.upgradeMagicNumber(UPGRADE_PLUS_DEX);
-			//this.upgradeBaseCost(UPGRADE_NEW_COST);
+		} else if (this.canUpgrade()) {
+			this.megaUpgradeName();
+			this.upgradeMagicNumber(M_UPGRADE_PLUS_DEX);
+			this.rawDescription = M_UPGRADE_DESCRIPTION;
+			this.initializeDescription();
 		}
 	}
 }

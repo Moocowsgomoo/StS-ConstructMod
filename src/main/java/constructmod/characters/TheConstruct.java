@@ -56,8 +56,14 @@ public class TheConstruct extends CustomPlayer{
 	
 	public static ArrayList<String> getStartingRelics() {
 		ArrayList<String> retVal = new ArrayList<>();
-		retVal.add("Cogwheel");
-		UnlockTracker.markRelicAsSeen("Cogwheel");
+		if (ConstructMod.phoenixStart) {
+			retVal.add("ClockworkPhoenix");
+			UnlockTracker.markRelicAsSeen("ClockworkPhoenix");
+		}
+		else {
+			retVal.add("Cogwheel");
+			UnlockTracker.markRelicAsSeen("Cogwheel");
+		}
 		return retVal;
 	}
 	

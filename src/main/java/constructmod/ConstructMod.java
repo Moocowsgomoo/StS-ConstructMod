@@ -6,7 +6,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import basemod.BaseMod;
+import basemod.ModLabel;
+import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
+import basemod.ReflectionHacks;
 import basemod.interfaces.EditCharactersSubscriber;
 import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditCardsSubscriber;
@@ -17,13 +20,21 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.helpers.GameDictionary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
+import com.megacrit.cardcrawl.screens.charSelect.CharacterOption;
+import com.megacrit.cardcrawl.screens.charSelect.CharacterSelectScreen;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
+
 import constructmod.cards.*;
 import constructmod.relics.*;
 import java.nio.charset.StandardCharsets;
@@ -43,6 +54,8 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     private static final String DESCRIPTION = "New Character: The Construct!";
 	
 	private static final Color CONSTRUCT_MOD_COLOR = CardHelper.getColor(170.0f, 150.0f, 50.0f);
+	
+	public static boolean phoenixStart = false;
     
     public ConstructMod() {
         BaseMod.subscribe(this);
@@ -67,8 +80,23 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     public void receivePostInitialize() {
         // Mod badge
         Texture badgeTexture = new Texture(Gdx.files.internal("img/ConstructModBadge.png"));
+        
+        phoenixStart = BaseMod.maybeGetBoolean("Phoenix");
+        
         ModPanel settingsPanel = new ModPanel();
-        settingsPanel.addLabel("This mod does not have any settings", 400.0f, 700.0f, (me) -> {});  
+        
+        ModLabel buttonLabel = new ModLabel("Reach EXP Level 1 as the Construct to unlock!", 350.0f, 600.0f, settingsPanel, (me)->{});
+        
+        ModLabeledToggleButton phoenixBtn = new ModLabeledToggleButton("Starting Relic: Clockwork Phoenix",
+        		350.0f, 600.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
+        		phoenixStart, settingsPanel, (label) -> {}, (button) -> {
+        			phoenixStart = button.enabled;
+        			BaseMod.maybeSetBoolean("Phoenix", phoenixStart);
+        			resetCharSelect();
+        		});
+        if (UnlockTracker.getUnlockLevel(TheConstructEnum.THE_CONSTRUCT_MOD) >= 1) settingsPanel.addUIElement(phoenixBtn);
+        else settingsPanel.addUIElement(buttonLabel);
+        
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
 		
 		/*logger.info("Adding ConstructMod Keywords");
@@ -77,6 +105,12 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		GameDictionary.keywords.put("metallicize", "Gain Block at the end of each turn.");
 		GameDictionary.keywords.put("blur", "Block is not removed at the start of your next turn.");
 		GameDictionary.keywords.put("plated armor", "Gain Block at the end of each turn. Reduced when you take unblocked damage.");*/
+    }
+    
+    @SuppressWarnings("unchecked")
+    private void resetCharSelect() {
+    	((ArrayList<CharacterOption>)ReflectionHacks.getPrivate(CardCrawlGame.mainMenuScreen.charSelectScreen,CharacterSelectScreen.class, "options")).clear();
+    	CardCrawlGame.mainMenuScreen.charSelectScreen.initialize();
     }
     
     public void receiveEditKeywords() {
@@ -96,6 +130,8 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     	BaseMod.addKeyword(orbs, "Orbs are cards that cycle and apply a small bonus effect.");
     	final String[] eggs = {"egg","eggs"};
     	BaseMod.addKeyword(eggs, "Eggs are relics that automatically upgrade cards when you acquire them.");
+    	final String[] megaUpgrade = {"mega-upgrade","mega-upgraded"};
+    	BaseMod.addKeyword(megaUpgrade, "A second upgrade that makes a card even more powerful.");
     }
 	
 	public void receiveEditCharacters() {
@@ -172,7 +208,6 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new BatteryAcid()); // energy
 		BaseMod.addCard(new Reboot());	 	// exhaust
 		BaseMod.addCard(new ModeShift()); 	// modes, draw
-		BaseMod.addCard(new HastyRepair()); // heal
 		// 	Powers
 		BaseMod.addCard(new Synchronize());	// copy-based
 		BaseMod.addCard(new Enhance());		// upgrade
@@ -189,6 +224,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		//	Skills
 		//BaseMod.addCard(new OrbGenesis());	// copy
 		BaseMod.addCard(new MassProduction());//copy
+		BaseMod.addCard(new HastyRepair()); // heal
 		BaseMod.addCard(new ClockworkEgg());// egg
 		BaseMod.addCard(new Hazardproof()); // block, buff
 		BaseMod.addCard(new ScopeOrb());	// debuff
@@ -206,5 +242,6 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		logger.info("Adding Construct Relics");
 		BaseMod.addRelicToCustomPool(new Cogwheel(), AbstractCardEnum.CONSTRUCTMOD.toString());
 		BaseMod.addRelicToCustomPool(new GenesisOrb(), AbstractCardEnum.CONSTRUCTMOD.toString());
+		BaseMod.addRelicToCustomPool(new ClockworkPhoenix(), AbstractCardEnum.CONSTRUCTMOD.toString());
 	}
 }

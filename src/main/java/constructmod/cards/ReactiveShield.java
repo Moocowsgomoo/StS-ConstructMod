@@ -22,6 +22,7 @@ public class ReactiveShield extends AbstractCycleCard {
 	private static final int COST = 1;
 	private static final int BLOCK_AMT = 8;
 	private static final int UPGRADE_PLUS_BLOCK_AMT = 3;
+	private static final int M_UPGRADE_NEW_COST = 0;
 	private static final int POOL = 1;
 
 	public ReactiveShield() {
@@ -70,6 +71,9 @@ public class ReactiveShield extends AbstractCycleCard {
 		if (!this.upgraded) {
 			this.upgradeName();
 			this.upgradeBlock(UPGRADE_PLUS_BLOCK_AMT);
+		} else if (canUpgrade()) {
+			this.megaUpgradeName();
+			this.upgradeBaseCost(M_UPGRADE_NEW_COST);
 		}
 	}
 }

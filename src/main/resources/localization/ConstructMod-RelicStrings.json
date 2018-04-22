@@ -12,5 +12,12 @@
     "DESCRIPTIONS": [
       "At the start of combat, duplicate all #yOrbs in your draw pile."
     ]
+  },
+  "ClockworkPhoenix": {
+    "NAME": "Clockwork Phoenix",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "Your #yupgraded Construct cards can now be #yMega-upgraded outside of combat."
+    ]
   }
 }

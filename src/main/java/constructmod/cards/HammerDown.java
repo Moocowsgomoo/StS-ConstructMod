@@ -19,13 +19,14 @@ import basemod.abstracts.CustomCard;
 import constructmod.actions.DoubleStatsAction;
 import constructmod.patches.AbstractCardEnum;
 
-public class HammerDown extends CustomCard {
+public class HammerDown extends AbstractConstructCard {
 	public static final String ID = "HammerDown";
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	private static final int COST = 2;
+	private static final int M_UPGRADE_NEW_COST = 1;
 	private static final int ATTACK_DMG = 12;
 	private static final int POOL = 1;
 
@@ -59,6 +60,9 @@ public class HammerDown extends CustomCard {
 			this.initializeDescription();
 			//this.upgradeDamage(UPGRADE_PLUS_ATTACK_DMG);
 			this.exhaust = false;
+		} else if (this.canUpgrade()) {
+			this.megaUpgradeName();
+			this.upgradeBaseCost(M_UPGRADE_NEW_COST);
 		}
 	}
 }

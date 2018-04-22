@@ -30,6 +30,7 @@ public class FlameOrb extends AbstractCycleCard {
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+	public static final String M_UPGRADE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 	private static final int COST = 0;
 	private static final int HP_DMG = 2;
 	//private static final int UPGRADE_PLUS_HP_DMG = 2;
@@ -58,6 +59,7 @@ public class FlameOrb extends AbstractCycleCard {
 		AbstractDungeon.actionManager.addToBottom(new DamageAction(
 				mo, new DamageInfo(p, this.magicNumber, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE));
 		if (upgraded) AbstractDungeon.player.discardPile.addToTop(this.makeCopy());
+		if (megaUpgraded) AbstractDungeon.player.discardPile.addToTop(this.makeCopy());
 		//if (upgraded) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
 				//mo,p,new VulnerablePower(mo, 1, false),1,true,AbstractGameAction.AttackEffect.NONE));
 		
@@ -72,6 +74,7 @@ public class FlameOrb extends AbstractCycleCard {
 		AbstractDungeon.actionManager.addToBottom(new DamageAction(
 				mo, new DamageInfo(p, this.magicNumber, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE));
 		if (upgraded) AbstractDungeon.player.discardPile.addToTop(this.makeCopy());
+		if (megaUpgraded) AbstractDungeon.player.discardPile.addToTop(this.makeCopy());
 		//if (upgraded) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
 		//mo,p,new VulnerablePower(mo, 1, false),1,true,AbstractGameAction.AttackEffect.NONE));
 	}
@@ -87,7 +90,10 @@ public class FlameOrb extends AbstractCycleCard {
 			this.upgradeName();
 			this.rawDescription = DESCRIPTION + UPGRADE_DESCRIPTION;
 			this.initializeDescription();
-			//this.upgradeMagicNumber(UPGRADE_PLUS_HP_DMG);
+		} else if (this.canUpgrade()) {
+			this.megaUpgradeName();
+			this.rawDescription = DESCRIPTION + M_UPGRADE_DESCRIPTION;
+			this.initializeDescription();
 		}
 	}
 }

@@ -26,6 +26,7 @@ public class ShockOrb extends AbstractCycleCard {
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+	public static final String M_UPGRADE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 	private static final int COST = 0;
 	private static final int HP_DMG = 1;
 	private static final int UPGRADE_PLUS_HP_DMG = 1;
@@ -59,6 +60,7 @@ public class ShockOrb extends AbstractCycleCard {
 		AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(
 				p, DamageInfo.createDamageMatrix(this.magicNumber, true), DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.NONE));
 		if (upgraded) AbstractDungeon.player.discardPile.addToTop(this.makeCopy());
+		if (megaUpgraded) AbstractDungeon.player.discardPile.addToTop(this.makeCopy());
 		
 		cycle();
 	}
@@ -76,6 +78,7 @@ public class ShockOrb extends AbstractCycleCard {
 		AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(
 				p, DamageInfo.createDamageMatrix(this.magicNumber, true), DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.NONE));
 		if (upgraded) AbstractDungeon.player.discardPile.addToTop(this.makeCopy());
+		if (megaUpgraded) AbstractDungeon.player.discardPile.addToTop(this.makeCopy());
 		//if (upgraded) AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p,p,this.block));
 		//if (upgraded) AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(this.makeStatEquivalentCopy(),1));
 	}
@@ -91,7 +94,10 @@ public class ShockOrb extends AbstractCycleCard {
 			this.upgradeName();
 			this.rawDescription = DESCRIPTION + UPGRADE_DESCRIPTION;
 			this.initializeDescription();
-			//this.upgradeMagicNumber(UPGRADE_PLUS_HP_DMG);
+		} else if (this.canUpgrade()) {
+			this.megaUpgradeName();
+			this.rawDescription = DESCRIPTION + M_UPGRADE_DESCRIPTION;
+			this.initializeDescription();
 		}
 	}
 }

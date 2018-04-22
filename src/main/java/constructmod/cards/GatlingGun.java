@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import constructmod.actions.GatlingGunAction;
 import constructmod.patches.AbstractCardEnum;
 
-public class GatlingGun extends AbstractCard {
+public class GatlingGun extends AbstractConstructCard {
 	public static final String ID = "GatlingGun";
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
@@ -18,19 +18,23 @@ public class GatlingGun extends AbstractCard {
 	private static final int COST = -1;
 	private static final int ATTACK_DMG = 4;
 	private static final int UPGRADE_PLUS_ATTACK_DMG = 2;
+	private static final int SHOTS_MULT = 2;
+	private static final int M_UPGRADE_PLUS_ATTACK_DMG = -1;
+	private static final int M_UPGRADE_PLUS_SHOTS_MULT = 1;
 	private static final int POOL = 1;
 
 	public GatlingGun() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.ATTACK,
 				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.ALL_ENEMY, POOL);
 		this.damage = this.baseDamage = ATTACK_DMG;
+		this.magicNumber = this.baseMagicNumber = SHOTS_MULT;
 		this.isMultiDamage = true;
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		AbstractDungeon.actionManager.addToBottom(new GatlingGunAction(
-				p, this.baseDamage, this.damageTypeForTurn , this.freeToPlayOnce, this.energyOnUse));
+				p, this.baseDamage, this.damageTypeForTurn , this.freeToPlayOnce, this.energyOnUse, this.magicNumber));
 	}
 
 	@Override
@@ -43,6 +47,10 @@ public class GatlingGun extends AbstractCard {
 		if (!this.upgraded) {
 			this.upgradeName();
 			this.upgradeDamage(UPGRADE_PLUS_ATTACK_DMG);
+		} else if (this.canUpgrade()) {
+			this.megaUpgradeName();
+			this.upgradeDamage(M_UPGRADE_PLUS_ATTACK_DMG);
+			this.upgradeMagicNumber(M_UPGRADE_PLUS_SHOTS_MULT);
 		}
 	}
 }

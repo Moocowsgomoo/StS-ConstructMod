@@ -12,7 +12,7 @@ import constructmod.patches.AbstractCardEnum;
 import constructmod.powers.AutoturretPower;
 import constructmod.powers.SiegeFormPower;
 
-public class Autoturret extends CustomCard {
+public class Autoturret extends AbstractConstructCard {
 	public static final String ID = "Autoturret";
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
@@ -20,6 +20,7 @@ public class Autoturret extends CustomCard {
 	private static final int COST = 1;
 	private static final int POWER_DAMAGE = 1;
 	private static final int UPGRADE_POWER_DAMAGE = 1;
+	private static final int M_UPGRADE_POWER_DAMAGE = 1;
 	private static final int POOL = 1;
 
 	public Autoturret() {
@@ -43,6 +44,9 @@ public class Autoturret extends CustomCard {
 		if (!this.upgraded) {
 			this.upgradeName();
 			this.upgradeMagicNumber(UPGRADE_POWER_DAMAGE);
+		} else if (this.canUpgrade()) {
+			this.megaUpgradeName();
+			this.upgradeMagicNumber(M_UPGRADE_POWER_DAMAGE);
 		}
 	}
 }

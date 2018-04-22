@@ -23,7 +23,7 @@ import basemod.abstracts.CustomCard;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
-public class Electrocute extends CustomCard {
+public class Electrocute extends AbstractConstructCard {
 	public static final String ID = "Electrocute";
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
@@ -33,6 +33,7 @@ public class Electrocute extends CustomCard {
 	private static final int STR_LOSS = 5;
 	private static final int UPGRADE_PLUS_ATTACK_DMG = 4;
 	private static final int UPGRADE_PLUS_STR_LOSS = 2;
+	private static final int M_UPGRADE_NEW_COST = 2;
 	private static final int POOL = 1;
 
 	public Electrocute() {
@@ -75,6 +76,9 @@ public class Electrocute extends CustomCard {
 			this.upgradeName();
 			this.upgradeDamage(UPGRADE_PLUS_ATTACK_DMG);
 			this.upgradeMagicNumber(UPGRADE_PLUS_STR_LOSS);
+		} else if (this.canUpgrade()) {
+			this.megaUpgradeName();
+			this.upgradeBaseCost(M_UPGRADE_NEW_COST);
 		}
 	}
 }

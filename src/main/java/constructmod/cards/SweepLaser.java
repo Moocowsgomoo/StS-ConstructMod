@@ -25,14 +25,16 @@ import basemod.abstracts.CustomCard;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
-public class SweepLaser extends CustomCard {
+public class SweepLaser extends AbstractConstructCard {
 	public static final String ID = "SweepLaser";
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
-	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+	private static final String DESCRIPTION = cardStrings.DESCRIPTION;
+	private static final String M_UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	private static final int COST = 1;
 	private static final int ATTACK_DMG = 4;
 	private static final int UPGRADE_PLUS_ATTACK_DMG = 2;
+	private static final int M_UPGRADE_PLUS_ATTACK_DMG = -1;
 	private static final int POOL = 1;
 
 	public SweepLaser() {
@@ -58,6 +60,11 @@ public class SweepLaser extends CustomCard {
 		AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(
 				p, DamageInfo.createDamageMatrix(this.damage, true), this.damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
 		
+		if (this.megaUpgraded) {
+			AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(
+					p, DamageInfo.createDamageMatrix(this.damage, true), this.damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+		}
+		
 	}
 
 	@Override
@@ -70,6 +77,11 @@ public class SweepLaser extends CustomCard {
 		if (!this.upgraded) {
 			this.upgradeName();
 			this.upgradeDamage(UPGRADE_PLUS_ATTACK_DMG);
+		} else if (this.canUpgrade()) {
+			this.megaUpgradeName();
+			this.upgradeDamage(M_UPGRADE_PLUS_ATTACK_DMG);
+			this.rawDescription = M_UPGRADE_DESCRIPTION;
+			this.initializeDescription();
 		}
 	}
 }

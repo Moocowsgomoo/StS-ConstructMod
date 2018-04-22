@@ -21,7 +21,7 @@ import basemod.abstracts.CustomCard;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
-public class HyperBeam extends CustomCard {
+public class HyperBeam extends AbstractConstructCard {
 	public static final String ID = "HyperBeam";
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
@@ -31,6 +31,8 @@ public class HyperBeam extends CustomCard {
 	private static final int ATTACK_DMG = 50;
 	private static final int DAZED_AMT = 3;
 	private static final int UPGRADE_PLUS_DAZED_AMT = 0;
+	private static final int M_UPGRADE_PLUS_DAZED_AMT = 1;
+	private static final int M_UPGRADE_PLUS_ATTACK_DMG = 25;
 	private static final int POOL = 1;
 
 	public HyperBeam() {
@@ -69,6 +71,10 @@ public class HyperBeam extends CustomCard {
 			this.rawDescription = UPGRADE_DESCRIPTION;
 			this.initializeDescription();
 			this.isEthereal = false;
+		} else if (this.canUpgrade()) {
+			this.megaUpgradeName();
+			this.upgradeDamage(M_UPGRADE_PLUS_ATTACK_DMG);
+			this.upgradeMagicNumber(M_UPGRADE_PLUS_DAZED_AMT);
 		}
 	}
 }

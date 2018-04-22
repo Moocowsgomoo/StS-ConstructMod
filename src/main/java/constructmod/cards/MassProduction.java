@@ -1,27 +1,15 @@
 package constructmod.cards;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.WeakPower;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
-
-
-import basemod.abstracts.CustomCard;
-import constructmod.ConstructMod;
-import constructmod.actions.CopyCardToDiscardPileAction;
 import constructmod.actions.MassProductionAction;
 import constructmod.patches.AbstractCardEnum;
 
-public class MassProduction extends CustomCard {
+public class MassProduction extends AbstractConstructCard {
 	public static final String ID = "MassProduction";
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
@@ -29,6 +17,7 @@ public class MassProduction extends CustomCard {
 	public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
 	private static final int COST = 3;
 	private static final int UPGRADE_COST = 2;
+	private static final int M_UPGRADE_COST = 1;
 	private static final int POOL = 1;
 
 	public MassProduction() {
@@ -63,6 +52,9 @@ public class MassProduction extends CustomCard {
 		if (!this.upgraded) {
 			this.upgradeName();
 			this.upgradeBaseCost(UPGRADE_COST);
+		} else if (this.canUpgrade()) {
+			this.megaUpgradeName();
+			this.upgradeBaseCost(M_UPGRADE_COST);
 		}
 	}
 }

@@ -19,19 +19,21 @@ import basemod.abstracts.CustomCard;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
-public class DefenseMode extends CustomCard {
+public class DefenseMode extends AbstractConstructCard {
 	public static final String ID = "DefenseMode";
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	private static final int COST = 0;
-	private static final int DEX_AMOUNT = 2;
+	private static final int DEX = 2;
+	private static final int UPGRADE_PLUS_DEX = 1;
+	private static final int M_UPGRADE_PLUS_DEX = 1;
 	private static final int POOL = 1;
 
 	public DefenseMode() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
 				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.SELF, POOL);
-		this.magicNumber = this.baseMagicNumber = DEX_AMOUNT;
+		this.magicNumber = this.baseMagicNumber = DEX;
 		this.retain = true;
 	}
 	
@@ -56,7 +58,10 @@ public class DefenseMode extends CustomCard {
 	public void upgrade() {
 		if (!this.upgraded) {
 			this.upgradeName();
-			this.upgradeMagicNumber(1);
+			this.upgradeMagicNumber(UPGRADE_PLUS_DEX);
+		} else if (this.canUpgrade()) {
+			this.megaUpgradeName();
+			this.upgradeMagicNumber(M_UPGRADE_PLUS_DEX);
 		}
 	}
 }

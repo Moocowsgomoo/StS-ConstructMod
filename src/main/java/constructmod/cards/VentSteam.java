@@ -1,13 +1,10 @@
 package constructmod.cards;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -15,11 +12,9 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 
 
-import basemod.abstracts.CustomCard;
-import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
-public class VentSteam extends CustomCard {
+public class VentSteam extends AbstractConstructCard {
 	public static final String ID = "VentSteam";
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
@@ -27,6 +22,7 @@ public class VentSteam extends CustomCard {
 	private static final int COST = 1;
 	private static final int DEBUFF_AMT = 1;
 	private static final int UPGRADE_PLUS_DEBUFF_AMT = 1;
+	private static final int M_UPGRADE_PLUS_DEBUFF_AMT = 3;
 	private static final int POOL = 1;
 
 	public VentSteam() {
@@ -53,6 +49,9 @@ public class VentSteam extends CustomCard {
 		if (!this.upgraded) {
 			this.upgradeName();
 			this.upgradeMagicNumber(UPGRADE_PLUS_DEBUFF_AMT);
+		} else if (this.canUpgrade()) {
+			this.megaUpgradeName();
+			this.upgradeMagicNumber(M_UPGRADE_PLUS_DEBUFF_AMT);
 		}
 	}
 }

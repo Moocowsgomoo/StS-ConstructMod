@@ -21,6 +21,7 @@ public class ScopeOrb extends AbstractCycleCard {
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+	public static final String M_UPGRADE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 	private static final int COST = 0;
 	private static final int VULN = 1;
 	private static final int UPGRADE_PLUS_VULN = 1;
@@ -49,6 +50,7 @@ public class ScopeOrb extends AbstractCycleCard {
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
 			mo,p,new VulnerablePower(mo, 1, false),1,true,AbstractGameAction.AttackEffect.NONE));
 		if (upgraded) AbstractDungeon.player.discardPile.addToTop(this.makeCopy());
+		if (megaUpgraded) AbstractDungeon.player.discardPile.addToTop(this.makeCopy());
 		
 		cycle();
 		//if (upgraded) AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(this.makeStatEquivalentCopy(),1));
@@ -61,7 +63,7 @@ public class ScopeOrb extends AbstractCycleCard {
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
 			mo,p,new VulnerablePower(mo, 1, false),1,true,AbstractGameAction.AttackEffect.NONE));
 		if (upgraded) AbstractDungeon.player.discardPile.addToTop(this.makeCopy());
-		//if (upgraded) AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(this.makeStatEquivalentCopy(),1));
+		if (megaUpgraded) AbstractDungeon.player.discardPile.addToTop(this.makeCopy());
 	}
 
 	@Override
@@ -75,7 +77,10 @@ public class ScopeOrb extends AbstractCycleCard {
 			this.upgradeName();
 			this.rawDescription = DESCRIPTION + UPGRADE_DESCRIPTION;
 			this.initializeDescription();
-			//this.upgradeMagicNumber(UPGRADE_PLUS_VULN);
+		} else if (this.canUpgrade()) {
+			this.megaUpgradeName();
+			this.rawDescription = DESCRIPTION + M_UPGRADE_DESCRIPTION;
+			this.initializeDescription();
 		}
 	}
 }

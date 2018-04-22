@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.powers.ArtifactPower;
 import basemod.abstracts.CustomCard;
 import constructmod.patches.AbstractCardEnum;
 
-public class Hazardproof extends CustomCard {
+public class Hazardproof extends AbstractConstructCard {
 	public static final String ID = "Hazardproof";
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
@@ -22,6 +22,7 @@ public class Hazardproof extends CustomCard {
 	private static final int BLOCK_AMT = 2;
 	private static final int ARTIFACT_AMT = 1;
 	private static final int UPGRADE_BLOCK_AMT = 3;
+	private static final int M_UPGRADE_PLUS_ARTIFACT_AMT = 2;
 	private static final int POOL = 1;
 
 	public Hazardproof() {
@@ -47,6 +48,9 @@ public class Hazardproof extends CustomCard {
 		if (!this.upgraded) {
 			this.upgradeName();
 			this.upgradeBlock(UPGRADE_BLOCK_AMT);
+		} else if (this.canUpgrade()) {
+			this.megaUpgradeName();
+			this.upgradeMagicNumber(M_UPGRADE_PLUS_ARTIFACT_AMT);
 		}
 	}
 }

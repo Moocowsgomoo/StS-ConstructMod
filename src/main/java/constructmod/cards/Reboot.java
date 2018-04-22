@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import basemod.abstracts.CustomCard;
 import constructmod.patches.AbstractCardEnum;
 
-public class Reboot extends CustomCard {
+public class Reboot extends AbstractConstructCard {
 	public static final String ID = "Reboot";
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
@@ -21,6 +21,7 @@ public class Reboot extends CustomCard {
 	private static final int COST = 1;
 	private static final int DRAW_CARDS = 3;
 	private static final int UPGRADE_PLUS_DRAW_CARDS = 2;
+	private static final int M_UPGRADE_PLUS_DRAW_CARDS = 2;
 	private static final int POOL = 1;
 
 	public Reboot() {
@@ -46,6 +47,9 @@ public class Reboot extends CustomCard {
 		if (!this.upgraded) {
 			this.upgradeName();
 			this.upgradeMagicNumber(UPGRADE_PLUS_DRAW_CARDS);
+		} else if (this.canUpgrade()) {
+			this.megaUpgradeName();
+			this.upgradeMagicNumber(M_UPGRADE_PLUS_DRAW_CARDS);
 		}
 	}
 }

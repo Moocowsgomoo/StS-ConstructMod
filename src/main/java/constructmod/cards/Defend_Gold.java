@@ -1,7 +1,5 @@
 package constructmod.cards;
 
-import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -10,8 +8,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import basemod.abstracts.CustomCard;
-import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
 public class Defend_Gold extends AbstractCycleCard {
@@ -22,6 +18,7 @@ public class Defend_Gold extends AbstractCycleCard {
 	private static final int COST = 1;
 	private static final int BLOCK_AMT = 5;
 	private static final int UPGRADE_PLUS_BLOCK = 3;
+	private static final int M_UPGRADE_PLUS_BLOCK = 4;
 	private static final int POOL = 1;
 
 	public Defend_Gold() {
@@ -58,6 +55,9 @@ public class Defend_Gold extends AbstractCycleCard {
 		if (!this.upgraded) {
 			this.upgradeName();
 			this.upgradeBlock(UPGRADE_PLUS_BLOCK);
+		} else if (this.canUpgrade()){
+			this.megaUpgradeName();
+			this.upgradeBlock(M_UPGRADE_PLUS_BLOCK);
 		}
 	}
 }

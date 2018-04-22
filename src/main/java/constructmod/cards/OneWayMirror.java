@@ -1,31 +1,17 @@
 package constructmod.cards;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.status.Dazed;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.GainStrengthPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
-import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
-
-import basemod.abstracts.CustomCard;
-import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
-public class OneWayMirror extends CustomCard {
+public class OneWayMirror extends AbstractConstructCard {
 	public static final String ID = "OneWayMirror";
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
@@ -34,7 +20,8 @@ public class OneWayMirror extends CustomCard {
 	private static final int BLOCK_AMT = 12;
 	private static final int VULN_AMT = 2;
 	private static final int UPGRADE_BLOCK_AMT = 2;
-	private static final int UPGRADE_VULN_AMT = 3;
+	private static final int UPGRADE_VULN_AMT = 1;
+	private static final int M_UPGRADE_VULN_AMT = 2;
 	private static final int POOL = 1;
 
 	public OneWayMirror() {
@@ -65,6 +52,9 @@ public class OneWayMirror extends CustomCard {
 			this.upgradeName();
 			this.upgradeBlock(UPGRADE_BLOCK_AMT);
 			this.upgradeMagicNumber(UPGRADE_VULN_AMT);
+		} else if (this.canUpgrade()) {
+			this.megaUpgradeName();
+			this.upgradeMagicNumber(M_UPGRADE_VULN_AMT);
 		}
 	}
 }

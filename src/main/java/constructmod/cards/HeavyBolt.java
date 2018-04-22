@@ -19,7 +19,7 @@ import basemod.abstracts.CustomCard;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
-public class HeavyBolt extends CustomCard {
+public class HeavyBolt extends AbstractConstructCard {
 	public static final String ID = "HeavyBolt";
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
@@ -28,6 +28,7 @@ public class HeavyBolt extends CustomCard {
 	private static final int ATTACK_DMG = 10;
 	private static final int DISCARD_AMT = 2;
 	private static final int UPGRADE_PLUS_ATTACK_DMG = 3;
+	private static final int M_UPGRADE_NEW_COST = 0;
 	private static final int POOL = 1;
 
 	public HeavyBolt() {
@@ -56,6 +57,9 @@ public class HeavyBolt extends CustomCard {
 		if (!this.upgraded) {
 			this.upgradeName();
 			this.upgradeDamage(UPGRADE_PLUS_ATTACK_DMG);
+		} else if (this.canUpgrade()) {
+			this.megaUpgradeName();
+			this.upgradeBaseCost(M_UPGRADE_NEW_COST);
 		}
 	}
 }

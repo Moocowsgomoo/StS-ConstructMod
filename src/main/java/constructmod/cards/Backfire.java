@@ -18,7 +18,7 @@ import basemod.abstracts.CustomCard;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
-public class Backfire extends CustomCard {
+public class Backfire extends AbstractConstructCard {
 	public static final String ID = "Backfire";
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
@@ -26,8 +26,10 @@ public class Backfire extends CustomCard {
 	private static final int COST = 1;
 	private static final int ATTACK_DMG = 12;
 	private static final int UPGRADE_PLUS_ATTACK_DMG = 2;
+	private static final int M_UPGRADE_PLUS_ATTACK_DMG = 6;
 	private static final int SELF_DMG = 5;
 	private static final int UPGRADE_PLUS_SELF_DMG = -1;
+	private static final int M_UPGRADE_PLUS_SELF_DMG = 4;
 	private static final int POOL = 1;
 
 	public Backfire() {
@@ -57,6 +59,10 @@ public class Backfire extends CustomCard {
 			this.upgradeName();
 			this.upgradeDamage(UPGRADE_PLUS_ATTACK_DMG);
 			this.upgradeMagicNumber(UPGRADE_PLUS_SELF_DMG);
+		} else if (this.canUpgrade()) {
+			this.megaUpgradeName();
+			this.upgradeDamage(M_UPGRADE_PLUS_ATTACK_DMG);
+			this.upgradeMagicNumber(M_UPGRADE_PLUS_SELF_DMG);
 		}
 	}
 }

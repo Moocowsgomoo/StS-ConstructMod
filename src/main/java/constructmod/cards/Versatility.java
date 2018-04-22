@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
@@ -25,11 +26,12 @@ import basemod.abstracts.CustomCard;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
-public class Versatility extends CustomCard {
+public class Versatility extends AbstractConstructCard {
 	public static final String ID = "Versatility";
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+	public static final String M_UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	private static final int COST = 1;
 	private static final int ATTACK_DMG = 7;
 	private static final int UPGRADE_PLUS_ATTACK_DMG = 3;
@@ -61,6 +63,8 @@ public class Versatility extends CustomCard {
 					new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
 		}
 		
+		if (this.megaUpgraded) AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p,1));
+		
 	}
 
 	@Override
@@ -74,6 +78,10 @@ public class Versatility extends CustomCard {
 			this.upgradeName();
 			this.upgradeDamage(UPGRADE_PLUS_ATTACK_DMG);
 			this.upgradeBlock(UPGRADE_PLUS_BLOCK_AMT);
+		} else if (this.canUpgrade()) {
+			this.megaUpgradeName();
+			this.rawDescription = DESCRIPTION + M_UPGRADE_DESCRIPTION;
+			this.initializeDescription();
 		}
 	}
 }

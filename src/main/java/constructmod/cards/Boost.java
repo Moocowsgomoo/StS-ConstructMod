@@ -17,7 +17,7 @@ import basemod.abstracts.CustomCard;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
-public class Boost extends CustomCard {
+public class Boost extends AbstractConstructCard {
 	public static final String ID = "Boost";
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
@@ -25,8 +25,10 @@ public class Boost extends CustomCard {
 	private static final int COST = 0;
 	private static final int ATTACK_DMG = 2;
 	private static final int UPGRADE_PLUS_ATTACK_DMG = 2;
+	private static final int M_UPGRADE_PLUS_ATTACK_DMG = 2;
 	private static final int BLOCK_AMT = 2;
 	private static final int UPGRADE_PLUS_BLOCK_AMT = 2;
+	private static final int M_UPGRADE_PLUS_BLOCK_AMT = 2;
 	private static final int POOL = 1;
 
 	public Boost() {
@@ -55,6 +57,10 @@ public class Boost extends CustomCard {
 			this.upgradeName();
 			this.upgradeDamage(UPGRADE_PLUS_ATTACK_DMG);
 			this.upgradeBlock(UPGRADE_PLUS_BLOCK_AMT);
+		} else if (this.canUpgrade()) {
+			this.megaUpgradeName();
+			this.upgradeDamage(M_UPGRADE_PLUS_ATTACK_DMG);
+			this.upgradeBlock(M_UPGRADE_PLUS_BLOCK_AMT);
 		}
 	}
 }

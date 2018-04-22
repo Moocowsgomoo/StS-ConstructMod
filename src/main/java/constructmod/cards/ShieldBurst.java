@@ -19,7 +19,7 @@ import basemod.abstracts.CustomCard;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
-public class ShieldBurst extends CustomCard {
+public class ShieldBurst extends AbstractConstructCard {
 	public static final String ID = "ShieldBurst";
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
@@ -29,6 +29,7 @@ public class ShieldBurst extends CustomCard {
 	private static final int COST = 1;
 	private static final int DMG_MULT = 2;
 	private static final int UPGRADE_PLUS_DMG_MULT = 1;
+	private static final int M_UPGRADE_NEW_COST = 0;
 	private static final int POOL = 1;
 	
 	private String desc = DESCRIPTION;
@@ -81,6 +82,9 @@ public class ShieldBurst extends CustomCard {
 			desc = UPGRADE_DESCRIPTION;
 			this.rawDescription = desc;
 			initializeDescription();
+		} else if (this.canUpgrade()) {
+			this.megaUpgradeName();
+			this.upgradeBaseCost(M_UPGRADE_NEW_COST);
 		}
 	}
 }

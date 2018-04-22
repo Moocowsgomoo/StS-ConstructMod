@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.powers.NextTurnBlockPower;
 import basemod.abstracts.CustomCard;
 import constructmod.patches.AbstractCardEnum;
 
-public class Anticipate extends CustomCard {
+public class Anticipate extends AbstractConstructCard {
 	public static final String ID = "Anticipate";
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
@@ -20,6 +20,7 @@ public class Anticipate extends CustomCard {
 	private static final int COST = 1;
 	private static final int BLOCK_AMT = 10;
 	private static final int UPGRADE_BLOCK_AMT = 3;
+	private static final int M_UPGRADE_BLOCK_AMT = 5;
 	private static final int POOL = 1;
 
 	public Anticipate() {
@@ -43,6 +44,9 @@ public class Anticipate extends CustomCard {
 		if (!this.upgraded) {
 			this.upgradeName();
 			this.upgradeBlock(UPGRADE_BLOCK_AMT);
+		} else if (canUpgrade()) {
+			this.megaUpgradeName();
+			this.upgradeBlock(M_UPGRADE_BLOCK_AMT);
 		}
 	}
 }

@@ -11,7 +11,7 @@ import basemod.abstracts.CustomCard;
 import constructmod.patches.AbstractCardEnum;
 import constructmod.powers.SiegeFormPower;
 
-public class SiegeForm extends CustomCard {
+public class SiegeForm extends AbstractConstructCard {
 	public static final String ID = "SiegeForm";
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
@@ -19,6 +19,7 @@ public class SiegeForm extends CustomCard {
 	private static final int COST = 3;
 	private static final int POWER_DAMAGE = 2;
 	private static final int UPGRADE_POWER_DAMAGE = 1;
+	private static final int M_UPGRADE_POWER_DAMAGE = 1;
 	//private static final int UPGRADE_COST = 2;
 	private static final int POOL = 1;
 
@@ -43,6 +44,9 @@ public class SiegeForm extends CustomCard {
 		if (!this.upgraded) {
 			this.upgradeName();
 			this.upgradeMagicNumber(UPGRADE_POWER_DAMAGE);
+		} else if (this.canUpgrade()) {
+			this.megaUpgradeName();
+			this.upgradeMagicNumber(M_UPGRADE_POWER_DAMAGE);
 		}
 	}
 }

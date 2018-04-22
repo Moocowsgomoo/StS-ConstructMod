@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import basemod.abstracts.CustomCard;
 import constructmod.powers.AbstractCyclePower;
 
-public abstract class AbstractCycleCard extends CustomCard {
+public abstract class AbstractCycleCard extends AbstractConstructCard {
 	
 	protected boolean hasCycled = false;
 	

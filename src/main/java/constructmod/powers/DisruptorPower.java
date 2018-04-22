@@ -24,14 +24,15 @@ public class DisruptorPower extends AbstractPower {
 	public static final String POWER_ID = "Disruptor";
 	public static final String NAME = "Disruptor";
 	public static final String[] DESCRIPTIONS = new String[] {
-			"After you take attack damage, gain that much Block.",
+			"After you lose HP, gain ",
+			" times that much Block.",
 	};
 	
 	public DisruptorPower(AbstractCreature owner, int amount) {
 		this.name = NAME;
 		this.ID = POWER_ID;
 		this.owner = owner;
-		this.amount = 1;
+		this.amount = amount;
 		updateDescription();
 		this.type = AbstractPower.PowerType.BUFF;
 		this.isTurnBased = false;
@@ -40,7 +41,7 @@ public class DisruptorPower extends AbstractPower {
 	
 	@Override
 	public void updateDescription() {
-		this.description = DESCRIPTIONS[0];
+		this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
 	}
 	
 	@Override

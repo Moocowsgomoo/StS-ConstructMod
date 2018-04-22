@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.*;
 import com.megacrit.cardcrawl.cards.*;
 import com.megacrit.cardcrawl.core.*;
 import com.megacrit.cardcrawl.dungeons.*;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.combat.*;
 import com.megacrit.cardcrawl.actions.common.*;
@@ -12,11 +13,13 @@ import com.megacrit.cardcrawl.actions.utility.*;
 public class CripplingDamageAction extends AbstractGameAction
 {
     private DamageInfo info;
+    private int strLoss;
     
-    public CripplingDamageAction(final AbstractCreature target, final DamageInfo info, final AttackEffect effect) {
+    public CripplingDamageAction(final AbstractCreature target, final DamageInfo info, final AttackEffect effect, final int strLoss) {
         this.setValues(target, this.info = info);
         this.actionType = ActionType.DAMAGE;
         this.attackEffect = effect;
+        this.strLoss = strLoss;
     }
     
     @Override
@@ -38,6 +41,8 @@ public class CripplingDamageAction extends AbstractGameAction
         int dmgAmount = info.output;
         dmgAmount -= this.target.currentBlock;
         if (dmgAmount > 0) {
+        	 if (strLoss > 0) AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(
+             		this.target, this.source, new StrengthPower(this.target,-strLoss),-strLoss));
             AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(
             		this.target, this.source, new WeakPower(this.target,99,false), 99, true, AbstractGameAction.AttackEffect.NONE));
             AbstractDungeon.actionManager.addToTop(new WaitAction(0.1f));

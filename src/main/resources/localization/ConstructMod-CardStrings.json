@@ -17,7 +17,8 @@
 	},
 	"ScrapCannon": {
 		"NAME": "Scrap Cannon",
-		"DESCRIPTION": "Deal !D! damage. NL Exhaust 1 card."
+		"DESCRIPTION": "Deal !D! damage. NL Exhaust !M! card.",
+		"UPGRADE_DESCRIPTION": "Deal !D! damage. NL Exhaust up to !M! cards."
 	},
 	"Reinforce": {
 		"NAME": "Reinforce",
@@ -30,12 +31,16 @@
 	},
 	"ShieldGenerator": {
 		"NAME": "Shield Generator",
-		"DESCRIPTION": "Block doesn't expire at the start of your next !M! turns. NL Gain 1 Vulnerable."
+		"DESCRIPTION": "Block doesn't expire at the start of your next !M! turns. NL Gain 1 Vulnerable.",
+		"UPGRADE_DESCRIPTION": " NL Gain !B! Block."
 	},
 	"Analyze": {
 		"NAME": "Analyze",
 		"DESCRIPTION": "Next turn, gain [R]  and draw !M!  more card.",
-		"UPGRADE_DESCRIPTION": "Next turn, gain [R]  and draw !M!  more cards."
+		"UPGRADE_DESCRIPTION": "Next turn, gain [R]  and draw !M!  more cards.",
+		"EXTENDED_DESCRIPTION": [
+			"Next turn, gain [R] [R] and draw !M!  more cards."	
+		]
 	},
 	"VentSteam": {
 		"NAME": "Vent Steam",
@@ -61,12 +66,18 @@
 	"ElectricArmor": {
 		"NAME": "Electric Armor",
 		"DESCRIPTION": "Cycle if Dexterity < 1. NL Gain Thorns equal to your Dexterity.",
-		"UPGRADE_DESCRIPTION": "Cycle if Dexterity < 1. NL Gain Thorns equal to your Dexterity + !M!."
+		"UPGRADE_DESCRIPTION": "Cycle if Dexterity < 1. NL Gain Thorns equal to your Dexterity + !M!.",
+		"EXTENDED_DESCRIPTION": [
+			"Cycle if Dexterity < 1. NL Gain !M! Dexterity, then gain Thorns equal to your Dexterity."	
+		]
 	},
 	"BubbleShield": {
 		"NAME": "Bubble Shield",
 		"DESCRIPTION": "Cycle if Dexterity < 1. NL Gain Plated Armor equal to your Dexterity.",
-		"UPGRADE_DESCRIPTION": "Cycle if Dexterity < 1. NL Gain Plated Armor equal to your Dexterity + !M!."
+		"UPGRADE_DESCRIPTION": "Cycle if Dexterity < 1. NL Gain Plated Armor equal to your Dexterity + !M!.",
+		"EXTENDED_DESCRIPTION": [
+			"Cycle if Dexterity < 1. NL Gain !M! Dexterity, then gain Plated Armor equal to your Dexterity."	
+		]
 	},
 	"ReactiveShield": {
 		"NAME": "Reactive Shield",
@@ -75,27 +86,42 @@
 	"FlameOrb": {
 		"NAME": "Flame Orb",
 		"DESCRIPTION": "Cycle. When cycled: NL A random enemy loses !M! HP.",
-		"UPGRADE_DESCRIPTION": " NL Put a Flame Orb into your discard pile."
+		"UPGRADE_DESCRIPTION": " NL Put a Flame Orb into your discard pile.",
+		"EXTENDED_DESCRIPTION": [
+			" NL Put 2 Flame Orbs into your discard pile."	
+		]
 	},
 	"ShockOrb": {
 		"NAME": "Shock Orb",
 		"DESCRIPTION": "Cycle. When cycled: NL ALL enemies NL lose !M! HP.",
-		"UPGRADE_DESCRIPTION": " NL Put a Shock Orb into your discard pile."
+		"UPGRADE_DESCRIPTION": " NL Put a Shock Orb into your discard pile.",
+		"EXTENDED_DESCRIPTION": [
+			" NL Put 2 Shock Orbs into your discard pile."	
+		]
 	},
 	"GuardOrb": {
 		"NAME": "Guard Orb",
 		"DESCRIPTION": "Cycle. When cycled: NL Gain !B! Block.",
-		"UPGRADE_DESCRIPTION": " NL Put a Guard Orb into your discard pile."
+		"UPGRADE_DESCRIPTION": " NL Put a Guard Orb into your discard pile.",
+		"EXTENDED_DESCRIPTION": [
+			" NL Put 2 Guard Orbs into your discard pile."	
+		]
 	},
 	"ScopeOrb": {
 		"NAME": "Scope Orb",
 		"DESCRIPTION": "Cycle. When cycled: NL A random enemy gains 1 Vulnerable.",
-		"UPGRADE_DESCRIPTION": " NL Put a Scope Orb into your discard pile."
+		"UPGRADE_DESCRIPTION": " NL Put a Scope Orb into your discard pile.",
+		"EXTENDED_DESCRIPTION": [
+			" NL Put 2 Scope Orbs into your discard pile."	
+		]
 	},
 	"BatteryOrb": {
 		"NAME": "Battery Orb",
 		"DESCRIPTION": "Cycle. When cycled: NL A card in your hand costs 1  less this turn.",
-		"UPGRADE_DESCRIPTION": " NL Put a Battery Orb into your discard pile."
+		"UPGRADE_DESCRIPTION": " NL Put a Battery Orb into your discard pile.",
+		"EXTENDED_DESCRIPTION": [
+			" NL Put 2 Battery Orbs into your discard pile."	
+		]
 	},
 	"OrbGenesis": {
 		"NAME": "Orb Genesis",
@@ -104,7 +130,8 @@
 	},
 	"OrbAssault": {
 		"NAME": "Orb Assault",
-		"DESCRIPTION": "Shuffle 5 Broken Orbs into your draw pile. NL When a card cycles, deal !M! damage to a random enemy."
+		"DESCRIPTION": "Shuffle 5 Broken Orbs into your draw pile. NL When a card cycles, deal !M! damage to a random enemy.",
+		"UPGRADE_DESCRIPTION": "Shuffle 10 Broken Orbs into your draw pile. When a card cycles, deal !M! damage to a random enemy."
 	},
 	"BrokenOrb": {
 		"NAME": "Broken Orb",
@@ -120,27 +147,32 @@
 	},
 	"CripplingShot": {
 		"NAME": "Crippling Shot",
-		"DESCRIPTION": "Deal !D! damage. NL If this dealt unblocked damage, apply 99 Weak. Exhaust."
+		"DESCRIPTION": "Deal !D! damage. NL If this dealt unblocked damage, apply 99 Weak. Exhaust.",
+		"UPGRADE_DESCRIPTION": "Deal !D! damage. NL If this dealt unblocked damage, apply 99 Weak and -2 Strength. Exhaust."
 	},
 	"Backup": {
 		"NAME": "Backup",
 		"DESCRIPTION": "Choose a non-rare card from your hand. Put a copy into your discard pile.",
 		"UPGRADE_DESCRIPTION": "Retain. NL Choose a non-rare card from your hand. Put a copy into your discard pile.",
 		"EXTENDED_DESCRIPTION": [
-			"No non-rare cards in hand."	
+			"No non-rare cards in hand.",
+			"Retain. NL Choose a non-rare card from your hand. Put !M! copies into your discard pile."
 		]
 	},
 	"SweepLaser": {
 		"NAME": "Sweep Laser",
-		"DESCRIPTION": "Deal !D! damage, then deal !D! damage to ALL enemies."
+		"DESCRIPTION": "Deal !D! damage, then deal !D! damage to ALL enemies.",
+		"UPGRADE_DESCRIPTION": "Deal !D! damage, then deal !D! damage to ALL enemies twice."
 	},
 	"ModeShift": {
 		"NAME": "Mode Shift",
-		"DESCRIPTION": "Retain. NL Swap your Strength and Dexterity. NL Draw !M! cards."
+		"DESCRIPTION": "Retain. NL Swap your Strength and Dexterity. NL Draw a card.",
+		"UPGRADE_DESCRIPTION": "Retain. NL Swap your Strength and Dexterity. NL Draw !M! cards."
 	},
 	"Versatility": {
 		"NAME": "Versatility",
-		"DESCRIPTION": "If the target intends to attack, gain !B! Block. Otherwise, deal !D! damage."
+		"DESCRIPTION": "If the target intends to attack, gain !B! Block. Otherwise, deal !D! damage.",
+		"UPGRADE_DESCRIPTION": " NL Draw a card."
 	},
 	"FlakBarrage": {
 		"NAME": "Flak Barrage",
@@ -149,7 +181,10 @@
 	"Disorient": {
 		"NAME": "Disorient",
 		"DESCRIPTION": "ALL enemies lose Strength equal to your Dexterity. NL Exhaust.",
-		"UPGRADE_DESCRIPTION": "ALL enemies lose Strength equal to your Dexterity + !M!. NL Exhaust."
+		"UPGRADE_DESCRIPTION": "ALL enemies lose Strength equal to your Dexterity + !M!. NL Exhaust.",
+		"EXTENDED_DESCRIPTION": [
+			"Gain !M! Dexterity, then ALL enemies lose Strength equal to your Dexterity. NL Exhaust."	
+		]
 	},
 	"MassProduction": {
 		"NAME": "Mass Production",
@@ -173,12 +208,13 @@
 	},
 	"Enhance": {
 		"NAME": "Enhance",
-		"DESCRIPTION": "Each turn, upgrade a random card in your discard pile for this combat.",
-		"UPGRADE_DESCRIPTION": "Each turn, upgrade !M! random cards in your discard pile for this combat."
+		"DESCRIPTION": "Each turn, Upgrade a random card in your discard pile for this combat.",
+		"UPGRADE_DESCRIPTION": "Each turn, Upgrade !M! random cards in your discard pile for this combat."
 	},
 	"SuppressiveFire": {
 		"NAME": "Suppressive Fire",
-		"DESCRIPTION": "Deal !D! damage to ALL enemies. NL Block doesn't expire at the start of your next turn."
+		"DESCRIPTION": "Deal !D! damage to ALL enemies. NL Block doesn't expire at the start of your next turn.",
+		"UPGRADE_DESCRIPTION": "Deal !D! damage to ALL enemies. NL Block doesn't expire at the start of your next !M! turns."
 	},
 	"Anticipate": {
 		"NAME": "Anticipate",
@@ -194,7 +230,8 @@
 	},
 	"Disruptor": {
 		"NAME": "Disruptor",
-		"DESCRIPTION": "When you take attack damage, gain that much Block."
+		"DESCRIPTION": "When you lose HP, gain that much Block.",
+		"UPGRADE_DESCRIPTION": "When you lose HP, gain twice that much Block."
 	},
 	"Backfire": {
 		"NAME": "Backfire",
@@ -213,31 +250,37 @@
 		"DESCRIPTION": "Can only be played if you have 0 energy. NL Deal !M! damage for each card in hand.",
 		"EXTENDED_DESCRIPTION": [
 			" NL (Deals !D! damage.)",
-			"I have more than 0 energy!"
+			"I have more than 0 energy!",
+			"Reduce your energy to 0. NL Deal !M! damage for each card in hand."
 		]
 	},
 	"ClockworkEgg": {
 		"NAME": "Clockwork Egg",
-		"DESCRIPTION": "Exhaust. NL Can be upgraded 4 more times.",
+		"DESCRIPTION": "Exhaust. NL Can be Upgraded 4 more times.",
 		"EXTENDED_DESCRIPTION": [
-			"Add an Attack Mode+ and Defense Mode+ to your hand. NL Can be upgraded 3 more times.",
-			"Gain 3 Strength. NL Gain 3 Dexterity. NL Can be upgraded 2 more times.",
-			"Next turn, gain NL [R] [R] [R] [R] and draw NL 4 more cards. NL Can be upgraded 1 more time.",
-			"Gain all 3 Egg relics, and a random rare relic after combat. Permanently remove this card from your deck. "
+			"Add an Attack Mode+ and Defense Mode+ to your hand. NL Can be Upgraded 3 more times.",
+			"Gain 3 Strength. NL Gain 3 Dexterity. NL Can be Upgraded 2 more times.",
+			"Next turn, gain NL [R] [R] [R] [R] and draw NL 4 more cards. NL Can be Upgraded 1 more time.",
+			"Gain all 3 Egg relics and a Clockwork Phoenix. Permanently remove this card from your deck.",
+			"Gain 5 random relics at the end of combat. Permanently remove this card from your deck."
 		]
 	},
 	"HastyRepair": {
 		"NAME": "Hasty Repair",
-		"DESCRIPTION": "Heal !M! HP. NL Lose 2 Max HP. NL Exhaust."
+		"DESCRIPTION": "Heal !M! HP. NL Lose 2 Max HP. NL Exhaust.",
+		"UPGRADE_DESCRIPTION": "Heal !M! HP. NL Lose 1 Max HP. NL Put a Hasty Repair into your hand. NL Exhaust."
 	},
 	"GatlingGun": {
 		"NAME": "Gatling Gun",
-		"DESCRIPTION": "Deal !D! damage to a random enemy 2X times."
+		"DESCRIPTION": "Deal !D! damage to a random enemy !M! X times."
 	},
 	"BatteryAcid": {
 		"NAME": "Battery Acid",
 		"DESCRIPTION": "Gain [R] . Add a Slimed to your hand.",
-		"UPGRADE_DESCRIPTION": "Gain [R] [R] . NL Add a Slimed to your hand."
+		"UPGRADE_DESCRIPTION": "Gain [R] [R] . NL Add a Slimed to your hand.",
+		"EXTENDED_DESCRIPTION": [
+			"Gain [R] [R] [R] . NL Add a Slimed to your hand."
+		]
 	},
 	"Bunker": {
 		"NAME": "Bunker",

@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
@@ -23,14 +24,17 @@ import basemod.abstracts.CustomCard;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
-public class Disorient extends CustomCard {
+public class Disorient extends AbstractConstructCard {
 	public static final String ID = "Disorient";
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+	public static final String M_UPGRADE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 	private static final int COST = 1;
 	private static final int STR_LOSS = 0;
 	private static final int UPGRADE_STR_LOSS = 1;
+	private static final int M_UPGRADE_STR_LOSS = 1;
 	private static final int POOL = 1;
 
 	public Disorient() {
@@ -43,6 +47,9 @@ public class Disorient extends CustomCard {
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		int dex = (p.hasPower("Dexterity") ? p.getPower("Dexterity").amount:0) + this.magicNumber;
+		
+		if (megaUpgraded) AbstractDungeon.actionManager.addToBottom(
+				new ApplyPowerAction(p, p, new DexterityPower(p, this.magicNumber), this.magicNumber));
 		
 		if (dex > 0) {
 			for (final AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
@@ -61,6 +68,13 @@ public class Disorient extends CustomCard {
 		if (!this.upgraded) {
 			this.upgradeName();
 			this.upgradeMagicNumber(UPGRADE_STR_LOSS);
+			this.rawDescription = UPGRADE_DESCRIPTION;
+			this.initializeDescription();
+		} else if (this.canUpgrade()) {
+			this.megaUpgradeName();
+			this.upgradeMagicNumber(M_UPGRADE_STR_LOSS);
+			this.rawDescription = M_UPGRADE_DESCRIPTION;
+			this.initializeDescription();
 		}
 	}
 }

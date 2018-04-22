@@ -27,8 +27,9 @@ import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import basemod.abstracts.CustomCard;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
+import constructmod.relics.ClockworkPhoenix;
 
-public class ClockworkEgg extends CustomCard {
+public class ClockworkEgg extends AbstractConstructCard {
 	public static final String ID = "ClockworkEgg";
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
@@ -91,6 +92,17 @@ public class ClockworkEgg extends CustomCard {
 				new FrozenEgg2().instantObtain(false);
 				AbstractDungeon.uncommonRelicPool.remove("Frozen Egg 2");
 			}
+			if (!p.hasRelic("ClockworkPhoenix")) {
+				new ClockworkPhoenix().instantObtain(false);
+			}
+			p.masterDeck.removeCard(ID);
+			this.exhaust = true;
+		}
+		else if (this.megaUpgraded) {
+			AbstractDungeon.getCurrRoom().addRelicToRewards(RelicTier.COMMON);
+			AbstractDungeon.getCurrRoom().addRelicToRewards(RelicTier.UNCOMMON);
+			AbstractDungeon.getCurrRoom().addRelicToRewards(RelicTier.RARE);
+			AbstractDungeon.getCurrRoom().addRelicToRewards(RelicTier.RARE);
 			AbstractDungeon.getCurrRoom().addRelicToRewards(RelicTier.RARE);
 			p.masterDeck.removeCard(ID);
 			this.exhaust = true;
@@ -104,7 +116,7 @@ public class ClockworkEgg extends CustomCard {
 	
 	@Override
     public boolean canUpgrade() {
-        return (this.timesUpgraded < 4);
+        return super.canUpgrade() || (this.timesUpgraded < 4);
     }
 
 	@Override
@@ -114,7 +126,7 @@ public class ClockworkEgg extends CustomCard {
 			this.upgraded = true;
 			this.cost++;
 			this.costForTurn++;
-			this.name = timesUpgraded<4?ClockworkEgg.NAME + "+" + this.timesUpgraded:"Clockwork Phoenix";
+			this.name = ClockworkEgg.NAME + "+" + this.timesUpgraded;
 			this.initializeTitle();
 			this.rawDescription = EXTENDED_DESCRIPTION[timesUpgraded-1];
 			this.initializeDescription();
@@ -124,6 +136,17 @@ public class ClockworkEgg extends CustomCard {
 				this.exhaust = true;
 				this.loadCardImage("img/cards/"+"ClockworkPhoenix"+".png");
 			}
+		} else if (this.canUpgrade()) {
+			this.timesUpgraded++;
+			this.megaUpgraded = true;
+			this.cost = 0;
+			this.costForTurn = 0;
+			this.name = "? ? ? ? ?";
+			this.initializeTitle();
+			this.rawDescription = EXTENDED_DESCRIPTION[timesUpgraded-1];
+			this.initializeDescription();
+			this.exhaust = true;
+			this.loadCardImage("img/cards/"+"ClockworkPhoenix"+".png");
 		}
 	}
 }

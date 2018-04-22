@@ -1,6 +1,7 @@
 package constructmod.cards;
 
 import com.megacrit.cardcrawl.actions.common.HealAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -13,28 +14,34 @@ import basemod.abstracts.CustomCard;
 import constructmod.actions.GainMaxHPAction;
 import constructmod.patches.AbstractCardEnum;
 
-public class HastyRepair extends CustomCard {
+public class HastyRepair extends AbstractConstructCard {
 	public static final String ID = "HastyRepair";
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+	public static final String M_UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	private static final int COST = 1;
 	private static final int HEAL_AMT = 8;
 	private static final int MAX_HP_GAIN_AMT = -2;
+	private static final int M_UPGRADE_PLUS_MAX_HP_GAIN_AMT = 1;
 	private static final int UPGRADE_HEAL_AMT = 4;
 	private static final int POOL = 1;
+	
+	private int maxHpGain;
 
 	public HastyRepair() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.SELF, POOL);
 		this.magicNumber = this.baseMagicNumber = HEAL_AMT;
+		this.maxHpGain = MAX_HP_GAIN_AMT;
 		this.exhaust = true;
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		AbstractDungeon.actionManager.addToBottom(new HealAction(p,p,this.magicNumber));
-		AbstractDungeon.actionManager.addToBottom(new GainMaxHPAction(p,p,MAX_HP_GAIN_AMT));
+		AbstractDungeon.actionManager.addToBottom(new GainMaxHPAction(p,p,maxHpGain));
+		if (megaUpgraded) AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(this.makeCopy()));
 	}
 
 	@Override
@@ -47,6 +54,11 @@ public class HastyRepair extends CustomCard {
 		if (!this.upgraded) {
 			this.upgradeName();
 			this.upgradeMagicNumber(UPGRADE_HEAL_AMT);
+		} else if (this.canUpgrade()) {
+			this.megaUpgradeName();
+			maxHpGain += M_UPGRADE_PLUS_MAX_HP_GAIN_AMT;
+			this.rawDescription = M_UPGRADE_DESCRIPTION;
+			this.initializeDescription();
 		}
 	}
 }

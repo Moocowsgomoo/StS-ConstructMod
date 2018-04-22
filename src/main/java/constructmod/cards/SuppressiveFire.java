@@ -25,16 +25,17 @@ import basemod.abstracts.CustomCard;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
-public class SuppressiveFire extends CustomCard {
+public class SuppressiveFire extends AbstractConstructCard {
 	public static final String ID = "SuppressiveFire";
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+	public static final String M_UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	private static final int COST = 1;
 	private static final int ATTACK_DMG = 4;
 	private static final int BLUR_AMT = 1;
 	private static final int UPGRADE_PLUS_ATTACK_DMG = 2;
-	private static final int UPGRADE_PLUS_BLUR_AMT = 0;
+	private static final int M_UPGRADE_PLUS_BLUR_AMT = 2;
 	private static final int POOL = 1;
 
 	public SuppressiveFire() {
@@ -68,7 +69,11 @@ public class SuppressiveFire extends CustomCard {
 		if (!this.upgraded) {
 			this.upgradeName();
 			this.upgradeDamage(UPGRADE_PLUS_ATTACK_DMG);
-			//this.upgradeMagicNumber(UPGRADE_PLUS_BLUR_AMT);
+		} else if (this.canUpgrade()) {
+			this.megaUpgradeName();
+			this.upgradeMagicNumber(M_UPGRADE_PLUS_BLUR_AMT);
+			this.rawDescription = M_UPGRADE_DESCRIPTION;
+			this.initializeDescription();
 		}
 	}
 }

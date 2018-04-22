@@ -5,9 +5,11 @@ import java.lang.reflect.Method;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
+import com.megacrit.cardcrawl.screens.mainMenu.MainMenuScreen.CurScreen;
 
 import basemod.ReflectionHacks;
 import basemod.abstracts.CustomCard;
@@ -24,7 +26,7 @@ public abstract class AbstractConstructCard extends CustomCard {
 	
 	@Override
     public boolean canUpgrade() {
-		return super.canUpgrade() || forcedUpgrade ||
+		return super.canUpgrade() || forcedUpgrade || CardCrawlGame.mainMenuScreen.screen == CurScreen.RUN_HISTORY ||
 				(AbstractDungeon.player.hasRelic("ClockworkPhoenix") && 
 						this.upgraded && 
 						!this.megaUpgraded && 

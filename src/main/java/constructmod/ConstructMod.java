@@ -125,7 +125,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     	final String[] slimed = {"slimed"};
     	BaseMod.addKeyword(slimed, "Slimed is a status card that costs [R] to exhaust.");
     	final String[] vol = {"broken"};
-    	BaseMod.addKeyword(vol, "Broken orbs are unplayable status cards. When one cycles, you lose 1 HP.");
+    	BaseMod.addKeyword(vol, "Broken orbs are unplayable status cards. When one cycles, you take 1 damage.");
     	final String[] orbs = {"orbs"};
     	BaseMod.addKeyword(orbs, "Orbs are cards that cycle and apply a small bonus effect.");
     	final String[] eggs = {"egg","eggs"};

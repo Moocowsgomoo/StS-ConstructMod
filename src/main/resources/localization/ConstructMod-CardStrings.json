@@ -135,7 +135,7 @@
 	},
 	"BrokenOrb": {
 		"NAME": "Broken Orb",
-		"DESCRIPTION": "Unplayable. NL Cycle. When cycled: NL Lose !M! HP."
+		"DESCRIPTION": "Unplayable. NL Cycle. When cycled: NL Take !M! damage."
 	},
 	"Autoturret": {
 		"NAME": "Autoturret",
@@ -256,7 +256,7 @@
 	},
 	"ClockworkEgg": {
 		"NAME": "Clockwork Egg",
-		"DESCRIPTION": "Exhaust. NL Can be Upgraded 4 more times.",
+		"DESCRIPTION": "Draw a card. NL Exhaust. NL Can be Upgraded 4 more times.",
 		"EXTENDED_DESCRIPTION": [
 			"Add an Attack Mode+ and Defense Mode+ to your hand. NL Can be Upgraded 3 more times.",
 			"Gain 3 Strength. NL Gain 3 Dexterity. NL Can be Upgraded 2 more times.",

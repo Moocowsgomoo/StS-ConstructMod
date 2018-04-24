@@ -2,6 +2,7 @@ package constructmod.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -62,6 +63,7 @@ public class ClockworkEgg extends AbstractConstructCard {
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		if (this.timesUpgraded == 0) {
 			this.exhaust = true;
+			AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
 		}
 		else if (this.timesUpgraded == 1) {
 			final AttackMode a = new AttackMode();

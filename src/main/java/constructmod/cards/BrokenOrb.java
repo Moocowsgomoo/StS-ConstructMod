@@ -30,14 +30,14 @@ public class BrokenOrb extends AbstractCycleCard {
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	private static final int COST = 0;
-	private static final int HP_DMG = 1;
+	private static final int DMG = 1;
 	//private static final int UPGRADE_PLUS_HP_DMG = 2;
 	private static final int POOL = 4;
 
 	public BrokenOrb() {
 		super(ID, NAME, "img/cards/"+"OrbAssault"+".png", COST, DESCRIPTION, AbstractCard.CardType.STATUS,
 				CardColor.COLORLESS, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.NONE, POOL);
-		this.baseMagicNumber = this.magicNumber = HP_DMG;
+		this.baseMagicNumber = this.magicNumber = DMG;
 	}
 	
 	@Override
@@ -59,7 +59,7 @@ public class BrokenOrb extends AbstractCycleCard {
 		flash();
 		
 		AbstractDungeon.actionManager.addToBottom(new DamageAction(
-				p, new DamageInfo(p, this.magicNumber, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE));
+				p, new DamageInfo(p, this.magicNumber, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
 		
 		cycle();
 		//if (upgraded) AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(this.makeStatEquivalentCopy(),1));

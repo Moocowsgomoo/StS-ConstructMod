@@ -20,7 +20,7 @@ public class Autoturret extends AbstractConstructCard {
 	private static final int COST = 1;
 	private static final int POWER_DAMAGE = 1;
 	private static final int UPGRADE_POWER_DAMAGE = 1;
-	private static final int M_UPGRADE_POWER_DAMAGE = 1;
+	private static final int M_UPGRADE_POWER_DAMAGE = 2;
 	private static final int POOL = 1;
 
 	public Autoturret() {

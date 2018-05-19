@@ -32,7 +32,7 @@ public class HyperBeam extends AbstractConstructCard {
 	private static final int DAZED_AMT = 3;
 	private static final int UPGRADE_PLUS_DAZED_AMT = 0;
 	private static final int M_UPGRADE_PLUS_DAZED_AMT = 1;
-	private static final int M_UPGRADE_PLUS_ATTACK_DMG = 25;
+	private static final int M_UPGRADE_PLUS_ATTACK_DMG = 30;
 	private static final int POOL = 1;
 
 	public HyperBeam() {
@@ -67,7 +67,7 @@ public class HyperBeam extends AbstractConstructCard {
 	public void upgrade() {
 		if (!this.upgraded) {
 			this.upgradeName();
-			this.upgradeMagicNumber(UPGRADE_PLUS_DAZED_AMT);
+			//this.upgradeMagicNumber(UPGRADE_PLUS_DAZED_AMT);
 			this.rawDescription = UPGRADE_DESCRIPTION;
 			this.initializeDescription();
 			this.isEthereal = false;

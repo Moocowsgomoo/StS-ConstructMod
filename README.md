@@ -1,9 +1,9 @@
 # The Construct
-Adds a new character for Slay The Spire, complete with 50+ new cards.
-* More cards and relics coming soon!
-* Right now everything is unlocked at the start, so unlocks don't do anything.
+Adds a new character for Slay The Spire, complete with 70+ new cards and 8 new relics.
+* On reaching the first unlock level, you'll unlock an alternate starting relic in the "Mods" tab of the game's main menu.
+* Right now all cards and relics are unlocked at the start, so subsequent unlocks don't do anything.
 
-The Construct is a mix of the many robotic enemies you'll find in the Spire, and uses familiar abilities like Mode Shift, supporting Orbs, and of course the Hyper Beam. Its main strength is adaptability; the new Cycle keyword gives you some control over the composition of your hand at any given time, and your starter Mode Shift cards allow you to switch between attack and defense on the fly.
+The Construct is a mix of the many robotic enemies you'll find in the Spire, and uses familiar abilities like Mode Shift, Fierce Bash, and of course the Hyper Beam. Its main strength is adaptability; the new Cycle keyword gives you some control over the composition of your hand at any given time, and your starter Mode Shift cards allow you to switch between attack and defense on the fly.
 
 This character is meant to feel as close to an official character as possible, with multiple potential deck archetypes and rewarding interactions between cards. Balance is an ongoing process and cards/relics may change over time.
 
@@ -14,8 +14,8 @@ This character is meant to feel as close to an official character as possible, w
 ## New Keyword: Cycle ##
 **Definition:** When drawn, discard this and draw another card if the cycle condition is met. Only works once per card per turn.
 **Examples:**
-* Reactive Shield: Cycle if no enemy intends to attack. Gain 8 Block.
-* Flak Barrage: Cycle if your Strength < 1. Deal 0 damage to a random enemy 5 times.
+* Flak Barrage: Cycle if your Strength < 1. Deal 0 damage to a random enemy 4 times.
+* Isolate: Cycle if there's more than one enemy. Your attacks deal double damage this turn.
 * Guard Orb: Cycle. When cycled, gain 2 Block.
 
 ![Gameplay Image](github_resources/gameplay.png)
@@ -25,8 +25,8 @@ Copied from https://github.com/gskleres/FruityMod-StS
 
 #### General Use ####
 * Java 8 (JRE). Currently only Java 8 should be used, issues with Java 9 are being looked into.
-* BaseMod v.1.8.0+ (https://github.com/daviscook477/BaseMod/releases)
-* ModTheSpire v2.3.0+ (https://github.com/kiooeht/ModTheSpire/releases)
+* BaseMod v.2.10.0+ (https://github.com/daviscook477/BaseMod/releases)
+* ModTheSpire v2.6.0+ (https://github.com/kiooeht/ModTheSpire/releases)
 
 ## Installation ##
 1. If you have `ModTheSpire` already installed you can skip to step 5. Otherwise continue with step 2:
@@ -46,6 +46,7 @@ Here is a great video showing how to install mods, by Xterminator: https://www.y
 1. Thanks to the [devs](https://www.megacrit.com/) of **SlayTheSpire** for making such and awesome game, allowing us to mod it, and allowing us to use recolored versions of their art assets in our mod
 2. Thanks to t-larson and contributors (https://github.com/t-larson) for BaseMod!!
 3. Thanks to kiooeht and contributors (https://github.com/kiooeht) for ModTheSpire!!
+4. Thanks to everyone in the Discord community who's played the mod and given feedback!
 
 ## Other Mods ##
 There are lots of fantastic mods that already exist for Slay the Spire. An updated list can be found at:

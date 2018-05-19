@@ -34,9 +34,11 @@ public class Versatility extends AbstractConstructCard {
 	public static final String M_UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	private static final int COST = 1;
 	private static final int ATTACK_DMG = 7;
-	private static final int UPGRADE_PLUS_ATTACK_DMG = 3;
+	private static final int UPGRADE_PLUS_ATTACK_DMG = 2;
 	private static final int BLOCK_AMT = 7;
-	private static final int UPGRADE_PLUS_BLOCK_AMT = 3;
+	private static final int UPGRADE_PLUS_BLOCK_AMT = 2;
+	private static final int M_UPGRADE_PLUS_ATTACK_DMG = 1;
+	private static final int M_UPGRADE_PLUS_BLOCK_AMT = 1;
 	private static final int POOL = 1;
 
 	public Versatility() {
@@ -63,7 +65,7 @@ public class Versatility extends AbstractConstructCard {
 					new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
 		}
 		
-		if (this.megaUpgraded) AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p,1));
+		if (this.megaUpgraded) AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p,2));
 		
 	}
 
@@ -82,6 +84,8 @@ public class Versatility extends AbstractConstructCard {
 			this.megaUpgradeName();
 			this.rawDescription = DESCRIPTION + M_UPGRADE_DESCRIPTION;
 			this.initializeDescription();
+			this.upgradeDamage(M_UPGRADE_PLUS_ATTACK_DMG);
+			this.upgradeBlock(M_UPGRADE_PLUS_BLOCK_AMT);
 		}
 	}
 }

@@ -22,7 +22,7 @@ public class AttackMode extends AbstractConstructCard {
 	private static final int COST = 0;
 	private static final int STR = 2;
 	private static final int UPGRADE_PLUS_STR = 1;
-	private static final int M_UPGRADE_PLUS_STR = 1;
+	private static final int M_UPGRADE_PLUS_STR = 2;
 	private static final int POOL = 1;
 
 	public AttackMode() {
@@ -34,6 +34,7 @@ public class AttackMode extends AbstractConstructCard {
 	
 	@Override
 	public void applyPowers(){
+		super.applyPowers();
 		this.retain = true;
 	}
 

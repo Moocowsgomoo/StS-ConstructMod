@@ -27,7 +27,7 @@ public class DefenseMode extends AbstractConstructCard {
 	private static final int COST = 0;
 	private static final int DEX = 2;
 	private static final int UPGRADE_PLUS_DEX = 1;
-	private static final int M_UPGRADE_PLUS_DEX = 1;
+	private static final int M_UPGRADE_PLUS_DEX = 2;
 	private static final int POOL = 1;
 
 	public DefenseMode() {
@@ -39,6 +39,7 @@ public class DefenseMode extends AbstractConstructCard {
 	
 	@Override
 	public void applyPowers(){
+		super.applyPowers();
 		this.retain = true;
 	}
 

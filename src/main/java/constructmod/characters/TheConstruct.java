@@ -10,6 +10,7 @@ import basemod.animations.SpriterAnimation;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.characters.Defect;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -69,8 +70,8 @@ public class TheConstruct extends CustomPlayer{
 	
 	public static CharSelectInfo getLoadout() {
 		return new CharSelectInfo("The Construct", "Ancient machinery given new purpose by Neow. NL Reconfigures itself to adapt to any situation.",
-				75, 75, 99, 5,
-			TheConstructEnum.THE_CONSTRUCT_MOD, getStartingRelics(), getStartingDeck(), false);
+				85, 85, 0, 99, 5,
+			TheConstructEnum.THE_CONSTRUCT_MOD, getStartingRelics(), Defect.getStartingDeck(), false);
 	}
 	
 	/*public void onCycle(AbstractCard card) {

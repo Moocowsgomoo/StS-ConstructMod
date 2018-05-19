@@ -2,6 +2,8 @@ package constructmod.cards;
 
 import java.lang.reflect.Method;
 
+import org.apache.logging.log4j.Level;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -11,6 +13,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
 import com.megacrit.cardcrawl.screens.mainMenu.MainMenuScreen.CurScreen;
 
+import basemod.BaseMod;
 import basemod.ReflectionHacks;
 import basemod.abstracts.CustomCard;
 
@@ -20,20 +23,44 @@ public abstract class AbstractConstructCard extends CustomCard {
 	protected boolean megaUpgraded = false;
 	private boolean forcedUpgrade = false;
 	
+	public boolean rebound = false;
+	
 	public AbstractConstructCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target, int cardPool) {
-		super(id, name, img, cost, rawDescription, type, color, rarity, target, cardPool);
+		super(id, name, img, cost, rawDescription, type, color, rarity, target);
+		//super(id, name, img, img, cost, rawDescription, type, color, rarity, target);
+	}
+	
+	public void CloneCore() {
+		if (this.upgraded) {
+			AbstractCard c = this.makeCopy();
+			if (this.megaUpgraded) c.upgrade();
+			AbstractDungeon.player.discardPile.addToTop(c);
+		}
 	}
 	
 	@Override
     public boolean canUpgrade() {
-		return super.canUpgrade() || forcedUpgrade || CardCrawlGame.mainMenuScreen.screen == CurScreen.RUN_HISTORY ||
-				(AbstractDungeon.player.hasRelic("ClockworkPhoenix") && 
-						this.upgraded && 
-						!this.megaUpgraded && 
-						AbstractDungeon.getCurrRoom().phase != RoomPhase.COMBAT);
+		
+		if (this.megaUpgraded) return false;
+		
+		return 	super.canUpgrade() || 
+				forcedUpgrade || 
+				CardCrawlGame.mainMenuScreen.screen == CurScreen.RUN_HISTORY ||
+				(AbstractDungeon.player.hasRelic("ClockworkPhoenix") && AbstractDungeon.getCurrRoom().phase != RoomPhase.COMBAT);
     }
 	
+	public boolean canUpgrade(boolean forced) {
+		this.forcedUpgrade = forced;
+		boolean result = canUpgrade();
+		this.forcedUpgrade = false;
+		return result;
+	}
+	
 	public void upgrade(boolean forcedUpgrade) {
+		this.upgrade(forcedUpgrade,false);
+	}
+	
+	public void upgrade(boolean forcedUpgrade, boolean inCombat) {
 		this.forcedUpgrade = forcedUpgrade;
 		this.upgrade();
 		this.forcedUpgrade = false;
@@ -41,6 +68,7 @@ public abstract class AbstractConstructCard extends CustomCard {
 	
 	public AbstractCard makeStatEquivalentCopy() {
         final AbstractConstructCard card = (AbstractConstructCard) this.makeCopy();
+        BaseMod.logger.log(Level.DEBUG,"Copying card " + this.name + " with " + this.timesUpgraded + " upgrades.");
         for (int i = 0; i < this.timesUpgraded; ++i) {
             card.upgrade(true);
         }
@@ -60,13 +88,19 @@ public abstract class AbstractConstructCard extends CustomCard {
         card.inBottleTornado = this.inBottleTornado;
         card.isSeen = this.isSeen;
         card.isLocked = this.isLocked;
+        card.misc = this.misc;
         return card;
     }
 	
 	protected void megaUpgradeName() {
         this.upgradeName();
         this.megaUpgraded = true;
-        this.initializeTitle();
+        
+        // reset these since they carry over from the original upgrade
+        this.upgradedDamage = false;
+        this.upgradedBlock = false;
+        this.upgradedCost = false;
+        this.upgradedMagicNumber = false;
     }
 	
 	@Override

@@ -13,10 +13,10 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import constructmod.ConstructMod;
 
 public class PanicFirePower extends AbstractCyclePower {
-	public static final String POWER_ID = "OrbAssault";
+	public static final String POWER_ID = "PanicFire";
 	public static final String NAME = "Panic Fire";
 	public static final String[] DESCRIPTIONS = new String[] {
-			"Whenever a card cycles, exhaust it and deal ",
+			"Whenever an non-upgraded card #ycycles, #yExhaust it and deal ",
 			" damage to a random enemy."
 	};
 	
@@ -38,10 +38,18 @@ public class PanicFirePower extends AbstractCyclePower {
 	
 	@Override
 	public void onCycleCard(AbstractCard card) {
+		
+		super.onCycleCard(card);
+		
+		if (card.upgraded) return;
+		
 		flash();
-		AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(card, AbstractDungeon.player.drawPile));
-		AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(card, AbstractDungeon.player.discardPile));
-		AbstractDungeon.actionManager.addToBottom(new DamageRandomEnemyAction(
-				new DamageInfo(null, this.amount, DamageInfo.DamageType.THORNS),AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+		
+		// exhaust handled by CycleCardAction already (hard-coded to Panic Fire for now)
+		
+		//AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(card, AbstractDungeon.player.drawPile));
+		//AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(card, AbstractDungeon.player.discardPile));
+		AbstractDungeon.actionManager.addToTop(new DamageRandomEnemyAction(
+				new DamageInfo(null, this.amount, DamageInfo.DamageType.THORNS),AbstractGameAction.AttackEffect.BLUNT_HEAVY));
 	}
 }

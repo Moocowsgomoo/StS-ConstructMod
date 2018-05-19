@@ -38,11 +38,11 @@ public class OrbGenesis extends CustomCard {
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		
 		list.clear();
-		list.add(AbstractDungeon.commonCardPool.findCardByName("FlameOrb").makeCopy());
-	    list.add(AbstractDungeon.commonCardPool.findCardByName("ShockOrb").makeCopy());
-	    list.add(AbstractDungeon.commonCardPool.findCardByName("GuardOrb").makeCopy());
-	    list.add(AbstractDungeon.uncommonCardPool.findCardByName("ScopeOrb").makeCopy());
-	    list.add(AbstractDungeon.uncommonCardPool.findCardByName("BatteryOrb").makeCopy());
+		list.add(AbstractDungeon.commonCardPool.findCardByName("FlameCore").makeCopy());
+	    list.add(AbstractDungeon.commonCardPool.findCardByName("LaserCore").makeCopy());
+	    list.add(AbstractDungeon.commonCardPool.findCardByName("GuardCore").makeCopy());
+	    list.add(AbstractDungeon.uncommonCardPool.findCardByName("ScopeCore").makeCopy());
+	    list.add(AbstractDungeon.uncommonCardPool.findCardByName("BatteryCore").makeCopy());
 	    /*if (upgraded) {
 	    	for (int i=0;i<list.size();i++) {
 				list.get(i).upgrade();

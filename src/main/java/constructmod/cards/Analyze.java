@@ -23,6 +23,7 @@ public class Analyze extends AbstractConstructCard {
 	private static final int DRAW_AMT = 1;
 	private static final int ENERGIZE_AMT = 1;
 	private static final int M_UPGRADE_PLUS_ENERGIZE_AMT = 1;
+	private static final int M_UPGRADE_PLUS_DRAW_AMT = 1;
 	private static final int UPGRADE_PLUS_DRAW_AMT = 1;
 	private static final int POOL = 1;
 	
@@ -58,6 +59,7 @@ public class Analyze extends AbstractConstructCard {
 			this.rawDescription = M_UPGRADE_DESCRIPTION;
 			this.initializeDescription();
 			this.energyGain += M_UPGRADE_PLUS_ENERGIZE_AMT;
+			this.upgradeMagicNumber(M_UPGRADE_PLUS_DRAW_AMT);
 		}
 	}
 }

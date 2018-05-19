@@ -24,7 +24,7 @@ public class SpinDrive extends AbstractConstructCard {
 	private static final int COST = 3;
 	private static final int UPGRADE_NEW_COST = 2;
 	private static final int FREE_DRAWS = 3;
-	private static final int M_UPGRADE_PLUS_FREE_DRAWS = 2;
+	private static final int M_UPGRADE_PLUS_FREE_DRAWS = 5;
 	private static final int POOL = 1;
 
 	public SpinDrive() {

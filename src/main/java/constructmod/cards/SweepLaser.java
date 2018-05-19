@@ -19,7 +19,9 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.vfx.combat.CleaveEffect;
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
+import com.megacrit.cardcrawl.vfx.combat.SmallLaserEffect;
 
 import basemod.abstracts.CustomCard;
 import constructmod.ConstructMod;
@@ -41,28 +43,41 @@ public class SweepLaser extends AbstractConstructCard {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.ATTACK,
 				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.ENEMY, POOL);
 		this.damage = this.baseDamage = ATTACK_DMG;
+		this.baseMagicNumber = this.magicNumber = this.baseDamage;
+	}
+	
+	@Override
+	public void applyPowers() {
+		this.isMultiDamage = true;
+		super.applyPowers();
+		this.magicNumber = this.damage;
+		this.isMultiDamage = false;
+		super.applyPowers();
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		
-		// fx
-		//AbstractDungeon.actionManager.addToBottom(new SFXAction("THUNDERCLAP", 0.05f));
-		//AbstractDungeon.actionManager.addToBottom(new VFXAction(new LightningEffect(m.drawX, m.drawY), 0.05f));
+		// attack
+		AbstractDungeon.actionManager.addToBottom(new SFXAction("ATTACK_MAGIC_BEAM", 0.05f));
+		AbstractDungeon.actionManager.addToBottom(new VFXAction(new SmallLaserEffect(p.drawX+20, p.drawY+90, m.drawX, m.drawY+50),0.2f));
 		
-		// damage
 		AbstractDungeon.actionManager.addToBottom(new DamageAction((AbstractCreature) m, 
-			new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+			new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
 		
-		AbstractDungeon.actionManager.addToBottom(new WaitAction(0.1f));
+		// area attack
+		AbstractDungeon.actionManager.addToBottom(new SFXAction("ATTACK_HEAVY", 0.05f));
+		AbstractDungeon.actionManager.addToBottom(new VFXAction(p, new CleaveEffect(), 0.1f));
 		
-		// area damage
 		AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(
-				p, DamageInfo.createDamageMatrix(this.damage, true), this.damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+				p, DamageInfo.createDamageMatrix(this.damage, true), this.damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
 		
 		if (this.megaUpgraded) {
+			AbstractDungeon.actionManager.addToBottom(new SFXAction("ATTACK_HEAVY", 0.05f));
+			AbstractDungeon.actionManager.addToBottom(new VFXAction(p, new CleaveEffect(), 0.1f));
+			
 			AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(
-					p, DamageInfo.createDamageMatrix(this.damage, true), this.damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+					p, DamageInfo.createDamageMatrix(this.damage, true), this.damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
 		}
 		
 	}
@@ -77,9 +92,11 @@ public class SweepLaser extends AbstractConstructCard {
 		if (!this.upgraded) {
 			this.upgradeName();
 			this.upgradeDamage(UPGRADE_PLUS_ATTACK_DMG);
+			this.upgradeMagicNumber(UPGRADE_PLUS_ATTACK_DMG);
 		} else if (this.canUpgrade()) {
 			this.megaUpgradeName();
 			this.upgradeDamage(M_UPGRADE_PLUS_ATTACK_DMG);
+			this.upgradeMagicNumber(M_UPGRADE_PLUS_ATTACK_DMG);
 			this.rawDescription = M_UPGRADE_DESCRIPTION;
 			this.initializeDescription();
 		}

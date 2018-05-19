@@ -25,10 +25,10 @@ public class Boost extends AbstractConstructCard {
 	private static final int COST = 0;
 	private static final int ATTACK_DMG = 2;
 	private static final int UPGRADE_PLUS_ATTACK_DMG = 2;
-	private static final int M_UPGRADE_PLUS_ATTACK_DMG = 2;
+	private static final int M_UPGRADE_PLUS_ATTACK_DMG = 4;
 	private static final int BLOCK_AMT = 2;
 	private static final int UPGRADE_PLUS_BLOCK_AMT = 2;
-	private static final int M_UPGRADE_PLUS_BLOCK_AMT = 2;
+	private static final int M_UPGRADE_PLUS_BLOCK_AMT = 4;
 	private static final int POOL = 1;
 
 	public Boost() {

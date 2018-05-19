@@ -18,11 +18,11 @@ public class DiscountRandomCardAction extends AbstractGameAction
     	final CardGroup tmp = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
         for (final AbstractCard c : AbstractDungeon.player.hand.group) {
             if (c.costForTurn > 0) {
-                tmp.addToRandomSpot(c);
+                tmp.addToTop(c);
             }
         }
     	if (tmp.size() > 0) {
-    		AbstractCard c2 = tmp.getTopCard();
+    		AbstractCard c2 = tmp.getRandomCard(true);
     		c2.flash();
     		c2.setCostForTurn(c2.costForTurn-amount);
     	}

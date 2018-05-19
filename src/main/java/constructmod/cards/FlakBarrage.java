@@ -29,7 +29,7 @@ public class FlakBarrage extends AbstractCycleCard {
 	private static final int ATTACK_DMG = 0;
 	private static final int TIMES = 4;
 	private static final int UPGRADE_PLUS_TIMES = 2;
-	private static final int M_UPGRADE_PLUS_TIMES = 2;
+	private static final int M_UPGRADE_PLUS_TIMES = 4;
 	private static final int POOL = 1;
 
 	public FlakBarrage() {

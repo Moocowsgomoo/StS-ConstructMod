@@ -29,14 +29,14 @@ public class ModeShift extends AbstractConstructCard {
 
 	public ModeShift() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF, POOL);
 		this.baseMagicNumber = this.magicNumber = DRAW_AMT;
-		this.retain = true;
 	}
 	
 	@Override
 	public void applyPowers(){
-		this.retain = true;
+		super.applyPowers();
+		if (this.megaUpgraded) this.retain = true;
 	}
 
 	@Override
@@ -64,6 +64,7 @@ public class ModeShift extends AbstractConstructCard {
 			this.upgradeMagicNumber(M_UPGRADE_PLUS_DRAW_AMT);
 			this.rawDescription = M_UPGRADE_DESCRIPTION;
 			this.initializeDescription();
+			this.retain = true;
 		}
 	}
 }

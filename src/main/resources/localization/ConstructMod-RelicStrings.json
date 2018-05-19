@@ -1,23 +1,65 @@
 {
   "Cogwheel": {
     "NAME": "Cogwheel",
-    "FLAVOR": "",
+    "FLAVOR": "A piece of old machinery, carefully preserved.",
     "DESCRIPTIONS": [
-      "Gain 1 #yArtifact at the start of each combat."
+      "Gain #b1 #yArtifact at the start of each combat."
     ]
   },
-  "GenesisOrb": {
-    "NAME": "Genesis Orb",
-    "FLAVOR": "",
+  "MasterCore": {
+    "NAME": "Master Core",
+    "FLAVOR": "A core stolen from one of the Guardians. Summons other cores to your aid.",
     "DESCRIPTIONS": [
-      "At the start of combat, duplicate all #yOrbs in your draw pile."
+      "At the start of combat, shuffle #b3 random #yCores into your draw pile."
     ]
   },
   "ClockworkPhoenix": {
     "NAME": "Clockwork Phoenix",
-    "FLAVOR": "",
+    "FLAVOR": "An artificial being designed to imitate the real thing. Amazingly lifelike.",
     "DESCRIPTIONS": [
       "Your #yupgraded Construct cards can now be #yMega-upgraded outside of combat."
+    ]
+  },
+  "ClawGrip": {
+    "NAME": "Claw Grip",
+    "FLAVOR": "An extendable arm used to grab hard-to-reach objects.",
+    "DESCRIPTIONS": [
+      "At the end of each turn, #yRetain a random card. It costs #b1 less [R] next turn."
+    ]
+  },
+  "FoamFinger": {
+    "NAME": "Foam Finger",
+    "FLAVOR": "Always useful when you need a helping hand.",
+    "DESCRIPTIONS": [
+      "Draw #b1 extra card each turn."
+    ]
+  },
+  "MegaBattery": {
+    "NAME": "Mega Battery",
+    "FLAVOR": "Developed by gremlin inventors in an attempt to create a self-aware robot. It did not go well.",
+    "DESCRIPTIONS": [
+      "Upon pick up, #yMega-upgrade a random Construct card."
+    ]
+  },
+  "RocketBooster": {
+    "NAME": "Rocket Booster",
+    "FLAVOR": "It doesn't matter how weak your swing is when you're moving at 200 miles per hour.",
+    "DESCRIPTIONS": [
+      "When you defeat an Elite, #yUpgrade a random card."
+    ]
+  },
+  "PurpleEmber": {
+    "NAME": "Purple Ember",
+    "FLAVOR": "A ghostly, flickering flame. It seems to absorb the power of nearby fires.",
+    "DESCRIPTIONS": [
+      "When you enter a Rest Site, your starting hand next combat is #yMega-upgraded until the end of combat."
+    ]
+  },
+  "Photocopier": {
+    "NAME": "Photocopier",
+    "FLAVOR": "Used to copy anything 2-dimensional.",
+    "DESCRIPTIONS": [
+      "The first time you play a non-Rare card each combat, shuffle 2 copies of that card into your draw pile."
     ]
   }
 }

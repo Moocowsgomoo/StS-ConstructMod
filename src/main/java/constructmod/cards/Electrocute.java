@@ -34,6 +34,7 @@ public class Electrocute extends AbstractConstructCard {
 	private static final int UPGRADE_PLUS_ATTACK_DMG = 4;
 	private static final int UPGRADE_PLUS_STR_LOSS = 2;
 	private static final int M_UPGRADE_NEW_COST = 2;
+	private static final int M_UPGRADE_PLUS_ATTACK_DMG = 4;
 	private static final int POOL = 1;
 
 	public Electrocute() {
@@ -79,6 +80,7 @@ public class Electrocute extends AbstractConstructCard {
 		} else if (this.canUpgrade()) {
 			this.megaUpgradeName();
 			this.upgradeBaseCost(M_UPGRADE_NEW_COST);
+			this.upgradeDamage(M_UPGRADE_PLUS_ATTACK_DMG);
 		}
 	}
 }

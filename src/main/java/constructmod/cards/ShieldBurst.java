@@ -2,6 +2,7 @@ package constructmod.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.utility.LoseBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -36,7 +37,7 @@ public class ShieldBurst extends AbstractConstructCard {
 
 	public ShieldBurst() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.ATTACK,
-				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.SELF_AND_ENEMY, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.ALL, POOL);
 		this.baseDamage = this.damage = 0;
 		this.magicNumber = this.baseMagicNumber = DMG_MULT;
 	}
@@ -46,8 +47,8 @@ public class ShieldBurst extends AbstractConstructCard {
 		int b = p.currentBlock;
 		AbstractDungeon.actionManager.addToBottom(new LoseBlockAction(p,p,b));
 		
-		AbstractDungeon.actionManager.addToBottom(new DamageAction(
-				m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SHIELD));
+		AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(
+				p, DamageInfo.createDamageMatrix(this.damage, true), this.damageTypeForTurn, AbstractGameAction.AttackEffect.SHIELD));
 		
 		this.rawDescription = desc;
 		initializeDescription();

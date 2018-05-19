@@ -20,12 +20,12 @@ public class Reinforce extends AbstractConstructCard {
 	private static final int BLOCK_AMT = 2;
 	private static final int TIMES_APPLIED = 3;
 	private static final int UPGRADE_TIMES_APPLIED = 1;
-	private static final int M_UPGRADE_TIMES_APPLIED = 1;
+	private static final int M_UPGRADE_TIMES_APPLIED = 3;
 	private static final int POOL = 1;
 
 	public Reinforce() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.SELF, POOL);
 		this.baseBlock = BLOCK_AMT;
 		this.magicNumber = this.baseMagicNumber = TIMES_APPLIED;
 	}

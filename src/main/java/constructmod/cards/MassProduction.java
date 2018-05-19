@@ -33,6 +33,9 @@ public class MassProduction extends AbstractConstructCard {
 	
 	@Override
     public boolean canUse(final AbstractPlayer p, final AbstractMonster m) {
+		
+		if (!super.canUse(p, m)) return false;
+		
 		for (final AbstractCard c : p.drawPile.group) {
 			if (!c.rarity.equals(AbstractCard.CardRarity.RARE)) {
 				return true;

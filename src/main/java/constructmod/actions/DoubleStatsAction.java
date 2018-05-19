@@ -10,11 +10,13 @@
    public class DoubleStatsAction extends com.megacrit.cardcrawl.actions.AbstractGameAction
    {	
 		private AbstractCreature target;
+		private int timesToApply = 1;
    
-		public DoubleStatsAction(AbstractCreature target) {
+		public DoubleStatsAction(AbstractCreature target, int times) {
 			this.actionType = com.megacrit.cardcrawl.actions.AbstractGameAction.ActionType.SPECIAL;
 			this.duration = Settings.ACTION_DUR_XFAST;
 			this.target = target;
+			this.timesToApply = times;
 		}
      
 		public void update()
@@ -22,12 +24,12 @@
 			if (target.hasPower("Strength")) {
 				final int str = target.getPower("Strength").amount;
 				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
-						target,target,new StrengthPower(target,str),str));
+						target,target,new StrengthPower(target,str*timesToApply),str*timesToApply));
 			}
 			if (target.hasPower("Dexterity")) {
 				final int dex = target.getPower("Dexterity").amount;
 				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
-						target,target,new DexterityPower(target, dex),dex));
+						target,target,new DexterityPower(target, dex*timesToApply),dex*timesToApply));
 			}
 			this.isDone = true;
 		}

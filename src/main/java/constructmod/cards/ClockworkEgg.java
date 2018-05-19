@@ -1,6 +1,9 @@
 package constructmod.cards;
 
+import org.apache.logging.log4j.Level;
+
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -9,22 +12,30 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.ConfusionPower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 import com.megacrit.cardcrawl.powers.DrawPower;
 import com.megacrit.cardcrawl.powers.EnergizedPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.AbstractRelic.RelicTier;
 import com.megacrit.cardcrawl.relics.FrozenEgg2;
 import com.megacrit.cardcrawl.relics.MoltenEgg2;
 import com.megacrit.cardcrawl.relics.ToxicEgg2;
 import com.megacrit.cardcrawl.rewards.RewardItem;
+import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+import com.megacrit.cardcrawl.vfx.ThoughtBubble;
+import com.megacrit.cardcrawl.vfx.combat.IntenseZoomEffect;
 
+import basemod.BaseMod;
 import basemod.abstracts.CustomCard;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
@@ -35,20 +46,18 @@ public class ClockworkEgg extends AbstractConstructCard {
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+	private static final String M_UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
+	private static final String M_SCRAMBLED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 	private static final int COST = 0;
 	private static final int POOL = 1;
 	
-	public ClockworkEgg() {
-		this(0);
-	}
+	private boolean isScrambled = false;
 	
-	public ClockworkEgg(final int upgrades) {
+	public ClockworkEgg() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
 				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.SELF, POOL);
-		for (int i=0;i<upgrades;i++) {
-			upgrade();
-		}
+		this.timesUpgraded = 0;
 	}
 	
 	/*@Override
@@ -77,39 +86,67 @@ public class ClockworkEgg extends AbstractConstructCard {
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new StrengthPower(p,3),3));
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new DexterityPower(p,3),3));
 		}
-		else if (this.timesUpgraded == 3) {
+		/*else if (this.timesUpgraded == 3) {
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new EnergizedPower(p,4),4));
 			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new DrawCardNextTurnPower(p,4),4));
-		}
-		else if (this.timesUpgraded == 4) {
+		}*/
+		else if (this.timesUpgraded == 3) {
+			
+			AbstractDungeon.actionManager.addToBottom(new VFXAction(new IntenseZoomEffect(p.drawX+20,p.drawY+90,false)));
+			
+			AbstractRelic relic;
+			
 			if (!p.hasRelic("Molten Egg 2")) {
-				new MoltenEgg2().instantObtain(false);
-				AbstractDungeon.uncommonRelicPool.remove("Molten Egg 2");
+				relic = RelicLibrary.getRelic("Molten Egg 2").makeCopy();
+				AbstractDungeon.getCurrRoom().spawnRelicAndObtain(Settings.WIDTH / 2, Settings.HEIGHT / 2, relic);
+				AbstractDungeon.uncommonRelicPool.remove(relic.relicId);
 			}
 			if (!p.hasRelic("Toxic Egg 2")) {
-				new ToxicEgg2().instantObtain(false);
-				AbstractDungeon.uncommonRelicPool.remove("Toxic Egg 2");
+				relic = RelicLibrary.getRelic("Toxic Egg 2").makeCopy();
+				AbstractDungeon.getCurrRoom().spawnRelicAndObtain(Settings.WIDTH / 2, Settings.HEIGHT / 2, relic);
+				AbstractDungeon.uncommonRelicPool.remove(relic.relicId);
 			}
 			if (!p.hasRelic("Frozen Egg 2")) {
-				new FrozenEgg2().instantObtain(false);
-				AbstractDungeon.uncommonRelicPool.remove("Frozen Egg 2");
+				relic = RelicLibrary.getRelic("Frozen Egg 2").makeCopy();
+				AbstractDungeon.getCurrRoom().spawnRelicAndObtain(Settings.WIDTH / 2, Settings.HEIGHT / 2, relic);
+				AbstractDungeon.uncommonRelicPool.remove(relic.relicId);
 			}
 			if (!p.hasRelic("ClockworkPhoenix")) {
-				new ClockworkPhoenix().instantObtain(false);
+				relic = RelicLibrary.getRelic("ClockworkPhoenix").makeCopy();
+				AbstractDungeon.getCurrRoom().spawnRelicAndObtain(Settings.WIDTH / 2, Settings.HEIGHT / 2, relic);
 			}
 			p.masterDeck.removeCard(ID);
 			this.exhaust = true;
 		}
 		else if (this.megaUpgraded) {
-			AbstractDungeon.getCurrRoom().addRelicToRewards(RelicTier.COMMON);
-			AbstractDungeon.getCurrRoom().addRelicToRewards(RelicTier.UNCOMMON);
-			AbstractDungeon.getCurrRoom().addRelicToRewards(RelicTier.RARE);
-			AbstractDungeon.getCurrRoom().addRelicToRewards(RelicTier.RARE);
-			AbstractDungeon.getCurrRoom().addRelicToRewards(RelicTier.RARE);
-			p.masterDeck.removeCard(ID);
-			this.exhaust = true;
+			
+			if (this.isScrambled) {
+				if (!AbstractDungeon.player.hasPower("Confusion")) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new ConfusionPower(p)));
+				AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p,5));
+			} else {
+				if (AbstractDungeon.getCurrRoom().rewards.size() < 6) { // hard-cap rewards in case someone finds an infinite combo
+					
+					AbstractDungeon.actionManager.addToBottom(new VFXAction(new IntenseZoomEffect(p.drawX+20,p.drawY+90,false)));
+					
+					final AbstractRelic.RelicTier tier = this.returnRandomRelicTier();
+					AbstractDungeon.getCurrRoom().addRelicToRewards(tier);
+				} else {
+					AbstractDungeon.effectList.add(new ThoughtBubble(p.dialogX, p.dialogY, 3.0f, "Relic limit reached for this combat!", true));
+				}
+			}
 		}
 	}
+	
+	private AbstractRelic.RelicTier returnRandomRelicTier() {
+        int roll = AbstractDungeon.relicRng.random(0, 99);
+        if (roll < 50) {
+            return AbstractRelic.RelicTier.COMMON;
+        }
+        if (roll > 82) {
+            return AbstractRelic.RelicTier.RARE;
+        }
+        return AbstractRelic.RelicTier.UNCOMMON;
+    }
 
 	@Override
 	public AbstractCard makeCopy() {
@@ -117,38 +154,73 @@ public class ClockworkEgg extends AbstractConstructCard {
 	}
 	
 	@Override
-    public boolean canUpgrade() {
-        return super.canUpgrade() || (this.timesUpgraded < 4);
+	public AbstractCard makeStatEquivalentCopy() {
+        final AbstractConstructCard card = (AbstractConstructCard) this.makeCopy();
+        for (int i = 0; i < this.timesUpgraded; ++i) {
+            card.upgrade(true, this.isScrambled);
+        }
+        card.cost = this.cost;
+        card.costForTurn = this.costForTurn;
+        card.isCostModified = this.isCostModified;
+        card.isCostModifiedForTurn = this.isCostModifiedForTurn;
+        card.inBottleLightning = this.inBottleLightning;
+        card.inBottleFlame = this.inBottleFlame;
+        card.inBottleTornado = this.inBottleTornado;
+        card.isSeen = this.isSeen;
+        card.isLocked = this.isLocked;
+        card.misc = this.misc;
+        return card;
     }
+	
+	@Override
+    public boolean canUpgrade() {
+        return super.canUpgrade() || (this.timesUpgraded < 3);
+    }
+	
+	@Override
+	public void upgrade(boolean forcedUpgrade, boolean inCombat) {
+		if (inCombat) this.isScrambled = true;
+		super.upgrade(forcedUpgrade, inCombat);
+	}
 
 	@Override
 	public void upgrade() {
-		if (this.timesUpgraded < 4) {
-			this.timesUpgraded++;
-			this.upgraded = true;
+		BaseMod.logger.log(Level.DEBUG, "Egg is being upgraded:");
+		if (this.timesUpgraded < 3) {
+			this.upgradeName();
 			this.cost++;
 			this.costForTurn++;
 			this.name = ClockworkEgg.NAME + "+" + this.timesUpgraded;
 			this.initializeTitle();
-			this.rawDescription = EXTENDED_DESCRIPTION[timesUpgraded-1];
+			this.rawDescription = EXTENDED_DESCRIPTION[timesUpgraded];
 			this.initializeDescription();
-			if (timesUpgraded == 4) {
+			if (timesUpgraded == 3) this.exhaust = true;
+			BaseMod.logger.log(Level.DEBUG, "New times: " + timesUpgraded);
+			
+		} else if (this.canUpgrade()) {
+			this.megaUpgradeName();
+			
+			if (this.isScrambled) {
 				this.cost = 0;
 				this.costForTurn = 0;
+				this.name = "Scrambled Egg";
+				this.initializeTitle();
+				this.rawDescription = M_SCRAMBLED_DESCRIPTION;
+				this.initializeDescription();
+				this.loadCardImage("img/cards/"+"ScrambledEgg"+".png");
+				BaseMod.logger.log(Level.DEBUG, "SCRAMBLED New times: " + timesUpgraded);
+			}
+			else {
+				this.cost = 0;
+				this.costForTurn = 0;
+				this.name = "Clockwork Chicken";
+				this.initializeTitle();
+				this.rawDescription = M_UPGRADE_DESCRIPTION;
+				this.initializeDescription();
 				this.exhaust = true;
 				this.loadCardImage("img/cards/"+"ClockworkPhoenix"+".png");
+				BaseMod.logger.log(Level.DEBUG, "MEGA New times: " + timesUpgraded);
 			}
-		} else if (this.canUpgrade()) {
-			this.timesUpgraded++;
-			this.megaUpgraded = true;
-			this.cost = 0;
-			this.costForTurn = 0;
-			this.name = "? ? ? ? ?";
-			this.initializeTitle();
-			this.rawDescription = EXTENDED_DESCRIPTION[timesUpgraded-1];
-			this.initializeDescription();
-			this.exhaust = true;
-			this.loadCardImage("img/cards/"+"ClockworkPhoenix"+".png");
 		}
 	}
 }

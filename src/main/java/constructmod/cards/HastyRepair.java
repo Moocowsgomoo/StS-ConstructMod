@@ -21,7 +21,7 @@ public class HastyRepair extends AbstractConstructCard {
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	public static final String M_UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	private static final int COST = 1;
-	private static final int HEAL_AMT = 8;
+	private static final int HEAL_AMT = 12;
 	private static final int MAX_HP_GAIN_AMT = -2;
 	private static final int M_UPGRADE_PLUS_MAX_HP_GAIN_AMT = 1;
 	private static final int UPGRADE_HEAL_AMT = 4;

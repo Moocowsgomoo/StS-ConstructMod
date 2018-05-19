@@ -19,10 +19,11 @@ public class VentSteam extends AbstractConstructCard {
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+	public static final String M_UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	private static final int COST = 1;
 	private static final int DEBUFF_AMT = 1;
 	private static final int UPGRADE_PLUS_DEBUFF_AMT = 1;
-	private static final int M_UPGRADE_PLUS_DEBUFF_AMT = 3;
+	private static final int M_UPGRADE_PLUS_DEBUFF_AMT = 1;
 	private static final int POOL = 1;
 
 	public VentSteam() {
@@ -35,8 +36,17 @@ public class VentSteam extends AbstractConstructCard {
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		//AbstractDungeon.actionManager.addToBottom(new SFXAction("THUNDERCLAP", 0.05f));
 		AbstractDungeon.actionManager.addToBottom(new ExhaustAction(p, p, 1, false));
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new WeakPower(m, this.magicNumber, false), this.magicNumber));
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new VulnerablePower(m, this.magicNumber, false), this.magicNumber));
+		
+		if (this.megaUpgraded) {
+			for (final AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
+				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mo, p, new WeakPower(mo, this.magicNumber, false), this.magicNumber));
+				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mo, p, new VulnerablePower(mo, this.magicNumber, false), this.magicNumber));
+			}
+		}
+		else {
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new WeakPower(m, this.magicNumber, false), this.magicNumber));
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new VulnerablePower(m, this.magicNumber, false), this.magicNumber));
+		}
 	}
 
 	@Override
@@ -52,6 +62,9 @@ public class VentSteam extends AbstractConstructCard {
 		} else if (this.canUpgrade()) {
 			this.megaUpgradeName();
 			this.upgradeMagicNumber(M_UPGRADE_PLUS_DEBUFF_AMT);
+			this.rawDescription = M_UPGRADE_DESCRIPTION;
+			this.initializeDescription();
+			this.target = CardTarget.ALL_ENEMY;
 		}
 	}
 }

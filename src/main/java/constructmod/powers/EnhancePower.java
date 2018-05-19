@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import basemod.BaseMod;
 import basemod.interfaces.PostDrawSubscriber;
 import constructmod.ConstructMod;
+import constructmod.cards.AbstractConstructCard;
 
 public class EnhancePower extends AbstractPower {
 	public static final String POWER_ID = "Enhance";
@@ -25,15 +26,18 @@ public class EnhancePower extends AbstractPower {
 			" card(s) in your discard pile."
 	};
 	
-	public EnhancePower(AbstractCreature owner, int amount) {
+	private boolean canMegaUpgrade = false;
+	
+	public EnhancePower(AbstractCreature owner, int amount, boolean canMegaUpgrade) {
 		this.name = NAME;
 		this.ID = POWER_ID;
 		this.owner = owner;
 		this.amount = amount;
-		updateDescription();
 		this.type = AbstractPower.PowerType.BUFF;
 		this.isTurnBased = false;
 		this.img = new Texture("img/powers/enhance.png");
+		this.canMegaUpgrade = canMegaUpgrade;
+		updateDescription();
 	}
 	
 	@Override
@@ -46,14 +50,16 @@ public class EnhancePower extends AbstractPower {
 		if (!isPlayer) return;
 		final CardGroup tmp = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
 		for (final AbstractCard c : AbstractDungeon.player.discardPile.group) {
-            if (c.canUpgrade()) {
+            if (c.canUpgrade() || (this.canMegaUpgrade && c instanceof AbstractConstructCard && ((AbstractConstructCard)c).canUpgrade(true))) {
                 tmp.addToRandomSpot(c);
             }
         }
+		if (tmp.size() > 0) this.flash();
 		for (int i=0;i<this.amount;i++) {
 			if (tmp.size() > 0) {
-				this.flash();
-				tmp.getTopCard().upgrade();
+				final AbstractCard c = tmp.getTopCard();
+				if (this.canMegaUpgrade && c instanceof AbstractConstructCard) ((AbstractConstructCard)c).upgrade(true,true);
+				else c.upgrade();
 				ConstructMod.logger.info("Enhance upgraded " + tmp.getTopCard());
 				tmp.removeTopCard();
 			}

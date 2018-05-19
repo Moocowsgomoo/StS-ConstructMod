@@ -10,12 +10,16 @@ import basemod.ModLabel;
 import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
 import basemod.ReflectionHacks;
+import basemod.abstracts.CustomUnlockBundle;
+import basemod.helpers.RelicType;
 import basemod.interfaces.EditCharactersSubscriber;
 import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditCardsSubscriber;
 import basemod.interfaces.EditRelicsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
+import basemod.interfaces.SetUnlocksSubscriber;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -45,7 +49,7 @@ import constructmod.patches.TheConstructEnum;
 
 @SpireInitializer
 public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscriber, EditRelicsSubscriber,
-	EditStringsSubscriber, EditCharactersSubscriber, EditKeywordsSubscriber {
+	EditStringsSubscriber, EditCharactersSubscriber, EditKeywordsSubscriber, SetUnlocksSubscriber {
 	
 	public static final Logger logger = LogManager.getLogger(ConstructMod.class.getName());
 			
@@ -95,16 +99,15 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
         			resetCharSelect();
         		});
         if (UnlockTracker.getUnlockLevel(TheConstructEnum.THE_CONSTRUCT_MOD) >= 1) settingsPanel.addUIElement(phoenixBtn);
-        else settingsPanel.addUIElement(buttonLabel);
+        else {
+        	if (phoenixStart) {
+        		phoenixStart = false;
+        		BaseMod.maybeSetBoolean("Phoenix", false);
+        	}
+        	settingsPanel.addUIElement(buttonLabel);
+        }
         
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
-		
-		/*logger.info("Adding ConstructMod Keywords");
-		GameDictionary.keywords.put("cycle", "When drawn, discard this and draw a new card. Only works once per turn.");
-		GameDictionary.keywords.put("thorns", "Enemies take damage when they attack you.");
-		GameDictionary.keywords.put("metallicize", "Gain Block at the end of each turn.");
-		GameDictionary.keywords.put("blur", "Block is not removed at the start of your next turn.");
-		GameDictionary.keywords.put("plated armor", "Gain Block at the end of each turn. Reduced when you take unblocked damage.");*/
     }
     
     @SuppressWarnings("unchecked")
@@ -118,6 +121,8 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     	BaseMod.addKeyword(cycle, "When drawn, discard this and draw a new card. Only works once per turn.");
     	final String[] thorns = {"thorns"};
     	BaseMod.addKeyword(thorns, "Enemies take damage when they attack you.");
+    	final String[] blur = {"blur"};
+    	BaseMod.addKeyword(blur, "Your Block is carried over between turns.");
     	final String[] metallicize = {"metallicize"};
     	BaseMod.addKeyword(metallicize, "Gain Block at the end of each turn.");
     	final String[] pArmor = {"plated armor"}; // not working b/c it's two words?
@@ -125,9 +130,9 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     	final String[] slimed = {"slimed"};
     	BaseMod.addKeyword(slimed, "Slimed is a status card that costs [R] to exhaust.");
     	final String[] vol = {"broken"};
-    	BaseMod.addKeyword(vol, "Broken orbs are unplayable status cards. When one cycles, you take 1 damage.");
-    	final String[] orbs = {"orbs"};
-    	BaseMod.addKeyword(orbs, "Orbs are cards that cycle and apply a small bonus effect.");
+    	BaseMod.addKeyword(vol, "Broken cores are unplayable status cards. When one cycles, you take 1 damage.");
+    	final String[] cores = {"cores"};
+    	BaseMod.addKeyword(cores, "Cores are cards that cycle and apply a small bonus effect.");
     	final String[] eggs = {"egg","eggs"};
     	BaseMod.addKeyword(eggs, "Eggs are relics that automatically upgrade cards when you acquire them.");
     	final String[] megaUpgrade = {"mega-upgrade","mega-upgraded"};
@@ -135,7 +140,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     }
 	
 	public void receiveEditCharacters() {
-		logger.info("begin editting characters");
+		logger.info("begin editing characters");
 		
 		logger.info("add " + TheConstructEnum.THE_CONSTRUCT_MOD.toString());
 		BaseMod.addCharacter(TheConstruct.class, "The Construct", "Construct class string",
@@ -143,7 +148,22 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 				"img/charSelect/constructButton.png", "img/charSelect/constructPortrait.jpg",
 				TheConstructEnum.THE_CONSTRUCT_MOD.toString());
 		
-		logger.info("done editting characters");
+		logger.info("done editing characters");
+	}
+	
+	@Override
+	public void receiveSetUnlocks() {
+		/*UnlockTracker.addCard("Overclock");
+		UnlockTracker.addCard("Overcharge");
+		UnlockTracker.addCard("Meltdown");
+		//UnlockTracker.addCardUnlockToList(map, key, unlock);
+		BaseMod.addUnlockBundle(new CustomUnlockBundle("Overclock","Overcharge","Meltdown"), TheConstructEnum.THE_CONSTRUCT_MOD, 0);
+		
+		UnlockTracker.addRelic("MasterCore");
+		UnlockTracker.addRelic("FoamFinger");
+		UnlockTracker.addRelic("ClawGrip");
+		BaseMod.addUnlockBundle(new CustomUnlockBundle("MasterCore","FoamFinger","ClawGrip"), TheConstructEnum.THE_CONSTRUCT_MOD, 1);*/
+		
 	}
 	
 	public void receiveEditStrings() {
@@ -168,80 +188,115 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new DefenseMode());
 		
 		// COMMON
-		//	Attacks
+		//	Attacks (12/11)
 		BaseMod.addCard(new Boost()); 		// atk, block
 		BaseMod.addCard(new ScrapCannon());	// atk, exhaust
 		BaseMod.addCard(new SweepLaser());	// atk
-		BaseMod.addCard(new Versatility());	// atk, block
+		BaseMod.addCard(new Versatility());	// atk, block (intent)
 		BaseMod.addCard(new SuppressiveFire());// atk, defense
 		BaseMod.addCard(new Backfire());	// atk
 		BaseMod.addCard(new HeavyBolt());	// atk
-		//	Skills (Defensive)
-		BaseMod.addCard(new Reinforce());	// block
-		BaseMod.addCard(new ReactiveShield()); // block (cycle)
+		BaseMod.addCard(new ShiftStrike()); // atk, str/dex
+		BaseMod.addCard(new FierceBash());	// atk, (intent)
+		BaseMod.addCard(new FocusedBeam()); // atk
+		BaseMod.addCard(new Accumulate()); 	// atk, copy
+		
+		//	Skills (7/7)
 		BaseMod.addCard(new MetalShell());	// block
 		BaseMod.addCard(new Anticipate());	// block
-		//	Skills (Misc.)
+		BaseMod.addCard(new ShiftGuard());	// block, str/dex
+		BaseMod.addCard(new Forcefield());  // block, retain
+		
+		BaseMod.addCard(new ModeShift()); 	// modes, draw
 		BaseMod.addCard(new Analyze()); 	// draw/energy next turn
 		BaseMod.addCard(new VentSteam());	// debuff, exhaust
-		//	Powers
-		BaseMod.addCard(new ElectricArmor());// block-based
-		BaseMod.addCard(new BubbleShield());// block-based
+		
+		//	Powers (1/1)
 		BaseMod.addCard(new Autoturret());	// atk from cycle
-		BaseMod.addCard(new Bunker()); 		// block
 		
 		// UNCOMMON
-		// 	Attacks
+		// 	Attacks(10/11)
 		BaseMod.addCard(new ChargeShot());	// atk (retain)
 		BaseMod.addCard(new CripplingShot());//atk, debuff
 		BaseMod.addCard(new Electrocute()); // atk, debuff
-		BaseMod.addCard(new Antimatter());	// atk
 		BaseMod.addCard(new FlakBarrage());	// atk (cycle)
-		//	Skills (Defensive)
-		BaseMod.addCard(new Disorient());	// debuff
+		BaseMod.addCard(new Chainstrike()); // atk, cost reduction
+		BaseMod.addCard(new CriticalHit()); // atk (cycle)
+		BaseMod.addCard(new UnbalancingBlast()); // atk (card manip)
+		BaseMod.addCard(new Tumble()); 		// atk, draw
+		BaseMod.addCard(new OmegaCannon()); // atk, str-based
+		BaseMod.addCard(new QuickAttack()); // atk, dex
+		
+		//	Skills (17/17)
 		BaseMod.addCard(new OneWayMirror());// block
-		//	Skills (Misc.)
-		BaseMod.addCard(new ShockOrb());	// cycle, atk
-		BaseMod.addCard(new FlameOrb());	// cycle, atk
-		BaseMod.addCard(new GuardOrb());	// cycle, block
+		BaseMod.addCard(new Reinforce());	// block
+		BaseMod.addCard(new Disrupt());		// block
+		BaseMod.addCard(new Impenetrable());// block
+		//BaseMod.addCard(new ReactiveShield()); // block (cycle)
+		//Trip Mine
+		//-BaseMod.addCard(new Lockdown());	// block, draw
+		//-Save State (use power since retain isn't cleared on discard?)
+		
+		BaseMod.addCard(new Disorient());	// debuff
+		BaseMod.addCard(new LaserCore());	// cycle, atk
+		BaseMod.addCard(new FlameCore());	// cycle, atk
+		BaseMod.addCard(new ScopeCore());	// cycle, debuff
+		BaseMod.addCard(new ForceCore()); 	// cycle, buff
+		BaseMod.addCard(new GuardCore());	// cycle, block
 		BaseMod.addCard(new Backup());		// copy
 		BaseMod.addCard(new BatteryAcid()); // energy
 		BaseMod.addCard(new Reboot());	 	// exhaust
-		BaseMod.addCard(new ModeShift()); 	// modes, draw
-		// 	Powers
+		BaseMod.addCard(new Isolate()); 	// cycle, buff
+		BaseMod.addCard(new Stasis()); 		// copy, mega-upgrade
+		
+		// 	Powers (7/7)
 		BaseMod.addCard(new Synchronize());	// copy-based
 		BaseMod.addCard(new Enhance());		// upgrade
-		BaseMod.addCard(new ShieldGenerator());//defensive
-		BaseMod.addCard(new Disruptor());  	// block
+		BaseMod.addCard(new ElectricArmor());//block-based
+		BaseMod.addCard(new BubbleShield());// block-based
+		BaseMod.addCard(new Overclock()); 	// burn, draw
+		BaseMod.addCard(new Overcharge()); 	// burn, energy
+		BaseMod.addCard(new ShieldGenerator());//defensive --> RARE? (synergy with Orb Assault as it currently is, Shield Burst; but can't be copied!)
+		//-BaseMod.addCard(new Overpower());	// burn, stats
+		//-BaseMod.addCard(new Disruptor());  	// block
 		
 		// RARE
-		//	Attacks
+		//	Attacks (6/5)
 		BaseMod.addCard(new HyperBeam());	// atk
 		BaseMod.addCard(new GoldenBullet());// atk
 		BaseMod.addCard(new ShieldBurst());	// atk from block
 		BaseMod.addCard(new GatlingGun());	// atk, X-cost
 		BaseMod.addCard(new HammerDown());	// atk, modes
-		//	Skills
-		//BaseMod.addCard(new OrbGenesis());	// copy
+		BaseMod.addCard(new Antimatter());	// atk
+		//	Skills (7/7)
 		BaseMod.addCard(new MassProduction());//copy
 		BaseMod.addCard(new HastyRepair()); // heal
 		BaseMod.addCard(new ClockworkEgg());// egg
 		BaseMod.addCard(new Hazardproof()); // block, buff
-		BaseMod.addCard(new ScopeOrb());	// debuff
-		BaseMod.addCard(new BatteryOrb());	// energy
-		//	Powers
+		BaseMod.addCard(new BatteryCore());	// energy
+		BaseMod.addCard(new MemoryTap());	// cards from other classes
+		BaseMod.addCard(new Reserves()); 	// cycle, draw/energy at low HP
+		//	Powers (5/5)
 		BaseMod.addCard(new SiegeForm());	// buff, atk-based
-		BaseMod.addCard(new OrbAssault()); 	// atk from cycle
 		BaseMod.addCard(new SpinDrive()); 	// cards
+		BaseMod.addCard(new Bunker()); 		// block --> RARE? (synergy with retain, which are mostly c/u), can't be copied!
+		BaseMod.addCard(new Meltdown()); 	// burn, damage
+		BaseMod.addCard(new PanicFire()); 	// atk & exhaust from cycle
+		//-BaseMod.addCard(new CoreStorm()); 	// atk from cycle --> Bring back old Panic Fire, now that orbs copy again?
 		
 		// MISC.
-		BaseMod.addCard(new BrokenOrb()); // status, cycle
+		//BaseMod.addCard(new CoreShard()); // status, cycle
 	}
 	
 	public void receiveEditRelics() {
 		logger.info("Adding Construct Relics");
+		BaseMod.addRelic(new FoamFinger(), RelicType.SHARED);
+		BaseMod.addRelic(new ClawGrip(), RelicType.SHARED);
+		BaseMod.addRelic(new RocketBooster(), RelicType.SHARED);
 		BaseMod.addRelicToCustomPool(new Cogwheel(), AbstractCardEnum.CONSTRUCTMOD.toString());
-		BaseMod.addRelicToCustomPool(new GenesisOrb(), AbstractCardEnum.CONSTRUCTMOD.toString());
+		BaseMod.addRelicToCustomPool(new MasterCore(), AbstractCardEnum.CONSTRUCTMOD.toString());
 		BaseMod.addRelicToCustomPool(new ClockworkPhoenix(), AbstractCardEnum.CONSTRUCTMOD.toString());
+		BaseMod.addRelicToCustomPool(new MegaBattery(), AbstractCardEnum.CONSTRUCTMOD.toString());
+		BaseMod.addRelicToCustomPool(new PurpleEmber(), AbstractCardEnum.CONSTRUCTMOD.toString());
 	}
 }

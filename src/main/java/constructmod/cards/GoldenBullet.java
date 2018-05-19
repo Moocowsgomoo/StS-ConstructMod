@@ -26,7 +26,8 @@ public class GoldenBullet extends AbstractConstructCard {
 	private static final int UPGRADE_PLUS_ATTACK_DMG = 4;
 	private static final int LOSE_GOLD_AMT = 20;
 	private static final int UPGRADE_PLUS_LOSE_GOLD_AMT = -5;
-	private static final int M_UPGRADE_PLUS_LOSE_GOLD_AMT = -10;
+	private static final int M_UPGRADE_PLUS_LOSE_GOLD_AMT = 10;
+	private static final int M_UPGRADE_PLUS_ATTACK_DMG = 18;
 	private static final int POOL = 1;
 
 	public GoldenBullet() {
@@ -59,6 +60,7 @@ public class GoldenBullet extends AbstractConstructCard {
 		} else if (this.canUpgrade()) {
 			this.megaUpgradeName();
 			this.upgradeMagicNumber(M_UPGRADE_PLUS_LOSE_GOLD_AMT);
+			this.upgradeDamage(M_UPGRADE_PLUS_ATTACK_DMG);
 		}
 	}
 }

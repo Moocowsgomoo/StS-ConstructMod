@@ -22,7 +22,7 @@ public class BunkerPower extends AbstractPower {
 	public static final String POWER_ID = "Bunker";
 	public static final String NAME = "Bunker";
 	public static final String[] DESCRIPTIONS = new String[] {
-			"When a card is Retained, gain ",
+			"When a card is #yretained, gain #b",
 			" Block."
 	};
 	

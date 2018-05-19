@@ -28,7 +28,7 @@ public class ChargeShot extends AbstractConstructCard {
 	private static final int UPGRADE_PLUS_ATTACK_DMG = 0;
 	private static final int CHARGE_DMG = 5;
 	private static final int UPGRADE_PLUS_CHARGE_DMG = 2;
-	private static final int M_UPGRADE_PLUS_CHARGE_DMG = 2;
+	private static final int M_UPGRADE_PLUS_CHARGE_DMG = 3;
 	private static final int POOL = 1;
 
 	public ChargeShot() {
@@ -72,7 +72,7 @@ public class ChargeShot extends AbstractConstructCard {
 	public void triggerOnEndOfTurnForPlayingCard()
 	{
 		AbstractDungeon.actionManager.addToTop(new com.megacrit.cardcrawl.actions.common.ModifyDamageAction(this, this.magicNumber));
-		//AbstractDungeon.player.limbo.addToTop(this);
+		this.flash();
 	}
 
 	@Override

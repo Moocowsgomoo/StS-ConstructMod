@@ -20,7 +20,7 @@ public class Anticipate extends AbstractConstructCard {
 	private static final int COST = 1;
 	private static final int BLOCK_AMT = 10;
 	private static final int UPGRADE_BLOCK_AMT = 3;
-	private static final int M_UPGRADE_BLOCK_AMT = 5;
+	private static final int M_UPGRADE_BLOCK_AMT = 7;
 	private static final int POOL = 1;
 
 	public Anticipate() {

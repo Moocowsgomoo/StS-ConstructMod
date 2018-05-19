@@ -25,6 +25,7 @@ public class HammerDown extends AbstractConstructCard {
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+	public static final String M_UPGRADE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 	private static final int COST = 2;
 	private static final int M_UPGRADE_NEW_COST = 1;
 	private static final int ATTACK_DMG = 12;
@@ -44,7 +45,7 @@ public class HammerDown extends AbstractConstructCard {
 		AbstractDungeon.actionManager.addToBottom(new DamageAction(
 				m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
 		
-		AbstractDungeon.actionManager.addToBottom(new DoubleStatsAction(p));
+		AbstractDungeon.actionManager.addToBottom(new DoubleStatsAction(p,(this.megaUpgraded?3:1)));
 	}
 
 	@Override
@@ -62,7 +63,9 @@ public class HammerDown extends AbstractConstructCard {
 			this.exhaust = false;
 		} else if (this.canUpgrade()) {
 			this.megaUpgradeName();
-			this.upgradeBaseCost(M_UPGRADE_NEW_COST);
+			this.rawDescription = M_UPGRADE_DESCRIPTION;
+			this.initializeDescription();
+			//this.upgradeBaseCost(M_UPGRADE_NEW_COST);
 		}
 	}
 }

@@ -17,7 +17,7 @@ import constructmod.powers.OverclockPower;
 import constructmod.powers.OverpowerPower;
 
 public class Overclock extends AbstractConstructCard {
-	public static final String ID = "Overclock";
+	public static final String ID = "Construct_Overclock";
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;

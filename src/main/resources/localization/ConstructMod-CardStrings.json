@@ -306,7 +306,7 @@
 		"NAME": "Bunker",
 		"DESCRIPTION": "When a card is Retained, gain !M! Block."
 	},
-	"Reboot": {
+	"HardReboot": {
 		"NAME": "Hard Reboot",
 		"DESCRIPTION": "Exhaust your hand. NL Draw !M! cards. NL Exhaust.",
 		"UPGRADE_DESCRIPTION": "Exhaust your hand. NL Draw !M! cards."
@@ -356,7 +356,7 @@
 		"DESCRIPTION": "Add a random red, green, and blue card to your hand. NL They cost 0 this turn. NL Exhaust.",
 		"UPGRADE_DESCRIPTION": "Add a random Upgraded red, green, and blue card to your hand. They cost 0 this turn. NL Exhaust."
 	},
-	"Overclock": {
+	"Construct_Overclock": {
 		"NAME": "Overclock",
 		"DESCRIPTION": "At the start of your turn, draw !M! cards and add a Burn to your hand.",
 		"UPGRADE_DESCRIPTION": "Retain. NL Draw 4 cards. At the start of your turn, draw !M! cards and add a Burn to your hand."

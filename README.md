@@ -3,7 +3,7 @@ Adds a new character for Slay The Spire, complete with 70+ new cards and 8 new r
 * On reaching the first unlock level, you'll unlock an alternate starting relic in the "Mods" tab of the game's main menu.
 * Right now all cards and relics are unlocked at the start, so subsequent unlocks don't do anything.
 
-The Construct is a mix of the many robotic enemies you'll find in the Spire, and uses familiar abilities like Mode Shift, Fierce Bash, and of course the Hyper Beam. Its main strength is adaptability; the new Cycle keyword gives you some control over the composition of your hand at any given time, and your starter Mode Shift cards allow you to switch between attack and defense on the fly.
+The Construct is a mix of the many robotic enemies you'll find in the Spire, and uses familiar abilities like Mode Shift, Stasis, and of course the Hyper Beam. Its main strength is adaptability; the new Cycle keyword gives you some control over the composition of your hand at any given time, and your starter Mode Shift cards allow you to switch between attack and defense on the fly.
 
 This character is meant to feel as close to an official character as possible, with multiple potential deck archetypes and rewarding interactions between cards. Balance is an ongoing process and cards/relics may change over time.
 

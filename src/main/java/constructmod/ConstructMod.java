@@ -245,7 +245,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new GuardCore());	// cycle, block
 		BaseMod.addCard(new Backup());		// copy
 		BaseMod.addCard(new BatteryAcid()); // energy
-		BaseMod.addCard(new Reboot());	 	// exhaust
+		BaseMod.addCard(new HardReboot());	 	// exhaust
 		BaseMod.addCard(new Isolate()); 	// cycle, buff
 		BaseMod.addCard(new Stasis()); 		// copy, mega-upgrade
 		

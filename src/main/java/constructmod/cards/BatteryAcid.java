@@ -24,7 +24,7 @@ public class BatteryAcid extends AbstractConstructCard {
 	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	public static final String M_UPGRADE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 	private static final int COST = 0;
-	private static final int ENERGY_GAIN = 1;
+	private static final int ENERGY_GAIN = 2;
 	private static final int SLIMED_AMT = 1;
 	private static final int UPGRADE_PLUS_ENERGY_GAIN = 1;
 	private static final int POOL = 1;

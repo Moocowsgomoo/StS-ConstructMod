@@ -28,7 +28,7 @@ public class Hazardproof extends AbstractConstructCard {
 
 	public Hazardproof() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.SELF, POOL);
 		this.baseBlock = BLOCK_AMT;
 		this.magicNumber = this.baseMagicNumber = ARTIFACT_AMT;
 	}

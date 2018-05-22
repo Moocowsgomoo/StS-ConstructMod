@@ -42,6 +42,9 @@ public class OmegaCannon extends AbstractConstructCard {
 		if (!AbstractDungeon.player.hasPower("Strength") || AbstractDungeon.player.getPower("Strength").amount < 0) return;
 		
 		this.prevDiscount = AbstractDungeon.player.getPower("Strength").amount;
+		
+		if (this.costForTurn - this.prevDiscount < 0) this.prevDiscount = this.costForTurn;
+		
 		this.costForTurn = this.costForTurn - this.prevDiscount;
 	}
 	

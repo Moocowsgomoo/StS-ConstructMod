@@ -56,8 +56,7 @@
 	},
 	"ChargeShot": {
 		"NAME": "Charge Shot",
-		"DESCRIPTION": "Retain. Deal !M! damage for each turn this was retained.",
-		"UPGRADE_DESCRIPTION": " NL (Deals !D! damage.)"
+		"DESCRIPTION": "Retain. Deal !D! damage, plus !M! for each turn this was retained."
 	},
 	"Boost": {
 		"NAME": "Boost",
@@ -210,7 +209,8 @@
 	},
 	"Synchronize": {
 		"NAME": "Synchronize",
-		"DESCRIPTION": "When you draw 2 of the same card in a row, deal !M! damage to ALL enemies."
+		"DESCRIPTION": "When you draw 2 of the same card in a row, deal !M! damage to ALL enemies.",
+		"UPGRADE_DESCRIPTION": "Innate. NL When you draw 2 of the same card in a row, deal !M! damage to ALL enemies."
 	},
 	"SiegeForm": {
 		"NAME": "Siege Form",
@@ -218,7 +218,7 @@
 	},
 	"HammerDown": {
 		"NAME": "Hammer Down",
-		"DESCRIPTION": "Deal !D! damage. NL Double your Strength and Dexterity. NL Exhaust.",
+		"DESCRIPTION": "Deal !D! damage. NL Double your Strength and Dexterity.",
 		"UPGRADE_DESCRIPTION": "Deal !D! damage. NL Double your Strength and Dexterity.",
 		"EXTENDED_DESCRIPTION": [
 			"Deal !D! damage. NL Quadruple your Strength and Dexterity."	
@@ -267,11 +267,11 @@
 	},
 	"Antimatter": {
 		"NAME": "Antimatter",
-		"DESCRIPTION": "Can only be played if you have 0 [R] . NL Deal !M! damage for each card in hand.",
+		"DESCRIPTION": "Reduce your [R] to 0. NL Deal !M! damage for each other card in hand.",
 		"EXTENDED_DESCRIPTION": [
-			" NL (Deals !D! damage.)",
+			"(Deals !D! damage.) NL ",
 			"I have more than 0 energy!",
-			"Reduce your [R] to 0. NL Deal !M! damage for each card in hand."
+			"Reduce your [R] to 0, and regain it next turn. NL Deal !M! damage for each other card in hand."
 		]
 	},
 	"ClockworkEgg": {
@@ -296,10 +296,10 @@
 	},
 	"BatteryAcid": {
 		"NAME": "Battery Acid",
-		"DESCRIPTION": "Gain [R] . NL Add a Slimed to your hand.",
-		"UPGRADE_DESCRIPTION": "Gain [R] [R] . NL Add a Slimed to your hand.",
+		"DESCRIPTION": "Gain [R] [R] . NL Add a Slimed to your hand.",
+		"UPGRADE_DESCRIPTION": "Gain [R] [R] [R] . NL Add a Slimed to your hand.",
 		"EXTENDED_DESCRIPTION": [
-			"Gain [R] [R] , this and next turn. NL Add a Slimed to your hand."
+			"Gain [R] [R] [R] , this and next turn. NL Add a Slimed to your hand."
 		]
 	},
 	"Bunker": {
@@ -453,5 +453,10 @@
 		"NAME": "Stasis",
 		"DESCRIPTION": "Exhaust a card. NL Next time you play this, add !M! Mega-upgraded copies of that card to your hand.",
 		"UPGRADE_DESCRIPTION": "Innate. Retain. NL Exhaust a card. NL Next time you play this, add !M! Mega-upgraded copies of that card to your hand."
+	},
+	"Improvise": {
+		"NAME": "Improvise",
+		"DESCRIPTION": "Play the top X cards of your draw pile.",
+		"UPGRADE_DESCRIPTION": "Play the top X+1 cards of your draw pile."
 	}
 }

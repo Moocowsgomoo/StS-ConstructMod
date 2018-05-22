@@ -188,7 +188,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new DefenseMode());
 		
 		// COMMON
-		//	Attacks (12/11)
+		//	Attacks (11/11)
 		BaseMod.addCard(new Boost()); 		// atk, block
 		BaseMod.addCard(new ScrapCannon());	// atk, exhaust
 		BaseMod.addCard(new SweepLaser());	// atk
@@ -227,11 +227,13 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new OmegaCannon()); // atk, str-based
 		BaseMod.addCard(new QuickAttack()); // atk, dex
 		
-		//	Skills (17/17)
+		//	Skills (16/17)
 		BaseMod.addCard(new OneWayMirror());// block
 		BaseMod.addCard(new Reinforce());	// block
 		BaseMod.addCard(new Disrupt());		// block
 		BaseMod.addCard(new Impenetrable());// block
+		BaseMod.addCard(new Hazardproof()); // block, buff
+		
 		//BaseMod.addCard(new ReactiveShield()); // block (cycle)
 		//Trip Mine
 		//-BaseMod.addCard(new Lockdown());	// block, draw
@@ -245,7 +247,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new GuardCore());	// cycle, block
 		BaseMod.addCard(new Backup());		// copy
 		BaseMod.addCard(new BatteryAcid()); // energy
-		BaseMod.addCard(new HardReboot());	 	// exhaust
+		BaseMod.addCard(new HardReboot());	// exhaust
 		BaseMod.addCard(new Isolate()); 	// cycle, buff
 		BaseMod.addCard(new Stasis()); 		// copy, mega-upgrade
 		
@@ -268,11 +270,10 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new GatlingGun());	// atk, X-cost
 		BaseMod.addCard(new HammerDown());	// atk, modes
 		BaseMod.addCard(new Antimatter());	// atk
-		//	Skills (7/7)
+		//	Skills (6/7)
 		BaseMod.addCard(new MassProduction());//copy
 		BaseMod.addCard(new HastyRepair()); // heal
 		BaseMod.addCard(new ClockworkEgg());// egg
-		BaseMod.addCard(new Hazardproof()); // block, buff
 		BaseMod.addCard(new BatteryCore());	// energy
 		BaseMod.addCard(new MemoryTap());	// cards from other classes
 		BaseMod.addCard(new Reserves()); 	// cycle, draw/energy at low HP

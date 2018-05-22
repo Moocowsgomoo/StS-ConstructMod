@@ -1,7 +1,9 @@
 package constructmod.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
 import com.megacrit.cardcrawl.actions.utility.LoseBlockAction;
@@ -14,6 +16,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.EnergizedPower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import basemod.abstracts.CustomCard;
@@ -46,7 +49,9 @@ public class Antimatter extends AbstractConstructCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
+		if (this.megaUpgraded) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new EnergizedPower(p, EnergyPanel.totalCount),EnergyPanel.totalCount));
 		AbstractDungeon.actionManager.addToBottom(new LoseEnergyAction(EnergyPanel.totalCount));
+		//if (this.megaUpgraded) AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
 		AbstractDungeon.actionManager.addToBottom(new DamageAction(
 				m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HEAVY));
 		
@@ -54,13 +59,13 @@ public class Antimatter extends AbstractConstructCard {
 		initializeDescription();
 	}
 	
-	@Override
+	/*@Override
     public boolean canUse(final AbstractPlayer p, final AbstractMonster m) {
 		if (EnergyPanel.totalCount <= 0 || this.megaUpgraded) return true;
 		
         this.cantUseMessage = ERROR_DESCRIPTION;
         return false;
-    }
+    }*/
 	
 	@Override
 	public void applyPowers(){
@@ -69,7 +74,7 @@ public class Antimatter extends AbstractConstructCard {
 		
 		super.applyPowers();
 		
-		this.rawDescription = desc + EXTENDED_DESCRIPTION;
+		this.rawDescription = EXTENDED_DESCRIPTION + desc;
 		initializeDescription();
 	}
 	

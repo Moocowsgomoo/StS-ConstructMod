@@ -29,13 +29,14 @@ public class HammerDown extends AbstractConstructCard {
 	private static final int COST = 2;
 	private static final int M_UPGRADE_NEW_COST = 1;
 	private static final int ATTACK_DMG = 12;
+	private static final int UPGRADE_PLUS_ATTACK_DMG = 4;
 	private static final int POOL = 1;
 
 	public HammerDown() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.ATTACK,
 				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.ENEMY, POOL);
 		this.baseDamage = this.damage = ATTACK_DMG;
-		this.exhaust = true;
+		//this.exhaust = true;
 	}
 
 	@Override
@@ -57,10 +58,10 @@ public class HammerDown extends AbstractConstructCard {
 	public void upgrade() {
 		if (!this.upgraded) {
 			this.upgradeName();
-			this.rawDescription = UPGRADE_DESCRIPTION;
-			this.initializeDescription();
-			//this.upgradeDamage(UPGRADE_PLUS_ATTACK_DMG);
-			this.exhaust = false;
+			//this.rawDescription = UPGRADE_DESCRIPTION;
+			//this.initializeDescription();
+			this.upgradeDamage(UPGRADE_PLUS_ATTACK_DMG);
+			//this.exhaust = false;
 		} else if (this.canUpgrade()) {
 			this.megaUpgradeName();
 			this.rawDescription = M_UPGRADE_DESCRIPTION;

@@ -24,8 +24,9 @@ public class ChargeShot extends AbstractConstructCard {
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	private static final int COST = 1;
-	private static final int ATTACK_DMG = 0;
-	private static final int UPGRADE_PLUS_ATTACK_DMG = 0;
+	private static final int ATTACK_DMG = 5;
+	private static final int UPGRADE_PLUS_ATTACK_DMG = 2;
+	private static final int M_UPGRADE_PLUS_ATTACK_DMG = 3;
 	private static final int CHARGE_DMG = 5;
 	private static final int UPGRADE_PLUS_CHARGE_DMG = 2;
 	private static final int M_UPGRADE_PLUS_CHARGE_DMG = 3;
@@ -45,7 +46,7 @@ public class ChargeShot extends AbstractConstructCard {
 		AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.common.DamageAction(m,
 					new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SMASH));
-		AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.common.ModifyDamageAction(this, ATTACK_DMG - this.damage));
+		AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.common.ModifyDamageAction(this, this.baseDamage - this.damage));
 	
 		this.rawDescription = DESCRIPTION;
 		initializeDescription();
@@ -58,15 +59,15 @@ public class ChargeShot extends AbstractConstructCard {
 		
 		this.retain = true;
 		
-		this.rawDescription = DESCRIPTION + UPGRADE_DESCRIPTION;
-		initializeDescription();
+		//this.rawDescription = UPGRADE_DESCRIPTION + DESCRIPTION;
+		//initializeDescription();
 	}
 	
-	@Override
+	/*@Override
 	public void onMoveToDiscard(){
 		this.rawDescription = DESCRIPTION;
 		initializeDescription();
-	}
+	}*/
 	
 	@Override
 	public void triggerOnEndOfTurnForPlayingCard()
@@ -85,8 +86,10 @@ public class ChargeShot extends AbstractConstructCard {
 		if (!this.upgraded) {
 			this.upgradeName();
 			this.upgradeMagicNumber(UPGRADE_PLUS_CHARGE_DMG);
+			this.upgradeDamage(UPGRADE_PLUS_ATTACK_DMG);
 		} else if (this.canUpgrade()) {
 			this.megaUpgradeName();
+			this.upgradeDamage(M_UPGRADE_PLUS_ATTACK_DMG);
 			this.upgradeMagicNumber(M_UPGRADE_PLUS_CHARGE_DMG);
 		}
 	}

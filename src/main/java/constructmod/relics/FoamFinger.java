@@ -4,6 +4,7 @@ import basemod.abstracts.CustomRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.badlogic.gdx.Gdx;
@@ -23,8 +24,19 @@ public class FoamFinger extends CustomRelic {
     @Override
     public void atTurnStart() {
         flash();
-        AbstractDungeon.actionManager.addToTop(new DrawCardAction(AbstractDungeon.player, 1));
         AbstractDungeon.actionManager.addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+    }
+    
+    @Override
+    public void onEquip() {
+        final AbstractPlayer player = AbstractDungeon.player;
+        ++player.masterHandSize;
+    }
+    
+    @Override
+    public void onUnequip() {
+        final AbstractPlayer player = AbstractDungeon.player;
+        --player.masterHandSize;
     }
     
     @Override

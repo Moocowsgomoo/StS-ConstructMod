@@ -51,7 +51,7 @@ public class OrbGenesis extends CustomCard {
 		
 	    for (int i=0;i<this.magicNumber;i++) {
 	    	AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(
-					p,p,list.get(AbstractDungeon.cardRandomRng.random(list.size() - 1)),1,true,true));
+					list.get(AbstractDungeon.cardRandomRng.random(list.size() - 1)),1,true,true));
 	    }
 	}
 

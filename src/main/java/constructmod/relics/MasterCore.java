@@ -51,8 +51,7 @@ public class MasterCore extends CustomRelic {
     	
     	for (int i=0;i<3;i++) {
 	    	AbstractCard c = cards.get(AbstractDungeon.cardRandomRng.random(0,cards.size()-1));
-	    	AbstractDungeon.actionManager.addToTop(new MakeTempCardInDrawPileAction(
-	    			AbstractDungeon.player,AbstractDungeon.player,c.makeCopy(),1,true,false));
+	    	AbstractDungeon.actionManager.addToTop(new MakeTempCardInDrawPileAction(c.makeCopy(),1,true,false));
     	}
     	
     	AbstractDungeon.actionManager.addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));

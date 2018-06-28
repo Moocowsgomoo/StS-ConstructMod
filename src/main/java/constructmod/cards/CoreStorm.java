@@ -39,7 +39,7 @@ public class CoreStorm extends AbstractConstructCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(p,p, new CoreShard(),this.numOrbs,true,false));
+		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(new CoreShard(),this.numOrbs,true,false));
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new AutoturretPower(p, this.magicNumber), this.magicNumber));
 	}
 

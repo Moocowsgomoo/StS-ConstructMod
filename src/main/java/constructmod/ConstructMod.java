@@ -193,7 +193,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new ScrapCannon());	// atk, exhaust
 		BaseMod.addCard(new SweepLaser());	// atk
 		BaseMod.addCard(new Versatility());	// atk, block (intent)
-		BaseMod.addCard(new SuppressiveFire());// atk, defense
+		BaseMod.addCard(new SuppressiveFire());// atk, defense -> UNCOMMON, replace with draw?
 		BaseMod.addCard(new Backfire());	// atk
 		BaseMod.addCard(new HeavyBolt());	// atk
 		BaseMod.addCard(new ShiftStrike()); // atk, str/dex

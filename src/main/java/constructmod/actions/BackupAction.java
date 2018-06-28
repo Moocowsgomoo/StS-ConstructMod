@@ -44,7 +44,7 @@ public class BackupAction extends AbstractGameAction
                 for (final AbstractCard c : this.p.hand.group) {
                     if (this.isCopiable(c)) {
                         AbstractDungeon.actionManager.addToTop(new MakeTempCardInDrawPileAction(
-                        		p,p,c.makeStatEquivalentCopy(),dupeAmount,randomSpot,false));
+                        		c.makeStatEquivalentCopy(),dupeAmount,randomSpot,false));
                         this.isDone = true;
                         return;
                     }
@@ -58,7 +58,7 @@ public class BackupAction extends AbstractGameAction
             }
             if (this.p.hand.group.size() == 1) {
             	AbstractDungeon.actionManager.addToTop(new MakeTempCardInDrawPileAction(
-            			p,p,p.hand.getTopCard().makeStatEquivalentCopy(),dupeAmount,randomSpot,false));
+            			p.hand.getTopCard().makeStatEquivalentCopy(),dupeAmount,randomSpot,false));
                 this.returnCards();
                 this.isDone = true;
             }
@@ -68,7 +68,7 @@ public class BackupAction extends AbstractGameAction
             for (final AbstractCard c : AbstractDungeon.handCardSelectScreen.selectedCards.group) {
             	AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(c.makeStatEquivalentCopy()));
             	AbstractDungeon.actionManager.addToTop(new MakeTempCardInDrawPileAction(
-                		p,p,c.makeStatEquivalentCopy(),dupeAmount,randomSpot,false));
+                		c.makeStatEquivalentCopy(),dupeAmount,randomSpot,false));
             }
             this.returnCards();
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;

@@ -27,7 +27,7 @@ public class AccumulateAction extends AbstractGameAction
             if (AbstractDungeon.gridSelectScreen.selectedCards.size() != 0) {
                 for (final AbstractCard c : AbstractDungeon.gridSelectScreen.selectedCards) {
                     c.unhover();
-                    AbstractDungeon.actionManager.addToTop(new MakeTempCardInDrawPileAction(p,p,c,this.amount,true,false));
+                    AbstractDungeon.actionManager.addToTop(new MakeTempCardInDrawPileAction(c,this.amount,true,false));
                 }
                 AbstractDungeon.gridSelectScreen.selectedCards.clear();
                 this.p.hand.refreshHandLayout();
@@ -48,7 +48,7 @@ public class AccumulateAction extends AbstractGameAction
         if (tmp.size() == 1) {
             final AbstractCard card = tmp.getTopCard();
             card.unhover();
-            AbstractDungeon.actionManager.addToTop(new MakeTempCardInDrawPileAction(p,p,card,this.amount,true,false));
+            AbstractDungeon.actionManager.addToTop(new MakeTempCardInDrawPileAction(card,this.amount,true,false));
             this.isDone = true;
             return;
         }

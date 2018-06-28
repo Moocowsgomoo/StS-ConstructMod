@@ -50,7 +50,7 @@ public class HyperBeam extends AbstractConstructCard {
 		
 		AbstractDungeon.actionManager.addToBottom(new DamageAction((AbstractCreature) m, 
 			new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
-		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(p, p, new Dazed(), this.magicNumber, false, false));
+		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(new Dazed(), this.magicNumber, false, false));
 	}
 	
 	@Override

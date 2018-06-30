@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -25,7 +26,7 @@ PostDungeonInitializeSubscriber {
 	public static final String NAME = "Synchronize";
 	public static final String[] DESCRIPTIONS = new String[] {
 			"Whenever you draw 2 of the same card in a row, deal ",
-			" damage to ALL enemies.",
+			" damage to ALL enemies and draw a card.",
 			" NL (Last drawn: ",
 			")."
 	};
@@ -61,6 +62,7 @@ PostDungeonInitializeSubscriber {
 		if (c.originalName.equals(drawnCardName)) {
 			this.flash();
 			
+			AbstractDungeon.actionManager.addToTop(new DrawCardAction(this.owner,1)); // occurs after damageAll due to action order
 			AbstractDungeon.actionManager.addToTop(new DamageAllEnemiesAction(
 					null, DamageInfo.createDamageMatrix(this.amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 			

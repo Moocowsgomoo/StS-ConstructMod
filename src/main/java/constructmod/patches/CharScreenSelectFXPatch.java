@@ -2,12 +2,10 @@ package constructmod.patches;
 
 import java.lang.reflect.Field;
 
-import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.events.thecity.KnowingSkull;
 import com.megacrit.cardcrawl.helpers.Prefs;
 import com.megacrit.cardcrawl.helpers.SaveHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
@@ -17,7 +15,7 @@ import com.megacrit.cardcrawl.screens.charSelect.CharacterSelectScreen;
 @SpirePatch(cls="com.megacrit.cardcrawl.screens.charSelect.CharacterOption", method="updateHitbox")
 public class CharScreenSelectFXPatch {
 
-	@SpireInsertPatch(rloc=52)
+	@SpireInsertPatch(rloc=37)
 	public static void Insert(Object __obj_instance) {
 		Field maxAscensionLevel;
 		try {
@@ -26,7 +24,7 @@ public class CharScreenSelectFXPatch {
 			if (chosenClass.toString() == "THE_CONSTRUCT_MOD") {
 				pref = SaveHelper.getPrefs("THE_CONSTRUCT_MOD");
 				CardCrawlGame.sound.playV("AUTOMATON_ORB_SPAWN", 1.75f);
-		        CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT, false);
+				CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT, false);
 		        
 		        CharacterOption obj = (CharacterOption) __obj_instance;
 				maxAscensionLevel = obj.getClass().getDeclaredField("maxAscensionLevel");
@@ -51,7 +49,7 @@ public class CharScreenSelectFXPatch {
 	                CardCrawlGame.mainMenuScreen.charSelectScreen.ascLevelInfoString = "";
 	            }
 			}
-		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
+		} catch (NoSuchFieldException | IllegalAccessException | SecurityException | IllegalArgumentException e) {
 			e.printStackTrace();
 		}
 	}

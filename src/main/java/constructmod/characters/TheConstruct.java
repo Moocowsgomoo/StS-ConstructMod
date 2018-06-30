@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.characters.Defect;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.daily.DailyMods;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -31,6 +32,10 @@ public class TheConstruct extends CustomPlayer{
 		
 		initializeClass(null, "img/char/construct/shoulder2.png", "img/char/construct/shoulder.png", "img/char/construct/corpse.png",
 				getLoadout(), 20.0F, -10.0F, 220.0F, 290.0F, new EnergyManager(ENERGY_PER_TURN));
+		
+		if (Settings.dailyModsEnabled() && DailyMods.cardMods.get("Diverse")) {
+			this.masterMaxOrbs = 1;
+		}
 		
 		//loadAnimation("img/char/construct/skeleton.atlas", "img/char/construct/skeleton.json", 1.0F);
 		

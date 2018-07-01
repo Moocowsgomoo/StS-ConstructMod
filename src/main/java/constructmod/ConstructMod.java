@@ -125,7 +125,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     	BaseMod.addKeyword(blur, "Your Block is carried over between turns.");
     	final String[] metallicize = {"metallicize"};
     	BaseMod.addKeyword(metallicize, "Gain Block at the end of each turn.");
-    	final String[] pArmor = {"plated armor"}; // not working b/c it's two words?
+    	final String[] pArmor = {"armor"}; // not working b/c it's two words?
     	BaseMod.addKeyword(pArmor, "Gain Block at the end of each turn. Reduced when you take unblocked damage.");
     	final String[] slimed = {"slimed"};
     	BaseMod.addKeyword(slimed, "Slimed is a status card that costs [R] to exhaust.");
@@ -227,14 +227,14 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new OmegaCannon()); // atk, str-based
 		BaseMod.addCard(new QuickAttack()); // atk, dex
 		
-		//	Skills (16/17)
+		//	Skills (18/17)
 		BaseMod.addCard(new OneWayMirror());// block
 		BaseMod.addCard(new Reinforce());	// block
 		BaseMod.addCard(new Disrupt());		// block
 		BaseMod.addCard(new Impenetrable());// block
 		BaseMod.addCard(new Hazardproof()); // block, buff
 		
-		//BaseMod.addCard(new ReactiveShield()); // block (cycle)
+		//BaseMod.addCard(new ReactiveShield2()); // block (cycle)
 		//Trip Mine
 		//-BaseMod.addCard(new Lockdown());	// block, draw
 		//-Save State (use power since retain isn't cleared on discard?)
@@ -250,15 +250,16 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new HardReboot());	// exhaust
 		BaseMod.addCard(new Isolate()); 	// cycle, buff
 		BaseMod.addCard(new Stasis()); 		// copy, mega-upgrade
-		
-		// 	Powers (7/7)
-		BaseMod.addCard(new Synchronize());	// copy-based
-		BaseMod.addCard(new Enhance());		// upgrade
 		BaseMod.addCard(new ElectricArmor());//block-based
 		BaseMod.addCard(new BubbleShield());// block-based
+		
+		// 	Powers (6/7)
+		BaseMod.addCard(new Synchronize());	// copy-based
+		BaseMod.addCard(new Enhance());		// upgrade
 		BaseMod.addCard(new Overclock()); 	// burn, draw
 		BaseMod.addCard(new Overcharge()); 	// burn, energy
 		BaseMod.addCard(new ShieldGenerator());//defensive --> RARE? (synergy with Orb Assault as it currently is, Shield Burst; but can't be copied!)
+		BaseMod.addCard(new ReactiveShield());// block-based
 		//-BaseMod.addCard(new Overpower());	// burn, stats
 		//-BaseMod.addCard(new Disruptor());  	// block
 		
@@ -266,7 +267,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		//	Attacks (6/5)
 		BaseMod.addCard(new HyperBeam());	// atk
 		BaseMod.addCard(new GoldenBullet());// atk
-		BaseMod.addCard(new ShieldBurst());	// atk from block
+		BaseMod.addCard(new ShieldBurst());	// atk from block --> UNCOMMON?
 		BaseMod.addCard(new GatlingGun());	// atk, X-cost
 		BaseMod.addCard(new HammerDown());	// atk, modes
 		BaseMod.addCard(new Antimatter());	// atk

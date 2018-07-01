@@ -68,22 +68,22 @@
 	},
 	"ElectricArmor": {
 		"NAME": "Electric Armor",
-		"DESCRIPTION": "Cycle if Dexterity < 1. NL Gain Thorns equal to your Dexterity.",
-		"UPGRADE_DESCRIPTION": "Cycle if Dexterity < 1. NL Gain Thorns equal to your Dexterity + !M!.",
+		"DESCRIPTION": "Cycle if Dexterity < 1. NL Gain Thorns equal to your Dexterity. NL Exhaust.",
+		"UPGRADE_DESCRIPTION": "Cycle if Dexterity < 1. NL Gain Thorns equal to your Dexterity + !M!. NL Exhaust.",
 		"EXTENDED_DESCRIPTION": [
-			"Cycle if Dexterity < 1. NL Gain !M! Dexterity, then gain Thorns equal to your Dexterity."	
+			"Cycle if Dexterity < 1. NL Gain !M! Dexterity, then gain Thorns equal to your Dexterity. NL Exhaust."	
 		]
 	},
 	"BubbleShield": {
 		"NAME": "Bubble Shield",
-		"DESCRIPTION": "Cycle if Dexterity < 1. NL Gain Plated Armor equal to your Dexterity.",
-		"UPGRADE_DESCRIPTION": "Cycle if Dexterity < 1. NL Gain Plated Armor equal to your NL Dexterity + !M!.",
+		"DESCRIPTION": "Cycle if Dexterity < 1. NL Gain Armor equal to your Dexterity. NL Exhaust.",
+		"UPGRADE_DESCRIPTION": "Cycle if Dexterity < 1. NL Gain Armor equal to your NL Dexterity + !M!. NL Exhaust.",
 		"EXTENDED_DESCRIPTION": [
-			"Cycle if Dexterity < 1. NL Gain !M! Dexterity, then gain Plated Armor equal to your Dexterity."	
+			"Cycle if Dexterity < 1. NL Gain !M! Dexterity, then gain Armor equal to your Dexterity. NL Exhaust."	
 		]
 	},
-	"ReactiveShield": {
-		"NAME": "Reactive Shield",
+	"ReactiveShield2": {
+		"NAME": "Reactive Shield 2",
 		"DESCRIPTION": "Gain !B! Block for each enemy in combat.",
 		"UPGRADE_DESCRIPTION": "Cycle if there's only one enemy in combat. NL Gain !B! Block for each enemy in combat.",
 		"EXTENDED_DESCRIPTION": [
@@ -454,9 +454,21 @@
 		"DESCRIPTION": "Exhaust a card. NL Next time you play this, add !M! Mega-upgraded copies of that card to your hand.",
 		"UPGRADE_DESCRIPTION": "Innate. Retain. NL Exhaust a card. NL Next time you play this, add !M! Mega-upgraded copies of that card to your hand."
 	},
-	"Improvise": {
-		"NAME": "Improvise",
+	"Autopilot": {
+		"NAME": "Autopilot",
 		"DESCRIPTION": "Play the top X cards of your draw pile.",
 		"UPGRADE_DESCRIPTION": "Play the top X+1 cards of your draw pile."
+	},
+	"ReactiveShield": {
+		"NAME": "Reactive Shield",
+		"DESCRIPTION": "When you gain Block, deal !M! damage to the lowest-HP enemy.",
+		"UPGRADE_DESCRIPTION": "Innate. NL When you gain Block, deal !M! damage to the lowest-HP enemy.",
+		"EXTENDED_DESCRIPTION": [
+			"Innate. NL When you gain Block, deal !M! damage to the lowest-HP enemy. NL Gain 1 Metallicize."
+		]
+	},
+	"PointDefense": {
+		"NAME": "Point Defense",
+		"DESCRIPTION": "When a card cycles, gain !M! Block."
 	}
 }

@@ -48,7 +48,7 @@ public class CriticalHit extends AbstractCycleCard {
 			AbstractMonster targetMonster = (AbstractMonster)AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
 			if ((!targetMonster.isDeadOrEscaped())) {
 				if ((targetMonster.hasPower("Vulnerable") && targetMonster.getPower("Vulnerable").amount > 0) || 
-						(targetMonster.hasPower("Weak") && targetMonster.getPower("Weak").amount > 0 )){
+						(targetMonster.hasPower("Weakened") && targetMonster.getPower("Weakened").amount > 0 )){
 					anyVuln = true;
 					break;
 				}

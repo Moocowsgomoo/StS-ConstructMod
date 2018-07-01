@@ -25,9 +25,10 @@ public class BubbleShield extends AbstractCycleCard {
 	private static final int POOL = 1;
 
 	public BubbleShield() {
-		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.POWER,
+		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
 				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.SELF, POOL);
 		this.baseMagicNumber = this.magicNumber = PLUS_DEX;
+		this.exhaust = true;
 	}
 	
 	@Override

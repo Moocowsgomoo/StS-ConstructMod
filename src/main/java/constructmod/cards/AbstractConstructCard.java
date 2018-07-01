@@ -31,9 +31,16 @@ public abstract class AbstractConstructCard extends CustomCard {
 	}
 	
 	public void CloneCore() {
+		
 		if (this.upgraded) {
 			AbstractCard c = this.makeCopy();
-			if (this.megaUpgraded) c.upgrade();
+			
+			if (this.megaUpgraded || AbstractDungeon.player.hasRelic("Quantum Egg")) c.upgrade();
+			
+			if (AbstractDungeon.player.hasRelic("Quantum Egg")) {
+				AbstractDungeon.player.getRelic("Quantum Egg").flash();
+			}
+			
 			AbstractDungeon.player.discardPile.addToTop(c);
 		}
 	}

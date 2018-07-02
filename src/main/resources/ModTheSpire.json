@@ -3,7 +3,7 @@
   "name": "The Construct",
   "author_list": ["Moocowsgomoo"],
   "description": "New character: The Construct",
-  "version": "0.6.6",
+  "version": "0.6.7",
   "sts_version": "06-28-2018",
   "mts_version": "2.6.0",
   "dependencies": ["basemod"],

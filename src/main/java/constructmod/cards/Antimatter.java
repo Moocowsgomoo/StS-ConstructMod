@@ -32,7 +32,7 @@ public class Antimatter extends AbstractConstructCard {
 	private static final String ERROR_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[1];
 	private static final String M_UPGRADE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[2];
 	private static final int COST = 0;
-	private static final int CARD_DMG = 3;
+	private static final int CARD_DMG = 4;
 	private static final int UPGRADE_PLUS_CARD_DMG = 1;
 	private static final int M_UPGRADE_PLUS_CARD_DMG = 1;
 	private static final int POOL = 1;

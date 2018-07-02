@@ -451,8 +451,11 @@
 	},
 	"Stasis": {
 		"NAME": "Stasis",
-		"DESCRIPTION": "Exhaust a card. NL Next time you play this, add !M! Mega-upgraded copies of that card to your hand.",
-		"UPGRADE_DESCRIPTION": "Innate. Retain. NL Exhaust a card. NL Next time you play this, add !M! Mega-upgraded copies of that card to your hand."
+		"DESCRIPTION": "Exhaust a card. NL Next time you play this, add !M! Mega-upgraded copy of that card to your hand.",
+		"UPGRADE_DESCRIPTION": "Exhaust a card. NL Next time you play this, add !M! Mega-upgraded copies of that card to your hand.",
+		"EXTENDED_DESCRIPTION": [
+			"Innate. Retain. NL Exhaust a card. NL Next time you play this, add !M! Mega-upgraded copies of that card to your hand."
+		]
 	},
 	"Autopilot": {
 		"NAME": "Autopilot",

@@ -27,12 +27,12 @@ public class PowerUp extends AbstractConstructCard {
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	public static final String M_UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-	private static final int COST = 1;
-	private static final int ATTACK_DMG = 6;
+	private static final int COST = 2;
+	private static final int ATTACK_DMG = 12;
 	private static final int POWER_PLUS = 3;
 	private static final int UPGRADE_PLUS_ATTACK_DMG = 2;
 	private static final int UPGRADE_PLUS_POWER_PLUS = 2;
-	private static final int M_UPGRADE_PLUS_ATTACK_DMG = 2;
+	//private static final int M_UPGRADE_PLUS_ATTACK_DMG = 2;
 	private static final int POOL = 1;
 
 	public PowerUp() {
@@ -65,7 +65,7 @@ public class PowerUp extends AbstractConstructCard {
 			this.upgradeMagicNumber(UPGRADE_PLUS_POWER_PLUS);
 		} else if (canUpgrade()) {
 			this.megaUpgradeName();
-			this.upgradeDamage(M_UPGRADE_PLUS_ATTACK_DMG);
+			//this.upgradeDamage(M_UPGRADE_PLUS_ATTACK_DMG);
 			this.rawDescription = M_UPGRADE_DESCRIPTION;
 			this.initializeDescription();
 		}

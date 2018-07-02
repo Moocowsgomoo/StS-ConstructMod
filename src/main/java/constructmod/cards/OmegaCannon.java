@@ -20,9 +20,9 @@ public class OmegaCannon extends AbstractConstructCard {
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	public static final String M_UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	private static final int COST = 5;
-	private static final int ATTACK_DMG = 20;
-	private static final int UPGRADE_NEW_COST = 4;
-	private static final int M_UPGRADE_NEW_COST = 5;
+	private static final int ATTACK_DMG = 15;
+	private static final int UPGRADE_PLUS_ATTACK_DMG = 5;
+	private static final int M_UPGRADE_NEW_COST = 6;
 	private static final int POOL = 1;
 	
 	private int prevDiscount = 0;
@@ -75,7 +75,7 @@ public class OmegaCannon extends AbstractConstructCard {
 	public void upgrade() {
 		if (!this.upgraded) {
 			this.upgradeName();
-			this.upgradeBaseCost(UPGRADE_NEW_COST);
+			this.upgradeDamage(UPGRADE_PLUS_ATTACK_DMG);
 		} else if (this.canUpgrade()) {
 			this.megaUpgradeName();
 			this.upgradeBaseCost(M_UPGRADE_NEW_COST);

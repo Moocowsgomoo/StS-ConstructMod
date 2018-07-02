@@ -215,7 +215,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new Autoturret());	// atk from cycle
 		
 		// UNCOMMON
-		// 	Attacks(10/11)
+		// 	Attacks(11/11)
 		BaseMod.addCard(new ChargeShot());	// atk (retain)
 		BaseMod.addCard(new CripplingShot());//atk, debuff
 		BaseMod.addCard(new Electrocute()); // atk, debuff

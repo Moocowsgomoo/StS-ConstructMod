@@ -48,7 +48,7 @@ public class Isolate extends AbstractCycleCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,m,new DoubleDamagePower(p,(this.megaUpgraded?2:1),false),1));
+		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,m,new DoubleDamagePower(p,(this.megaUpgraded?2:1),false),(this.megaUpgraded?2:1)));
 	}
 
 	@Override

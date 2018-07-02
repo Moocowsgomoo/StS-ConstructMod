@@ -470,5 +470,10 @@
 	"PointDefense": {
 		"NAME": "Point Defense",
 		"DESCRIPTION": "When a card cycles, gain !M! Block."
+	},
+	"PowerUp": {
+		"NAME": "Power Up",
+		"DESCRIPTION": "Deal !D! damage. NL ALL of your Strikes and Defends gain !M! power for this combat.",
+		"UPGRADE_DESCRIPTION": "Deal !D! damage. NL Double the power of ALL of your Strikes and Defends for this combat."
 	}
 }

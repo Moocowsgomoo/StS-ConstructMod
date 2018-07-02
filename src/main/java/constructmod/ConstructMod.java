@@ -226,6 +226,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new Tumble()); 		// atk, draw
 		BaseMod.addCard(new OmegaCannon()); // atk, str-based
 		BaseMod.addCard(new QuickAttack()); // atk, dex
+		BaseMod.addCard(new PowerUp()); 	// atk, +basic cards
 		
 		//	Skills (18/17)
 		BaseMod.addCard(new OneWayMirror());// block

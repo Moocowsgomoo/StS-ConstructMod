@@ -158,7 +158,7 @@ public abstract class AbstractConstructCard extends CustomCard {
 			Method renderEnergyMethod = AbstractCard.class.getDeclaredMethod("renderEnergy",SpriteBatch.class);
 			renderEnergyMethod.setAccessible(true);
 			Method renderBackMethod = AbstractCard.class.getDeclaredMethod("renderBack",SpriteBatch.class,boolean.class,boolean.class);
-			renderBackMethod.setAccessible(true);;	
+			renderBackMethod.setAccessible(true);
 			
 	        if (!Settings.hideCards) {
 	        	if (!(boolean)isOnScreenMethod.invoke(this)) {

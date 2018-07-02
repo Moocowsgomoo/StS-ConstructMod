@@ -46,7 +46,7 @@ public class PanicFire extends AbstractConstructCard {
 		
 		if (this.megaUpgraded) {
 			for (int i=0;i<5;i++) {
-		    	AbstractCard c = cards.get(AbstractDungeon.cardRandomRng.random(cards.size()));
+		    	AbstractCard c = cards.get(AbstractDungeon.cardRandomRng.random(cards.size()-1));
 		    	AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(c.makeCopy(),1,true,false));
 	    	}
 		}

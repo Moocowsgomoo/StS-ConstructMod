@@ -447,7 +447,7 @@
 	"PanicFire": {
 		"NAME": "Panic Fire",
 		"DESCRIPTION": "When a non-upgraded card cycles, Exhaust it and deal !M! damage to a random enemy.",
-		"UPGRADE_DESCRIPTION": " NL Shuffle 5 random Cores into your draw pile."
+		"UPGRADE_DESCRIPTION": " Shuffle 5 random Cores into your draw pile."
 	},
 	"Stasis": {
 		"NAME": "Stasis",

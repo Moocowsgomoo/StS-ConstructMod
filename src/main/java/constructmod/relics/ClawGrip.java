@@ -34,9 +34,7 @@ public class ClawGrip extends CustomRelic {
  
     @Override
     public void onPlayerEndTurn() {
-        flash();
         AbstractDungeon.actionManager.addToTop(new ClawGripAction(this));
-        AbstractDungeon.actionManager.addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
     }
     
     @Override

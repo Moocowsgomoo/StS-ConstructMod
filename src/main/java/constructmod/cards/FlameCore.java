@@ -57,16 +57,20 @@ public class FlameCore extends AbstractCycleCard {
 		cycle();
 		
 		final AbstractMonster mo = AbstractDungeon.getMonsters().getRandomMonster(true);
-		AbstractDungeon.actionManager.addToTop(new DamageAction(
-				mo, new DamageInfo(p, this.magicNumber, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
+		if (mo != null) {
+			AbstractDungeon.actionManager.addToTop(new DamageAction(
+					mo, new DamageInfo(p, this.magicNumber, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
+		}
 		CloneCore();
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		final AbstractMonster mo = AbstractDungeon.getMonsters().getRandomMonster(true);
-		AbstractDungeon.actionManager.addToBottom(new DamageAction(
-				mo, new DamageInfo(p, this.magicNumber, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
+		if (mo != null) {
+			AbstractDungeon.actionManager.addToBottom(new DamageAction(
+					mo, new DamageInfo(p, this.magicNumber, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
+		}
 		CloneCore();
 	}
 

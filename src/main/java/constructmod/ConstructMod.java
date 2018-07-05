@@ -228,7 +228,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new QuickAttack()); // atk, dex
 		BaseMod.addCard(new PowerUp()); 	// atk, +basic cards
 		
-		//	Skills (18/17)
+		//	Skills (16/17)
 		BaseMod.addCard(new OneWayMirror());// block
 		BaseMod.addCard(new Reinforce());	// block
 		BaseMod.addCard(new Disrupt());		// block
@@ -240,7 +240,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		//-BaseMod.addCard(new Lockdown());	// block, draw
 		//-Save State (use power since retain isn't cleared on discard?)
 		
-		BaseMod.addCard(new Disorient());	// debuff
+		//BaseMod.addCard(new Disorient());	// debuff
 		BaseMod.addCard(new LaserCore());	// cycle, atk
 		BaseMod.addCard(new FlameCore());	// cycle, atk
 		BaseMod.addCard(new ScopeCore());	// cycle, debuff
@@ -252,15 +252,17 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new Isolate()); 	// cycle, buff
 		BaseMod.addCard(new Stasis()); 		// copy, mega-upgrade
 		BaseMod.addCard(new ElectricArmor());//block-based
-		BaseMod.addCard(new BubbleShield());// block-based
+		//BaseMod.addCard(new BubbleShield());// block-based
 		
-		// 	Powers (6/7)
+		// 	Powers (8/7)
 		BaseMod.addCard(new Synchronize());	// copy-based
 		BaseMod.addCard(new Enhance());		// upgrade
 		BaseMod.addCard(new Overclock()); 	// burn, draw
 		BaseMod.addCard(new Overcharge()); 	// burn, energy
 		BaseMod.addCard(new ShieldGenerator());//defensive --> RARE? (synergy with Orb Assault as it currently is, Shield Burst; but can't be copied!)
 		BaseMod.addCard(new ReactiveShield());// block-based
+		BaseMod.addCard(new Zapper()); // defensive, stat-based
+		BaseMod.addCard(new PointDefense()); // block
 		//-BaseMod.addCard(new Overpower());	// burn, stats
 		//-BaseMod.addCard(new Disruptor());  	// block
 		

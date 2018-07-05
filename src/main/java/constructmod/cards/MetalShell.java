@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.MetallicizePower;
-
+import com.megacrit.cardcrawl.powers.PlatedArmorPower;
 
 import constructmod.patches.AbstractCardEnum;
 
@@ -18,13 +18,14 @@ public class MetalShell extends AbstractConstructCard {
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+	public static final String M_UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	private static final int COST = 1;
-	private static final int BLOCK_AMT = 4;
+	private static final int BLOCK_AMT = 5;
 	private static final int METALLICIZE_AMT = 1;
 	private static final int UPGRADE_PLUS_BLOCK_AMT = 1;
 	private static final int UPGRADE_PLUS_METALLICIZE_AMT = 1;
 	private static final int M_UPGRADE_PLUS_BLOCK_AMT = 1;
-	private static final int M_UPGRADE_PLUS_METALLICIZE_AMT = 2;
+	//private static final int M_UPGRADE_PLUS_METALLICIZE_AMT = 2;
 	private static final int POOL = 1;
 
 	public MetalShell() {
@@ -36,7 +37,10 @@ public class MetalShell extends AbstractConstructCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new MetallicizePower(p, this.magicNumber), this.magicNumber));
+		
+		if (this.megaUpgraded) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new MetallicizePower(p, this.magicNumber), this.magicNumber));
+		else AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PlatedArmorPower(p, this.magicNumber), this.magicNumber));
+		
 		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
 	}
 
@@ -54,7 +58,9 @@ public class MetalShell extends AbstractConstructCard {
 		} else if (this.canUpgrade()) {
 			this.megaUpgradeName();
 			this.upgradeBlock(M_UPGRADE_PLUS_BLOCK_AMT);
-			this.upgradeMagicNumber(M_UPGRADE_PLUS_METALLICIZE_AMT);
+			this.rawDescription = M_UPGRADE_DESCRIPTION;
+			this.initializeDescription();
+			//this.upgradeMagicNumber(M_UPGRADE_PLUS_METALLICIZE_AMT);
 		}
 	}
 }

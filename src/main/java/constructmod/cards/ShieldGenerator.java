@@ -22,7 +22,7 @@ public class ShieldGenerator extends AbstractConstructCard {
 	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	public static final String M_UPGRADE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 	private static final int COST = 1;
-	private static final int BLUR_AMT = 5;
+	private static final int BLUR_AMT = 4;
 	private static final int VULN_AMT = 2;
 	private static final int UPGRADE_PLUS_BLUR_AMT =  1;
 	private static final int UPGRADED_VULN_AMT = 1;

@@ -52,7 +52,8 @@
 	},
 	"MetalShell": {
 		"NAME": "Metal Shell",
-		"DESCRIPTION": "Gain !B! Block. NL Gain !M! Metallicize."
+		"DESCRIPTION": "Gain !B! Block. NL Gain !M! Armor.",
+		"UPGRADE_DESCRIPTION": "Gain !B! Block. NL Gain !M! Metallicize."
 	},
 	"ChargeShot": {
 		"NAME": "Charge Shot",
@@ -77,7 +78,7 @@
 	"BubbleShield": {
 		"NAME": "Bubble Shield",
 		"DESCRIPTION": "Cycle if Dexterity < 1. NL Gain Armor equal to your Dexterity. NL Exhaust.",
-		"UPGRADE_DESCRIPTION": "Cycle if Dexterity < 1. NL Gain Armor equal to your NL Dexterity + !M!. NL Exhaust.",
+		"UPGRADE_DESCRIPTION": "Cycle if Dexterity < 1. NL Gain Armor equal to your Dexterity + !M!. NL Exhaust.",
 		"EXTENDED_DESCRIPTION": [
 			"Cycle if Dexterity < 1. NL Gain !M! Dexterity, then gain Armor equal to your Dexterity. NL Exhaust."	
 		]
@@ -472,7 +473,12 @@
 	},
 	"PointDefense": {
 		"NAME": "Point Defense",
-		"DESCRIPTION": "When a card cycles, gain !M! Block."
+		"DESCRIPTION": "When a card cycles, gain 1 Block. NL Works !M! times per turn."
+	},
+	"Zapper": {
+		"NAME": "Zapper",
+		"DESCRIPTION": "When you gain Strength or Dexterity, deal !M! damage to a random enemy. It loses 1 Strength this turn.",
+		"UPGRADE_DESCRIPTION": "When you gain or lose Strength or Dexterity, deal !M! damage to a random enemy. It loses 1 Strength this turn."
 	},
 	"PowerUp": {
 		"NAME": "Power Up",

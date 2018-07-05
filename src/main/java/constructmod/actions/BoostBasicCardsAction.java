@@ -38,11 +38,17 @@ public class BoostBasicCardsAction extends AbstractGameAction
     		wasBoosted = true;
     		if (this.isMultiplier) c.baseDamage *= this.amount; 
     		else c.baseDamage += this.amount;
+    		/*c.exhaust = true;
+    		c.rawDescription += " NL Exhaust.";
+    		c.initializeDescription();*/
     	}
     	if (c.cardID.startsWith("Defend_")) {
     		wasBoosted = true;
     		if (this.isMultiplier) c.baseBlock *= this.amount; 
     		else c.baseBlock += this.amount;
+    		/*c.exhaust = true;
+    		c.rawDescription += " NL Exhaust.";
+    		c.initializeDescription();*/
     	}
     	return wasBoosted;
     }

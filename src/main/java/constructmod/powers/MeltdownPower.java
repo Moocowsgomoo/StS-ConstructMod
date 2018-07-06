@@ -49,7 +49,7 @@ public class MeltdownPower extends AbstractPower {
 	@Override
 	public void atStartOfTurn() {
 		this.flash();
-		AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(null, DamageInfo.createDamageMatrix(this.amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.FIRE));
+		AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(this.owner, DamageInfo.createDamageMatrix(this.amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.FIRE));
 		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new Burn(),2));
 	}
 }

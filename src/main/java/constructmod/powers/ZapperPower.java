@@ -53,7 +53,7 @@ public class ZapperPower extends AbstractPower {
 	         }
 			AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(mo,this.owner,new StrengthPower(mo,-1),-1));
 			AbstractDungeon.actionManager.addToTop(new DamageAction(
-					mo, new DamageInfo(null, this.amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE));
+					mo, new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE));
 		}
 	}
 }

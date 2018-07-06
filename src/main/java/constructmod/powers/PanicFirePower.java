@@ -50,6 +50,6 @@ public class PanicFirePower extends AbstractCyclePower {
 		//AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(card, AbstractDungeon.player.drawPile));
 		//AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(card, AbstractDungeon.player.discardPile));
 		AbstractDungeon.actionManager.addToTop(new DamageRandomEnemyAction(
-				new DamageInfo(null, this.amount, DamageInfo.DamageType.THORNS),AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+				new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS),AbstractGameAction.AttackEffect.BLUNT_HEAVY));
 	}
 }

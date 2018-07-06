@@ -14,22 +14,16 @@ import constructmod.cards.Strike_Gold;
 
 @SpirePatch(cls = "com.megacrit.cardcrawl.events.thecity.BackToBasics", method = "buttonEffect")
 public class BackToBasicsPatch {
-
-	@SpireInsertPatch(rloc = 30)
+	
+	@SpireInsertPatch(rloc = 15)
 	public static void Insert(Object __obj_instance, int buttonPressed) {
-		AbstractPlayer.PlayerClass selection = AbstractDungeon.player.chosenClass;
-		if (!selection.toString().equals("IRONCLAD") && !selection.toString().equals("THE_SILENT")
-				&& !selection.toString().equals("CROWBOT")) {
-			for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
-				if ((c instanceof Strike_Gold || c instanceof Defend_Gold) && c.canUpgrade()) {
-					c.upgrade();
-					AbstractDungeon.player.bottledCardUpgradeCheck(c);
-					AbstractDungeon.effectList.add(
-							new ShowCardBrieflyEffect(c.makeStatEquivalentCopy(), MathUtils.random(0.1F, 0.9F) * Settings.WIDTH,
-							MathUtils.random(0.2F, 0.8F) * Settings.HEIGHT));
-				}
-			}
-		}
+		for (final AbstractCard c : AbstractDungeon.player.masterDeck.group) {
+            if (c instanceof Strike_Gold || c instanceof Defend_Gold && c.canUpgrade()) {
+                c.upgrade();
+                AbstractDungeon.player.bottledCardUpgradeCheck(c);
+                AbstractDungeon.effectList.add(new ShowCardBrieflyEffect(c.makeStatEquivalentCopy(), MathUtils.random(0.1f, 0.9f) * Settings.WIDTH, MathUtils.random(0.2f, 0.8f) * Settings.HEIGHT));
+            }
+        }
 	}
 
 }

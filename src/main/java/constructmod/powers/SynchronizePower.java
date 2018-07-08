@@ -62,7 +62,7 @@ PostDungeonInitializeSubscriber {
 		if (c.originalName.equals(drawnCardName)) {
 			this.flash();
 			
-			AbstractDungeon.actionManager.addToTop(new DrawCardAction(this.owner,1)); // occurs after damageAll due to action order
+			//AbstractDungeon.actionManager.addToTop(new DrawCardAction(this.owner,1)); // occurs after damageAll due to action order
 			AbstractDungeon.actionManager.addToTop(new DamageAllEnemiesAction(
 					this.owner, DamageInfo.createDamageMatrix(this.amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 			

@@ -33,17 +33,26 @@ public class MemoryTap extends AbstractConstructCard {
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		
-		final AbstractCard c1 = CardLibrary.getColorSpecificCard(AbstractPlayer.PlayerClass.IRONCLAD, AbstractDungeon.cardRandomRng).makeCopy();
+		AbstractCard c1;
+		do {
+			c1 = CardLibrary.getColorSpecificCard(AbstractPlayer.PlayerClass.IRONCLAD, AbstractDungeon.cardRandomRng).makeCopy();
+		} while (c1.rarity == CardRarity.BASIC);
         c1.setCostForTurn(-99);
         if (this.megaUpgraded) c1.upgrade();
 		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c1));
 		
-		final AbstractCard c2 = CardLibrary.getColorSpecificCard(AbstractPlayer.PlayerClass.THE_SILENT, AbstractDungeon.cardRandomRng).makeCopy();
+		AbstractCard c2;
+		do {
+			c2 = CardLibrary.getColorSpecificCard(AbstractPlayer.PlayerClass.THE_SILENT, AbstractDungeon.cardRandomRng).makeCopy();
+		} while (c2.rarity == CardRarity.BASIC);
         c2.setCostForTurn(-99);
         if (this.megaUpgraded) c2.upgrade();
 		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c2));
 		
-		final AbstractCard c3 = CardLibrary.getColorSpecificCard(AbstractPlayer.PlayerClass.DEFECT, AbstractDungeon.cardRandomRng).makeCopy();
+		AbstractCard c3;
+		do {
+			c3 = CardLibrary.getColorSpecificCard(AbstractPlayer.PlayerClass.DEFECT, AbstractDungeon.cardRandomRng).makeCopy();
+		} while (c3.rarity == CardRarity.BASIC);
         c3.setCostForTurn(-99);
         if (this.megaUpgraded) c3.upgrade();
 		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c3));

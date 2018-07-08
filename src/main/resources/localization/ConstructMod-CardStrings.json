@@ -210,8 +210,8 @@
 	},
 	"Synchronize": {
 		"NAME": "Synchronize",
-		"DESCRIPTION": "When you draw 2 of the same card in a row, deal !M! damage to ALL enemies and draw a card.",
-		"UPGRADE_DESCRIPTION": "Innate. When you draw 2 of the same card in a row, deal !M! damage to ALL enemies and draw a card."
+		"DESCRIPTION": "When you draw 2 of the same card in a row, deal !M! damage to ALL enemies.",
+		"UPGRADE_DESCRIPTION": "Innate. When you draw 2 of the same card in a row, deal !M! damage to ALL enemies."
 	},
 	"SiegeForm": {
 		"NAME": "Siege Form",

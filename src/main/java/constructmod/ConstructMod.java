@@ -90,6 +90,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
         ModPanel settingsPanel = new ModPanel();
         
         ModLabel buttonLabel = new ModLabel("Reach EXP Level 1 as the Construct to unlock!", 350.0f, 600.0f, settingsPanel, (me)->{});
+        ModLabel buttonLabel2 = new ModLabel("(Restart the game if it doesn't show up)", 350.0f, 550.0f, settingsPanel, (me)->{});
         
         ModLabeledToggleButton phoenixBtn = new ModLabeledToggleButton("Starting Relic: Clockwork Phoenix",
         		350.0f, 600.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
@@ -105,6 +106,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
         		BaseMod.maybeSetBoolean("Phoenix", false);
         	}
         	settingsPanel.addUIElement(buttonLabel);
+        	settingsPanel.addUIElement(buttonLabel2);
         }
         
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);

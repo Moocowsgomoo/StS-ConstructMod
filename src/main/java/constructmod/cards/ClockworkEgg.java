@@ -179,13 +179,22 @@ public class ClockworkEgg extends AbstractConstructCard {
 	
 	@Override
 	public void upgrade(boolean forcedUpgrade, boolean inCombat) {
-		if (inCombat) this.isScrambled = true;
+		if (inCombat && !this.megaUpgraded) this.isScrambled = true;
 		super.upgrade(forcedUpgrade, inCombat);
 	}
 
 	@Override
 	public void upgrade() {
-		BaseMod.logger.log(Level.DEBUG, "Egg is being upgraded:");
+		BaseMod.logger.log(Level.DEBUG, "Egg is being upgraded: " + this.timesUpgraded + this.upgraded);
+		/*if (!this.upgraded && this.timesUpgraded > 0) { // Weird upgrades, like RtS's Demonic Infusion card
+			this.upgradeName();
+			this.initializeTitle();
+			this.cost = 0;
+			this.costForTurn = 0;
+			this.rawDescription = M_UPGRADE_DESCRIPTION + " NL (Enjoy your shenanigans!)";
+			this.initializeDescription();
+			this.exhaust = true;
+		}*/
 		if (this.timesUpgraded < 3) {
 			this.upgradeName();
 			this.cost++;

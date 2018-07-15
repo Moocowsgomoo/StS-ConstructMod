@@ -54,7 +54,7 @@
 						<phase>package</phase>
 						<configuration>
 							<target>
-								<copy file="target/ConstructMod.jar" tofile="../_ModTheSpire/mods/ConstructMod.jar" />
+								<copy file="target/ConstructMod.jar" tofile="C:\Program Files (x86)\Steam\SteamApps\common\SlayTheSpire\mods\ConstructMod.jar" />
 							</target>
 						</configuration>
 						<goals>

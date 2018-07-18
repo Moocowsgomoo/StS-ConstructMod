@@ -19,7 +19,7 @@ public class Bunker extends AbstractConstructCard {
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	private static final int COST = 1;
-	private static final int POWER_BLOCK = 3;
+	private static final int POWER_BLOCK = 2;
 	private static final int UPGRADE_POWER_BLOCK = 1;
 	private static final int M_UPGRADE_POWER_BLOCK = 1;
 	private static final int POOL = 1;

@@ -17,10 +17,10 @@ public class Reinforce extends AbstractConstructCard {
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	private static final int COST = 1;
-	private static final int BLOCK_AMT = 2;
-	private static final int TIMES_APPLIED = 3;
+	private static final int BLOCK_AMT = 3;
+	private static final int TIMES_APPLIED = 2;
 	private static final int UPGRADE_TIMES_APPLIED = 1;
-	private static final int M_UPGRADE_TIMES_APPLIED = 3;
+	private static final int M_UPGRADE_TIMES_APPLIED = 2;
 	private static final int POOL = 1;
 
 	public Reinforce() {

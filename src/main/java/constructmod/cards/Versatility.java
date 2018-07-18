@@ -34,9 +34,9 @@ public class Versatility extends AbstractConstructCard {
 	public static final String M_UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	private static final int COST = 1;
 	private static final int ATTACK_DMG = 7;
-	private static final int UPGRADE_PLUS_ATTACK_DMG = 2;
+	private static final int UPGRADE_PLUS_ATTACK_DMG = 3;
 	private static final int BLOCK_AMT = 7;
-	private static final int UPGRADE_PLUS_BLOCK_AMT = 2;
+	private static final int UPGRADE_PLUS_BLOCK_AMT = 3;
 	private static final int M_UPGRADE_PLUS_ATTACK_DMG = 1;
 	private static final int M_UPGRADE_PLUS_BLOCK_AMT = 1;
 	private static final int POOL = 1;

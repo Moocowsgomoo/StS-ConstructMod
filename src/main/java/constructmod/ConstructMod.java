@@ -131,8 +131,6 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     	BaseMod.addKeyword(pArmor, "Gain Block at the end of each turn. Reduced when you take unblocked damage.");
     	final String[] slimed = {"slimed"};
     	BaseMod.addKeyword(slimed, "Slimed is a status card that costs [R] to exhaust.");
-    	final String[] vol = {"broken"};
-    	BaseMod.addKeyword(vol, "Broken cores are unplayable status cards. When one cycles, you take 1 damage.");
     	final String[] cores = {"cores"};
     	BaseMod.addKeyword(cores, "Cores are cards that cycle and apply a small bonus effect.");
     	final String[] eggs = {"egg","eggs"};

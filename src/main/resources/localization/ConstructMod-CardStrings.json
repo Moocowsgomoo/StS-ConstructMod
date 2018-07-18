@@ -297,10 +297,10 @@
 	},
 	"BatteryAcid": {
 		"NAME": "Battery Acid",
-		"DESCRIPTION": "Gain [R] [R] . NL Add a Slimed to your hand.",
-		"UPGRADE_DESCRIPTION": "Gain [R] [R] [R] . NL Add a Slimed to your hand.",
+		"DESCRIPTION": "Gain [R] [R] . NL Shuffle 1 Slimed into your draw pile.",
+		"UPGRADE_DESCRIPTION": "Gain [R] [R] [R] . NL Shuffle 1 Slimed into your draw pile.",
 		"EXTENDED_DESCRIPTION": [
-			"Gain [R] [R] [R] , this and next turn. NL Add a Slimed to your hand."
+			"Gain [R] [R] [R] , this and next turn. NL Shuffle 2 Slimed into your draw pile."
 		]
 	},
 	"Bunker": {
@@ -355,7 +355,10 @@
 	"MemoryTap": {
 		"NAME": "Memory Tap",
 		"DESCRIPTION": "Add a random red, green, and blue card to your hand. NL They cost 0 this turn. NL Exhaust.",
-		"UPGRADE_DESCRIPTION": "Add a random Upgraded red, green, and blue card to your hand. They cost 0 this turn. NL Exhaust."
+		"UPGRADE_DESCRIPTION": "Add a random Upgraded red, green, and blue card to your hand. They cost 0 this turn. Exhaust.",
+		"EXTENDED_DESCRIPTION": [
+			"Add two random Upgraded red, green, and blue cards to your hand. They cost 0 this turn. Exhaust."
+		]
 	},
 	"Construct_Overclock": {
 		"NAME": "Overclock",

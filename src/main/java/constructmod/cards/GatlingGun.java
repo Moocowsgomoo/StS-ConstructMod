@@ -1,11 +1,13 @@
 package constructmod.cards;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import constructmod.actions.GatlingGunAction;
 import constructmod.patches.AbstractCardEnum;
@@ -16,8 +18,8 @@ public class GatlingGun extends AbstractConstructCard {
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	private static final int COST = -1;
-	private static final int ATTACK_DMG = 4;
-	private static final int UPGRADE_PLUS_ATTACK_DMG = 2;
+	private static final int ATTACK_DMG = 3;
+	private static final int UPGRADE_PLUS_ATTACK_DMG = 1;
 	private static final int SHOTS_MULT = 2;
 	private static final int M_UPGRADE_PLUS_ATTACK_DMG = -1;
 	private static final int M_UPGRADE_PLUS_SHOTS_MULT = 1;

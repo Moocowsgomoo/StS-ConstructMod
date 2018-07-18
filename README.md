@@ -1,5 +1,5 @@
 # The Construct
-Adds a new character for Slay The Spire, complete with 70+ new cards and 8 new relics.
+Adds a new character for Slay The Spire, complete with 75 new cards and 8 new relics.
 * On reaching the first unlock level, you'll unlock an alternate starting relic in the "Mods" tab of the game's main menu.
 * Right now all cards and relics are unlocked at the start, so subsequent unlocks don't do anything.
 
@@ -14,11 +14,19 @@ This character is meant to feel as close to an official character as possible, w
 ## New Keyword: Cycle ##
 **Definition:** When drawn, discard this and draw another card if the cycle condition is met. Only works once per card per turn.
 **Examples:**
-* Flak Barrage: Cycle if your Strength < 1. Deal 0 damage to a random enemy 4 times.
+* Flak Barrage: Cycle if your Strength < 1. Deal 0 damage to a random enemy 3 times.
 * Isolate: Cycle if there's more than one enemy. Your attacks deal double damage this turn.
 * Guard Orb: Cycle. When cycled, gain 2 Block.
 
 ![Gameplay Image](github_resources/gameplay.png)
+
+## Fanart ##
+
+![Art 1](github_resources/fanart1.png)
+Art by Spike Berd (u/spikeof2010).
+
+A huge thanks to anyone who's been inspired to create art based on the Construct Mod!
+If you have any fanart you'd like to contribute, please let me know through Discord (Moocowsgomoo) or Reddit (u/StS-Moocowsgomoo).
 
 ## Requirements ##
 Copied from https://github.com/gskleres/FruityMod-StS

@@ -23,9 +23,11 @@ This character is meant to feel as close to an official character as possible, w
 ## Fanart ##
 
 ![Art 1](github_resources/fanart1.png)
+
 Art by Spike Berd (u/spikeof2010).
 
 A huge thanks to anyone who's been inspired to create art based on the Construct Mod!
+
 If you have any fanart you'd like to contribute, please let me know through Discord (Moocowsgomoo) or Reddit (u/StS-Moocowsgomoo).
 
 ## Requirements ##

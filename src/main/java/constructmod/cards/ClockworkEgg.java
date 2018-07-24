@@ -155,7 +155,14 @@ public class ClockworkEgg extends AbstractConstructCard {
 	
 	@Override
 	public AbstractCard makeStatEquivalentCopy() {
-        final AbstractConstructCard card = (AbstractConstructCard) this.makeCopy();
+		ClockworkEgg copy = (ClockworkEgg)super.makeStatEquivalentCopy();
+		if (copy.megaUpgraded && this.isScrambled) {
+			copy.timesUpgraded--;
+			copy.megaUpgraded = false;
+			copy.upgrade(true,true);
+		}
+		return copy;
+        /*final AbstractConstructCard card = (AbstractConstructCard) this.makeCopy();
         for (int i = 0; i < this.timesUpgraded; ++i) {
             card.upgrade(true, this.isScrambled);
         }
@@ -169,7 +176,7 @@ public class ClockworkEgg extends AbstractConstructCard {
         card.isSeen = this.isSeen;
         card.isLocked = this.isLocked;
         card.misc = this.misc;
-        return card;
+        return card;*/
     }
 	
 	@Override

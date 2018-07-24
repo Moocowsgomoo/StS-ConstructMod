@@ -74,28 +74,11 @@ public abstract class AbstractConstructCard extends CustomCard {
 	}
 	
 	public AbstractCard makeStatEquivalentCopy() {
-        final AbstractConstructCard card = (AbstractConstructCard) this.makeCopy();
         BaseMod.logger.log(Level.DEBUG,"Copying card " + this.name + " with " + this.timesUpgraded + " upgrades.");
-        for (int i = 0; i < this.timesUpgraded; ++i) {
-            card.upgrade(true);
-        }
-        card.name = this.name;
-        card.target = this.target;
-        card.upgraded = this.upgraded;
-        card.timesUpgraded = this.timesUpgraded;
-        card.baseDamage = this.baseDamage;
-        card.baseBlock = this.baseBlock;
-        card.baseMagicNumber = this.baseMagicNumber;
-        card.cost = this.cost;
-        card.costForTurn = this.costForTurn;
-        card.isCostModified = this.isCostModified;
-        card.isCostModifiedForTurn = this.isCostModifiedForTurn;
-        card.inBottleLightning = this.inBottleLightning;
-        card.inBottleFlame = this.inBottleFlame;
-        card.inBottleTornado = this.inBottleTornado;
-        card.isSeen = this.isSeen;
-        card.isLocked = this.isLocked;
-        card.misc = this.misc;
+        this.forcedUpgrade = true;
+        final AbstractConstructCard card = (AbstractConstructCard)super.makeStatEquivalentCopy();
+        this.forcedUpgrade = false;
+        card.megaUpgraded = this.megaUpgraded;
         return card;
     }
 	
@@ -112,41 +95,30 @@ public abstract class AbstractConstructCard extends CustomCard {
 	
 	@Override
 	public void render(final SpriteBatch sb, final boolean selected) {
-		if (!this.megaUpgraded) super.render(sb, selected);
-		else {
-			if (!Settings.hideCards) {
-	            if (this.flashVfx != null) {
-	                this.flashVfx.render(sb);
-	            }
-				boolean hovered = (boolean) ReflectionHacks.getPrivate(this, AbstractCard.class, "hovered");
-				this.renderMegaCard(sb, hovered, selected);
-	            this.hb.render(sb);
-	        }
+		super.render(sb, selected);
+		if (this.megaUpgraded) {
+			boolean hovered = (boolean) ReflectionHacks.getPrivate(this, AbstractCard.class, "hovered");
+			this.renderMegaCard(sb, hovered, selected);
 		}
     }
     
 	@Override
     public void renderWithSelections(final SpriteBatch sb) {
-        if (!this.megaUpgraded) super.renderWithSelections(sb);
-        else {
-        	this.renderMegaCard(sb, false, true);
-        }
+		super.renderWithSelections(sb);
+        if (this.megaUpgraded) this.renderMegaCard(sb, false, true);
     }
 	
 	private void renderMegaCard(final SpriteBatch sb, final boolean hovered, final boolean selected) {
 		
 		try {
 		
-			Method isOnScreenMethod = AbstractCard.class.getDeclaredMethod("isOnScreen");
-			isOnScreenMethod.setAccessible(true);
+			/*
 			Method updateGlowMethod = AbstractCard.class.getDeclaredMethod("updateGlow");
 			updateGlowMethod.setAccessible(true);
 			Method renderGlowMethod = AbstractCard.class.getDeclaredMethod("renderGlow",SpriteBatch.class);
 			renderGlowMethod.setAccessible(true);
 			Method renderImageMethod = AbstractCard.class.getDeclaredMethod("renderImage",SpriteBatch.class,boolean.class,boolean.class);
 			renderImageMethod.setAccessible(true);
-			Method renderTitleMethod = AbstractCard.class.getDeclaredMethod("renderTitle",SpriteBatch.class);
-			renderTitleMethod.setAccessible(true);
 			Method renderTypeMethod = AbstractCard.class.getDeclaredMethod("renderType",SpriteBatch.class);
 			renderTypeMethod.setAccessible(true);
 			Method renderDescriptionCNMethod = AbstractCard.class.getDeclaredMethod("renderDescriptionCN",SpriteBatch.class);
@@ -158,33 +130,38 @@ public abstract class AbstractConstructCard extends CustomCard {
 			Method renderEnergyMethod = AbstractCard.class.getDeclaredMethod("renderEnergy",SpriteBatch.class);
 			renderEnergyMethod.setAccessible(true);
 			Method renderBackMethod = AbstractCard.class.getDeclaredMethod("renderBack",SpriteBatch.class,boolean.class,boolean.class);
-			renderBackMethod.setAccessible(true);
+			renderBackMethod.setAccessible(true);*/
+			
+			Method isOnScreenMethod = AbstractCard.class.getDeclaredMethod("isOnScreen");
+			isOnScreenMethod.setAccessible(true);
+			Method renderTitleMethod = AbstractCard.class.getDeclaredMethod("renderTitle",SpriteBatch.class);
+			renderTitleMethod.setAccessible(true);
 			
 	        if (!Settings.hideCards) {
 	        	if (!(boolean)isOnScreenMethod.invoke(this)) {
 					return;
 	        	}
 	            if (!this.isFlipped) {
-	                updateGlowMethod.invoke(this);
-	                renderGlowMethod.invoke(this,sb);
-	                renderImageMethod.invoke(this,sb,hovered,selected);
+	                //updateGlowMethod.invoke(this);
+	                //renderGlowMethod.invoke(this,sb);
+	                //renderImageMethod.invoke(this,sb,hovered,selected);
 	                Settings.GREEN_TEXT_COLOR.set(1.0f, 0.5f, 1.0f, 1.0f); // make green text actually purple
 	                renderTitleMethod.invoke(this, sb);
 	                Settings.GREEN_TEXT_COLOR.set(2147418367); // ...aaand back to green. That was fun.
-	                renderTypeMethod.invoke(this, sb);
-	                if (Settings.lineBreakViaCharacter) {
-	                    renderDescriptionCNMethod.invoke(this, sb);
-	                }
-	                else {
-	                    renderDescriptionMethod.invoke(this, sb);
-	                }
-	                renderTintMethod.invoke(this, sb);
-	                renderEnergyMethod.invoke(this, sb);
+	                //renderTypeMethod.invoke(this, sb);
+	                //if (Settings.lineBreakViaCharacter) {
+	                //    renderDescriptionCNMethod.invoke(this, sb);
+	                //}
+	                //else {
+	                //    renderDescriptionMethod.invoke(this, sb);
+	                //}
+	                //renderTintMethod.invoke(this, sb);
+	                //renderEnergyMethod.invoke(this, sb);
 	            }
-	            else {
-	               	renderBackMethod.invoke(this,sb,hovered,selected);
-	                this.hb.render(sb);
-	            }
+	            //else {
+	            //   	renderBackMethod.invoke(this,sb,hovered,selected);
+	            //    this.hb.render(sb);
+	            //}
 	        }
 		} catch (Exception e) {
 			e.printStackTrace();

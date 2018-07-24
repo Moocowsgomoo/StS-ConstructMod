@@ -10,7 +10,6 @@ import basemod.ModLabel;
 import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
 import basemod.ReflectionHacks;
-import basemod.abstracts.CustomUnlockBundle;
 import basemod.helpers.RelicType;
 import basemod.interfaces.EditCharactersSubscriber;
 import basemod.interfaces.EditKeywordsSubscriber;
@@ -23,16 +22,13 @@ import basemod.interfaces.SetUnlocksSubscriber;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
-import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
-import com.megacrit.cardcrawl.helpers.RelicLibrary;
-import com.megacrit.cardcrawl.helpers.GameDictionary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterOption;
@@ -60,6 +56,9 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 	private static final Color CONSTRUCT_MOD_COLOR = CardHelper.getColor(170.0f, 150.0f, 50.0f);
 	
 	public static boolean phoenixStart = false;
+	public static int marriedCard1 = -1;
+	public static int marriedCard2 = -1;
+	public static Texture ringIconTexture;
     
     public ConstructMod() {
         BaseMod.subscribe(this);
@@ -104,13 +103,52 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
         	if (phoenixStart) {
         		phoenixStart = false;
         		BaseMod.maybeSetBoolean("Phoenix", false);
+        		// this should be moved into Save/Load system at some point, but I'm not touching it because I don't want to break anything.
         	}
         	settingsPanel.addUIElement(buttonLabel);
         	settingsPanel.addUIElement(buttonLabel2);
         }
         
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
+        
+        ringIconTexture = new Texture("img/512/card_ring_icon.png");
     }
+    
+    public static void saveData() {
+    	try {
+    		if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic("WeddingRing")) {
+    			SpireConfig config = new SpireConfig("ConstructMod", "ConstructSaveData");
+    			config.setInt("marriedCard1", AbstractDungeon.player.masterDeck.group.indexOf(((WeddingRing)AbstractDungeon.player.getRelic("WeddingRing")).card1));
+    			config.setInt("marriedCard2", AbstractDungeon.player.masterDeck.group.indexOf(((WeddingRing)AbstractDungeon.player.getRelic("WeddingRing")).card2));
+    			config.save();
+    		}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    }
+    
+    public static void clearData() {
+    	marriedCard1 = marriedCard2 = -1;
+    	saveData();
+    }
+    
+    public static void loadData() {
+    	logger.info("ConstructMod | Loading Data...");
+    	try {
+			SpireConfig config = new SpireConfig("ConstructMod", "ConstructSaveData");
+			config.load();
+			
+			marriedCard1 = config.getInt("marriedCard1");
+			marriedCard2 = config.getInt("marriedCard2");
+			logger.info("MARRIED: " + marriedCard1 + " " + marriedCard2);
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+			clearData();
+		}
+    	
+}
     
     @SuppressWarnings("unchecked")
     private void resetCharSelect() {
@@ -298,6 +336,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addRelic(new FoamFinger(), RelicType.SHARED);
 		BaseMod.addRelic(new ClawGrip(), RelicType.SHARED);
 		BaseMod.addRelic(new RocketBooster(), RelicType.SHARED);
+		BaseMod.addRelic(new WeddingRing(), RelicType.SHARED);
 		BaseMod.addRelicToCustomPool(new Cogwheel(), AbstractCardEnum.CONSTRUCTMOD.toString());
 		BaseMod.addRelicToCustomPool(new MasterCore(), AbstractCardEnum.CONSTRUCTMOD.toString());
 		BaseMod.addRelicToCustomPool(new ClockworkPhoenix(), AbstractCardEnum.CONSTRUCTMOD.toString());

@@ -66,7 +66,7 @@ public class BackupAction extends AbstractGameAction
         
         if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
             for (final AbstractCard c : AbstractDungeon.handCardSelectScreen.selectedCards.group) {
-            	AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(c.makeStatEquivalentCopy()));
+            	this.p.hand.addToTop(c);
             	AbstractDungeon.actionManager.addToTop(new MakeTempCardInDrawPileAction(
                 		c.makeStatEquivalentCopy(),dupeAmount,randomSpot,false));
             }

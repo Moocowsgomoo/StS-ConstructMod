@@ -55,6 +55,13 @@
       "When you enter a Rest Site, your starting hand next combat is #yMega-upgraded until the end of combat."
     ]
   },
+  "WeddingRing": {
+    "NAME": "Wedding Ring",
+    "FLAVOR": "It's inscribed with \"FT2J\".",
+    "DESCRIPTIONS": [
+      "Upon pickup, choose 2 cards. Once per turn, after you play one of them, play the other one too."
+    ]
+  },
   "Photocopier": {
     "NAME": "Photocopier",
     "FLAVOR": "Used to copy anything 2-dimensional.",

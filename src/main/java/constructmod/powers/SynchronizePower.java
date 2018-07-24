@@ -26,7 +26,7 @@ PostDungeonInitializeSubscriber {
 	public static final String NAME = "Synchronize";
 	public static final String[] DESCRIPTIONS = new String[] {
 			"Whenever you draw 2 of the same card in a row, deal ",
-			" damage to ALL enemies and draw a card.",
+			" damage to ALL enemies.",
 			" NL (Last drawn: ",
 			")."
 	};

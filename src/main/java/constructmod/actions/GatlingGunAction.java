@@ -46,17 +46,7 @@ public class GatlingGunAction extends AbstractGameAction
         if (effect > 0) {
         	AbstractDungeon.actionManager.addToBottom(new DealMultiRandomDamageAction(
     				new DamageInfo(p, this.damage, this.damageType), effect*shotsMult, AbstractGameAction.AttackEffect.BLUNT_HEAVY,true));
-            /*for (int i = 0; i < effect; ++i) {
-                //AbstractDungeon.actionManager.addToBottom(new SFXAction("ATTACK_HEAVY"));
-                //AbstractDungeon.actionManager.addToBottom(new VFXAction(this.p, new CleaveEffect(), 0.0f));
-                AbstractDungeon.actionManager.addToBottom(new DamageRandomEnemyAction(
-                		new DamageInfo(this.p, this.damage, this.damageType),AttackEffect.BLUNT_HEAVY));
-                
-                //AbstractDungeon.actionManager.addToBottom(new SFXAction("ATTACK_HEAVY"));
-                //AbstractDungeon.actionManager.addToBottom(new VFXAction(this.p, new CleaveEffect(), 0.0f));
-                AbstractDungeon.actionManager.addToBottom(new DamageRandomEnemyAction(
-                		new DamageInfo(this.p, this.damage, this.damageType),AttackEffect.BLUNT_HEAVY));
-            }*/
+        	
             if (!this.freeToPlayOnce) {
                 this.p.energy.use(EnergyPanel.totalCount);
             }

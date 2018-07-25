@@ -21,7 +21,7 @@ public abstract class AbstractConstructCard extends CustomCard {
 	
 	protected boolean hasCycled = false;
 	protected boolean megaUpgraded = false;
-	private boolean forcedUpgrade = false;
+	public boolean forcedUpgrade = false;
 	
 	public boolean rebound = false;
 	
@@ -51,7 +51,7 @@ public abstract class AbstractConstructCard extends CustomCard {
 		if (this.megaUpgraded) return false;
 		
 		return 	super.canUpgrade() || 
-				forcedUpgrade || 
+				this.forcedUpgrade || 
 				CardCrawlGame.mainMenuScreen.screen == CurScreen.RUN_HISTORY ||
 				(AbstractDungeon.player.hasRelic("ClockworkPhoenix") && AbstractDungeon.getCurrRoom().phase != RoomPhase.COMBAT);
     }
@@ -75,10 +75,11 @@ public abstract class AbstractConstructCard extends CustomCard {
 	
 	public AbstractCard makeStatEquivalentCopy() {
         BaseMod.logger.log(Level.DEBUG,"Copying card " + this.name + " with " + this.timesUpgraded + " upgrades.");
-        this.forcedUpgrade = true;
+        
+        // Most of this logic is handled in MakeStatEquivalentCopyPatch.
+        
         final AbstractConstructCard card = (AbstractConstructCard)super.makeStatEquivalentCopy();
-        this.forcedUpgrade = false;
-        card.megaUpgraded = this.megaUpgraded;
+        card.forcedUpgrade = false;
         return card;
     }
 	

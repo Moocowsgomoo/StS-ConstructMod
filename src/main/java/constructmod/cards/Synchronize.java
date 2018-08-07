@@ -18,9 +18,9 @@ public class Synchronize extends AbstractConstructCard {
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	private static final int COST = 1;
-	private static final int POWER_DAMAGE = 10;
+	private static final int POWER_DAMAGE = 8;
 	//private static final int UPGRADE_PLUS_POWER_DAMAGE = 2;
-	private static final int M_UPGRADE_PLUS_POWER_DAMAGE = 10;
+	private static final int M_UPGRADE_PLUS_POWER_DAMAGE = 7;
 	private static final int POOL = 1;
 
 	public Synchronize() {

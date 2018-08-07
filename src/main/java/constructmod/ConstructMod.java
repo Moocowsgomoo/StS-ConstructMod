@@ -84,7 +84,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
         // Mod badge
         Texture badgeTexture = new Texture(Gdx.files.internal("img/ConstructModBadge.png"));
         
-        phoenixStart = BaseMod.maybeGetBoolean("Phoenix");
+        loadPhoenixData();
         
         ModPanel settingsPanel = new ModPanel();
         
@@ -95,15 +95,14 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
         		350.0f, 600.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
         		phoenixStart, settingsPanel, (label) -> {}, (button) -> {
         			phoenixStart = button.enabled;
-        			BaseMod.maybeSetBoolean("Phoenix", phoenixStart);
+        			saveData();
         			resetCharSelect();
         		});
         if (UnlockTracker.getUnlockLevel(TheConstructEnum.THE_CONSTRUCT_MOD) >= 1) settingsPanel.addUIElement(phoenixBtn);
         else {
         	if (phoenixStart) {
         		phoenixStart = false;
-        		BaseMod.maybeSetBoolean("Phoenix", false);
-        		// this should be moved into Save/Load system at some point, but I'm not touching it because I don't want to break anything.
+        		saveData();
         	}
         	settingsPanel.addUIElement(buttonLabel);
         	settingsPanel.addUIElement(buttonLabel2);
@@ -116,21 +115,35 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     
     public static void saveData() {
     	try {
+    		SpireConfig config = new SpireConfig("ConstructMod", "ConstructSaveData");
+    		config.setBool("phoenixStart", phoenixStart);
     		if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic("WeddingRing")) {
-    			SpireConfig config = new SpireConfig("ConstructMod", "ConstructSaveData");
     			config.setInt("marriedCard1", AbstractDungeon.player.masterDeck.group.indexOf(((WeddingRing)AbstractDungeon.player.getRelic("WeddingRing")).card1));
     			config.setInt("marriedCard2", AbstractDungeon.player.masterDeck.group.indexOf(((WeddingRing)AbstractDungeon.player.getRelic("WeddingRing")).card2));
-    			config.save();
     		}
-			
+    		config.save();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
     }
     
     public static void clearData() {
+    	phoenixStart = false;
     	marriedCard1 = marriedCard2 = -1;
     	saveData();
+    }
+    
+    public static void loadPhoenixData() {
+    	try {
+    		logger.info("ConstructMod | Loading Phoenix Preference...");
+	    	SpireConfig config = new SpireConfig("ConstructMod", "ConstructSaveData");
+			config.load();
+			phoenixStart = config.getBool("phoenixStart");
+    	}
+    	catch(Exception e) {
+    		e.printStackTrace();
+			clearData();
+    	}
     }
     
     public static void loadData() {
@@ -141,7 +154,6 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 			
 			marriedCard1 = config.getInt("marriedCard1");
 			marriedCard2 = config.getInt("marriedCard2");
-			logger.info("MARRIED: " + marriedCard1 + " " + marriedCard2);
 		
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -31,12 +31,12 @@ public class CharScreenSelectFXPatch {
 				maxAscensionLevel.setAccessible(true);
 				
 				CardCrawlGame.mainMenuScreen.charSelectScreen.ascensionLevel = pref.getInteger("ASCENSION_LEVEL", 1);
-	            if (15 < CardCrawlGame.mainMenuScreen.charSelectScreen.ascensionLevel) {
-	                CardCrawlGame.mainMenuScreen.charSelectScreen.ascensionLevel = 15;
+	            if (20 < CardCrawlGame.mainMenuScreen.charSelectScreen.ascensionLevel) {
+	                CardCrawlGame.mainMenuScreen.charSelectScreen.ascensionLevel = 20;
 	            }
 	            maxAscensionLevel.set(obj, pref.getInteger("ASCENSION_LEVEL", 1));
-	            if (15 < maxAscensionLevel.getInt(obj)) {
-	            	maxAscensionLevel.set(obj, 15);
+	            if (20 < maxAscensionLevel.getInt(obj)) {
+	            	maxAscensionLevel.set(obj, 20);
 	            }
 	            int ascensionLevel = CardCrawlGame.mainMenuScreen.charSelectScreen.ascensionLevel;
 	            if (ascensionLevel > maxAscensionLevel.getInt(obj)) {

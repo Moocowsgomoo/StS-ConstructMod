@@ -33,6 +33,11 @@ public class Defend_Gold extends AbstractCycleCard {
 	}
 	
 	@Override
+	public boolean isDefend() {
+		return true;
+	}
+	
+	@Override
 	public void triggerWhenDrawn(){
 		AbstractPlayer p = AbstractDungeon.player;
 		if (!p.hasPower("Dexterity") || p.getPower("Dexterity").amount >= 0) return;

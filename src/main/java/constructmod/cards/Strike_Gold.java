@@ -53,6 +53,11 @@ public class Strike_Gold extends AbstractCycleCard {
 					new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 	}
+	
+	@Override
+	public boolean isStrike() {
+		return true;
+	}
 
 	@Override
 	public AbstractCard makeCopy() {

@@ -2,10 +2,10 @@
   "modid": "constructmod",
   "name": "The Construct",
   "author_list": ["Moocowsgomoo, Spike Berd"],
-  "description": "New character - The Construct! \n   Recent changes: Ascension 20 enabled.",
-  "version": "0.7.8",
-  "sts_version": "08-16-2018",
-  "mts_version": "2.6.0",
+  "description": "New character - The Construct! \n\nRecent changes: \n- Fix for MTS/BaseMod 3.0 and StS Week 39.",
+  "version": "0.8.0",
+  "sts_version": "08-23-2018",
+  "mts_version": "3.0.0",
   "dependencies": ["basemod"],
   "update_json": "https://api.github.com/repos/Moocowsgomoo/StS-ConstructMod/releases/latest"
 }

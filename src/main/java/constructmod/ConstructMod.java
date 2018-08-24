@@ -64,7 +64,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
         BaseMod.subscribe(this);
 		
 		logger.info("creating the color " + AbstractCardEnum.CONSTRUCTMOD.toString());
-        BaseMod.addColor(AbstractCardEnum.CONSTRUCTMOD.toString(),
+        BaseMod.addColor(AbstractCardEnum.CONSTRUCTMOD,
         		CONSTRUCT_MOD_COLOR, CONSTRUCT_MOD_COLOR, CONSTRUCT_MOD_COLOR, CONSTRUCT_MOD_COLOR, CONSTRUCT_MOD_COLOR, CONSTRUCT_MOD_COLOR, CONSTRUCT_MOD_COLOR,
         		"img/512/bg_attack_gold.png", "img/512/bg_skill_gold.png",
         		"img/512/bg_power_gold.png", "img/512/card_gold_orb.png",
@@ -194,9 +194,9 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		
 		logger.info("add " + TheConstructEnum.THE_CONSTRUCT_MOD.toString());
 		BaseMod.addCharacter(TheConstruct.class, "The Construct", "Construct class string",
-				AbstractCardEnum.CONSTRUCTMOD.toString(), "The Construct",
+				AbstractCardEnum.CONSTRUCTMOD, "The Construct",
 				"img/charSelect/constructButton.png", "img/charSelect/constructPortrait.jpg",
-				TheConstructEnum.THE_CONSTRUCT_MOD.toString());
+				TheConstructEnum.THE_CONSTRUCT_MOD);
 		
 		logger.info("done editing characters");
 	}
@@ -349,10 +349,10 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addRelic(new ClawGrip(), RelicType.SHARED);
 		BaseMod.addRelic(new RocketBooster(), RelicType.SHARED);
 		BaseMod.addRelic(new WeddingRing(), RelicType.SHARED);
-		BaseMod.addRelicToCustomPool(new Cogwheel(), AbstractCardEnum.CONSTRUCTMOD.toString());
-		BaseMod.addRelicToCustomPool(new MasterCore(), AbstractCardEnum.CONSTRUCTMOD.toString());
-		BaseMod.addRelicToCustomPool(new ClockworkPhoenix(), AbstractCardEnum.CONSTRUCTMOD.toString());
-		BaseMod.addRelicToCustomPool(new MegaBattery(), AbstractCardEnum.CONSTRUCTMOD.toString());
-		BaseMod.addRelicToCustomPool(new PurpleEmber(), AbstractCardEnum.CONSTRUCTMOD.toString());
+		BaseMod.addRelicToCustomPool(new Cogwheel(), AbstractCardEnum.CONSTRUCTMOD);
+		BaseMod.addRelicToCustomPool(new MasterCore(), AbstractCardEnum.CONSTRUCTMOD);
+		BaseMod.addRelicToCustomPool(new ClockworkPhoenix(), AbstractCardEnum.CONSTRUCTMOD);
+		BaseMod.addRelicToCustomPool(new MegaBattery(), AbstractCardEnum.CONSTRUCTMOD);
+		BaseMod.addRelicToCustomPool(new PurpleEmber(), AbstractCardEnum.CONSTRUCTMOD);
 	}
 }

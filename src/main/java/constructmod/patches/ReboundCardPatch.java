@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import basemod.ReflectionHacks;
 import constructmod.cards.AbstractConstructCard;
 
-@SpirePatch(cls="com.megacrit.cardcrawl.actions.utility.UseCardAction", method="ctor", paramtypes= {"com.megacrit.cardcrawl.cards.AbstractCard","com.megacrit.cardcrawl.core.AbstractCreature"})
+@SpirePatch(cls="com.megacrit.cardcrawl.actions.utility.UseCardAction", method=SpirePatch.CONSTRUCTOR, paramtypes= {"com.megacrit.cardcrawl.cards.AbstractCard","com.megacrit.cardcrawl.core.AbstractCreature"})
 public class ReboundCardPatch {
 	@SpireInsertPatch(rloc=6)
 	public static void Insert(Object __obj_instance, final AbstractCard card, final AbstractCreature target) {

@@ -30,7 +30,7 @@ public class OrbGenesis extends CustomCard {
 
 	public OrbGenesis() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.SELF);
 		this.magicNumber = this.baseMagicNumber = ADD_ORBS;
 	}
 

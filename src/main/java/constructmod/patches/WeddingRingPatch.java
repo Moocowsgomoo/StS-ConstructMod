@@ -9,7 +9,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 )
 public class WeddingRingPatch
 {
-    public static SpireField<Boolean> isMarried = new SpireField<>(Boolean.FALSE);
-    public static SpireField<Boolean> copyIsMarried = new SpireField<>(Boolean.FALSE);
+    public static SpireField<Boolean> isMarried = new SpireField<>(()->false);
+    public static SpireField<Boolean> copyIsMarried = new SpireField<>(()->false);
 }
 	

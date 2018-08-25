@@ -8,6 +8,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import basemod.helpers.BaseModTags;
+import basemod.helpers.CardTags;
 import constructmod.patches.AbstractCardEnum;
 
 public class Defend_Gold extends AbstractCycleCard {
@@ -25,16 +27,12 @@ public class Defend_Gold extends AbstractCycleCard {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
 				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.SELF, POOL);
 		this.baseBlock = BLOCK_AMT;
+		CardTags.addTags(this, BaseModTags.BASIC_DEFEND);
 	}
 	
 	@Override
 	public void atTurnStart(){
 		hasCycled = false;
-	}
-	
-	@Override
-	public boolean isDefend() {
-		return true;
 	}
 	
 	@Override

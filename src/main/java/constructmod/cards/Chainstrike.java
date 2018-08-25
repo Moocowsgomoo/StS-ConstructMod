@@ -16,6 +16,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 
 import basemod.abstracts.CustomCard;
+import basemod.helpers.BaseModTags;
+import basemod.helpers.CardTags;
 import constructmod.ConstructMod;
 import constructmod.actions.PlayRandomAttacksFromHandAction;
 import constructmod.patches.AbstractCardEnum;
@@ -38,6 +40,7 @@ public class Chainstrike extends AbstractConstructCard {
 				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.ENEMY, POOL);
 		this.damage = this.baseDamage = ATTACK_DMG;
 		this.magicNumber = this.baseMagicNumber = CARDS_PLAYED;
+		CardTags.addTags(this, BaseModTags.STRIKE);
 	}
 
 	@Override

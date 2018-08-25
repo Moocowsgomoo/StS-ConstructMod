@@ -17,6 +17,8 @@ import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import basemod.abstracts.CustomCard;
+import basemod.helpers.BaseModTags;
+import basemod.helpers.CardTags;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
@@ -39,6 +41,7 @@ public class ShiftStrike extends AbstractConstructCard {
 				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.ENEMY, POOL);
 		this.damage = this.baseDamage = ATTACK_DMG;
 		this.magicNumber = this.baseMagicNumber = GAIN_STR;
+		CardTags.addTags(this, BaseModTags.STRIKE);
 	}
 
 	@Override

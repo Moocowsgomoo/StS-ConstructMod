@@ -14,6 +14,8 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import basemod.abstracts.CustomCard;
+import basemod.helpers.BaseModTags;
+import basemod.helpers.CardTags;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
@@ -32,6 +34,7 @@ public class Strike_Gold extends AbstractCycleCard {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.ATTACK,
 				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.ENEMY, POOL);
 		this.damage = this.baseDamage = ATTACK_DMG;
+		CardTags.addTags(this, BaseModTags.BASIC_STRIKE);
 	}
 	
 	@Override
@@ -52,11 +55,6 @@ public class Strike_Gold extends AbstractCycleCard {
 		AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.common.DamageAction(m,
 					new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-	}
-	
-	@Override
-	public boolean isStrike() {
-		return true;
 	}
 
 	@Override

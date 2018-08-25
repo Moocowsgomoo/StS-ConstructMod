@@ -61,9 +61,6 @@ public class MemoryTap extends AbstractConstructCard {
 			
 		}
 		
-		// quietly gain an orb slot, since defect cards would kind of suck if you didn't.
-		AbstractDungeon.actionManager.addToBottom(new IncreaseMaxOrbAction(1));
-		
 	}
 
 	@Override

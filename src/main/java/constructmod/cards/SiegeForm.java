@@ -8,6 +8,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import basemod.abstracts.CustomCard;
+import basemod.helpers.BaseModTags;
+import basemod.helpers.CardTags;
 import constructmod.patches.AbstractCardEnum;
 import constructmod.powers.SiegeFormPower;
 
@@ -27,6 +29,7 @@ public class SiegeForm extends AbstractConstructCard {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.POWER,
 				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.SELF, POOL);
 		this.magicNumber = this.baseMagicNumber = POWER_DAMAGE;
+		CardTags.addTags(this, BaseModTags.FORM);
 	}
 
 	@Override

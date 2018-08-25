@@ -411,7 +411,8 @@
 	},
 	"FocusedBeam": {
 		"NAME": "Focused Beam",
-		"DESCRIPTION": "Deal !D! damage. NL Put this on top of your draw pile."
+		"DESCRIPTION": "Deal !D! damage. NL Put this on top of your draw pile.",
+		"EXTENDED_DESCRIPTION": ["Deal !D! damage. NL Draw a card, then put this on top of your draw pile."]
 	},
 	"Tumble": {
 		"NAME": "Tumble",
@@ -485,7 +486,7 @@
 	},
 	"PowerUp": {
 		"NAME": "Power Up",
-		"DESCRIPTION": "Deal !D! damage. NL ALL of your Strikes and Defends gain !M! power for this combat.",
-		"UPGRADE_DESCRIPTION": "Deal !D! damage. NL Double the power of ALL of your Strikes and Defends for this combat."
+		"DESCRIPTION": "Deal !D! damage. NL ALL of your basic Strikes and Defends gain !M! power for this combat.",
+		"UPGRADE_DESCRIPTION": "Deal !D! damage. NL Double the power of ALL of your basic Strikes and Defends for this combat."
 	}
 }

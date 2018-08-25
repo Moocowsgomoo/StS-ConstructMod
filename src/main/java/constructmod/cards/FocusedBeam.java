@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import com.megacrit.cardcrawl.vfx.combat.SmallLaserEffect;
 
 import basemod.abstracts.CustomCard;
@@ -26,11 +27,11 @@ public class FocusedBeam extends AbstractConstructCard {
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+	public static final String M_UPGRADE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 	private static final int COST = 1;
 	private static final int ATTACK_DMG = 9;
 	private static final int UPGRADE_PLUS_ATTACK_DMG = 3;
-	private static final int M_UPGRADE_PLUS_ATTACK_DMG = 2;
-	private static final int M_UPGRADE_NEW_COST = 0;
+	private static final int M_UPGRADE_PLUS_ATTACK_DMG = 5;
 	private static final int POOL = 1;
 
 	public FocusedBeam() {
@@ -49,6 +50,8 @@ public class FocusedBeam extends AbstractConstructCard {
 					new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.FIRE));
 		
+		if (this.megaUpgraded) AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p,1));
+		
 		///AbstractDungeon.actionManager.addToBottom(new PutOnDeckAction());
 	}
 
@@ -65,7 +68,8 @@ public class FocusedBeam extends AbstractConstructCard {
 		} else if (canUpgrade()) {
 			this.megaUpgradeName();
 			this.upgradeDamage(M_UPGRADE_PLUS_ATTACK_DMG);
-			this.upgradeBaseCost(M_UPGRADE_NEW_COST);
+			this.rawDescription = M_UPGRADE_DESCRIPTION;
+			this.initializeDescription();
 		}
 	}
 }

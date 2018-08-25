@@ -128,7 +128,6 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     }
     
     public static void clearData() {
-    	phoenixStart = false;
     	marriedCard1 = marriedCard2 = -1;
     	saveData();
     }

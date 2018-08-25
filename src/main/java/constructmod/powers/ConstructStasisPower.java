@@ -19,7 +19,7 @@ import constructmod.ConstructMod;
 import constructmod.cards.AbstractConstructCard;
 
 public class ConstructStasisPower extends AbstractPower {
-	public static final String POWER_ID = "Self-Stasis";
+	public static final String POWER_ID = ConstructMod.makeID("Self-Stasis");
 	public static final String NAME = "Self-Stasis";
 	public static final String[] DESCRIPTIONS = new String[] {
 			"Holding: ",
@@ -36,7 +36,7 @@ public class ConstructStasisPower extends AbstractPower {
 		this.amount = amount;
 		this.type = AbstractPower.PowerType.BUFF;
 		this.isTurnBased = false;
-		this.img = new Texture("img/powers/stasis.png");
+		this.img = new Texture("img/constructPowers/stasis.png");
 		this.heldCard = heldCard.makeCopy();
 		updateDescription();
 	}

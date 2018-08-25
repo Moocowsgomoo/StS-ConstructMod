@@ -9,11 +9,13 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.DexterityPower;
 
+import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
 public class Reserves extends AbstractCycleCard {
-	public static final String ID = "Reserves";
+	public static final String ID = ConstructMod.makeID("Reserves");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -31,13 +33,9 @@ public class Reserves extends AbstractCycleCard {
 	}
 	
 	@Override
-	public void atTurnStart(){
-		hasCycled = false;
-	}
-	
-	@Override
-	public void triggerWhenDrawn(){
-		if (AbstractDungeon.player.currentHealth > this.magicNumber) cycle();
+	public boolean canCycle() {
+		return super.canCycle() && 
+				AbstractDungeon.player.currentHealth > this.magicNumber;
 	}
 
 	@Override

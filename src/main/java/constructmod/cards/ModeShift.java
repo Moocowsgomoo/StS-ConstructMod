@@ -15,10 +15,11 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import basemod.abstracts.CustomCard;
 import basemod.helpers.BaseModTags;
 import basemod.helpers.CardTags;
+import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
 public class ModeShift extends AbstractConstructCard {
-	public static final String ID = "ModeShift";
+	public static final String ID = ConstructMod.makeID("ModeShift");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;

@@ -12,13 +12,15 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
+import com.megacrit.cardcrawl.powers.WeakPower;
 
 import basemod.abstracts.CustomCard;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
 public class CriticalHit extends AbstractCycleCard {
-	public static final String ID = "CriticalHit";
+	public static final String ID = ConstructMod.makeID("CriticalHit");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -36,25 +38,20 @@ public class CriticalHit extends AbstractCycleCard {
 	}
 	
 	@Override
-	public void atTurnStart(){
-		hasCycled = false;
-	}
-	
-	@Override
-	public void triggerWhenDrawn(){
+	public boolean canCycle() {
 		boolean anyVuln = false;
 		int count = AbstractDungeon.getCurrRoom().monsters.monsters.size();
 		for (int i = 0; i < count; i++) {
 			AbstractMonster targetMonster = (AbstractMonster)AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
 			if ((!targetMonster.isDeadOrEscaped())) {
-				if ((targetMonster.hasPower("Vulnerable") && targetMonster.getPower("Vulnerable").amount > 0) || 
-						(targetMonster.hasPower("Weakened") && targetMonster.getPower("Weakened").amount > 0 )){
+				if ((targetMonster.hasPower(VulnerablePower.POWER_ID) && targetMonster.getPower(VulnerablePower.POWER_ID).amount > 0) || 
+						(targetMonster.hasPower(WeakPower.POWER_ID) && targetMonster.getPower(WeakPower.POWER_ID).amount > 0 )){
 					anyVuln = true;
 					break;
 				}
 			}
 		}
-		if (!anyVuln) cycle();
+		return super.canCycle() && !anyVuln;
 	}
 
 	@Override

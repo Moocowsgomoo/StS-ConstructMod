@@ -12,11 +12,12 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.BufferPower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
+import constructmod.ConstructMod;
 import constructmod.actions.EveryoneGainBlockAction;
 import constructmod.patches.AbstractCardEnum;
 
 public class Lockdown extends AbstractConstructCard {
-	public static final String ID = "Lockdown";
+	public static final String ID = ConstructMod.makeID("Lockdown");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;

@@ -19,7 +19,7 @@ import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
 public class ScrapCannon extends AbstractConstructCard {
-	public static final String ID = "ScrapCannon";
+	public static final String ID = ConstructMod.makeID("ScrapCannon");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;

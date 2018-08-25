@@ -17,11 +17,11 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import constructmod.ConstructMod;
 
 public class ZapperPower extends AbstractPower {
-	public static final String POWER_ID = "Zapper";
+	public static final String POWER_ID = ConstructMod.makeID("Zapper");
 	public static final String NAME = "Zapper";
 	public static final String[] DESCRIPTIONS = new String[] {
-			"Whenever you gain Strength or Dexterity, deal ",
-			" damage to a random enemy. It loses 1 Strength this turn."
+			"Whenever you gain #yStrength or #yDexterity, deal #b",
+			" damage to a random enemy. It loses 1 #yStrength this turn."
 	};
 	
 	public ZapperPower(AbstractCreature owner, int amount) {
@@ -32,7 +32,7 @@ public class ZapperPower extends AbstractPower {
 		updateDescription();
 		this.type = AbstractPower.PowerType.BUFF;
 		this.isTurnBased = false;
-		this.img = new Texture("img/powers/zapper.png");
+		this.img = new Texture("img/constructPowers/zapper.png");
 	}
 	
 	@Override

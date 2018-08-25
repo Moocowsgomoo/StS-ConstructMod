@@ -21,11 +21,11 @@ import basemod.interfaces.PostDrawSubscriber;
 import constructmod.ConstructMod;
 
 public class DisruptorPower extends AbstractPower {
-	public static final String POWER_ID = "Disruptor";
+	public static final String POWER_ID = ConstructMod.makeID("Disruptor");
 	public static final String NAME = "Disruptor";
 	public static final String[] DESCRIPTIONS = new String[] {
-			"After you lose HP, gain ",
-			" times that much Block.",
+			"After you lose HP, gain #b",
+			" times that much #yBlock.",
 	};
 	
 	public DisruptorPower(AbstractCreature owner, int amount) {
@@ -36,7 +36,7 @@ public class DisruptorPower extends AbstractPower {
 		updateDescription();
 		this.type = AbstractPower.PowerType.BUFF;
 		this.isTurnBased = false;
-		this.img = new Texture("img/powers/disruptor.png");
+		this.img = new Texture("img/constructPowers/disruptor.png");
 	}
 	
 	@Override

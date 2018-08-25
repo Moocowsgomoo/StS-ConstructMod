@@ -28,10 +28,9 @@ public class TumbleFollowupAction extends AbstractGameAction
     public void update() {
         if (this.duration == Settings.ACTION_DUR_FASTER) {
             for (final AbstractCard drawn : ConstructTumbleAction.drawnCards) {
-                if (drawn instanceof AbstractCycleCard && ((AbstractCycleCard)drawn).hasCycled) {
-                	drawn.flash();
-                    AbstractDungeon.actionManager.addToTop(new DamageAction(this.target, new DamageInfo(p, this.amount), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-                }
+            	// already checked if it could cycle in ConstructTumbleAction, just do the thing now
+            	drawn.flash();
+                AbstractDungeon.actionManager.addToTop(new DamageAction(this.target, new DamageInfo(p, this.amount), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
             }
             ConstructTumbleAction.drawnCards.clear();
         }

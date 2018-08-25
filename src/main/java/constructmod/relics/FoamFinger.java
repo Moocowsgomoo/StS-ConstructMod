@@ -14,8 +14,8 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import constructmod.ConstructMod;
 
 public class FoamFinger extends CustomRelic {
-    public static final String ID = "FoamFinger";
-    private static final String IMG = "img/relics/FoamFinger.png";
+    public static final String ID = ConstructMod.makeID("FoamFinger");
+    private static final String IMG = "img/constructRelics/FoamFinger.png";
 	
     public FoamFinger() {
         super(ID, new Texture(IMG), RelicTier.UNCOMMON, LandingSound.FLAT);

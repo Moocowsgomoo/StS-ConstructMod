@@ -42,7 +42,7 @@ import constructmod.patches.AbstractCardEnum;
 import constructmod.relics.ClockworkPhoenix;
 
 public class ClockworkEgg extends AbstractConstructCard {
-	public static final String ID = "ClockworkEgg";
+	public static final String ID = ConstructMod.makeID("ClockworkEgg");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -97,22 +97,22 @@ public class ClockworkEgg extends AbstractConstructCard {
 			AbstractRelic relic;
 			
 			if (!p.hasRelic("Molten Egg 2")) {
-				relic = RelicLibrary.getRelic("Molten Egg 2").makeCopy();
+				relic = RelicLibrary.getRelic(MoltenEgg2.ID).makeCopy();
 				AbstractDungeon.getCurrRoom().spawnRelicAndObtain(Settings.WIDTH / 2, Settings.HEIGHT / 2, relic);
 				AbstractDungeon.uncommonRelicPool.remove(relic.relicId);
 			}
 			if (!p.hasRelic("Toxic Egg 2")) {
-				relic = RelicLibrary.getRelic("Toxic Egg 2").makeCopy();
+				relic = RelicLibrary.getRelic(ToxicEgg2.ID).makeCopy();
 				AbstractDungeon.getCurrRoom().spawnRelicAndObtain(Settings.WIDTH / 2, Settings.HEIGHT / 2, relic);
 				AbstractDungeon.uncommonRelicPool.remove(relic.relicId);
 			}
 			if (!p.hasRelic("Frozen Egg 2")) {
-				relic = RelicLibrary.getRelic("Frozen Egg 2").makeCopy();
+				relic = RelicLibrary.getRelic(FrozenEgg2.ID).makeCopy();
 				AbstractDungeon.getCurrRoom().spawnRelicAndObtain(Settings.WIDTH / 2, Settings.HEIGHT / 2, relic);
 				AbstractDungeon.uncommonRelicPool.remove(relic.relicId);
 			}
 			if (!p.hasRelic("ClockworkPhoenix")) {
-				relic = RelicLibrary.getRelic("ClockworkPhoenix").makeCopy();
+				relic = RelicLibrary.getRelic(ClockworkPhoenix.ID).makeCopy();
 				AbstractDungeon.getCurrRoom().spawnRelicAndObtain(Settings.WIDTH / 2, Settings.HEIGHT / 2, relic);
 			}
 			p.masterDeck.removeCard(ID);

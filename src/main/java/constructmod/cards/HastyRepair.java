@@ -11,11 +11,12 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 
 import basemod.abstracts.CustomCard;
+import constructmod.ConstructMod;
 import constructmod.actions.GainMaxHPAction;
 import constructmod.patches.AbstractCardEnum;
 
 public class HastyRepair extends AbstractConstructCard {
-	public static final String ID = "HastyRepair";
+	public static final String ID = ConstructMod.makeID("HastyRepair");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;

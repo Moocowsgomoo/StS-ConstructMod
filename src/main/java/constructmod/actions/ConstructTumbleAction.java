@@ -4,6 +4,9 @@ import com.megacrit.cardcrawl.actions.*;
 import java.util.*;
 import com.megacrit.cardcrawl.dungeons.*;
 import com.megacrit.cardcrawl.vfx.*;
+
+import constructmod.cards.AbstractCycleCard;
+
 import com.megacrit.cardcrawl.core.*;
 import com.megacrit.cardcrawl.cards.*;
 import com.badlogic.gdx.*;
@@ -86,7 +89,10 @@ public class ConstructTumbleAction extends AbstractGameAction
             }
             --this.amount;
             if (!AbstractDungeon.player.drawPile.isEmpty()) {
-                ConstructTumbleAction.drawnCards.add(AbstractDungeon.player.drawPile.getTopCard());
+            	AbstractCard drawnCard = AbstractDungeon.player.drawPile.getTopCard();
+            	if (drawnCard instanceof AbstractCycleCard && ((AbstractCycleCard)drawnCard).canCycle()) {
+            		ConstructTumbleAction.drawnCards.add(AbstractDungeon.player.drawPile.getTopCard());
+            	}
                 AbstractDungeon.player.draw();
                 AbstractDungeon.player.hand.refreshHandLayout();
             }

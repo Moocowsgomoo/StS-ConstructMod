@@ -27,7 +27,7 @@ import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
 public class FierceBash extends AbstractConstructCard {
-	public static final String ID = "FierceBash";
+	public static final String ID = ConstructMod.makeID("FierceBash");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;

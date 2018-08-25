@@ -9,10 +9,11 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DoubleDamagePower;
 
+import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
 public class Isolate extends AbstractCycleCard {
-	public static final String ID = "Isolate";
+	public static final String ID = ConstructMod.makeID("Isolate");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
@@ -31,19 +32,15 @@ public class Isolate extends AbstractCycleCard {
 	}
 	
 	@Override
-	public void atTurnStart(){
-		hasCycled = false;
-	}
-	
-	@Override
-	public void triggerWhenDrawn(){
+	public boolean canCycle() {
 		int count = 0;
         for (final AbstractMonster mon : AbstractDungeon.getMonsters().monsters) {
             if (!mon.isDeadOrEscaped()) {
                 ++count;
             }
         }
-        if (count > 1) cycle();
+		return super.canCycle() && count > 1;
+				
 	}
 
 	@Override

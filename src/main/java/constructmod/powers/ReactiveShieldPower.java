@@ -1,35 +1,32 @@
 package constructmod.powers;
 
-import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.helpers.*;
+
+import constructmod.ConstructMod;
+
 import com.megacrit.cardcrawl.dungeons.*;
 import com.megacrit.cardcrawl.cards.*;
 import com.megacrit.cardcrawl.actions.unique.*;
 
-import java.util.ArrayList;
-
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.math.MathUtils;
-import com.megacrit.cardcrawl.actions.*;
 import com.megacrit.cardcrawl.core.*;
 
 public class ReactiveShieldPower extends AbstractPower
 {
-    public static final String POWER_ID = "ReactiveShield";
+    public static final String POWER_ID = ConstructMod.makeID("ReactiveShield");
     public static final String[] DESCRIPTIONS = new String[] {
-			"When you gain Block, deal ",
+			"When you gain #yBlock, deal #b",
 			" damage to the enemy with the lowest HP."
 	};
     
     public ReactiveShieldPower(final AbstractCreature owner, final int newAmount) {
         this.name = "Reactive Shield";
-        this.ID = "ReactiveShield";
+        this.ID = POWER_ID;
         this.owner = owner;
         this.amount = newAmount;
         this.updateDescription();
-        this.img = new Texture("img/powers/reactiveshield.png");
+        this.img = new Texture("img/constructPowers/reactiveshield.png");
     }
     
     @Override

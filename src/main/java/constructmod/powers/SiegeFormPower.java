@@ -15,13 +15,14 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import basemod.BaseMod;
 import basemod.interfaces.PostDrawSubscriber;
+import constructmod.ConstructMod;
 
 public class SiegeFormPower extends AbstractPower {
-	public static final String POWER_ID = "SiegeForm";
+	public static final String POWER_ID = ConstructMod.makeID("SiegeForm");
 	public static final String NAME = "Siege Form";
 	public static final String[] DESCRIPTIONS = new String[] {
-			"When you deal Attack damage, gain ",
-			" Strength until the end of the turn.",
+			"When you deal #yAttack damage, gain #b",
+			" #yStrength until the end of the turn.",
 	};
 	
 	public SiegeFormPower(AbstractCreature owner, int amount) {
@@ -32,7 +33,7 @@ public class SiegeFormPower extends AbstractPower {
 		updateDescription();
 		this.type = AbstractPower.PowerType.BUFF;
 		this.isTurnBased = false;
-		this.img = new Texture("img/powers/siege_form.png");
+		this.img = new Texture("img/constructPowers/siege_form.png");
 	}
 	
 	@Override

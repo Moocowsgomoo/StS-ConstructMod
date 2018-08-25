@@ -23,11 +23,11 @@ import basemod.interfaces.PostDrawSubscriber;
 import constructmod.ConstructMod;
 
 public class MeltdownPower extends AbstractPower {
-	public static final String POWER_ID = "Meltdown";
+	public static final String POWER_ID = ConstructMod.makeID("Meltdown");
 	public static final String NAME = "Meltdown";
 	public static final String[] DESCRIPTIONS = new String[] {
-			"At the start of your turn, deal ",
-			" damage and add 2 #yBurns to your hand."
+			"At the start of your turn, deal #b",
+			" damage to ALL enemies and add #b2 #yBurns to your hand."
 	};
 	
 	public MeltdownPower(AbstractCreature owner, int amount) {
@@ -37,7 +37,7 @@ public class MeltdownPower extends AbstractPower {
 		this.amount = amount;
 		this.type = AbstractPower.PowerType.BUFF;
 		this.isTurnBased = false;
-		this.img = new Texture("img/powers/meltdown.png");
+		this.img = new Texture("img/constructPowers/meltdown.png");
 		updateDescription();
 	}
 	

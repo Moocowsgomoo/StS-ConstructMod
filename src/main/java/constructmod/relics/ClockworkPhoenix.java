@@ -12,8 +12,8 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import constructmod.ConstructMod;
 
 public class ClockworkPhoenix extends CustomRelic {
-    public static final String ID = "ClockworkPhoenix";
-    private static final String IMG = "img/relics/ClockworkPhoenix.png";
+    public static final String ID = ConstructMod.makeID("ClockworkPhoenix");
+    private static final String IMG = "img/constructRelics/ClockworkPhoenix.png";
 	
     public ClockworkPhoenix() {
         super(ID, new Texture(IMG), RelicTier.SPECIAL, LandingSound.MAGICAL);

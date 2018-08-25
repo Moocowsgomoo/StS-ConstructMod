@@ -7,10 +7,12 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
 public class GuardCore extends AbstractCycleCard {
-	public static final String ID = "GuardCore";
+	public static final String ID = ConstructMod.makeID("GuardCore");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -28,22 +30,15 @@ public class GuardCore extends AbstractCycleCard {
 	}
 	
 	@Override
-	public void atTurnStart(){
-		hasCycled = false;
-	}
-	
-	@Override
 	public void triggerWhenDrawn(){
-		AbstractPlayer p = AbstractDungeon.player;
-		
-		if (hasCycled) return;
+		if (!this.canCycle()) return; // have to check this before super call, otherwise our test for canCycle is false since it JUST cycled.
+		super.triggerWhenDrawn();
 		
 		flash();
-		cycle();
 		
+		AbstractPlayer p = AbstractDungeon.player;
 		AbstractDungeon.actionManager.addToTop(new GainBlockAction(p,p,this.block));
 		CloneCore();
-		
 	}
 
 	@Override

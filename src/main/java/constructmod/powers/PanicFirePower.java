@@ -13,10 +13,10 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import constructmod.ConstructMod;
 
 public class PanicFirePower extends AbstractCyclePower {
-	public static final String POWER_ID = "PanicFire";
+	public static final String POWER_ID = ConstructMod.makeID("PanicFire");
 	public static final String NAME = "Panic Fire";
 	public static final String[] DESCRIPTIONS = new String[] {
-			"Whenever an non-upgraded card #ycycles, #yExhaust it and deal ",
+			"Whenever an non-upgraded card #ycycles, #yExhaust it and deal #b",
 			" damage to a random enemy."
 	};
 	
@@ -28,7 +28,7 @@ public class PanicFirePower extends AbstractCyclePower {
 		updateDescription();
 		this.type = AbstractPower.PowerType.BUFF;
 		this.isTurnBased = false;
-		this.img = new Texture("img/powers/panic_fire.png");
+		this.img = new Texture("img/constructPowers/panic_fire.png");
 	}
 	
 	@Override

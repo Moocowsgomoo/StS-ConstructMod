@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import basemod.abstracts.CustomCard;
+import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 import constructmod.powers.AutoturretPower;
 import constructmod.powers.MegaZapperPower;
@@ -16,7 +17,7 @@ import constructmod.powers.SiegeFormPower;
 import constructmod.powers.ZapperPower;
 
 public class Zapper extends AbstractConstructCard {
-	public static final String ID = "Zapper";
+	public static final String ID = ConstructMod.makeID("Zapper");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;

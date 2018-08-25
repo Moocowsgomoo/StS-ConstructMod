@@ -7,13 +7,15 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.DexterityPower;
 
 import basemod.helpers.BaseModTags;
 import basemod.helpers.CardTags;
+import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
 public class Defend_Gold extends AbstractCycleCard {
-	public static final String ID = "Defend_Gold";
+	public static final String ID = ConstructMod.makeID("Defend_Gold");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -31,16 +33,10 @@ public class Defend_Gold extends AbstractCycleCard {
 	}
 	
 	@Override
-	public void atTurnStart(){
-		hasCycled = false;
-	}
-	
-	@Override
-	public void triggerWhenDrawn(){
-		AbstractPlayer p = AbstractDungeon.player;
-		if (!p.hasPower("Dexterity") || p.getPower("Dexterity").amount >= 0) return;
-		
-		cycle();
+	public boolean canCycle() {
+		return super.canCycle() && 
+				AbstractDungeon.player.hasPower(DexterityPower.POWER_ID) && 
+				AbstractDungeon.player.getPower(DexterityPower.POWER_ID).amount < 0;
 	}
 
 	@Override

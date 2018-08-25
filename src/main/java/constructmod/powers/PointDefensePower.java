@@ -13,10 +13,10 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import constructmod.ConstructMod;
 
 public class PointDefensePower extends AbstractCyclePower {
-	public static final String POWER_ID = "PointDefense";
+	public static final String POWER_ID = ConstructMod.makeID("PointDefense");
 	public static final String NAME = "Point Defense";
 	public static final String[] DESCRIPTIONS = new String[] {
-			"Whenever a card cycles, gain 1 Block."
+			"Whenever a card #ycycles, gain #b1 #yBlock."
 	};
 	
 	private int amountPerTurn=0;
@@ -29,7 +29,7 @@ public class PointDefensePower extends AbstractCyclePower {
 		updateDescription();
 		this.type = AbstractPower.PowerType.BUFF;
 		this.isTurnBased = false;
-		this.img = new Texture("img/powers/pointdefense.png");
+		this.img = new Texture("img/constructPowers/pointdefense.png");
 	}
 	
 	@Override

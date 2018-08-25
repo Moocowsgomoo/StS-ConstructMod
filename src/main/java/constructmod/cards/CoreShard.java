@@ -25,7 +25,7 @@ import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
 public class CoreShard extends AbstractCycleCard {
-	public static final String ID = "CoreShard";
+	public static final String ID = ConstructMod.makeID("CoreShard");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -41,11 +41,6 @@ public class CoreShard extends AbstractCycleCard {
 	}
 	
 	@Override
-	public void atTurnStart(){
-		hasCycled = false;
-	}
-	
-	@Override
 	public void triggerWhenDrawn(){
 		AbstractPlayer p = AbstractDungeon.player;
 		
@@ -54,14 +49,14 @@ public class CoreShard extends AbstractCycleCard {
             AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, p.getPower("Evolve").amount));
         }
 		
-		if (hasCycled) return;
+		if (!this.canCycle()) return; // have to check this before super call, otherwise our test for canCycle is false since it JUST cycled.
+		super.triggerWhenDrawn();
 		
 		flash();
 		
 		AbstractDungeon.actionManager.addToBottom(new DamageAction(
 				p, new DamageInfo(p, this.magicNumber, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
 		
-		cycle();
 		//if (upgraded) AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(this.makeStatEquivalentCopy(),1));
 		//AbstractDungeon.player.onCycle(this);
 	}

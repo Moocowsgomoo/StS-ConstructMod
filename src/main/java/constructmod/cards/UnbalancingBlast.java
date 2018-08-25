@@ -26,7 +26,7 @@ import constructmod.actions.SwapDrawPileAndDiscardAction;
 import constructmod.patches.AbstractCardEnum;
 
 public class UnbalancingBlast extends AbstractConstructCard {
-	public static final String ID = "UnbalancingBlast";
+	public static final String ID = ConstructMod.makeID("UnbalancingBlast");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;

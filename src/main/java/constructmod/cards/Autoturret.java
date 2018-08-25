@@ -8,12 +8,13 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import basemod.abstracts.CustomCard;
+import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 import constructmod.powers.AutoturretPower;
 import constructmod.powers.SiegeFormPower;
 
 public class Autoturret extends AbstractConstructCard {
-	public static final String ID = "Autoturret";
+	public static final String ID = ConstructMod.makeID("Autoturret");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;

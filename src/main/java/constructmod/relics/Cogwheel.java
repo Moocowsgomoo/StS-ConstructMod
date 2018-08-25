@@ -1,6 +1,8 @@
 package constructmod.relics;
 
 import basemod.abstracts.CustomRelic;
+import constructmod.ConstructMod;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -9,8 +11,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 public class Cogwheel extends CustomRelic {
-    public static final String ID = "Cogwheel";
-    private static final String IMG = "img/relics/Cogwheel.png";
+    public static final String ID = ConstructMod.makeID("Cogwheel");
+    private static final String IMG = "img/constructRelics/Cogwheel.png";
 	
     public Cogwheel() {
         super(ID, new Texture(IMG), RelicTier.STARTER, LandingSound.CLINK);

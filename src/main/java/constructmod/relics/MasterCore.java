@@ -23,8 +23,8 @@ import constructmod.cards.ScopeCore;
 import constructmod.cards.LaserCore;
 
 public class MasterCore extends CustomRelic {
-    public static final String ID = "MasterCore";
-    private static final String IMG = "img/relics/MasterCore.png";
+    public static final String ID = ConstructMod.makeID("MasterCore");
+    private static final String IMG = "img/constructRelics/MasterCore.png";
     
     private final ArrayList<AbstractCard> cards = new ArrayList<AbstractCard>();
 	

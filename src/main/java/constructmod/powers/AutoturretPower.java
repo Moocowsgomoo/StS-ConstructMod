@@ -12,10 +12,10 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import constructmod.ConstructMod;
 
 public class AutoturretPower extends AbstractCyclePower {
-	public static final String POWER_ID = "Autoturret";
+	public static final String POWER_ID = ConstructMod.makeID("Autoturret");
 	public static final String NAME = "Autoturret";
 	public static final String[] DESCRIPTIONS = new String[] {
-			"Whenever a card cycles, deal ",
+			"Whenever a card #ycycles, deal #b",
 			" damage to a random enemy."
 	};
 	
@@ -27,7 +27,7 @@ public class AutoturretPower extends AbstractCyclePower {
 		updateDescription();
 		this.type = AbstractPower.PowerType.BUFF;
 		this.isTurnBased = false;
-		this.img = new Texture("img/powers/autoturret.png");
+		this.img = new Texture("img/constructPowers/autoturret.png");
 	}
 	
 	@Override

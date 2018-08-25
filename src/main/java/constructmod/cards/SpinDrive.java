@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import basemod.abstracts.CustomCard;
+import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 import constructmod.powers.AutoturretPower;
 import constructmod.powers.PanicFirePower;
@@ -17,7 +18,7 @@ import constructmod.powers.SiegeFormPower;
 import constructmod.powers.SpinDrivePower;
 
 public class SpinDrive extends AbstractConstructCard {
-	public static final String ID = "SpinDrive";
+	public static final String ID = ConstructMod.makeID("SpinDrive");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;

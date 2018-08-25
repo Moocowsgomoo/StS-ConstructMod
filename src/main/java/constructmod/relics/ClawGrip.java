@@ -15,8 +15,8 @@ import constructmod.ConstructMod;
 import constructmod.actions.ClawGripAction;
 
 public class ClawGrip extends CustomRelic {
-    public static final String ID = "ClawGrip";
-    private static final String IMG = "img/relics/ClawGrip.png";
+    public static final String ID = ConstructMod.makeID("ClawGrip");
+    private static final String IMG = "img/constructRelics/ClawGrip.png";
     
     public AbstractCard card;
 	

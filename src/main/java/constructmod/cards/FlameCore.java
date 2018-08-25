@@ -25,7 +25,7 @@ import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
 public class FlameCore extends AbstractCycleCard {
-	public static final String ID = "FlameCore";
+	public static final String ID = ConstructMod.makeID("FlameCore");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -43,18 +43,11 @@ public class FlameCore extends AbstractCycleCard {
 	}
 	
 	@Override
-	public void atTurnStart(){
-		hasCycled = false;
-	}
-	
-	@Override
 	public void triggerWhenDrawn(){
-		AbstractPlayer p = AbstractDungeon.player;
-		
-		if (hasCycled) return;
+		if (!this.canCycle()) return; // have to check this before super call, otherwise our test for canCycle is false since it JUST cycled.
+		super.triggerWhenDrawn();
 		
 		flash();
-		cycle();
 		
 		final AbstractMonster mo = AbstractDungeon.getMonsters().getRandomMonster(true);
 		if (mo != null) {

@@ -12,10 +12,12 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.LoseDexterityPower;
+
+import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
 public class QuickAttack extends AbstractConstructCard {
-	public static final String ID = "QuickAttack";
+	public static final String ID = ConstructMod.makeID("QuickAttack");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;

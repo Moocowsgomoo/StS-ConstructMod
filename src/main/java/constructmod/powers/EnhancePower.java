@@ -19,10 +19,10 @@ import constructmod.ConstructMod;
 import constructmod.cards.AbstractConstructCard;
 
 public class EnhancePower extends AbstractPower {
-	public static final String POWER_ID = "Enhance";
+	public static final String POWER_ID = ConstructMod.makeID("Enhance");
 	public static final String NAME = "Enhance";
 	public static final String[] DESCRIPTIONS = new String[] {
-			"At the end of your turn, upgrade ",
+			"At the end of your turn, upgrade #b",
 			" card(s) in your discard pile."
 	};
 	
@@ -35,7 +35,7 @@ public class EnhancePower extends AbstractPower {
 		this.amount = amount;
 		this.type = AbstractPower.PowerType.BUFF;
 		this.isTurnBased = false;
-		this.img = new Texture("img/powers/enhance.png");
+		this.img = new Texture("img/constructPowers/enhance.png");
 		this.canMegaUpgrade = canMegaUpgrade;
 		updateDescription();
 	}

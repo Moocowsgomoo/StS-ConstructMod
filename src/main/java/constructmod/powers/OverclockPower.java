@@ -24,11 +24,11 @@ import basemod.interfaces.PostDrawSubscriber;
 import constructmod.ConstructMod;
 
 public class OverclockPower extends AbstractPower {
-	public static final String POWER_ID = "Overclock";
+	public static final String POWER_ID = ConstructMod.makeID("Overclock");
 	public static final String NAME = "Overclock";
 	public static final String[] DESCRIPTIONS = new String[] {
-			"At the start of your turn, draw ",
-			" cards and add ",
+			"At the start of your turn, draw #b",
+			" cards and add #b",
 			" to your hand."
 	};
 	
@@ -41,7 +41,7 @@ public class OverclockPower extends AbstractPower {
 		this.amount = amount;
 		this.type = AbstractPower.PowerType.BUFF;
 		this.isTurnBased = false;
-		this.img = new Texture("img/powers/overclock.png");
+		this.img = new Texture("img/constructPowers/overclock.png");
 		this.statMultiplier = mult;
 		updateDescription();
 	}

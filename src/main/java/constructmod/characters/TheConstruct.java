@@ -21,7 +21,13 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import constructmod.ConstructMod;
+import constructmod.cards.AttackMode;
+import constructmod.cards.Defend_Gold;
+import constructmod.cards.DefenseMode;
+import constructmod.cards.Strike_Gold;
 import constructmod.patches.TheConstructEnum;
+import constructmod.relics.ClockworkPhoenix;
+import constructmod.relics.Cogwheel;
 
 public class TheConstruct extends CustomPlayer{
 	public static final int ENERGY_PER_TURN = 3;
@@ -41,30 +47,30 @@ public class TheConstruct extends CustomPlayer{
 
 	public static ArrayList<String> getStartingDeck() {
 		ArrayList<String> retVal = new ArrayList<>();
-		retVal.add("Strike_Gold");
-		retVal.add("Strike_Gold");
-		retVal.add("Strike_Gold");
-		retVal.add("Strike_Gold");
-		retVal.add("Strike_Gold");
-		retVal.add("Defend_Gold");
-		retVal.add("Defend_Gold");
-		retVal.add("Defend_Gold");
-		retVal.add("Defend_Gold");
-		retVal.add("Defend_Gold");
-		retVal.add("AttackMode");
-		retVal.add("DefenseMode");
+		retVal.add(Strike_Gold.ID);
+		retVal.add(Strike_Gold.ID);
+		retVal.add(Strike_Gold.ID);
+		retVal.add(Strike_Gold.ID);
+		retVal.add(Strike_Gold.ID);
+		retVal.add(Defend_Gold.ID);
+		retVal.add(Defend_Gold.ID);
+		retVal.add(Defend_Gold.ID);
+		retVal.add(Defend_Gold.ID);
+		retVal.add(Defend_Gold.ID);
+		retVal.add(AttackMode.ID);
+		retVal.add(DefenseMode.ID);
 		return retVal;
 	}
 	
 	public static ArrayList<String> getStartingRelics() {
 		ArrayList<String> retVal = new ArrayList<>();
 		if (ConstructMod.phoenixStart) {
-			retVal.add("ClockworkPhoenix");
-			UnlockTracker.markRelicAsSeen("ClockworkPhoenix");
+			retVal.add(ClockworkPhoenix.ID);
+			UnlockTracker.markRelicAsSeen(ClockworkPhoenix.ID);
 		}
 		else {
-			retVal.add("Cogwheel");
-			UnlockTracker.markRelicAsSeen("Cogwheel");
+			retVal.add(Cogwheel.ID);
+			UnlockTracker.markRelicAsSeen(Cogwheel.ID);
 		}
 		return retVal;
 	}

@@ -1,68 +1,68 @@
 {
-  "Cogwheel": {
+  "construct:Cogwheel": {
     "NAME": "Cogwheel",
     "FLAVOR": "A piece of old machinery, carefully preserved.",
     "DESCRIPTIONS": [
       "Gain #b1 #yArtifact at the start of each combat."
     ]
   },
-  "MasterCore": {
+  "construct:MasterCore": {
     "NAME": "Master Core",
     "FLAVOR": "A core stolen from one of the Guardians. Summons other cores to your aid.",
     "DESCRIPTIONS": [
       "At the start of combat, shuffle #b3 random #yCores into your draw pile."
     ]
   },
-  "ClockworkPhoenix": {
+  "construct:ClockworkPhoenix": {
     "NAME": "Clockwork Phoenix",
     "FLAVOR": "An artificial being designed to imitate the real thing. Amazingly lifelike.",
     "DESCRIPTIONS": [
       "Your #yupgraded Construct cards can now be #yMega-upgraded outside of combat."
     ]
   },
-  "ClawGrip": {
+  "construct:ClawGrip": {
     "NAME": "Claw Grip",
     "FLAVOR": "An extendable arm used to grab hard-to-reach objects.",
     "DESCRIPTIONS": [
       "At the end of each turn, #yRetain a random card. It costs #b1 less [R] next turn."
     ]
   },
-  "FoamFinger": {
+  "construct:FoamFinger": {
     "NAME": "Foam Finger",
     "FLAVOR": "Always useful when you need a helping hand.",
     "DESCRIPTIONS": [
       "Draw #b1 extra card each turn."
     ]
   },
-  "MegaBattery": {
+  "construct:MegaBattery": {
     "NAME": "Mega Battery",
     "FLAVOR": "Developed by gremlin inventors in an attempt to create a self-aware robot. It did not go well.",
     "DESCRIPTIONS": [
       "Upon pick up, #yMega-upgrade a random Construct card."
     ]
   },
-  "RocketBooster": {
+  "construct:RocketBooster": {
     "NAME": "Rocket Booster",
     "FLAVOR": "It doesn't matter how weak your swing is when you're moving at 200 miles per hour.",
     "DESCRIPTIONS": [
       "When you defeat an Elite, #yUpgrade a random card."
     ]
   },
-  "PurpleEmber": {
+  "construct:PurpleEmber": {
     "NAME": "Purple Ember",
     "FLAVOR": "A ghostly, flickering flame. It seems to absorb the power of nearby fires.",
     "DESCRIPTIONS": [
       "When you enter a Rest Site, your starting hand next combat is #yMega-upgraded until the end of combat."
     ]
   },
-  "WeddingRing": {
+  "construct:WeddingRing": {
     "NAME": "Wedding Ring",
     "FLAVOR": "It's inscribed with \"FT2J\".",
     "DESCRIPTIONS": [
       "Upon pickup, choose 2 cards. Once per turn, after you play one of them, play the other one too."
     ]
   },
-  "Photocopier": {
+  "construct:Photocopier": {
     "NAME": "Photocopier",
     "FLAVOR": "Used to copy anything 2-dimensional.",
     "DESCRIPTIONS": [

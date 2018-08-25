@@ -11,14 +11,14 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
-
+import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 import constructmod.powers.OverchargePower;
 import constructmod.powers.OverclockPower;
 import constructmod.powers.OverpowerPower;
 
 public class Overcharge extends AbstractConstructCard {
-	public static final String ID = "Overcharge";
+	public static final String ID = ConstructMod.makeID("Overcharge");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;

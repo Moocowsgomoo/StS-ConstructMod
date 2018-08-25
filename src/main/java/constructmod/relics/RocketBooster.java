@@ -1,6 +1,8 @@
 package constructmod.relics;
 
 import basemod.abstracts.CustomRelic;
+import constructmod.ConstructMod;
+
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -16,8 +18,8 @@ import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 
 public class RocketBooster extends CustomRelic {
-    public static final String ID = "RocketBooster";
-    private static final String IMG = "img/relics/RocketBooster.png";
+    public static final String ID = ConstructMod.makeID("RocketBooster");
+    private static final String IMG = "img/constructRelics/RocketBooster.png";
 	
     public RocketBooster() {
         super(ID, new Texture(IMG), RelicTier.RARE, LandingSound.MAGICAL);

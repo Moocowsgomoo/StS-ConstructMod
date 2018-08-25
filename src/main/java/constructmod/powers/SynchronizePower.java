@@ -19,13 +19,14 @@ import basemod.BaseMod;
 import basemod.interfaces.PostBattleSubscriber;
 import basemod.interfaces.PostDrawSubscriber;
 import basemod.interfaces.PostDungeonInitializeSubscriber;
+import constructmod.ConstructMod;
 
 public class SynchronizePower extends AbstractPower implements PostDrawSubscriber, PostBattleSubscriber,
 PostDungeonInitializeSubscriber {
-	public static final String POWER_ID = "Synchronize";
+	public static final String POWER_ID = ConstructMod.makeID("Synchronize");
 	public static final String NAME = "Synchronize";
 	public static final String[] DESCRIPTIONS = new String[] {
-			"Whenever you draw 2 of the same card in a row, deal ",
+			"Whenever you draw 2 of the same card in a row, deal #b",
 			" damage to ALL enemies.",
 			" NL (Last drawn: ",
 			")."
@@ -41,7 +42,7 @@ PostDungeonInitializeSubscriber {
 		updateDescription();
 		this.type = AbstractPower.PowerType.BUFF;
 		this.isTurnBased = false;
-		this.img = new Texture("img/powers/synchronize.png");
+		this.img = new Texture("img/constructPowers/synchronize.png");
 	}
 	
 	@Override

@@ -19,11 +19,11 @@ import basemod.interfaces.PostDrawSubscriber;
 import constructmod.ConstructMod;
 
 public class BunkerPower extends AbstractPower {
-	public static final String POWER_ID = "Bunker";
+	public static final String POWER_ID = ConstructMod.makeID("Bunker");
 	public static final String NAME = "Bunker";
 	public static final String[] DESCRIPTIONS = new String[] {
-			"When a card is #yretained, gain #b",
-			" Block."
+			"When a card is #yRetained, gain #b",
+			" #yBlock."
 	};
 	
 	public BunkerPower(AbstractCreature owner, int amount) {
@@ -34,7 +34,7 @@ public class BunkerPower extends AbstractPower {
 		updateDescription();
 		this.type = AbstractPower.PowerType.BUFF;
 		this.isTurnBased = false;
-		this.img = new Texture("img/powers/bunker.png");
+		this.img = new Texture("img/constructPowers/bunker.png");
 	}
 	
 	@Override

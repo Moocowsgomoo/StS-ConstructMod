@@ -10,11 +10,13 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import constructmod.ConstructMod;
 import constructmod.actions.DiscountRandomCardAction;
 import constructmod.patches.AbstractCardEnum;
 
 public class BatteryCore extends AbstractCycleCard {
-	public static final String ID = "BatteryCore";
+	public static final String ID = ConstructMod.makeID("BatteryCore");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -34,16 +36,11 @@ public class BatteryCore extends AbstractCycleCard {
 	}
 	
 	@Override
-	public void atTurnStart(){
-		hasCycled = false;
-	}
-	
-	@Override
 	public void triggerWhenDrawn(){	
-		if (hasCycled) return;
+		if (!this.canCycle()) return; // have to check this before super call, otherwise our test for canCycle is false since it JUST cycled.
+		super.triggerWhenDrawn();
 		
 		flash();
-		cycle();
 		
 		AbstractDungeon.actionManager.addToTop(new DiscountRandomCardAction(this.magicNumber));
 		CloneCore();

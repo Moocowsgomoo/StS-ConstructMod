@@ -25,11 +25,11 @@ import basemod.interfaces.PostDrawSubscriber;
 import constructmod.ConstructMod;
 
 public class OverchargePower extends AbstractPower {
-	public static final String POWER_ID = "Overcharge";
+	public static final String POWER_ID = ConstructMod.makeID("Overcharge");
 	public static final String NAME = "Overcharge";
 	public static final String[] DESCRIPTIONS = new String[] {
-			"At the start of your turn, gain ",
-			" [R] and add ",
+			"At the start of your turn, gain #b",
+			" [R] and add #b",
 			" to your hand."
 	};
 	
@@ -42,7 +42,7 @@ public class OverchargePower extends AbstractPower {
 		this.amount = amount;
 		this.type = AbstractPower.PowerType.BUFF;
 		this.isTurnBased = false;
-		this.img = new Texture("img/powers/overcharge.png");
+		this.img = new Texture("img/constructPowers/overcharge.png");
 		this.statMultiplier = mult;
 		updateDescription();
 	}

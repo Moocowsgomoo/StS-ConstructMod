@@ -10,10 +10,11 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ThornsPower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 
+import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
 public class ElectricArmor extends AbstractCycleCard {
-	public static final String ID = "ElectricArmor";
+	public static final String ID = ConstructMod.makeID("ElectricArmor");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -33,16 +34,11 @@ public class ElectricArmor extends AbstractCycleCard {
 	}
 	
 	@Override
-	public void atTurnStart(){
-		hasCycled = false;
-	}
-	
-	@Override
-	public void triggerWhenDrawn(){
+	public boolean canCycle() {
 		AbstractPlayer p = AbstractDungeon.player;
-		if (p.hasPower("Dexterity") && p.getPower("Dexterity").amount > 0) return;
-		
-		cycle();
+		return super.canCycle() &&
+				(!p.hasPower(DexterityPower.POWER_ID) || p.getPower(DexterityPower.POWER_ID).amount <= 0);
+				
 	}
 
 	@Override

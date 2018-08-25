@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import basemod.abstracts.CustomCard;
 import constructmod.ConstructMod;
@@ -21,7 +22,7 @@ import constructmod.actions.DealMultiRandomDamageAction;
 import constructmod.patches.AbstractCardEnum;
 
 public class FlakBarrage extends AbstractCycleCard {
-	public static final String ID = "FlakBarrage";
+	public static final String ID = ConstructMod.makeID("FlakBarrage");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -40,16 +41,11 @@ public class FlakBarrage extends AbstractCycleCard {
 	}
 	
 	@Override
-	public void atTurnStart(){
-		hasCycled = false;
-	}
-	
-	@Override
-	public void triggerWhenDrawn(){
+	public boolean canCycle() {
 		AbstractPlayer p = AbstractDungeon.player;
-		if (p.hasPower("Strength") && p.getPower("Strength").amount > 0) return;
-		
-		cycle();
+		return super.canCycle() &&
+				(!p.hasPower(StrengthPower.POWER_ID) || p.getPower(StrengthPower.POWER_ID).amount <= 0);
+				
 	}
 
 	@Override

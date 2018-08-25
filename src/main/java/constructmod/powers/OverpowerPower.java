@@ -23,11 +23,11 @@ import basemod.interfaces.PostDrawSubscriber;
 import constructmod.ConstructMod;
 
 public class OverpowerPower extends AbstractPower {
-	public static final String POWER_ID = "Overpower";
+	public static final String POWER_ID = ConstructMod.makeID("Overpower");
 	public static final String NAME = "Overpower";
 	public static final String[] DESCRIPTIONS = new String[] {
-			"Granting +",
-			" Strength and Dexterity. At the start of your turn, add ",
+			"Granting #b+",
+			" #yStrength and #yDexterity. At the start of your turn, add #b",
 			" to your hand."
 	};
 	
@@ -40,7 +40,7 @@ public class OverpowerPower extends AbstractPower {
 		this.amount = amount;
 		this.type = AbstractPower.PowerType.BUFF;
 		this.isTurnBased = false;
-		this.img = new Texture("img/powers/overpower.png");
+		this.img = new Texture("img/constructPowers/overpower.png");
 		this.statMultiplier = mult;
 		updateDescription();
 	}

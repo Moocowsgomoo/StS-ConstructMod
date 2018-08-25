@@ -34,9 +34,9 @@ public class StasisAction extends AbstractGameAction
         if (this.duration == Settings.ACTION_DUR_FAST) {
         	
         	// find previously stored stasis card
-        	if (p.hasPower("Self-Stasis")) {
-        		this.returnedStasisCard = ((ConstructStasisPower)p.getPower("Self-Stasis")).heldCard;
-        		p.powers.remove(p.getPower("Self-Stasis"));
+        	if (p.hasPower(ConstructStasisPower.POWER_ID)) {
+        		this.returnedStasisCard = ((ConstructStasisPower)p.getPower(ConstructStasisPower.POWER_ID)).heldCard;
+        		p.powers.remove(p.getPower(ConstructStasisPower.POWER_ID));
         	}
         	// Return previous stasis card to hand after this action
             if (returnedStasisCard != null) {

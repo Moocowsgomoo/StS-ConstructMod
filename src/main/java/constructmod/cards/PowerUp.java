@@ -22,7 +22,7 @@ import constructmod.actions.BoostBasicCardsAction;
 import constructmod.patches.AbstractCardEnum;
 
 public class PowerUp extends AbstractConstructCard {
-	public static final String ID = "PowerUp";
+	public static final String ID = ConstructMod.makeID("PowerUp");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;

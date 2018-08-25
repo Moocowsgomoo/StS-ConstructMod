@@ -18,10 +18,11 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 
 import basemod.abstracts.CustomCard;
+import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
 public class LaserCore extends AbstractCycleCard {
-	public static final String ID = "LaserCore";
+	public static final String ID = ConstructMod.makeID("LaserCore");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -40,28 +41,15 @@ public class LaserCore extends AbstractCycleCard {
 	}
 	
 	@Override
-	public void atTurnStart(){
-		hasCycled = false;
-	}
-	
-	@Override
 	public void triggerWhenDrawn(){
-		AbstractPlayer p = AbstractDungeon.player;
-		
-		if (hasCycled) return;
+		if (!this.canCycle()) return; // have to check this before super call, otherwise our test for canCycle is false since it JUST cycled.
+		super.triggerWhenDrawn();
 		
 		flash();
-		cycle();
-		//AbstractDungeon.actionManager.addToBottom(new SFXAction("THUNDERCLAP", 0.05f));
-        /*for (final AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
-            if (!mo.isDeadOrEscaped()) {
-                AbstractDungeon.actionManager.addToBottom(new VFXAction(new LightningEffect(mo.drawX, mo.drawY), 0.00f));
-            }
-        }*/
+		
 		AbstractDungeon.actionManager.addToTop(new DamageAllEnemiesAction(
 				null, DamageInfo.createDamageMatrix(this.magicNumber, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
 		CloneCore();
-		
 	}
 
 	@Override

@@ -9,13 +9,14 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
+import com.megacrit.cardcrawl.powers.DexterityPower;
 
 import basemod.abstracts.CustomCard;
+import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
 public class ReactiveShield2 extends AbstractCycleCard {
-	public static final String ID = "ReactiveShield2";
+	public static final String ID = ConstructMod.makeID("ReactiveShield2");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -36,36 +37,16 @@ public class ReactiveShield2 extends AbstractCycleCard {
 	}
 	
 	@Override
-	public void atTurnStart(){
-		hasCycled = false;
-	}
-	
-	@Override
-	public void triggerWhenDrawn(){
-		//AbstractPlayer p = AbstractDungeon.player;
-		
-		/*boolean noneAttacking = true;
-		int temp = AbstractDungeon.getCurrRoom().monsters.monsters.size();
-		for (int i = 0; i < temp; i++) {
-			AbstractMonster targetMonster = (AbstractMonster)AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
-			if ((!targetMonster.isDying) && (targetMonster.currentHealth > 0) && (!targetMonster.isEscaping)) {
-				if ((targetMonster.intent == AbstractMonster.Intent.ATTACK) || (targetMonster.intent == AbstractMonster.Intent.ATTACK_BUFF) || (targetMonster.intent == AbstractMonster.Intent.ATTACK_DEBUFF) || (targetMonster.intent == AbstractMonster.Intent.ATTACK_DEFEND) ||  targetMonster.intent == AbstractMonster.Intent.DEBUG){
-					noneAttacking = false;
-					break;
-				}
-			}
-		}
-		if (!noneAttacking) return;*/
-		
-		if (!this.upgraded) return;
-		
+	public boolean canCycle() {
 		int count = 0;
         for (final AbstractMonster mon : AbstractDungeon.getMonsters().monsters) {
             if (!mon.isDeadOrEscaped()) {
                 ++count;
             }
         }
-        if (count <= 1) cycle();
+		return super.canCycle() && 
+				this.upgraded &&
+				count <= 1;
 	}
 	
 	/*@Override

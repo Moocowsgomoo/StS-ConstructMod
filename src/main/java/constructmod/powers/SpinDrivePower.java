@@ -20,7 +20,7 @@ import basemod.interfaces.PostDrawSubscriber;
 import constructmod.ConstructMod;
 
 public class SpinDrivePower extends AbstractPower {
-	public static final String POWER_ID = "SpinDrive";
+	public static final String POWER_ID = ConstructMod.makeID("SpinDrive");
 	public static final String NAME = "Spin Drive";
 	public static final String[] DESCRIPTIONS = new String[] {
 			"After you play a card, draw a card."
@@ -36,7 +36,7 @@ public class SpinDrivePower extends AbstractPower {
 		updateDescription();
 		this.type = AbstractPower.PowerType.BUFF;
 		this.isTurnBased = false;
-		this.img = new Texture("img/powers/spin_drive.png");
+		this.img = new Texture("img/constructPowers/spin_drive.png");
 	}
 	
 	@Override

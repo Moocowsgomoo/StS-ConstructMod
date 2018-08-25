@@ -28,7 +28,7 @@ import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
 public class SweepLaser extends AbstractConstructCard {
-	public static final String ID = "SweepLaser";
+	public static final String ID = ConstructMod.makeID("SweepLaser");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	private static final String DESCRIPTION = cardStrings.DESCRIPTION;

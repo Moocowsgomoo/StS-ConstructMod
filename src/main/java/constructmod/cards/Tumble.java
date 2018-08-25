@@ -23,7 +23,7 @@ import constructmod.actions.TumbleFollowupAction;
 import constructmod.patches.AbstractCardEnum;
 
 public class Tumble extends AbstractConstructCard {
-	public static final String ID = "Tumble";
+	public static final String ID = ConstructMod.makeID("Tumble");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;

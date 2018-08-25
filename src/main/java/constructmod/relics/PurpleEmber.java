@@ -1,6 +1,7 @@
 package constructmod.relics;
 
 import basemod.abstracts.CustomRelic;
+import constructmod.ConstructMod;
 import constructmod.actions.MegaUpgradeHandAction;
 import constructmod.cards.AbstractConstructCard;
 
@@ -19,8 +20,8 @@ import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 
 public class PurpleEmber extends CustomRelic {
-    public static final String ID = "PurpleEmber";
-    private static final String IMG = "img/relics/PurpleEmber.png";
+    public static final String ID = ConstructMod.makeID("PurpleEmber");
+    private static final String IMG = "img/constructRelics/PurpleEmber.png";
 	
     public PurpleEmber() {
         super(ID, new Texture(IMG), RelicTier.UNCOMMON, LandingSound.MAGICAL);

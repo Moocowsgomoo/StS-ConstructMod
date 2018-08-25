@@ -15,10 +15,11 @@ import com.megacrit.cardcrawl.powers.LoseStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import basemod.abstracts.CustomCard;
+import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
 public class ForceCore extends AbstractCycleCard {
-	public static final String ID = "ForceCore";
+	public static final String ID = ConstructMod.makeID("ForceCore");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -36,25 +37,18 @@ public class ForceCore extends AbstractCycleCard {
 	}
 	
 	@Override
-	public void atTurnStart(){
-		hasCycled = false;
-	}
-	
-	@Override
 	public void triggerWhenDrawn(){
-		AbstractPlayer p = AbstractDungeon.player;
-		
-		if (hasCycled) return;
+		if (!this.canCycle()) return; // have to check this before super call, otherwise our test for canCycle is false since it JUST cycled.
+		super.triggerWhenDrawn();
 		
 		flash();
-		cycle();
 		
+		AbstractPlayer p = AbstractDungeon.player;
 		AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(
 			p,p,new StrengthPower(p,this.magicNumber),this.magicNumber,true,AbstractGameAction.AttackEffect.NONE));
 		AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(
 				p,p,new LoseStrengthPower(p,this.magicNumber),this.magicNumber,true,AbstractGameAction.AttackEffect.NONE));
 		CloneCore();
-		
 	}
 
 	@Override

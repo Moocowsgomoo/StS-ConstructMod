@@ -10,17 +10,32 @@ import constructmod.powers.AbstractCyclePower;
 
 public abstract class AbstractCycleCard extends AbstractConstructCard {
 	
-	public boolean hasCycled = false;
+	public int timesCycled = 0;
 	
 	public AbstractCycleCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target, int cardPool) {
 		super(id, name, img, cost, rawDescription, type, color, rarity, target, cardPool);
 	}
 	
+	@Override
+	public void atTurnStart(){
+		timesCycled = 0;
+	}
+	
+	@Override
+	public void triggerWhenDrawn(){
+		cycle();
+	}
+	
+	// Individual cards override this method to add their own cycle conditions. They always check this parent method as well.
+	public boolean canCycle() {
+		return timesCycled < 1;
+	}
+	
 	public void cycle() {
-		if (hasCycled) return;
-		hasCycled = true;
+		if (!canCycle()) return;
+		timesCycled++;
 		
-		AbstractDungeon.actionManager.addToTop(new CycleCardAction(this, AbstractDungeon.player.hasPower("PanicFire") && !this.upgraded));
+		AbstractDungeon.actionManager.addToTop(new CycleCardAction(this, AbstractDungeon.player.hasPower(PanicFire.ID) && !this.upgraded));
 		
 		for (AbstractPower pw : AbstractDungeon.player.powers) {
 			if (pw instanceof AbstractCyclePower) {

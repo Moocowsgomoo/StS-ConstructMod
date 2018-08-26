@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import basemod.BaseMod;
 import basemod.abstracts.CustomCard;
+import constructmod.relics.ClockworkPhoenix;
 
 public abstract class AbstractConstructCard extends CustomCard {
 	
@@ -46,7 +47,7 @@ public abstract class AbstractConstructCard extends CustomCard {
 		return 	super.canUpgrade() || 
 				this.forcedUpgrade || 
 				CardCrawlGame.mainMenuScreen.screen == CurScreen.RUN_HISTORY ||
-				(AbstractDungeon.player.hasRelic("ClockworkPhoenix") && AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom().phase != RoomPhase.COMBAT);
+				(AbstractDungeon.player.hasRelic(ClockworkPhoenix.ID) && AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom().phase != RoomPhase.COMBAT);
     }
 	
 	public boolean canUpgrade(boolean forced) {

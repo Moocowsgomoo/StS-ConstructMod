@@ -21,7 +21,7 @@ public class SiegeFormPower extends AbstractPower {
 	public static final String POWER_ID = ConstructMod.makeID("SiegeForm");
 	public static final String NAME = "Siege Form";
 	public static final String[] DESCRIPTIONS = new String[] {
-			"When you deal #yAttack damage, gain #b",
+			"When you play a card, gain #b",
 			" #yStrength until the end of the turn.",
 	};
 	

@@ -111,7 +111,7 @@ public class ClockworkEgg extends AbstractConstructCard {
 				AbstractDungeon.getCurrRoom().spawnRelicAndObtain(Settings.WIDTH / 2, Settings.HEIGHT / 2, relic);
 				AbstractDungeon.uncommonRelicPool.remove(relic.relicId);
 			}
-			if (!p.hasRelic("ClockworkPhoenix")) {
+			if (!p.hasRelic(ClockworkPhoenix.ID)) {
 				relic = RelicLibrary.getRelic(ClockworkPhoenix.ID).makeCopy();
 				AbstractDungeon.getCurrRoom().spawnRelicAndObtain(Settings.WIDTH / 2, Settings.HEIGHT / 2, relic);
 			}
@@ -121,7 +121,7 @@ public class ClockworkEgg extends AbstractConstructCard {
 		else if (this.megaUpgraded) {
 			
 			if (this.isScrambled) {
-				if (!AbstractDungeon.player.hasPower("Confusion")) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new ConfusionPower(p)));
+				if (!AbstractDungeon.player.hasPower(ConfusionPower.POWER_ID)) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new ConfusionPower(p)));
 				AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p,5));
 			} else {
 				if (AbstractDungeon.getCurrRoom().rewards.size() < 6) { // hard-cap rewards in case someone finds an infinite combo
@@ -223,7 +223,7 @@ public class ClockworkEgg extends AbstractConstructCard {
 				this.initializeTitle();
 				this.rawDescription = M_SCRAMBLED_DESCRIPTION;
 				this.initializeDescription();
-				this.loadCardImage("img/cards/"+"ScrambledEgg"+".png");
+				this.loadCardImage("img/constructCards/"+"ScrambledEgg"+".png");
 				BaseMod.logger.log(Level.DEBUG, "SCRAMBLED New times: " + timesUpgraded);
 			}
 			else {
@@ -234,7 +234,7 @@ public class ClockworkEgg extends AbstractConstructCard {
 				this.rawDescription = M_UPGRADE_DESCRIPTION;
 				this.initializeDescription();
 				this.exhaust = true;
-				this.loadCardImage("img/cards/"+"ClockworkPhoenix"+".png");
+				this.loadCardImage("img/constructCards/"+"ClockworkPhoenix"+".png");
 				BaseMod.logger.log(Level.DEBUG, "MEGA New times: " + timesUpgraded);
 			}
 		}

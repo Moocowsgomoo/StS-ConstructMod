@@ -117,9 +117,9 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     	try {
     		SpireConfig config = new SpireConfig("ConstructMod", "ConstructSaveData");
     		config.setBool("phoenixStart", phoenixStart);
-    		if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic("WeddingRing")) {
-    			config.setInt("marriedCard1", AbstractDungeon.player.masterDeck.group.indexOf(((WeddingRing)AbstractDungeon.player.getRelic("WeddingRing")).card1));
-    			config.setInt("marriedCard2", AbstractDungeon.player.masterDeck.group.indexOf(((WeddingRing)AbstractDungeon.player.getRelic("WeddingRing")).card2));
+    		if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(WeddingRing.ID)) {
+    			config.setInt("marriedCard1", AbstractDungeon.player.masterDeck.group.indexOf(((WeddingRing)AbstractDungeon.player.getRelic(WeddingRing.ID)).card1));
+    			config.setInt("marriedCard2", AbstractDungeon.player.masterDeck.group.indexOf(((WeddingRing)AbstractDungeon.player.getRelic(WeddingRing.ID)).card2));
     		}
     		config.save();
 		} catch (Exception e) {

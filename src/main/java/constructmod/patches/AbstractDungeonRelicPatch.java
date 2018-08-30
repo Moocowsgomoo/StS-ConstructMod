@@ -6,12 +6,14 @@ import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.AbstractRelic.RelicTier;
 
+import constructmod.relics.WeddingRing;
+
 public class AbstractDungeonRelicPatch {
 	
 	@SpirePatch(cls="com.megacrit.cardcrawl.dungeons.AbstractDungeon", method = "returnRandomScreenlessRelic")
 	public static class ReturnRandomScreenlessRelicPatch {
 		public static AbstractRelic Postfix(AbstractRelic retVal, RelicTier tier) {
-			while (retVal.relicId.equals("WeddingRing")) {
+			while (retVal.relicId.equals(WeddingRing.ID)) {
 				retVal = RelicLibrary.getRelic(AbstractDungeon.returnRandomRelicKey(tier)).makeCopy();
 			}
 			return retVal;

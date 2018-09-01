@@ -176,7 +176,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     	BaseMod.addKeyword(blur, "Your Block is carried over between turns.");
     	final String[] metallicize = {"metallicize"};
     	BaseMod.addKeyword(metallicize, "Gain Block at the end of each turn.");
-    	final String[] pArmor = {"armor"}; // not working b/c it's two words?
+    	final String[] pArmor = {"plated armor"}; // not working b/c it's two words?
     	BaseMod.addKeyword(pArmor, "Gain Block at the end of each turn. Reduced when you take unblocked damage.");
     	final String[] slimed = {"slimed"};
     	BaseMod.addKeyword(slimed, "Slimed is a status card that costs [R] to exhaust.");

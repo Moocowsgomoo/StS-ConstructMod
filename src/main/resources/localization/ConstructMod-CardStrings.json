@@ -52,7 +52,7 @@
 	},
 	"construct:MetalShell": {
 		"NAME": "Metal Shell",
-		"DESCRIPTION": "Gain !B! Block. NL Gain !M! Armor.",
+		"DESCRIPTION": "Gain !B! Block. NL Gain !M! Plated Armor.",
 		"UPGRADE_DESCRIPTION": "Gain !B! Block. NL Gain !M! Metallicize."
 	},
 	"construct:ChargeShot": {

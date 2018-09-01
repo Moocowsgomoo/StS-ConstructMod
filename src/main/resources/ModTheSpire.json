@@ -2,9 +2,9 @@
   "modid": "constructmod",
   "name": "The Construct",
   "author_list": ["Moocowsgomoo, Spike Berd"],
-  "description": "New character - The Construct! \n\nRecent changes: \n- Changed ALL card, relic, and power IDs. THIS WILL BREAK PREVIOUSLY SAVED RUNS. Revert to a version before 0.9.0 if you want to finish your run.\n- Phoenix works again.\n- Clockwork Egg works again.\n- Wedding Ring works again.",
-  "version": "0.9.2",
-  "sts_version": "08-23-2018",
+  "description": "New character - The Construct! \n\nRecent changes: \n- Metal Shell block 6(7) -> 4(5).\n- \"Armor\" -> \"Plated Armor\".\n- Run History screen improvements.\n- Spire Heart flavor text.",
+  "version": "0.9.3",
+  "sts_version": "08-30-2018",
   "mts_version": "3.0.0",
   "dependencies": ["basemod"],
   "update_json": "https://api.github.com/repos/Moocowsgomoo/StS-ConstructMod/releases/latest"

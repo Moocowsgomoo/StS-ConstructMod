@@ -2,7 +2,7 @@
   "modid": "constructmod",
   "name": "The Construct",
   "author_list": ["Moocowsgomoo, Spike Berd"],
-  "description": "New character - The Construct! \n\nRecent changes: \n- Metal Shell block 6(7) -> 4(5).\n- \"Armor\" -> \"Plated Armor\".\n- Run History screen improvements.\n- Spire Heart flavor text.",
+  "description": "New character - The Construct! \n\nRecent changes: \n- Metal Shell block 6(7) -> 4(5).\n- \"Armor\" -> \"Plated Armor\".\n- Run History screen improvements.\n- Spire Heart flavor text.\n- Card portraits.",
   "version": "0.9.3",
   "sts_version": "08-30-2018",
   "mts_version": "3.0.0",

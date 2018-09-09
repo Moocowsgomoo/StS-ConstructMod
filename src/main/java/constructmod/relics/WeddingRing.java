@@ -39,7 +39,13 @@ public class WeddingRing extends CustomRelic
     
     @Override
     public String getUpdatedDescription() {
-    	if ((this.card1 == null || this.card2 == null) && ConstructMod.marriedCard1 >= 0 && ConstructMod.marriedCard2 >= 0) {
+    	if (AbstractDungeon.player != null &&
+    			AbstractDungeon.player.hasRelic(this.ID) && 
+    			(this.card1 == null || this.card2 == null) && 
+    			ConstructMod.marriedCard1 >= 0 && 
+    			ConstructMod.marriedCard2 >= 0 &&
+    			ConstructMod.marriedCard1 < AbstractDungeon.player.masterDeck.size() &&
+    			ConstructMod.marriedCard2 < AbstractDungeon.player.masterDeck.size()) {
         	this.card1 = AbstractDungeon.player.masterDeck.group.get(ConstructMod.marriedCard1);
             this.card2 = AbstractDungeon.player.masterDeck.group.get(ConstructMod.marriedCard2);
             WeddingRingPatch.isMarried.set(this.card1, true);

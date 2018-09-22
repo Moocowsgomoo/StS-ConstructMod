@@ -2,9 +2,9 @@
   "modid": "constructmod",
   "name": "The Construct",
   "author_list": ["Moocowsgomoo, Spike Berd"],
-  "description": "New character - The Construct! \n\nRecent changes: \n- Wedding Ring stability improvements.",
-  "version": "0.9.4",
-  "sts_version": "09-06-2018",
+  "description": "New character - The Construct! \n\nRecent changes: \n- Fixed Hyper Beam crash.",
+  "version": "0.9.5",
+  "sts_version": "09-20-2018",
   "mts_version": "3.0.0",
   "dependencies": ["basemod"],
   "update_json": "https://api.github.com/repos/Moocowsgomoo/StS-ConstructMod/releases/latest"

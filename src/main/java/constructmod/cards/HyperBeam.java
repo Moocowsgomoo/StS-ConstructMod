@@ -46,7 +46,7 @@ public class HyperBeam extends AbstractConstructCard {
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		//AbstractDungeon.actionManager.addToBottom(new SFXAction("THUNDERCLAP", 0.05f));
-		AbstractDungeon.actionManager.addToBottom(new VFXAction(new com.megacrit.cardcrawl.vfx.combat.MindblastEffect(p.drawX+20, p.drawY+90)));
+		AbstractDungeon.actionManager.addToBottom(new VFXAction(new com.megacrit.cardcrawl.vfx.combat.MindblastEffect(p.drawX+20, p.drawY+90,p.flipHorizontal)));
 		
 		AbstractDungeon.actionManager.addToBottom(new DamageAction((AbstractCreature) m, 
 			new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));

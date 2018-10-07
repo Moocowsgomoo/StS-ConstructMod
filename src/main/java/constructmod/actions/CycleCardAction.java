@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.core.*;
 import com.megacrit.cardcrawl.dungeons.*;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
+import constructmod.cards.AbstractConstructCard;
 import constructmod.powers.AbstractCyclePower;
 
 import com.megacrit.cardcrawl.actions.*;
@@ -22,7 +23,12 @@ public class CycleCardAction extends AbstractGameAction
     }
     
     @Override
-    public void update() {    	
+    public void update() {
+        if (!AbstractDungeon.player.hand.contains(this.targetCard)){
+            this.isDone = true;
+            return;
+        }
+
     	if (this.isExhaust) {
     		AbstractDungeon.player.hand.moveToExhaustPile(this.targetCard);
     		this.targetCard.triggerOnExhaust();

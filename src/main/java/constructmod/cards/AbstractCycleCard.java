@@ -1,6 +1,7 @@
 package constructmod.cards;
 
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
@@ -40,6 +41,22 @@ public abstract class AbstractCycleCard extends AbstractConstructCard {
 		for (AbstractPower pw : AbstractDungeon.player.powers) {
 			if (pw instanceof AbstractCyclePower) {
 				((AbstractCyclePower) pw).onCycleCard(this);
+			}
+		}
+
+		for (AbstractCard c:AbstractDungeon.player.drawPile.group){
+			if (c instanceof AbstractConstructCard){
+				((AbstractConstructCard) c).reduceOverheat();
+			}
+		}
+		for (AbstractCard c:AbstractDungeon.player.hand.group){
+			if (c instanceof AbstractConstructCard){
+				((AbstractConstructCard) c).reduceOverheat();
+			}
+		}
+		for (AbstractCard c:AbstractDungeon.player.discardPile.group){
+			if (c instanceof AbstractConstructCard){
+				((AbstractConstructCard) c).reduceOverheat();
 			}
 		}
 		

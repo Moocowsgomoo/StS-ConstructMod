@@ -1,5 +1,6 @@
 package constructmod.cards;
 
+import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
@@ -36,7 +37,8 @@ public class Strike_Gold extends AbstractCycleCard {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.ATTACK,
 				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.ENEMY, POOL);
 		this.damage = this.baseDamage = ATTACK_DMG;
-		CardTags.addTags(this, BaseModTags.BASIC_STRIKE, BaseModTags.STRIKE);
+		this.tags.add(BaseModCardTags.BASIC_STRIKE);
+		this.tags.add(CardTags.STRIKE);
 	}
 	
 	@Override

@@ -61,11 +61,12 @@
 	},
 	"construct:Boost": {
 		"NAME": "Boost",
-		"DESCRIPTION": "Deal !D! damage. NL Gain !B! Block."
+		"DESCRIPTION": "Deal !D! damage. NL Gain !B! Block.",
+		"EXTENDED_DESCRIPTION": ["Deal !D! damage. NL Gain !B! Block. NL Draw a card."]
 	},
 	"construct:GoldenBullet": {
 		"NAME": "Golden Bullet",
-		"DESCRIPTION": "Deal !D! damage. NL Lose !M! gold."
+		"DESCRIPTION": "Lose !M! gold. NL Deal !D! damage."
 	},
 	"construct:ElectricArmor": {
 		"NAME": "Electric Armor",
@@ -215,7 +216,7 @@
 	},
 	"construct:SiegeForm": {
 		"NAME": "Siege Form",
-		"DESCRIPTION": "When you play a card, gain !M! Strength until the end of the turn."
+		"DESCRIPTION": "After you play a card, gain !M! Strength until the end of the turn."
 	},
 	"construct:HammerDown": {
 		"NAME": "Hammer Down",
@@ -268,11 +269,11 @@
 	},
 	"construct:Antimatter": {
 		"NAME": "Antimatter",
-		"DESCRIPTION": "Reduce your [R] to 0. NL Deal !M! damage for each other card in hand.",
+		"DESCRIPTION": "Reduce your [R] to 0. NL Deal damage equal to !M! times the number of cards in your hand.",
 		"EXTENDED_DESCRIPTION": [
 			"(Deals !D! damage.) NL ",
 			"I have more than 0 energy!",
-			"Reduce your [R] to 0, and regain it next turn. NL Deal !M! damage for each other card in hand."
+			"Reduce your [R] to 0, and regain it next turn. NL Deal damage equal to !M! times the number of cards in your hand."
 		]
 	},
 	"construct:ClockworkEgg": {
@@ -293,7 +294,8 @@
 	},
 	"construct:GatlingGun": {
 		"NAME": "Gatling Gun",
-		"DESCRIPTION": "Deal !D! damage to a random enemy !M! X times."
+		"DESCRIPTION": "Deal !D! damage to a random enemy !M! X times.",
+		"EXTENDED_DESCRIPTION": ["(Total damage: !construct:G!) NL "]
 	},
 	"construct:BatteryAcid": {
 		"NAME": "Battery Acid",
@@ -376,7 +378,7 @@
 	},
 	"construct:Meltdown": {
 		"NAME": "Meltdown",
-		"DESCRIPTION": "At the start of your turn, deal !M! damage to ALL enemies and add 2 Burns to your hand."
+		"DESCRIPTION": "At the start of your turn, deal !M! damage to ALL enemies and add a Burn to your hand."
 	},
 	"construct:Isolate": {
 		"NAME": "Isolate",
@@ -487,5 +489,69 @@
 		"NAME": "Power Up",
 		"DESCRIPTION": "Deal !D! damage. NL ALL of your basic Strikes and Defends gain !M! power for this combat.",
 		"UPGRADE_DESCRIPTION": "Deal !D! damage. NL Double the power of ALL of your basic Strikes and Defends for this combat."
+	},
+	"construct:PhosphorStorm": {
+		"NAME": "Phosphor Storm",
+		"DESCRIPTION": "[#ff9900]OVERHEAT: !construct:O! NL Deal !D! damage twice.",
+		"UPGRADE_DESCRIPTION": "[#ff9900]OVERHEAT: !construct:O! NL Deal !D! damage twice, then !D! damage to a random enemy."
+	},
+	"construct:Agitation": {
+		"NAME": "Agitation",
+		"DESCRIPTION": "Whenever a card Overheats, draw !M! additional card at the start of each turn.",
+		"UPGRADE_DESCRIPTION": "Innate. NL Whenever a card Overheats, draw !M! additional card at the start of each turn.",
+		"EXTENDED_DESCRIPTION": ["Start combat with this card in play. NL Whenever a card Overheats, draw !M! additional card at the start of each turn."]
+	},
+	"construct:Coolant": {
+		"NAME": "Coolant",
+		"DESCRIPTION": "Gain !B! Block. NL Increase the Overheat values of ALL cards by !M!. NL Exhaust.",
+		"UPGRADE_DESCRIPTION": "Gain !B! Block. NL Increase the Overheat values of ALL cards by !M!."
+	},
+	"construct:NuclearCore": {
+		"NAME": "Nuclear Core",
+		"DESCRIPTION": "[#ff9900]OVERHEAT: !construct:O! NL Cycle. When cycled: NL Apply !M! Poison to ALL enemies.",
+		"UPGRADE_DESCRIPTION": " NL Put a Nuclear Core into your discard pile.",
+		"EXTENDED_DESCRIPTION": [
+			" NL Put a Nuclear Core+ into your discard pile."
+		]
+	},
+	"construct:OilSpill": {
+		"NAME": "Oil Spill",
+		"DESCRIPTION": "[#ff9900]OVERHEAT: !construct:O! NL Whenever you draw a Burn, target enemy takes !M! damage.",
+		"EXTENDED_DESCRIPTION": ["[#ff9900]OVERHEAT: !construct:O! NL Whenever you draw a Burn, ALL enemies take !M! damage."]
+	},
+	"construct:FlammableFog": {
+		"NAME": "Flammable Fog",
+		"DESCRIPTION": "[#ff9900]OVERHEAT: !construct:O! NL Gain Block equal to this card's Overheat, this and next turn.",
+		"UPGRADE_DESCRIPTION": "[#ff9900]OVERHEAT: !construct:O! NL Gain Block equal to this card's Overheat, this and next turn. NL Increase its Overheat value by !M!.",
+		"EXTENDED_DESCRIPTION": ["(Gain !B! Block.) NL "]
+	},
+	"construct:Missile": {
+		"NAME": "Missile",
+		"DESCRIPTION": "Cycle if this card has already been played this combat. NL Deal !D! damage. NL Apply !M! Weak and !M! Vulnerable."
+	},
+	"construct:Flamethrower": {
+		"NAME": "Flamethrower",
+		"DESCRIPTION": "Deal !D! damage to a random enemy. Hits !M! more time for each Burn you have."
+	},
+	"construct:CreateCores": {
+		"NAME": "Create Cores",
+		"DESCRIPTION": "[#ff9900]OVERHEAT: !construct:O! NL Shuffle !M! random Cores into your draw pile.",
+		"UPGRADE_DESCRIPTION": "[#ff9900]OVERHEAT: !construct:O! NL Shuffle !M! random Cores into your draw pile, and upgrade one of them."
+	},
+	"construct:BlazingSpeed": {
+		"NAME": "Blazing Speed",
+		"DESCRIPTION": "[#ff9900]OVERHEAT: !construct:O! NL Deal !D! damage. NL Draw !M! cards."
+	},
+	"construct:Implosion": {
+		"NAME": "Implosion",
+		"DESCRIPTION": "Place ALL Burn cards into your hand. For each Burn moved from a pile, play a random card from that pile."
+	},
+	"construct:Rollout": {
+		"NAME": "Rollout",
+		"DESCRIPTION": "[#ff9900]OVERHEAT: !construct:O! NL Deal !D! damage. NL Whenever ANY card cycles, increase this card's damage by !M!."
+	},
+	"construct:Failsafe": {
+		"NAME": "Failsafe",
+		"DESCRIPTION": "The first !M! Status cards you draw each turn Cycle."
 	}
 }

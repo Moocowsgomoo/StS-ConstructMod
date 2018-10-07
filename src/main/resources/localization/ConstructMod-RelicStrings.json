@@ -31,7 +31,7 @@
     "NAME": "Foam Finger",
     "FLAVOR": "Always useful when you need a helping hand.",
     "DESCRIPTIONS": [
-      "Draw #b1 extra card each turn."
+      "Draw #b1 additional card at the start of each turn."
     ]
   },
   "construct:MegaBattery": {
@@ -60,6 +60,20 @@
     "FLAVOR": "It's inscribed with \"FT2J\".",
     "DESCRIPTIONS": [
       "Upon pickup, choose 2 cards. Once per turn, after you play one of them, play the other one too."
+    ]
+  },
+  "construct:FreezeFrame": {
+    "NAME": "Freeze Frame",
+    "FLAVOR": "This wooden picture frame is impossibly cold to the touch.",
+    "DESCRIPTIONS": [
+      "Right-click to activate or deactivate. While active, cards do not Cycle when drawn."
+    ]
+  },
+  "construct:Bumper": {
+    "NAME": "Bumper",
+    "FLAVOR": "BOIIING!",
+    "DESCRIPTIONS": [
+      "When a card would deal damage to you, it deals that damage to a random enemy instead."
     ]
   },
   "construct:Photocopier": {

@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import basemod.BaseMod;
 import basemod.interfaces.PostDrawSubscriber;
 import constructmod.ConstructMod;
+import constructmod.actions.SiegeFormAction;
 
 public class SiegeFormPower extends AbstractPower {
 	public static final String POWER_ID = ConstructMod.makeID("SiegeForm");
@@ -43,7 +44,6 @@ public class SiegeFormPower extends AbstractPower {
 	
 	@Override
 	public void onPlayCard (final AbstractCard card, final AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner, owner, new StrengthPower(owner, this.amount), this.amount));
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner, owner, new LoseStrengthPower(owner, this.amount), this.amount));
+		AbstractDungeon.actionManager.addToBottom(new SiegeFormAction(owner,this.amount));
 	}
 }

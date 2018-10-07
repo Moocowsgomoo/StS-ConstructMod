@@ -1,5 +1,6 @@
 package constructmod.cards;
 
+import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
@@ -40,7 +41,7 @@ public class Chainstrike extends AbstractConstructCard {
 				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.ENEMY, POOL);
 		this.damage = this.baseDamage = ATTACK_DMG;
 		this.magicNumber = this.baseMagicNumber = CARDS_PLAYED;
-		CardTags.addTags(this, BaseModTags.STRIKE);
+		this.tags.add(CardTags.STRIKE);
 	}
 
 	@Override

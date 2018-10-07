@@ -44,6 +44,8 @@ public class ShieldBurst extends AbstractConstructCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
+		applyPowers();
+
 		int b = p.currentBlock;
 		AbstractDungeon.actionManager.addToBottom(new LoseBlockAction(p,p,b));
 		

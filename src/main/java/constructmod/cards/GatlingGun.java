@@ -18,6 +18,7 @@ public class GatlingGun extends AbstractConstructCard {
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+	public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
 	private static final int COST = -1;
 	private static final int ATTACK_DMG = 3;
 	private static final int UPGRADE_PLUS_ATTACK_DMG = 1;
@@ -38,6 +39,19 @@ public class GatlingGun extends AbstractConstructCard {
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		AbstractDungeon.actionManager.addToBottom(new GatlingGunAction(
 				p, this.baseDamage, this.damageTypeForTurn , this.freeToPlayOnce, this.energyOnUse, this.magicNumber));
+	}
+
+	@Override
+	public void applyPowers(){
+		super.applyPowers();
+		this.rawDescription = EXTENDED_DESCRIPTION[0] + DESCRIPTION;
+		initializeDescription();
+	}
+
+	@Override
+	public void onMoveToDiscard(){
+		this.rawDescription = DESCRIPTION;
+		initializeDescription();
 	}
 
 	@Override

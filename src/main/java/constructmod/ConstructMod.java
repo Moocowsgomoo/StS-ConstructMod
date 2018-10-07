@@ -2,6 +2,8 @@ package constructmod;
 
 import java.util.ArrayList;
 
+import constructmod.variables.GatlingGunVariable;
+import constructmod.variables.OverheatVariable;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -38,6 +40,7 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import constructmod.cards.*;
 import constructmod.relics.*;
 import java.nio.charset.StandardCharsets;
+import java.util.Properties;
 
 import constructmod.characters.TheConstruct;
 import constructmod.patches.AbstractCardEnum;
@@ -54,8 +57,10 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     private static final String DESCRIPTION = "New Character: The Construct!";
 	
 	private static final Color CONSTRUCT_MOD_COLOR = CardHelper.getColor(170.0f, 150.0f, 50.0f);
-	
+
+	public static Properties constructDefaults = new Properties();
 	public static boolean phoenixStart = false;
+	public static boolean contentSharing = true;
 	public static int marriedCard1 = -1;
 	public static int marriedCard2 = -1;
 	public static Texture ringIconTexture;
@@ -74,6 +79,10 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		Settings.isDailyRun = false;
         Settings.isTrial = false;
         Settings.isDemo = false;
+
+		constructDefaults.setProperty("phoenixStart", "FALSE");
+		constructDefaults.setProperty("contentSharing", "TRUE");
+		loadConfigData();
     }
     
     public static void initialize() {
@@ -84,20 +93,24 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
         // Mod badge
         Texture badgeTexture = new Texture(Gdx.files.internal("img/ConstructModBadge.png"));
         
-        loadPhoenixData();
-        
         ModPanel settingsPanel = new ModPanel();
         
-        ModLabel buttonLabel = new ModLabel("Reach EXP Level 1 as the Construct to unlock!", 350.0f, 600.0f, settingsPanel, (me)->{});
-        ModLabel buttonLabel2 = new ModLabel("(Restart the game if it doesn't show up)", 350.0f, 550.0f, settingsPanel, (me)->{});
+        ModLabel buttonLabel = new ModLabel("Reach EXP Level 1 as the Construct to unlock!", 350.0f, 700.0f, settingsPanel, (me)->{});
+        ModLabel buttonLabel2 = new ModLabel("(Restart the game if it doesn't show up)", 350.0f, 650.0f, settingsPanel, (me)->{});
         
         ModLabeledToggleButton phoenixBtn = new ModLabeledToggleButton("Starting Relic: Clockwork Phoenix",
-        		350.0f, 600.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
+        		350.0f, 700.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
         		phoenixStart, settingsPanel, (label) -> {}, (button) -> {
         			phoenixStart = button.enabled;
         			saveData();
         			resetCharSelect();
         		});
+		ModLabeledToggleButton contentSharingBtn = new ModLabeledToggleButton("Enable Construct relics for other characters (REQUIRES RESTART)",
+				350.0f, 600.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
+				contentSharing, settingsPanel, (label) -> {}, (button) -> {
+					contentSharing = button.enabled;
+					saveData();
+				});
         if (UnlockTracker.getUnlockLevel(TheConstructEnum.THE_CONSTRUCT_MOD) >= 1) settingsPanel.addUIElement(phoenixBtn);
         else {
         	if (phoenixStart) {
@@ -107,6 +120,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
         	settingsPanel.addUIElement(buttonLabel);
         	settingsPanel.addUIElement(buttonLabel2);
         }
+        settingsPanel.addUIElement(contentSharingBtn);
         
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
         
@@ -115,8 +129,9 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     
     public static void saveData() {
     	try {
-    		SpireConfig config = new SpireConfig("ConstructMod", "ConstructSaveData");
+    		SpireConfig config = new SpireConfig("ConstructMod", "ConstructSaveData", constructDefaults);
     		config.setBool("phoenixStart", phoenixStart);
+    		config.setBool("contentSharing", contentSharing);
     		if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(WeddingRing.ID)) {
     			config.setInt("marriedCard1", AbstractDungeon.player.masterDeck.group.indexOf(((WeddingRing)AbstractDungeon.player.getRelic(WeddingRing.ID)).card1));
     			config.setInt("marriedCard2", AbstractDungeon.player.masterDeck.group.indexOf(((WeddingRing)AbstractDungeon.player.getRelic(WeddingRing.ID)).card2));
@@ -132,12 +147,13 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     	saveData();
     }
     
-    public static void loadPhoenixData() {
+    public static void loadConfigData() {
     	try {
-    		logger.info("ConstructMod | Loading Phoenix Preference...");
-	    	SpireConfig config = new SpireConfig("ConstructMod", "ConstructSaveData");
+    		logger.info("ConstructMod | Loading Config Preferences...");
+	    	SpireConfig config = new SpireConfig("ConstructMod", "ConstructSaveData", constructDefaults);
 			config.load();
 			phoenixStart = config.getBool("phoenixStart");
+			contentSharing = config.getBool("contentSharing");
     	}
     	catch(Exception e) {
     		e.printStackTrace();
@@ -145,10 +161,10 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     	}
     }
     
-    public static void loadData() {
-    	logger.info("ConstructMod | Loading Data...");
+    public static void loadRingData() {
+    	logger.info("ConstructMod | Loading Ring Data...");
     	try {
-			SpireConfig config = new SpireConfig("ConstructMod", "ConstructSaveData");
+			SpireConfig config = new SpireConfig("ConstructMod", "ConstructSaveData", constructDefaults);
 			config.load();
 			
 			marriedCard1 = config.getInt("marriedCard1");
@@ -186,6 +202,8 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     	BaseMod.addKeyword(eggs, "Eggs are relics that automatically upgrade cards when you acquire them.");
     	final String[] megaUpgrade = {"mega-upgrade","mega-upgraded"};
     	BaseMod.addKeyword(megaUpgrade, "A second upgrade that makes a card even more powerful.");
+		final String[] overheat = {"overheat","[#ff9900]overheat","[#ff9900]overheats","[#ff9900]overheated", "[#ff9900]overheat:"};
+		BaseMod.addKeyword(overheat, "Counts down whenever ANY card #ycycles. When it hits #b0, transform this card into a #yBurn for this combat.");
     }
 	
 	public void receiveEditCharacters() {
@@ -228,6 +246,10 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 	}
 	
 	public void receiveEditCards() {
+
+    	BaseMod.addDynamicVariable(new OverheatVariable());
+    	BaseMod.addDynamicVariable(new GatlingGunVariable());
+
 		// Add cards
 		logger.info("Adding Construct Cards");
 		// BASIC
@@ -264,7 +286,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new Autoturret());	// atk from cycle
 		
 		// UNCOMMON
-		// 	Attacks(11/11)
+		// 	Attacks(11/11) +1
 		BaseMod.addCard(new ChargeShot());	// atk (retain)
 		BaseMod.addCard(new CripplingShot());//atk, debuff
 		BaseMod.addCard(new Electrocute()); // atk, debuff
@@ -276,6 +298,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new OmegaCannon()); // atk, str-based
 		BaseMod.addCard(new QuickAttack()); // atk, dex
 		BaseMod.addCard(new PowerUp()); 	// atk, +basic cards
+		//BaseMod.addCard(new PhosphorStorm());//atk, overheat
 		
 		//	Skills (16/17)
 		BaseMod.addCard(new OneWayMirror());// block
@@ -323,13 +346,14 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addCard(new GatlingGun());	// atk, X-cost
 		BaseMod.addCard(new HammerDown());	// atk, modes
 		BaseMod.addCard(new Antimatter());	// atk
-		//	Skills (6/7)
+		//	Skills (6/7)+1
 		BaseMod.addCard(new MassProduction());//copy
 		BaseMod.addCard(new HastyRepair()); // heal
 		BaseMod.addCard(new ClockworkEgg());// egg
 		BaseMod.addCard(new BatteryCore());	// energy
 		BaseMod.addCard(new MemoryTap());	// cards from other classes
 		BaseMod.addCard(new Reserves()); 	// cycle, draw/energy at low HP
+		//BaseMod.addCard(new Implosion());		// burn synergy, play
 		//	Powers (5/5)
 		BaseMod.addCard(new SiegeForm());	// buff, atk-based
 		BaseMod.addCard(new SpinDrive()); 	// cards
@@ -344,10 +368,18 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 	
 	public void receiveEditRelics() {
 		logger.info("Adding Construct Relics");
-		BaseMod.addRelic(new FoamFinger(), RelicType.SHARED);
-		BaseMod.addRelic(new ClawGrip(), RelicType.SHARED);
-		BaseMod.addRelic(new RocketBooster(), RelicType.SHARED);
-		BaseMod.addRelic(new WeddingRing(), RelicType.SHARED);
+		if (contentSharing) {
+			BaseMod.addRelic(new FoamFinger(), RelicType.SHARED);
+			BaseMod.addRelic(new ClawGrip(), RelicType.SHARED);
+			BaseMod.addRelic(new RocketBooster(), RelicType.SHARED);
+			BaseMod.addRelic(new WeddingRing(), RelicType.SHARED);
+		}
+		else{
+			BaseMod.addRelicToCustomPool(new FoamFinger(), AbstractCardEnum.CONSTRUCTMOD);
+			BaseMod.addRelicToCustomPool(new ClawGrip(), AbstractCardEnum.CONSTRUCTMOD);
+			BaseMod.addRelicToCustomPool(new RocketBooster(), AbstractCardEnum.CONSTRUCTMOD);
+			BaseMod.addRelicToCustomPool(new WeddingRing(), AbstractCardEnum.CONSTRUCTMOD);
+		}
 		BaseMod.addRelicToCustomPool(new Cogwheel(), AbstractCardEnum.CONSTRUCTMOD);
 		BaseMod.addRelicToCustomPool(new MasterCore(), AbstractCardEnum.CONSTRUCTMOD);
 		BaseMod.addRelicToCustomPool(new ClockworkPhoenix(), AbstractCardEnum.CONSTRUCTMOD);

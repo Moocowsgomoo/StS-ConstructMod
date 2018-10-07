@@ -12,7 +12,7 @@ public class SavePatch {
 	public static class LoadGame {
 		
 		public static void Prefix(AbstractPlayer.PlayerClass pClass) {
-			ConstructMod.loadData();
+			ConstructMod.loadRingData();
 		}
 	}*/
 	
@@ -20,7 +20,7 @@ public class SavePatch {
 	public static class LoadGameByString{
 		
 		public static void Prefix(String filePath) {
-			ConstructMod.loadData();
+			ConstructMod.loadRingData();
 		}
 	}
 	

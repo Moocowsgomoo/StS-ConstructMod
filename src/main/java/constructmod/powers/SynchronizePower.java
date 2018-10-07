@@ -73,20 +73,24 @@ PostDungeonInitializeSubscriber {
 		
 		}
 		drawnCardName = c.originalName;
+		updateDescription();
 	}
 	
 	@Override
 	public void onRemove() {
+		drawnCardName = null;
 		BaseMod.unsubscribe(this);
 	}
 	
 	@Override
 	public void receivePostBattle(AbstractRoom battleRoom) {
+		drawnCardName = null;
 		BaseMod.unsubscribeLater(this);
 	}
 
 	@Override
 	public void receivePostDungeonInitialize() {
+		drawnCardName = null;
 		BaseMod.unsubscribeLater(this);
 	}
 }

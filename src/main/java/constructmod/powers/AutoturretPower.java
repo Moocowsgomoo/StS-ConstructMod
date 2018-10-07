@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import constructmod.ConstructMod;
+import constructmod.actions.InstantDamageRandomEnemyAction;
 
 public class AutoturretPower extends AbstractCyclePower {
 	public static final String POWER_ID = ConstructMod.makeID("Autoturret");
@@ -37,8 +38,8 @@ public class AutoturretPower extends AbstractCyclePower {
 	
 	@Override
 	public void onCycleCard(AbstractCard card) {
-		flash();
-		AbstractDungeon.actionManager.addToTop(new DamageRandomEnemyAction(
+		flashWithoutSound();
+		AbstractDungeon.actionManager.addToTop(new InstantDamageRandomEnemyAction(
 				new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS),AbstractGameAction.AttackEffect.BLUNT_LIGHT));
 	}
 }

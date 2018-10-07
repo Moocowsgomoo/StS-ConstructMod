@@ -1,5 +1,10 @@
 package constructmod.cards;
 
+import com.megacrit.cardcrawl.actions.unique.TransmutationAction;
+import com.megacrit.cardcrawl.actions.unique.TransmuteAction;
+import com.megacrit.cardcrawl.actions.unique.Transmutev2Action;
+import com.megacrit.cardcrawl.cards.status.Burn;
+import constructmod.actions.OverheatAction;
 import org.apache.logging.log4j.Level;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -19,9 +24,26 @@ public abstract class AbstractConstructCard extends CustomCard {
 	public boolean forcedUpgrade = false;
 	
 	public boolean rebound = false;
+
+	public boolean upgradedOverheat = false;
+	public int overheat = 0;
 	
 	public AbstractConstructCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target, int cardPool) {
 		super(id, name, img.replace("cards/construct:", "constructCards/"), cost, rawDescription, type, color, rarity, target);
+	}
+
+	public void reduceOverheat(){
+		if (overheat <= 0) return;
+		if (--overheat <= 0) overheatCard();
+	}
+
+	public void overheatCard(){
+		AbstractDungeon.actionManager.addToTop(new OverheatAction(this));
+	}
+
+	public void upgradeOverheat(int amount){
+		this.overheat += amount;
+		this.upgradedOverheat = true;
 	}
 	
 	public void CloneCore() {
@@ -74,6 +96,7 @@ public abstract class AbstractConstructCard extends CustomCard {
         
         final AbstractConstructCard card = (AbstractConstructCard)super.makeStatEquivalentCopy();
         card.forcedUpgrade = false;
+        card.overheat = this.overheat;
         return card;
     }
 	

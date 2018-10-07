@@ -1,5 +1,6 @@
 package constructmod.cards;
 
+import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -29,7 +30,7 @@ public class Defend_Gold extends AbstractCycleCard {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
 				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.SELF, POOL);
 		this.baseBlock = BLOCK_AMT;
-		CardTags.addTags(this, BaseModTags.BASIC_DEFEND);
+		this.tags.add(BaseModCardTags.BASIC_DEFEND);
 	}
 	
 	@Override

@@ -98,6 +98,9 @@ public class WeddingRing extends CustomRelic
     public void update() {
         super.update();
         if (!this.cardSelected && AbstractDungeon.gridSelectScreen.selectedCards.size() > 1) {
+            for (AbstractCard card : AbstractDungeon.player.masterDeck.group) {
+                WeddingRingPatch.isMarried.set(card, false);
+            }
             this.cardSelected = true;
             this.card1 = AbstractDungeon.gridSelectScreen.selectedCards.get(0);
             WeddingRingPatch.isMarried.set(this.card1, true);

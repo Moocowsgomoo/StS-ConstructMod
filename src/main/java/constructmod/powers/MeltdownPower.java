@@ -27,7 +27,7 @@ public class MeltdownPower extends AbstractPower {
 	public static final String NAME = "Meltdown";
 	public static final String[] DESCRIPTIONS = new String[] {
 			"At the start of your turn, deal #b",
-			" damage to ALL enemies and add #b2 #yBurns to your hand."
+			" damage to ALL enemies and add a #yBurn to your hand."
 	};
 	
 	public MeltdownPower(AbstractCreature owner, int amount) {
@@ -50,6 +50,6 @@ public class MeltdownPower extends AbstractPower {
 	public void atStartOfTurn() {
 		this.flash();
 		AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(this.owner, DamageInfo.createDamageMatrix(this.amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.FIRE));
-		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new Burn(),2));
+		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new Burn(),1));
 	}
 }

@@ -41,7 +41,7 @@ public class ShiftStrike extends AbstractConstructCard {
 				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.ENEMY, POOL);
 		this.damage = this.baseDamage = ATTACK_DMG;
 		this.magicNumber = this.baseMagicNumber = GAIN_STR;
-		CardTags.addTags(this, BaseModTags.STRIKE);
+		this.tags.add(CardTags.STRIKE);
 	}
 
 	@Override

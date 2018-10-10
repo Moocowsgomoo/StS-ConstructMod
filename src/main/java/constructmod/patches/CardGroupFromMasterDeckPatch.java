@@ -7,7 +7,10 @@ import com.megacrit.cardcrawl.cards.CardGroup.CardGroupType;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
+import constructmod.cards.AbstractConstructCard;
 import constructmod.relics.WeddingRing;
+
+import java.util.ArrayList;
 
 @SpirePatch(cls="com.megacrit.cardcrawl.cards.CardGroup", method = "initializeDeck")
 public class CardGroupFromMasterDeckPatch {
@@ -16,5 +19,18 @@ public class CardGroupFromMasterDeckPatch {
 		for (final AbstractCard c : masterDeck.group) {
             WeddingRingPatch.copyIsMarried.set(c, true);
         }
+	}
+
+	public static void Postfix(CardGroup obj, final CardGroup masterDeck) {
+		final ArrayList<AbstractConstructCard> startInPlayCards = new ArrayList<>();
+		for (final AbstractCard c : obj.group) {
+			if (c instanceof AbstractConstructCard && ((AbstractConstructCard) c).startInPlay){
+				startInPlayCards.add(((AbstractConstructCard) c));
+			}
+		}
+		for (final AbstractConstructCard c : startInPlayCards){
+			obj.group.remove(c);
+			c.startInPlayEffect();
+		}
 	}
 }

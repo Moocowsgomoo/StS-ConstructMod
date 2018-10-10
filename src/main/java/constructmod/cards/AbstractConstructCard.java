@@ -1,10 +1,13 @@
 package constructmod.cards;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.unique.TransmutationAction;
 import com.megacrit.cardcrawl.actions.unique.TransmuteAction;
 import com.megacrit.cardcrawl.actions.unique.Transmutev2Action;
 import com.megacrit.cardcrawl.cards.status.Burn;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import constructmod.actions.OverheatAction;
+import constructmod.powers.AbstractCyclePower;
 import org.apache.logging.log4j.Level;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -24,6 +27,7 @@ public abstract class AbstractConstructCard extends CustomCard {
 	public boolean forcedUpgrade = false;
 	
 	public boolean rebound = false;
+	public boolean startInPlay = false;
 
 	public boolean upgradedOverheat = false;
 	public int overheat = 0;
@@ -34,16 +38,25 @@ public abstract class AbstractConstructCard extends CustomCard {
 
 	public void reduceOverheat(){
 		if (overheat <= 0) return;
+		else if (AbstractDungeon.player.hand.contains(this)) this.flash(Color.ORANGE);
+
 		if (--overheat <= 0) overheatCard();
 	}
 
 	public void overheatCard(){
+		for (AbstractPower p:AbstractDungeon.player.powers){
+			if (p instanceof AbstractCyclePower) ((AbstractCyclePower) p).onOverheatCard(this);
+		}
 		AbstractDungeon.actionManager.addToTop(new OverheatAction(this));
 	}
 
 	public void upgradeOverheat(int amount){
 		this.overheat += amount;
 		this.upgradedOverheat = true;
+	}
+
+	public void startInPlayEffect(){
+		// the thing that happens when this card reads "start combat with this in play". Hopefully just applying a power.
 	}
 	
 	public void CloneCore() {

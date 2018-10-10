@@ -24,7 +24,10 @@ public abstract class AbstractCycleCard extends AbstractConstructCard {
 	
 	@Override
 	public void triggerWhenDrawn(){
-		cycle();
+		if (!canCycle()) return;
+
+		timesCycled++;
+		cycle(this);
 	}
 	
 	// Individual cards override this method to add their own cycle conditions. They always check this parent method as well.
@@ -32,15 +35,12 @@ public abstract class AbstractCycleCard extends AbstractConstructCard {
 		return timesCycled < 1;
 	}
 	
-	public void cycle() {
-		if (!canCycle()) return;
-		timesCycled++;
-		
-		AbstractDungeon.actionManager.addToTop(new CycleCardAction(this, AbstractDungeon.player.hasPower(PanicFire.ID) && !this.upgraded));
+	public static void cycle(AbstractCard card) {
+		AbstractDungeon.actionManager.addToTop(new CycleCardAction(card, AbstractDungeon.player.hasPower(PanicFire.ID) && !card.upgraded));
 		
 		for (AbstractPower pw : AbstractDungeon.player.powers) {
 			if (pw instanceof AbstractCyclePower) {
-				((AbstractCyclePower) pw).onCycleCard(this);
+				((AbstractCyclePower) pw).onCycleCard(card);
 			}
 		}
 

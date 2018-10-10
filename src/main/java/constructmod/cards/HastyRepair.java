@@ -36,6 +36,7 @@ public class HastyRepair extends AbstractConstructCard {
 		this.magicNumber = this.baseMagicNumber = HEAL_AMT;
 		this.maxHpGain = MAX_HP_GAIN_AMT;
 		this.exhaust = true;
+		this.tags.add(CardTags.HEALING);
 	}
 
 	@Override

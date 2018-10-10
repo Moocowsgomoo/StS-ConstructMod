@@ -7,4 +7,8 @@ public class AbstractCyclePower extends AbstractPower {
 	public void onCycleCard(final AbstractCard card) {
 		
 	}
+
+	public void onOverheatCard(final AbstractCard card){
+
+	}
 }

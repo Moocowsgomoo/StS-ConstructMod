@@ -492,23 +492,24 @@
 	},
 	"construct:PhosphorStorm": {
 		"NAME": "Phosphor Storm",
-		"DESCRIPTION": "[#ff9900]OVERHEAT: !construct:O! NL Deal !D! damage twice.",
-		"UPGRADE_DESCRIPTION": "[#ff9900]OVERHEAT: !construct:O! NL Deal !D! damage twice, then !D! damage to a random enemy."
+		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Deal !D! damage twice.",
+		"UPGRADE_DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Deal !D! damage twice, then !D! damage to a random enemy."
 	},
 	"construct:Agitation": {
 		"NAME": "Agitation",
-		"DESCRIPTION": "Whenever a card Overheats, draw !M! additional card at the start of each turn.",
-		"UPGRADE_DESCRIPTION": "Innate. NL Whenever a card Overheats, draw !M! additional card at the start of each turn.",
-		"EXTENDED_DESCRIPTION": ["Start combat with this card in play. NL Whenever a card Overheats, draw !M! additional card at the start of each turn."]
+		"DESCRIPTION": "Whenever a card fully Overheats, gain !M! Strength and !M! Dexterity.",
+		"UPGRADE_DESCRIPTION": "Innate. NL Whenever a card fully Overheats, gain !M! Strength and !M! Dexterity.",
+		"EXTENDED_DESCRIPTION": ["Start combat with this card in play. NL Whenever a card fully Overheats, gain !M! Strength and !M! Dexterity."]
 	},
 	"construct:Coolant": {
 		"NAME": "Coolant",
-		"DESCRIPTION": "Gain !B! Block. NL Increase the Overheat values of ALL cards by !M!. NL Exhaust.",
-		"UPGRADE_DESCRIPTION": "Gain !B! Block. NL Increase the Overheat values of ALL cards by !M!."
+		"DESCRIPTION": "Gain !B! Block. NL Increase the Overheat of ALL cards by !M!.",
+		"UPGRADE_DESCRIPTION": "Innate. NL Gain !B! Block. NL Increase the Overheat of ALL cards by !M!.",
+		"EXTENDED_DESCRIPTION": ["Innate. NL Gain !B! Block. NL Increase the Overheat of ALL cards by !M!. NL Put this on top of your draw pile."]
 	},
 	"construct:NuclearCore": {
 		"NAME": "Nuclear Core",
-		"DESCRIPTION": "[#ff9900]OVERHEAT: !construct:O! NL Cycle. When cycled: NL Apply !M! Poison to ALL enemies.",
+		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Cycle. When cycled: NL Apply !M! Poison to ALL enemies.",
 		"UPGRADE_DESCRIPTION": " NL Put a Nuclear Core into your discard pile.",
 		"EXTENDED_DESCRIPTION": [
 			" NL Put a Nuclear Core+ into your discard pile."
@@ -516,42 +517,55 @@
 	},
 	"construct:OilSpill": {
 		"NAME": "Oil Spill",
-		"DESCRIPTION": "[#ff9900]OVERHEAT: !construct:O! NL Whenever you draw a Burn, target enemy takes !M! damage.",
-		"EXTENDED_DESCRIPTION": ["[#ff9900]OVERHEAT: !construct:O! NL Whenever you draw a Burn, ALL enemies take !M! damage."]
+		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Whenever you draw a Burn, target enemy takes !M! damage.",
+		"EXTENDED_DESCRIPTION": ["[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Whenever you draw a Burn, ALL enemies take !M! damage."]
 	},
 	"construct:FlammableFog": {
 		"NAME": "Flammable Fog",
-		"DESCRIPTION": "[#ff9900]OVERHEAT: !construct:O! NL Gain Block equal to this card's Overheat, this and next turn.",
-		"UPGRADE_DESCRIPTION": "[#ff9900]OVERHEAT: !construct:O! NL Gain Block equal to this card's Overheat, this and next turn. NL Increase its Overheat value by !M!.",
+		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Gain Block equal to this card's Overheat, this and next turn.",
 		"EXTENDED_DESCRIPTION": ["(Gain !B! Block.) NL "]
 	},
 	"construct:Missile": {
 		"NAME": "Missile",
-		"DESCRIPTION": "Cycle if this card has already been played this combat. NL Deal !D! damage. NL Apply !M! Weak and !M! Vulnerable."
+		"DESCRIPTION": "Cycle if already played this combat. NL Deal !D! damage. NL Apply !M! Weak and !M! Vulnerable."
 	},
 	"construct:Flamethrower": {
 		"NAME": "Flamethrower",
-		"DESCRIPTION": "Deal !D! damage to a random enemy. Hits !M! more time for each Burn you have."
+		"DESCRIPTION": "Deal !D! damage to a random enemy for each Burn you have.",
+		"UPGRADE_DESCRIPTION": "Cycle if you have no Burns. NL Deal !D! damage to a random enemy for each Burn you have.",
+		"EXTENDED_DESCRIPTION": [
+			"Cycle if you have no Statuses. NL Deal !D! damage to a random enemy for each Status card you have.",
+			"(Hits !M! time.) NL ",
+			"(Hits !M! times.) NL "
+		]
 	},
 	"construct:CreateCores": {
 		"NAME": "Create Cores",
-		"DESCRIPTION": "[#ff9900]OVERHEAT: !construct:O! NL Shuffle !M! random Cores into your draw pile.",
-		"UPGRADE_DESCRIPTION": "[#ff9900]OVERHEAT: !construct:O! NL Shuffle !M! random Cores into your draw pile, and upgrade one of them."
+		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Shuffle !M! random Cores into your draw pile.",
+		"UPGRADE_DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Shuffle !M! random Upgraded Cores into your draw pile."
 	},
 	"construct:BlazingSpeed": {
 		"NAME": "Blazing Speed",
-		"DESCRIPTION": "[#ff9900]OVERHEAT: !construct:O! NL Deal !D! damage. NL Draw !M! cards."
+		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Deal !D! damage. NL Draw !M! cards."
 	},
 	"construct:Implosion": {
 		"NAME": "Implosion",
-		"DESCRIPTION": "Place ALL Burn cards into your hand. For each Burn moved from a pile, play a random card from that pile."
+		"DESCRIPTION": "Place ALL Burns from your discard pile into your hand. For each, play a random card from your discard pile.",
+		"UPGRADE_DESCRIPTION": "Place ALL Burns into your hand. For each Burn moved from a pile, play a random card from that pile.",
+		"EXTENDED_DESCRIPTION": [
+			"(Burns: ",
+			" + ",
+			") NL "
+			]
+
 	},
 	"construct:Rollout": {
 		"NAME": "Rollout",
-		"DESCRIPTION": "[#ff9900]OVERHEAT: !construct:O! NL Deal !D! damage. NL Whenever ANY card cycles, increase this card's damage by !M!."
+		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Deal !D! damage. NL Whenever ANY card cycles, increase this card's damage by !M!."
 	},
 	"construct:Failsafe": {
 		"NAME": "Failsafe",
-		"DESCRIPTION": "The first !M! Status cards you draw each turn Cycle."
+		"DESCRIPTION": "The first Status card you draw each turn Cycles.",
+		"UPGRADE_DESCRIPTION": "The first !M! Status cards you draw each turn Cycle."
 	}
 }

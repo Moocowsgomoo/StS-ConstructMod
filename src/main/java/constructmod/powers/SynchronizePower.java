@@ -21,8 +21,7 @@ import basemod.interfaces.PostDrawSubscriber;
 import basemod.interfaces.PostDungeonInitializeSubscriber;
 import constructmod.ConstructMod;
 
-public class SynchronizePower extends AbstractPower implements PostDrawSubscriber, PostBattleSubscriber,
-PostDungeonInitializeSubscriber {
+public class SynchronizePower extends AbstractOnDrawPower{
 	public static final String POWER_ID = ConstructMod.makeID("Synchronize");
 	public static final String NAME = "Synchronize";
 	public static final String[] DESCRIPTIONS = new String[] {
@@ -46,18 +45,13 @@ PostDungeonInitializeSubscriber {
 	}
 	
 	@Override
-	public void onInitialApplication() {
-		BaseMod.subscribe(this);
-	}
-	
-	@Override
 	public void updateDescription() {
 		this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
 		if (!drawnCardName.equals("")) this.description = this.description + DESCRIPTIONS[2] + this.drawnCardName + DESCRIPTIONS[3];
 	}
 	
 	@Override
-	public void receivePostDraw (AbstractCard c) {
+	public void onDrawCard (final AbstractCard c) {
 		if (c.originalName.equals(drawnCardName)) {
 			this.flash();
 			
@@ -74,23 +68,5 @@ PostDungeonInitializeSubscriber {
 		}
 		drawnCardName = c.originalName;
 		updateDescription();
-	}
-	
-	@Override
-	public void onRemove() {
-		drawnCardName = null;
-		BaseMod.unsubscribe(this);
-	}
-	
-	@Override
-	public void receivePostBattle(AbstractRoom battleRoom) {
-		drawnCardName = null;
-		BaseMod.unsubscribeLater(this);
-	}
-
-	@Override
-	public void receivePostDungeonInitialize() {
-		drawnCardName = null;
-		BaseMod.unsubscribeLater(this);
 	}
 }

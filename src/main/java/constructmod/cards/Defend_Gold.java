@@ -10,7 +10,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 
-import basemod.helpers.BaseModTags;
 import basemod.helpers.CardTags;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;

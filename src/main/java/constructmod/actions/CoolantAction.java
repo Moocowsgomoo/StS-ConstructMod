@@ -1,6 +1,5 @@
 package constructmod.actions;
 
-import basemod.helpers.BaseModTags;
 import basemod.helpers.CardTags;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;

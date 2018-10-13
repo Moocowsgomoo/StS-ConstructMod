@@ -14,7 +14,6 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 
 
 import basemod.abstracts.CustomCard;
-import basemod.helpers.BaseModTags;
 import basemod.helpers.CardTags;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
@@ -35,7 +34,6 @@ public class ModeShift extends AbstractConstructCard {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
 				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF, POOL);
 		this.baseMagicNumber = this.magicNumber = DRAW_AMT;
-		this.tags.add(BaseModCardTags.GREMLIN_MATCH);
 	}
 	
 	@Override

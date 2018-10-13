@@ -1,10 +1,10 @@
 package constructmod.actions;
 
+import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.*;
 import com.megacrit.cardcrawl.core.*;
 import com.megacrit.cardcrawl.dungeons.*;
 
-import basemod.helpers.BaseModTags;
 import basemod.helpers.CardTags;
 import constructmod.cards.AbstractConstructCard;
 import com.megacrit.cardcrawl.cards.*;
@@ -36,7 +36,7 @@ public class BoostBasicCardsAction extends AbstractGameAction
     
     public boolean BoostCard(AbstractCard c) {
     	boolean wasBoosted = false;
-    	if (CardTags.hasTag(c, BaseModTags.BASIC_STRIKE)) {
+    	if (CardTags.hasTag(c, BaseModCardTags.BASIC_STRIKE)) {
     		wasBoosted = true;
     		if (this.isMultiplier) c.baseDamage *= this.amount; 
     		else c.baseDamage += this.amount;
@@ -44,7 +44,7 @@ public class BoostBasicCardsAction extends AbstractGameAction
     		c.rawDescription += " NL Exhaust.";
     		c.initializeDescription();*/
     	}
-    	if (CardTags.hasTag(c, BaseModTags.BASIC_DEFEND)) {
+    	if (CardTags.hasTag(c, BaseModCardTags.BASIC_DEFEND)) {
     		wasBoosted = true;
     		if (this.isMultiplier) c.baseBlock *= this.amount; 
     		else c.baseBlock += this.amount;

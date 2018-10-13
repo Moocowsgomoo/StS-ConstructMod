@@ -2,7 +2,9 @@ package constructmod.characters;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
 import basemod.abstracts.CustomPlayer;
@@ -11,19 +13,24 @@ import basemod.animations.SpriterAnimation;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.characters.Defect;
+import com.megacrit.cardcrawl.characters.Ironclad;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.CardHelper;
+import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.helpers.ScreenShake;
+import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
+import com.megacrit.cardcrawl.screens.stats.CharStat;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import constructmod.ConstructMod;
-import constructmod.cards.AttackMode;
-import constructmod.cards.Defend_Gold;
-import constructmod.cards.DefenseMode;
-import constructmod.cards.Strike_Gold;
+import constructmod.cards.*;
 import constructmod.patches.TheConstructEnum;
 import constructmod.relics.ClockworkPhoenix;
 import constructmod.relics.Cogwheel;
@@ -44,7 +51,73 @@ public class TheConstruct extends CustomPlayer{
 		//e.setTime(e.getEndTime() * MathUtils.random());
 	}
 
-	public static ArrayList<String> getStartingDeck() {
+	@Override
+	public String getTitle(AbstractPlayer.PlayerClass playerClass){
+		return "the Construct";
+	}
+
+	@Override
+	public Color getCardColor(){
+		return CardHelper.getColor(170.0f, 150.0f, 50.0f);
+	}
+
+	@Override
+	public Color getCardTrailColor(){
+		return CardHelper.getColor(170.0f, 150.0f, 50.0f);
+	}
+
+	@Override
+	public AbstractCard getStartCardForEvent(){
+		return new ModeShift();
+	}
+
+	@Override
+	public int getAscensionMaxHPLoss() {
+		return 5;
+	}
+
+	@Override
+	public BitmapFont getEnergyNumFont() {
+		return FontHelper.energyNumFontRed;
+	}
+
+	@Override
+	public void doCharSelectScreenSelectEffect() {
+		CardCrawlGame.sound.playV("AUTOMATON_ORB_SPAWN", 1.75f);
+		CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT, true);
+	}
+
+	@Override
+	public String getCustomModeCharacterButtonSoundKey() {
+		return "AUTOMATON_ORB_SPAWN";
+	}
+
+	@Override
+	public Texture getCustomModeCharacterButtonImage() {
+		return ImageMaster.FILTER_IRONCLAD;
+	}
+
+	@Override
+	public CharacterStrings getCharacterString() {
+		return CardCrawlGame.languagePack.getCharacterString("Ironclad");
+	}
+
+	@Override
+	public String getLocalizedCharacterName() {
+		return "The Construct";
+	}
+
+	@Override
+	public void refreshCharStat() {
+		this.charStat = new CharStat(this);
+	}
+
+	@Override
+	public AbstractPlayer newInstance() {
+		return new TheConstruct(this.name, this.chosenClass);
+	}
+
+	public ArrayList<String> getStartingDeck() {
 		ArrayList<String> retVal = new ArrayList<>();
 		retVal.add(Strike_Gold.ID);
 		retVal.add(Strike_Gold.ID);
@@ -61,7 +134,7 @@ public class TheConstruct extends CustomPlayer{
 		return retVal;
 	}
 	
-	public static ArrayList<String> getStartingRelics() {
+	public ArrayList<String> getStartingRelics() {
 		ArrayList<String> retVal = new ArrayList<>();
 		if (ConstructMod.phoenixStart) {
 			retVal.add(ClockworkPhoenix.ID);
@@ -74,10 +147,10 @@ public class TheConstruct extends CustomPlayer{
 		return retVal;
 	}
 	
-	public static CharSelectInfo getLoadout() {
+	public CharSelectInfo getLoadout() {
 		return new CharSelectInfo("The Construct", "Ancient machinery given new purpose by Neow. NL Reconfigures itself to adapt to any situation.",
 				85, 85, 0, 99, 5,
-			TheConstructEnum.THE_CONSTRUCT_MOD, getStartingRelics(), Defect.getStartingDeck(), false);
+			this, getStartingRelics(), getStartingDeck(), false);
 	}
 	
 	/*public void onCycle(AbstractCard card) {

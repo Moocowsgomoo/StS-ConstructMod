@@ -2,10 +2,10 @@
   "modid": "constructmod",
   "name": "The Construct",
   "author_list": ["Moocowsgomoo, Spike Berd"],
-  "description": "New character - The Construct! \n\nRecent changes: \n- Many Synchronize bugs fixed.\n- Hasty Repair now tagged as healing.\n- Cards now always visible in Compendium.\n- Added a new config option :)",
-  "version": "0.9.7",
-  "sts_version": "10-04-2018",
-  "mts_version": "3.0.0",
+  "description": "New character - The Construct! \n\nRecent changes: \n- Updated for BaseMod 4.0\n- Many Synchronize bugs fixed.\n- Hasty Repair now tagged as healing.\n- Cards now always visible in Compendium.\n- Added a new config option :)",
+  "version": "0.9.8",
+  "sts_version": "10-11-2018",
+  "mts_version": "3.3.0",
   "dependencies": ["basemod"],
   "update_json": "https://api.github.com/repos/Moocowsgomoo/StS-ConstructMod/releases/latest"
 }

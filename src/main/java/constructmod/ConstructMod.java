@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import basemod.interfaces.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import constructmod.powers.AbstractOnDrawPower;
 import constructmod.powers.SynchronizePower;
@@ -434,6 +435,11 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
             for (AbstractPower p:AbstractDungeon.player.powers){
                 if (p instanceof AbstractOnDrawPower) ((AbstractOnDrawPower) p).onDrawCard(card);
             }
+			for (AbstractMonster m:AbstractDungeon.getMonsters().monsters){
+				for (AbstractPower p:m.powers){
+					if (p instanceof AbstractOnDrawPower) ((AbstractOnDrawPower) p).onDrawCard(card);
+				}
+			}
         }
     }
 	

@@ -7,6 +7,7 @@ import basemod.interfaces.PostDungeonInitializeSubscriber;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -49,8 +50,8 @@ public class OilSpillPower extends AbstractOnDrawPower{
 	public void onDrawCard (AbstractCard c) {
 		if (c.cardID == Burn.ID) {
 			this.flash();
-			AbstractDungeon.actionManager.addToTop(new DamageAllEnemiesAction(
-					this.owner, DamageInfo.createDamageMatrix(this.amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.FIRE));
+			AbstractDungeon.actionManager.addToTop(new DamageAction(
+					this.owner,new DamageInfo(this.owner,this.amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
 		
 		}
 	}

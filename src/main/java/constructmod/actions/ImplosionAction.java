@@ -67,7 +67,7 @@ public class ImplosionAction extends AbstractGameAction
             // Draw burns from piles, with the condition that we don't draw them if there isn't a matching playable card.
             if (this.mega) {
                 for (AbstractCard c : p.drawPile.group) {
-                    if (c.cardID == Burn.ID && handCount < 10 && drawpileCount < validDrawpileCards.size()) {
+                    if (c.cardID == Burn.ID && handCount < BaseMod.MAX_HAND_SIZE && drawpileCount < validDrawpileCards.size()) {
                         handCount++;
                         drawpileCount++;
                         AbstractDungeon.actionManager.addToBottom(new FetchCardToHandAction(c, p.drawPile));
@@ -75,7 +75,7 @@ public class ImplosionAction extends AbstractGameAction
                 }
             }
             for (AbstractCard c : p.discardPile.group){
-                if (c.cardID == Burn.ID && handCount < 10 && discardCount < validDiscardCards.size()){
+                if (c.cardID == Burn.ID && handCount < BaseMod.MAX_HAND_SIZE && discardCount < validDiscardCards.size()){
                     handCount++;
                     discardCount++;
                     AbstractDungeon.actionManager.addToBottom(new FetchCardToHandAction(c,p.discardPile));
@@ -83,7 +83,7 @@ public class ImplosionAction extends AbstractGameAction
             }
 
             // At this point, we've drawn all Burns into hand that will play a card when moved. HOWEVER, the card text
-            // says to put ALL burns into hand, and the play effect is secondary. So if handsize < 10, we do a second
+            // says to put ALL burns into hand, and the play effect is secondary. So if handsize < BaseMod.MAX_HAND_SIZE, we do a second
             // pass and just fill the player's hand with all the burns we can find. Mwahahaha.
 
             // Note: we haven't ACTUALLY drawn any cards yet, just set up the actions to do so. That's why we're using
@@ -91,14 +91,14 @@ public class ImplosionAction extends AbstractGameAction
 
             if (this.mega) {
                 for (AbstractCard c : p.drawPile.group) {
-                    if (c.cardID == Burn.ID && handCount < 10) {
+                    if (c.cardID == Burn.ID && handCount < BaseMod.MAX_HAND_SIZE) {
                         handCount++;
                         AbstractDungeon.actionManager.addToBottom(new FetchCardToHandAction(c, p.drawPile));
                     }
                 }
             }
             for (AbstractCard c : p.discardPile.group){
-                if (c.cardID == Burn.ID && handCount < 10){
+                if (c.cardID == Burn.ID && handCount < BaseMod.MAX_HAND_SIZE){
                     handCount++;
                     AbstractDungeon.actionManager.addToBottom(new FetchCardToHandAction(c,p.discardPile));
                 }
@@ -135,7 +135,7 @@ public class ImplosionAction extends AbstractGameAction
             AbstractMonster m = AbstractDungeon.getRandomMonster();
             if (card.canUse(AbstractDungeon.player, m)){
                 card.applyPowers();
-                AbstractDungeon.actionManager.addToBottom(new QueueCardAction(card, m));
+                AbstractDungeon.actionManager.addToBottom(new QueueCardFrontAction(card, m));
             }
         }
     }

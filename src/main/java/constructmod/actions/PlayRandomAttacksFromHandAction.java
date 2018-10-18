@@ -63,7 +63,7 @@ public class PlayRandomAttacksFromHandAction extends AbstractGameAction
                 card.targetDrawScale = 0.75f;
                 if (card.canUse(AbstractDungeon.player, (AbstractMonster)this.target)) {
                     card.applyPowers();
-                    AbstractDungeon.actionManager.addToTop(new QueueCardAction(card, this.target));
+                    AbstractDungeon.actionManager.addToTop(new QueueCardFrontAction(card, this.target));
                 }
             }
             this.isDone = true;

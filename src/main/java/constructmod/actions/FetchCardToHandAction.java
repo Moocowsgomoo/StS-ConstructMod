@@ -1,5 +1,6 @@
 package constructmod.actions;
 
+import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -25,7 +26,7 @@ public class FetchCardToHandAction extends AbstractGameAction {
                 return;
             }
 
-            if (group.contains(this.card) && AbstractDungeon.player.hand.size() < 10) {
+            if (group.contains(this.card) && AbstractDungeon.player.hand.size() < BaseMod.MAX_HAND_SIZE) {
                 AbstractDungeon.player.hand.addToHand(this.card);
                 this.card.unfadeOut();
                 this.card.unhover();

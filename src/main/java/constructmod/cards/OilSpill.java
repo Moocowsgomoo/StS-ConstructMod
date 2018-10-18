@@ -59,6 +59,7 @@ public class OilSpill extends AbstractConstructCard {
 			this.megaUpgradeName();
 			this.upgradeMagicNumber(M_UPGRADE_PLUS_OIL_DAMAGE);
 			this.rawDescription = M_UPGRADE_DESCRIPTION;
+			this.target = CardTarget.ALL_ENEMY;
 			this.initializeDescription();
 		}
 	}

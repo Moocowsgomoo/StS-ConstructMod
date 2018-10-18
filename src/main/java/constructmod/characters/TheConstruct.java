@@ -93,16 +93,6 @@ public class TheConstruct extends CustomPlayer{
 	}
 
 	@Override
-	public Texture getCustomModeCharacterButtonImage() {
-		return ImageMaster.FILTER_IRONCLAD;
-	}
-
-	@Override
-	public CharacterStrings getCharacterString() {
-		return CardCrawlGame.languagePack.getCharacterString("Ironclad");
-	}
-
-	@Override
 	public String getLocalizedCharacterName() {
 		return "The Construct";
 	}

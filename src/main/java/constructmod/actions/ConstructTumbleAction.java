@@ -1,5 +1,6 @@
 package constructmod.actions;
 
+import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.*;
 import java.util.*;
 import com.megacrit.cardcrawl.dungeons.*;
@@ -61,7 +62,7 @@ public class ConstructTumbleAction extends AbstractGameAction
             this.isDone = true;
             return;
         }
-        if (AbstractDungeon.player.hand.size() == 10) {
+        if (AbstractDungeon.player.hand.size() >= BaseMod.MAX_HAND_SIZE) {
             AbstractDungeon.player.createHandIsFullDialog();
             this.isDone = true;
             return;

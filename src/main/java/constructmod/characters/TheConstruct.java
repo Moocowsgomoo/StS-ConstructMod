@@ -5,11 +5,13 @@ import java.util.ArrayList;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpriterAnimation;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.characters.Defect;
@@ -18,6 +20,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.events.city.Vampires;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -31,6 +34,7 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import constructmod.ConstructMod;
 import constructmod.cards.*;
+import constructmod.patches.AbstractCardEnum;
 import constructmod.patches.TheConstructEnum;
 import constructmod.relics.ClockworkPhoenix;
 import constructmod.relics.Cogwheel;
@@ -57,7 +61,35 @@ public class TheConstruct extends CustomPlayer{
 	}
 
 	@Override
-	public Color getCardColor(){
+	public AbstractCard.CardColor getCardColor() { return AbstractCardEnum.CONSTRUCTMOD;}
+
+	@Override
+	public TextureAtlas.AtlasRegion getOrb() {
+		return AbstractCard.orb_red;
+	}
+
+	@Override
+	public String getSpireHeartText(){
+		return "You enter self-destruct mode...";
+	}
+
+	@Override
+	public Color getSlashAttackColor() {
+		return Color.GOLD;
+	}
+
+	@Override
+	public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect() {
+		return new AbstractGameAction.AttackEffect[] { AbstractGameAction.AttackEffect.BLUNT_LIGHT, AbstractGameAction.AttackEffect.BLUNT_LIGHT, AbstractGameAction.AttackEffect.BLUNT_LIGHT, AbstractGameAction.AttackEffect.FIRE, AbstractGameAction.AttackEffect.BLUNT_HEAVY, AbstractGameAction.AttackEffect.FIRE };
+	}
+
+	@Override
+	public String getVampireText() {
+		return Vampires.DESCRIPTIONS[5];
+	}
+
+	@Override
+	public Color getCardRenderColor(){
 		return CardHelper.getColor(170.0f, 150.0f, 50.0f);
 	}
 

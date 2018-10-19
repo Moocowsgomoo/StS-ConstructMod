@@ -222,7 +222,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		logger.info("begin editing characters");
 		
 		logger.info("add " + TheConstructEnum.THE_CONSTRUCT_MOD.toString());
-		BaseMod.addCharacter(new TheConstruct("The Construct", TheConstructEnum.THE_CONSTRUCT_MOD), AbstractCardEnum.CONSTRUCTMOD,
+		BaseMod.addCharacter(new TheConstruct("The Construct", TheConstructEnum.THE_CONSTRUCT_MOD),
 				"img/charSelect/constructButton.png", "img/charSelect/constructPortrait.jpg",
 				TheConstructEnum.THE_CONSTRUCT_MOD);
 		

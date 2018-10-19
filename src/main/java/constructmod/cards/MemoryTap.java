@@ -37,7 +37,7 @@ public class MemoryTap extends AbstractConstructCard {
 			
 			AbstractCard c1;
 			do {
-				c1 = CardLibrary.getColorSpecificCard(AbstractPlayer.PlayerClass.IRONCLAD, AbstractDungeon.cardRandomRng).makeCopy();
+				c1 = CardLibrary.getColorSpecificCard(CardColor.RED, AbstractDungeon.cardRandomRng).makeCopy();
 			} while (c1.rarity == CardRarity.BASIC);
 	        c1.setCostForTurn(-99);
 	        if (this.upgraded) c1.upgrade();
@@ -45,7 +45,7 @@ public class MemoryTap extends AbstractConstructCard {
 			
 			AbstractCard c2;
 			do {
-				c2 = CardLibrary.getColorSpecificCard(AbstractPlayer.PlayerClass.THE_SILENT, AbstractDungeon.cardRandomRng).makeCopy();
+				c2 = CardLibrary.getColorSpecificCard(CardColor.GREEN, AbstractDungeon.cardRandomRng).makeCopy();
 			} while (c2.rarity == CardRarity.BASIC);
 	        c2.setCostForTurn(-99);
 	        if (this.upgraded) c2.upgrade();
@@ -53,7 +53,7 @@ public class MemoryTap extends AbstractConstructCard {
 			
 			AbstractCard c3;
 			do {
-				c3 = CardLibrary.getColorSpecificCard(AbstractPlayer.PlayerClass.DEFECT, AbstractDungeon.cardRandomRng).makeCopy();
+				c3 = CardLibrary.getColorSpecificCard(CardColor.BLUE, AbstractDungeon.cardRandomRng).makeCopy();
 			} while (c3.rarity == CardRarity.BASIC);
 	        c3.setCostForTurn(-99);
 	        if (this.upgraded) c3.upgrade();

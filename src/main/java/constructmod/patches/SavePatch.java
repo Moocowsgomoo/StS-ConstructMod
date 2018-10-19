@@ -34,7 +34,7 @@ public class SavePatch {
 	
 	@SpirePatch(cls = "com.megacrit.cardcrawl.saveAndContinue.SaveAndContinue", method = "deleteSave")
 	public static class DeleteSave {
-		public static void Prefix(AbstractPlayer.PlayerClass pClass) {
+		public static void Prefix(AbstractPlayer player) {
 			ConstructMod.clearData();
 		}
 	}

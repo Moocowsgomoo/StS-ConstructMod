@@ -46,7 +46,7 @@ public class ChargeShot extends AbstractConstructCard {
 		AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.common.DamageAction(m,
 					new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SMASH));
-		AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.common.ModifyDamageAction(this, this.baseDamage - this.damage));
+		AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.common.ModifyDamageAction(this.uuid, this.baseDamage - this.damage));
 	
 		this.rawDescription = DESCRIPTION;
 		initializeDescription();
@@ -72,7 +72,7 @@ public class ChargeShot extends AbstractConstructCard {
 	@Override
 	public void triggerOnEndOfTurnForPlayingCard()
 	{
-		AbstractDungeon.actionManager.addToTop(new com.megacrit.cardcrawl.actions.common.ModifyDamageAction(this, this.magicNumber));
+		AbstractDungeon.actionManager.addToTop(new com.megacrit.cardcrawl.actions.common.ModifyDamageAction(this.uuid, this.magicNumber));
 		this.flash();
 	}
 

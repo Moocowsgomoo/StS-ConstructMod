@@ -38,7 +38,7 @@ public class RocketBooster extends CustomRelic {
     
     @Override
     public void onVictory() {
-        if (AbstractDungeon.getCurrRoom() instanceof MonsterRoomElite) {
+        if (AbstractDungeon.getCurrRoom().eliteTrigger) {
             this.flash();
             this.pulse = false;
             

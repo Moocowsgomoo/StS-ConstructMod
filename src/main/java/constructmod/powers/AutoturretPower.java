@@ -40,6 +40,6 @@ public class AutoturretPower extends AbstractCyclePower {
 	public void onCycleCard(AbstractCard card) {
 		flashWithoutSound();
 		AbstractDungeon.actionManager.addToTop(new InstantDamageRandomEnemyAction(
-				new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS),AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+				new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS),AbstractGameAction.AttackEffect.BLUNT_LIGHT,ConstructMod.areCyclesFast()));
 	}
 }

@@ -22,6 +22,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import basemod.abstracts.CustomCard;
 import constructmod.ConstructMod;
+import constructmod.actions.InstantDamageRandomEnemyAction;
 import constructmod.patches.AbstractCardEnum;
 
 public class FlameCore extends AbstractCycleCard {
@@ -48,22 +49,21 @@ public class FlameCore extends AbstractCycleCard {
 		super.triggerWhenDrawn();
 		
 		flash();
-		
-		final AbstractMonster mo = AbstractDungeon.getMonsters().getRandomMonster(true);
-		if (mo != null) {
-			AbstractDungeon.actionManager.addToTop(new DamageAction(
-					mo, new DamageInfo(null, this.magicNumber, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
+		if (ConstructMod.areCyclesFast()) {
+			AbstractDungeon.actionManager.addToTop(new InstantDamageRandomEnemyAction(
+					new DamageInfo(null, this.magicNumber, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE, true));
+		}
+		else{
+			AbstractDungeon.actionManager.addToTop(new DamageRandomEnemyAction(
+					new DamageInfo(null, this.magicNumber, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
 		}
 		CloneCore();
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		final AbstractMonster mo = AbstractDungeon.getMonsters().getRandomMonster(true);
-		if (mo != null) {
-			AbstractDungeon.actionManager.addToBottom(new DamageAction(
-					mo, new DamageInfo(null, this.magicNumber, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
-		}
+		AbstractDungeon.actionManager.addToTop(new DamageRandomEnemyAction(
+				new DamageInfo(null, this.magicNumber, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
 		CloneCore();
 	}
 

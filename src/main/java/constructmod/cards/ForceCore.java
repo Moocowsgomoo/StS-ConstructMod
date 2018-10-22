@@ -11,12 +11,15 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.LoseStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import basemod.abstracts.CustomCard;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
+
+import java.util.Iterator;
 
 public class ForceCore extends AbstractCycleCard {
 	public static final String ID = ConstructMod.makeID("ForceCore");
@@ -45,9 +48,9 @@ public class ForceCore extends AbstractCycleCard {
 		
 		AbstractPlayer p = AbstractDungeon.player;
 		AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(
-			p,p,new StrengthPower(p,this.magicNumber),this.magicNumber,true,AbstractGameAction.AttackEffect.NONE));
+				p, p, new StrengthPower(p, this.magicNumber), this.magicNumber, true, AbstractGameAction.AttackEffect.NONE));
 		AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(
-				p,p,new LoseStrengthPower(p,this.magicNumber),this.magicNumber,true,AbstractGameAction.AttackEffect.NONE));
+				p, p, new LoseStrengthPower(p, this.magicNumber), this.magicNumber, true, AbstractGameAction.AttackEffect.NONE));
 		CloneCore();
 	}
 

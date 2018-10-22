@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 
+import constructmod.ConstructMod;
 import constructmod.actions.CycleCardAction;
 import constructmod.powers.AbstractCyclePower;
 
@@ -36,6 +37,7 @@ public abstract class AbstractCycleCard extends AbstractConstructCard {
 	}
 	
 	public static void cycle(AbstractCard card) {
+		ConstructMod.cyclesThisTurn++;
 		AbstractDungeon.actionManager.addToTop(new CycleCardAction(card, AbstractDungeon.player.hasPower(PanicFire.ID) && !card.upgraded));
 		
 		for (AbstractPower pw : AbstractDungeon.player.powers) {
@@ -60,6 +62,6 @@ public abstract class AbstractCycleCard extends AbstractConstructCard {
 			}
 		}
 		
-		AbstractDungeon.actionManager.addToTop(new WaitAction(0.2f));
+		if (!ConstructMod.areCyclesFast()) AbstractDungeon.actionManager.addToTop(new WaitAction(0.2f));
 	}
 }

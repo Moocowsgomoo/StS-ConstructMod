@@ -6,8 +6,8 @@ import basemod.interfaces.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import constructmod.powers.AbstractOnDrawPower;
-import constructmod.powers.SynchronizePower;
 import constructmod.variables.GatlingGunVariable;
 import constructmod.variables.OverheatVariable;
 import org.apache.logging.log4j.LogManager;
@@ -47,7 +47,7 @@ import constructmod.patches.TheConstructEnum;
 
 @SpireInitializer
 public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscriber, EditRelicsSubscriber,
-	EditStringsSubscriber, EditCharactersSubscriber, EditKeywordsSubscriber, SetUnlocksSubscriber, PostDrawSubscriber {
+	EditStringsSubscriber, EditCharactersSubscriber, EditKeywordsSubscriber, SetUnlocksSubscriber, PostDrawSubscriber, PreMonsterTurnSubscriber {
 	
 	public static final Logger logger = LogManager.getLogger(ConstructMod.class.getName());
 			
@@ -64,6 +64,9 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 	public static int marriedCard1 = -1;
 	public static int marriedCard2 = -1;
 	public static Texture ringIconTexture;
+
+	public static int cyclesThisTurn = 0;
+	public static final int CYCLES_BEFORE_FASTMODE = 20;
 
 	public static final ArrayList<AbstractCard> cores = new ArrayList<>();
     
@@ -442,6 +445,16 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 			}
         }
     }
+
+    @Override
+	public boolean receivePreMonsterTurn(AbstractMonster m){
+    	cyclesThisTurn = 0;
+    	return true;
+	}
+
+	public static boolean areCyclesFast(){
+    	return cyclesThisTurn >= CYCLES_BEFORE_FASTMODE;
+	}
 	
 	public static String makeID(String baseText) {
 		return "construct:" + baseText;

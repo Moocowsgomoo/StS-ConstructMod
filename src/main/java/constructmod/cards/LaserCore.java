@@ -48,7 +48,7 @@ public class LaserCore extends AbstractCycleCard {
 		flash();
 		
 		AbstractDungeon.actionManager.addToTop(new DamageAllEnemiesAction(
-				null, DamageInfo.createDamageMatrix(this.magicNumber, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+				null, DamageInfo.createDamageMatrix(this.magicNumber, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL,ConstructMod.areCyclesFast()));
 		CloneCore();
 	}
 
@@ -63,7 +63,7 @@ public class LaserCore extends AbstractCycleCard {
     	}*/
 		
 		AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(
-				null, DamageInfo.createDamageMatrix(this.magicNumber, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+				null, DamageInfo.createDamageMatrix(this.magicNumber, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL,ConstructMod.areCyclesFast()));
 		CloneCore();
 	}
 

@@ -13,6 +13,8 @@ import constructmod.ConstructMod;
 import constructmod.actions.BackfireDamageAction;
 import constructmod.patches.AbstractCardEnum;
 
+import static replayTheSpire.patches.CardFieldStuff.CHAOS_NEGATIVE_MAGIC;
+
 public class Backfire extends AbstractConstructCard {
 	public static final String ID = ConstructMod.makeID("Backfire");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -32,14 +34,16 @@ public class Backfire extends AbstractConstructCard {
 				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF_AND_ENEMY, POOL);
 		this.damage = this.baseDamage = ATTACK_DMG;
 		this.magicNumber = this.baseMagicNumber = SELF_DMG;
+		if (ConstructMod.isReplayLoaded) {
+			this.tags.add(CHAOS_NEGATIVE_MAGIC); // higher magic number is worse
+		}
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
+		AbstractDungeon.actionManager.addToBottom(new BackfireDamageAction(this.magicNumber));
 		AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.common.DamageAction(m,
 					new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
-		
-		AbstractDungeon.actionManager.addToBottom(new BackfireDamageAction(this.magicNumber));
 	}
 
 	@Override

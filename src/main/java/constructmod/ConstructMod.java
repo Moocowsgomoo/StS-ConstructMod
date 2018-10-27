@@ -3,11 +3,16 @@ package constructmod;
 import java.util.ArrayList;
 
 import basemod.interfaces.*;
+import com.evacipated.cardcrawl.modthespire.Loader;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import constructmod.potions.MegaPotion;
+import constructmod.potions.ShiftPotion;
 import constructmod.powers.AbstractOnDrawPower;
+import constructmod.screens.MultiUpgradeSingleCardViewPopup;
+import constructmod.screens.MultiUpgradeSingleCardViewPopup_ORIGINAL;
 import constructmod.variables.GatlingGunVariable;
 import constructmod.variables.OverheatVariable;
 import org.apache.logging.log4j.LogManager;
@@ -59,7 +64,8 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 
 	public static Properties constructDefaults = new Properties();
 	public static boolean phoenixStart = false;
-	public static boolean contentSharing = true;
+	public static boolean contentSharing_relics = true;
+	public static boolean contentSharing_potions = true;
 	public static boolean overheatedExpansion = false;
 	public static int marriedCard1 = -1;
 	public static int marriedCard2 = -1;
@@ -69,6 +75,23 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 	public static final int CYCLES_BEFORE_FASTMODE = 20;
 
 	public static final ArrayList<AbstractCard> cores = new ArrayList<>();
+
+	public static final boolean isReplayLoaded;
+	public static final boolean isInfiniteLoaded;
+
+	static
+	{
+		isReplayLoaded = Loader.isModLoaded("ReplayTheSpireMod");
+		// CROSSOVER: Add reverse magic number tags so ring of chaos works better.
+		if (isReplayLoaded) {
+			logger.info("Construct | Detected Replay The Spire");
+		}
+		isInfiniteLoaded = Loader.isModLoaded("infinitespire");
+		// CROSSOVER: Nothing yet, but planning to add quests.
+		if (isInfiniteLoaded) {
+			logger.info("Construct | Detected Infinite Spire");
+		}
+	}
     
     public ConstructMod() {
         BaseMod.subscribe(this);
@@ -87,6 +110,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 
 		constructDefaults.setProperty("phoenixStart", "FALSE");
 		constructDefaults.setProperty("contentSharing", "TRUE");
+		constructDefaults.setProperty("contentSharing_potions", "TRUE");
 		constructDefaults.setProperty("overheatedBETA", "FALSE");
 		loadConfigData();
     }
@@ -96,6 +120,9 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     }
     
     public void receivePostInitialize() {
+
+		//CardCrawlGame.cardPopup = new MultiUpgradeSingleCardViewPopup();
+
         // Mod badge
         Texture badgeTexture = new Texture(Gdx.files.internal("img/ConstructModBadge.png"));
         
@@ -113,14 +140,23 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
         		});
 		ModLabeledToggleButton contentSharingBtn = new ModLabeledToggleButton("Enable Construct relics for other characters (REQUIRES RESTART)",
 				350.0f, 600.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
-				contentSharing, settingsPanel, (label) -> {}, (button) -> {
-					contentSharing = button.enabled;
+				contentSharing_relics, settingsPanel, (label) -> {}, (button) -> {
+					contentSharing_relics = button.enabled;
+					//adjustRelics();
 					saveData();
 				});
-		ModLabeledToggleButton overheatedExpansionBtn = new ModLabeledToggleButton("Untested expansion cards - please tell me what you think! (REQUIRES RESTART)",
+		ModLabeledToggleButton contentSharingPotionsBtn = new ModLabeledToggleButton("Enable Construct potions for other characters (REQUIRES RESTART)",
 				350.0f, 550.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
+				contentSharing_potions, settingsPanel, (label) -> {}, (button) -> {
+			contentSharing_potions = button.enabled;
+			//adjustPotions();
+			saveData();
+		});
+		ModLabeledToggleButton overheatedExpansionBtn = new ModLabeledToggleButton("Untested expansion cards - please tell me what you think! (REQUIRES RESTART)",
+				350.0f, 500.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
 				overheatedExpansion, settingsPanel, (label) -> {}, (button) -> {
 			overheatedExpansion = button.enabled;
+			//adjustCards();
 			saveData();
 		});
         if (UnlockTracker.getUnlockLevel(TheConstructEnum.THE_CONSTRUCT_MOD) >= 1) settingsPanel.addUIElement(phoenixBtn);
@@ -133,18 +169,38 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
         	settingsPanel.addUIElement(buttonLabel2);
         }
         settingsPanel.addUIElement(contentSharingBtn);
+        settingsPanel.addUIElement(contentSharingPotionsBtn);
         settingsPanel.addUIElement(overheatedExpansionBtn);
         
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
         
         ringIconTexture = new Texture("img/512/card_ring_icon.png");
+
+        if (contentSharing_potions) {
+			BaseMod.addPotion(ShiftPotion.class, Color.CHARTREUSE.cpy(), Color.RED.cpy(), null, ShiftPotion.POTION_ID);
+		}
+		else{
+			BaseMod.addPotion(ShiftPotion.class, Color.CHARTREUSE.cpy(), Color.RED.cpy(), null, ShiftPotion.POTION_ID, TheConstructEnum.THE_CONSTRUCT_MOD);
+		}
+		BaseMod.addPotion(MegaPotion.class, Color.PURPLE.cpy(), Color.VIOLET.cpy(), Color.PURPLE.cpy(), MegaPotion.POTION_ID, TheConstructEnum.THE_CONSTRUCT_MOD);
     }
+
+    /*public void adjustPotions(){
+		BaseMod.removePotion(ShiftPotion.POTION_ID);
+		if (contentSharing_potions) {
+			BaseMod.addPotion(ShiftPotion.class, Color.CHARTREUSE.cpy(), Color.RED.cpy(), null, ShiftPotion.POTION_ID);
+		}
+		else{
+			BaseMod.addPotion(ShiftPotion.class, Color.CHARTREUSE.cpy(), Color.RED.cpy(), null, ShiftPotion.POTION_ID, TheConstructEnum.THE_CONSTRUCT_MOD);
+		}
+	}*/
     
     public static void saveData() {
     	try {
     		SpireConfig config = new SpireConfig("ConstructMod", "ConstructSaveData", constructDefaults);
     		config.setBool("phoenixStart", phoenixStart);
-    		config.setBool("contentSharing", contentSharing);
+    		config.setBool("contentSharing", contentSharing_relics);
+			config.setBool("contentSharing_potions", contentSharing_potions);
     		config.setBool("overheatedBETA", overheatedExpansion);
     		if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(WeddingRing.ID)) {
     			config.setInt("marriedCard1", AbstractDungeon.player.masterDeck.group.indexOf(((WeddingRing)AbstractDungeon.player.getRelic(WeddingRing.ID)).card1));
@@ -167,7 +223,8 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 	    	SpireConfig config = new SpireConfig("ConstructMod", "ConstructSaveData", constructDefaults);
 			config.load();
 			phoenixStart = config.getBool("phoenixStart");
-			contentSharing = config.getBool("contentSharing");
+			contentSharing_relics = config.getBool("contentSharing");
+			contentSharing_potions = config.getBool("contentSharing_potions");
 			overheatedExpansion = config.getBool("overheatedBETA");
     	}
     	catch(Exception e) {
@@ -216,7 +273,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     	final String[] eggs = {"egg","eggs"};
     	BaseMod.addKeyword(eggs, "Eggs are relics that automatically upgrade cards when you acquire them.");
     	final String[] megaUpgrade = {"mega-upgrade","mega-upgraded"};
-    	BaseMod.addKeyword(megaUpgrade, "A second upgrade that makes a card even more powerful.");
+    	BaseMod.addKeyword(megaUpgrade, "A second upgrade that makes Construct cards even more powerful.");
 		final String[] overheat = {"overheat","[#ff9900]overheat","[#ff9900]overheats","[#ff9900]overheated", "[#ff9900]overheat:","overheats","overheated"};
 		BaseMod.addKeyword(overheat, "Counts down whenever ANY card #ycycles. When it hits #b0, transform this card into a #yBurn for this combat.");
     }
@@ -257,6 +314,10 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
         String cardStrings = Gdx.files.internal("localization/ConstructMod-CardStrings.json").readString(
         		String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
+		// PotionStrings
+		String potionStrings = Gdx.files.internal("localization/ConstructMod-PotionStrings.json").readString(
+				String.valueOf(StandardCharsets.UTF_8));
+		BaseMod.loadCustomStrings(PotionStrings.class, potionStrings);
 	}
 	
 	public void receiveEditCards() {
@@ -391,16 +452,54 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 			addCard(new NuclearCore());	// cycle, overheat
 			addCard(new Implosion());	// burn synergy, play
 			addCard(new Agitation());	// overheat synergy
+
+			cores.add(new NuclearCore()); // can be randomly generated only if expansion is enabled
 		}
 
+		// cores that can be randomly generated
 		cores.add(new FlameCore());
 		cores.add(new LaserCore());
 		cores.add(new ScopeCore());
 		cores.add(new ForceCore());
 		cores.add(new GuardCore());
 		cores.add(new BatteryCore());
-		cores.add(new NuclearCore());
 	}
+
+	/*public void adjustCards(){
+
+		BaseMod.removeCard(PhosphorStorm.ID,AbstractCardEnum.CONSTRUCTMOD);
+		BaseMod.removeCard(Missile.ID,AbstractCardEnum.CONSTRUCTMOD);
+		BaseMod.removeCard(Coolant.ID,AbstractCardEnum.CONSTRUCTMOD);
+		BaseMod.removeCard(CreateCores.ID,AbstractCardEnum.CONSTRUCTMOD);
+		BaseMod.removeCard(OilSpill.ID,AbstractCardEnum.CONSTRUCTMOD);
+		BaseMod.removeCard(Rollout.ID,AbstractCardEnum.CONSTRUCTMOD);
+		BaseMod.removeCard(Flamethrower.ID,AbstractCardEnum.CONSTRUCTMOD);
+		BaseMod.removeCard(FlammableFog.ID,AbstractCardEnum.CONSTRUCTMOD);
+		BaseMod.removeCard(Failsafe.ID,AbstractCardEnum.CONSTRUCTMOD);
+		BaseMod.removeCard(BlazingSpeed.ID,AbstractCardEnum.CONSTRUCTMOD);
+		BaseMod.removeCard(NuclearCore.ID,AbstractCardEnum.CONSTRUCTMOD);
+		BaseMod.removeCard(Implosion.ID,AbstractCardEnum.CONSTRUCTMOD);
+		BaseMod.removeCard(Agitation.ID,AbstractCardEnum.CONSTRUCTMOD);
+		if (cores.size() == 7) cores.remove(6); // remove nuclear core in the hackiest way possible
+
+		if (overheatedExpansion){
+			addCard(new PhosphorStorm());//atk, overheat
+			addCard(new Missile());		// atk, cycle
+			addCard(new Coolant());		// block, cooling
+			addCard(new CreateCores());	// cores, overheat
+			addCard(new OilSpill());	// overheat, overheat synergy
+			addCard(new Rollout());		// atk, cycle synergy, overheat
+			addCard(new Flamethrower());// atk, cycle?, burn synergy
+			addCard(new FlammableFog());// overheat, cooling synergy
+			addCard(new Failsafe());	 // anti-status
+			addCard(new BlazingSpeed());// atk, overheat
+			addCard(new NuclearCore());	// cycle, overheat
+			addCard(new Implosion());	// burn synergy, play
+			addCard(new Agitation());	// overheat synergy
+
+			cores.add(new NuclearCore()); // can be randomly generated only if expansion is enabled
+		}
+	}*/
 
 	public void addCard(AbstractCard card){
     	BaseMod.addCard(card);
@@ -413,7 +512,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 	
 	public void receiveEditRelics() {
 		logger.info("Adding Construct Relics");
-		if (contentSharing) {
+		if (contentSharing_relics) {
 			BaseMod.addRelic(new FoamFinger(), RelicType.SHARED);
 			BaseMod.addRelic(new ClawGrip(), RelicType.SHARED);
 			BaseMod.addRelic(new RocketBooster(), RelicType.SHARED);
@@ -431,6 +530,27 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addRelicToCustomPool(new MegaBattery(), AbstractCardEnum.CONSTRUCTMOD);
 		BaseMod.addRelicToCustomPool(new PurpleEmber(), AbstractCardEnum.CONSTRUCTMOD);
 	}
+
+	/*public void adjustRelics(){
+
+		BaseMod.removeRelic(BaseMod.getCustomRelic(FoamFinger.ID));
+		BaseMod.removeRelic(BaseMod.getCustomRelic(ClawGrip.ID));
+		BaseMod.removeRelic(BaseMod.getCustomRelic(RocketBooster.ID));
+		BaseMod.removeRelic(BaseMod.getCustomRelic(WeddingRing.ID));
+
+		if (contentSharing_relics) {
+			BaseMod.addRelic(new FoamFinger(), RelicType.SHARED);
+			BaseMod.addRelic(new ClawGrip(), RelicType.SHARED);
+			BaseMod.addRelic(new RocketBooster(), RelicType.SHARED);
+			BaseMod.addRelic(new WeddingRing(), RelicType.SHARED);
+		}
+		else{
+			BaseMod.addRelicToCustomPool(new FoamFinger(), AbstractCardEnum.CONSTRUCTMOD);
+			BaseMod.addRelicToCustomPool(new ClawGrip(), AbstractCardEnum.CONSTRUCTMOD);
+			BaseMod.addRelicToCustomPool(new RocketBooster(), AbstractCardEnum.CONSTRUCTMOD);
+			BaseMod.addRelicToCustomPool(new WeddingRing(), AbstractCardEnum.CONSTRUCTMOD);
+		}
+	}*/
 
 	@Override
 	public void receivePostDraw(AbstractCard card){

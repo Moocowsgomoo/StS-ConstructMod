@@ -1,5 +1,6 @@
 package constructmod.cards;
 
+import com.evacipated.cardcrawl.modthespire.Loader;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -15,6 +16,8 @@ import basemod.abstracts.CustomCard;
 import constructmod.ConstructMod;
 import constructmod.actions.GainGoldAction;
 import constructmod.patches.AbstractCardEnum;
+
+import static replayTheSpire.patches.CardFieldStuff.CHAOS_NEGATIVE_MAGIC;
 
 public class GoldenBullet extends AbstractConstructCard {
 	public static final String ID = ConstructMod.makeID("GoldenBullet");
@@ -35,6 +38,9 @@ public class GoldenBullet extends AbstractConstructCard {
 				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.ENEMY, POOL);
 		this.damage = this.baseDamage = ATTACK_DMG;
 		this.magicNumber = this.baseMagicNumber = LOSE_GOLD_AMT;
+		if (ConstructMod.isReplayLoaded) {
+			this.tags.add(CHAOS_NEGATIVE_MAGIC); // higher magic number is worse
+		}
 	}
 
 	@Override

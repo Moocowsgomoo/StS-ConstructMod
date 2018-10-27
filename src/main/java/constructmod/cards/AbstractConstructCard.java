@@ -71,6 +71,7 @@ public abstract class AbstractConstructCard extends CustomCard {
 			}
 			
 			AbstractDungeon.player.discardPile.addToTop(c);
+			AbstractDungeon.overlayMenu.discardPilePanel.pop(); // vfx when a card is added
 		}
 	}
 	

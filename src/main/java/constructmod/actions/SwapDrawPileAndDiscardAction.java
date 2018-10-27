@@ -41,13 +41,23 @@ public class SwapDrawPileAndDiscardAction extends AbstractGameAction
                 }
                 p.discardPile.removeCard(c);
             }
-            
+
+            this.count = 0;
             for (AbstractCard c2 : tmpDraw.group) {
-            	c2.untip();
+                ++this.count;
+                c2.darken(false);
+                c2.shrink();
+                if (p.hoveredCard == c2) {
+                    p.releaseCard();
+                }
+                AbstractDungeon.actionManager.removeFromQueue(c2);
                 c2.unhover();
-                c2.darken(true);
-                c2.shrink(true);
-            	p.drawPile.moveToDiscardPile(c2);
+                c2.untip();
+                c2.stopGlowing();
+                p.drawPile.group.remove(c2);
+                if (this.count < 10) AbstractDungeon.getCurrRoom().souls.discard(c2);
+                else p.discardPile.addToTop(c2);
+                AbstractDungeon.player.onCardDrawOrDiscard();
             }
             
             tmpDraw.clear();

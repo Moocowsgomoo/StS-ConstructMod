@@ -30,6 +30,13 @@
 			<scope>system</scope>
             <systemPath>${basedir}/../lib/ModTheSpire.jar</systemPath>
         </dependency>
+		<dependency>
+			<groupId>replay</groupId>
+			<artifactId>ReplayTheSpire</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/../lib/ReplayTheSpireMod.jar</systemPath>
+		</dependency>
 	</dependencies>
 
 	<build>

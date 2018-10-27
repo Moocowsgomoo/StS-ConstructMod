@@ -25,7 +25,7 @@ public class ShieldGenerator extends AbstractConstructCard {
 	private static final int COST = 1;
 	private static final int BLUR_AMT = 4;
 	private static final int VULN_AMT = 2;
-	private static final int UPGRADE_PLUS_BLUR_AMT =  1;
+	//private static final int UPGRADE_PLUS_BLUR_AMT =  1;
 	private static final int UPGRADED_VULN_AMT = 1;
 	private static final int M_UPGRADE_BLOCK_AMT = 5;
 	private static final int M_UPGRADE_PLUS_BLUR_AMT = 4;
@@ -55,7 +55,7 @@ public class ShieldGenerator extends AbstractConstructCard {
 	public void upgrade() {
 		if (!this.upgraded) {
 			this.upgradeName();
-			this.upgradeMagicNumber(UPGRADE_PLUS_BLUR_AMT);
+			//this.upgradeMagicNumber(UPGRADE_PLUS_BLUR_AMT);
 			this.rawDescription = UPGRADE_DESCRIPTION;
 			this.initializeDescription();
 		} else if (this.canUpgrade()) {

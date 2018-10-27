@@ -18,7 +18,7 @@ public class FoamFinger extends CustomRelic {
     private static final String IMG = "img/constructRelics/FoamFinger.png";
 	
     public FoamFinger() {
-        super(ID, new Texture(IMG), RelicTier.UNCOMMON, LandingSound.FLAT);
+        super(ID, new Texture(IMG), RelicTier.RARE, LandingSound.FLAT);
     }
  
     @Override

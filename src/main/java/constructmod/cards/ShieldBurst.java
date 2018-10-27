@@ -40,17 +40,16 @@ public class ShieldBurst extends AbstractConstructCard {
 				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.ALL, POOL);
 		this.baseDamage = this.damage = 0;
 		this.magicNumber = this.baseMagicNumber = DMG_MULT;
+		this.isMultiDamage = true;
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		applyPowers();
 
-		int b = p.currentBlock;
-		AbstractDungeon.actionManager.addToBottom(new LoseBlockAction(p,p,b));
-		
+		AbstractDungeon.actionManager.addToBottom(new LoseBlockAction(p,p,p.currentBlock));
 		AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(
-				p, DamageInfo.createDamageMatrix(this.damage, true), this.damageTypeForTurn, AbstractGameAction.AttackEffect.SHIELD));
+				p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.SHIELD));
 		
 		this.rawDescription = desc;
 		initializeDescription();
@@ -58,7 +57,6 @@ public class ShieldBurst extends AbstractConstructCard {
 	
 	@Override
 	public void applyPowers(){
-		
 		this.damage = this.baseDamage = AbstractDungeon.player.currentBlock*this.magicNumber;
 		super.applyPowers();
 		

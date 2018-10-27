@@ -17,6 +17,7 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import basemod.BaseMod;
 import basemod.interfaces.PostDrawSubscriber;
 import constructmod.ConstructMod;
+import constructmod.actions.BunkerAction;
 
 public class BunkerPower extends AbstractPower {
 	public static final String POWER_ID = ConstructMod.makeID("Bunker");
@@ -45,10 +46,6 @@ public class BunkerPower extends AbstractPower {
 	@Override
 	public void atEndOfTurn(final boolean isPlayer) {
 		if (!isPlayer) return;
-		for (final AbstractCard c : AbstractDungeon.player.hand.group) {
-            if (c.retain) {
-                AbstractDungeon.actionManager.addToBottom(new GainBlockAction(owner, owner, amount));
-            }
-        }
+		AbstractDungeon.actionManager.addToBottom(new BunkerAction(AbstractDungeon.player,this.amount));
 	}
 }

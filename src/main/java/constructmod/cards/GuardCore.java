@@ -37,13 +37,13 @@ public class GuardCore extends AbstractCycleCard {
 		flash();
 		
 		AbstractPlayer p = AbstractDungeon.player;
-		AbstractDungeon.actionManager.addToTop(new GainBlockAction(p,p,this.block,ConstructMod.areCyclesFast()));
+		AbstractDungeon.actionManager.addToTop(new GainBlockAction(p,p,this.block,true));
 		CloneCore();
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p,p,this.block,ConstructMod.areCyclesFast()));
+		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p,p,this.block,true));
 		CloneCore();
 	}
 

@@ -29,7 +29,7 @@ public class MegaBattery extends CustomRelic {
     private static final String IMG = "img/constructRelics/MegaBattery.png";
 	
     public MegaBattery() {
-        super(ID, new Texture(IMG), RelicTier.COMMON, LandingSound.SOLID);
+        super(ID, new Texture(IMG), RelicTier.UNCOMMON, LandingSound.SOLID);
     }
     
     @Override

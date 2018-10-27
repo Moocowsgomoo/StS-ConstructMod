@@ -21,6 +21,8 @@ import basemod.abstracts.CustomCard;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
+import static replayTheSpire.patches.CardFieldStuff.CHAOS_NEGATIVE_MAGIC;
+
 public class HyperBeam extends AbstractConstructCard {
 	public static final String ID = ConstructMod.makeID("HyperBeam");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -29,10 +31,10 @@ public class HyperBeam extends AbstractConstructCard {
 	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	private static final int COST = 2;
 	private static final int ATTACK_DMG = 50;
-	private static final int DAZED_AMT = 2;
+	private static final int DAZED_AMT = 3;
 	private static final int UPGRADE_PLUS_DAZED_AMT = 0;
-	private static final int M_UPGRADE_PLUS_DAZED_AMT = 2;
-	private static final int M_UPGRADE_PLUS_ATTACK_DMG = 50;
+	private static final int M_UPGRADE_PLUS_DAZED_AMT = 1;
+	private static final int M_UPGRADE_PLUS_ATTACK_DMG = 35;
 	private static final int POOL = 1;
 
 	public HyperBeam() {
@@ -41,6 +43,9 @@ public class HyperBeam extends AbstractConstructCard {
 		this.magicNumber = this.baseMagicNumber = DAZED_AMT;
 		this.damage = this.baseDamage = ATTACK_DMG;
 		this.isEthereal = !this.upgraded;
+		if (ConstructMod.isReplayLoaded) {
+			this.tags.add(CHAOS_NEGATIVE_MAGIC); // higher magic number is worse
+		}
 	}
 
 	@Override

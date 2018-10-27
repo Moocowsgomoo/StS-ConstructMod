@@ -43,7 +43,7 @@ public class Tumble extends AbstractConstructCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new ConstructTumbleAction(p,this.magicNumber,false));
+		AbstractDungeon.actionManager.addToBottom(new ConstructTumbleAction(p,this.magicNumber));
 		AbstractDungeon.actionManager.addToBottom(new WaitAction(0.3f));
 		AbstractDungeon.actionManager.addToBottom(new TumbleFollowupAction(this.damage,m));
 	}

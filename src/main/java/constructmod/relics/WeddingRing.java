@@ -31,7 +31,7 @@ public class WeddingRing extends CustomRelic
     public AbstractCard cardToPlay = null;
     
     public WeddingRing() {
-        super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.RARE, LandingSound.CLINK);
+        super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.BOSS, LandingSound.CLINK);
         this.cardSelected = true;
         
         this.card1 = this.card2 = null;

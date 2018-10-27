@@ -257,7 +257,7 @@
 	},
 	"construct:Backfire": {
 		"NAME": "Backfire",
-		"DESCRIPTION": "Deal !D! damage. NL Take !M! damage."
+		"DESCRIPTION": "Take !M! damage. NL Deal !D! damage."
 	},
 	"construct:ShieldBurst": {
 		"NAME": "Shield Burst",
@@ -307,7 +307,8 @@
 	},
 	"construct:Bunker": {
 		"NAME": "Bunker",
-		"DESCRIPTION": "When a card is Retained, gain !M! Block."
+		"DESCRIPTION": "When a card is Retained, gain !M! Block.",
+		"UPGRADE_DESCRIPTION": "When a card is Retained, gain !M! Block. NL At the end of your turn, Retain up to 1 card."
 	},
 	"construct:HardReboot": {
 		"NAME": "Hard Reboot",

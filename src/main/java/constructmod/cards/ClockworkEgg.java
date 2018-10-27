@@ -41,6 +41,8 @@ import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 import constructmod.relics.ClockworkPhoenix;
 
+import java.util.Iterator;
+
 public class ClockworkEgg extends AbstractConstructCard {
 	public static final String ID = ConstructMod.makeID("ClockworkEgg");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -115,7 +117,17 @@ public class ClockworkEgg extends AbstractConstructCard {
 				relic = RelicLibrary.getRelic(ClockworkPhoenix.ID).makeCopy();
 				AbstractDungeon.getCurrRoom().spawnRelicAndObtain(Settings.WIDTH / 2, Settings.HEIGHT / 2, relic);
 			}
-			p.masterDeck.removeCard(ID);
+
+			// remove from master deck
+			Iterator var2 = AbstractDungeon.player.masterDeck.group.iterator();
+			while(var2.hasNext()) {
+				AbstractCard c = (AbstractCard)var2.next();
+				if (c.uuid.equals(this.uuid)) {
+					AbstractDungeon.player.masterDeck.removeCard(c);
+					break;
+				}
+			}
+
 			this.exhaust = true;
 		}
 		else if (this.megaUpgraded) {

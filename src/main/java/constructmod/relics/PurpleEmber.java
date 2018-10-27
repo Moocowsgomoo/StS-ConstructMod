@@ -24,7 +24,7 @@ public class PurpleEmber extends CustomRelic {
     private static final String IMG = "img/constructRelics/PurpleEmber.png";
 	
     public PurpleEmber() {
-        super(ID, new Texture(IMG), RelicTier.UNCOMMON, LandingSound.MAGICAL);
+        super(ID, new Texture(IMG), RelicTier.RARE, LandingSound.MAGICAL);
     }
     
     @Override

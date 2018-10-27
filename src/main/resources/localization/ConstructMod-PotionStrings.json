@@ -1,0 +1,18 @@
+{
+  "construct:ShiftPotion": {
+    "NAME": "Shift Potion",
+    "DESCRIPTIONS": [
+      "Swap your #yStrength and #yDexterity. Draw #b",
+      " card.",
+      " cards."
+    ]
+  },
+  "construct:MegaPotion": {
+    "NAME": "Mega Potion",
+    "DESCRIPTIONS": [
+      "#yMega-upgrade a random card in your hand for the rest of combat.",
+      "#yMega-upgrade #b",
+      " random cards in your hand for the rest of combat."
+    ]
+  }
+}

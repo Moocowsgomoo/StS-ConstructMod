@@ -12,6 +12,8 @@ import com.megacrit.cardcrawl.core.*;
 import com.megacrit.cardcrawl.cards.*;
 import com.badlogic.gdx.*;
 import com.megacrit.cardcrawl.actions.common.*;
+import constructmod.cards.Failsafe;
+import constructmod.powers.FailsafePower;
 import org.apache.logging.log4j.*;
 
 public class ConstructTumbleAction extends AbstractGameAction
@@ -20,12 +22,9 @@ public class ConstructTumbleAction extends AbstractGameAction
     private static final Logger logger;
     public static ArrayList<AbstractCard> drawnCards;
     
-    public ConstructTumbleAction(final AbstractCreature source, final int amount, final boolean endTurnDraw) {
+    public ConstructTumbleAction(final AbstractCreature source, final int amount) {
         this.shuffleCheck = false;
-        if (endTurnDraw) {
-            AbstractDungeon.topLevelEffects.add(new PlayerTurnEffect());
-        }
-        else if (AbstractDungeon.player.hasPower("No Draw")) {
+        if (AbstractDungeon.player.hasPower("No Draw")) {
             AbstractDungeon.player.getPower("No Draw").flash();
             this.setValues(AbstractDungeon.player, source, amount);
             this.isDone = true;
@@ -41,10 +40,6 @@ public class ConstructTumbleAction extends AbstractGameAction
         else {
             this.duration = Settings.ACTION_DUR_FASTER;
         }
-    }
-    
-    public ConstructTumbleAction(final AbstractCreature source, final int amount) {
-        this(source, amount, false);
     }
     
     @Override
@@ -90,10 +85,7 @@ public class ConstructTumbleAction extends AbstractGameAction
             }
             --this.amount;
             if (!AbstractDungeon.player.drawPile.isEmpty()) {
-            	AbstractCard drawnCard = AbstractDungeon.player.drawPile.getTopCard();
-            	if (drawnCard instanceof AbstractCycleCard && ((AbstractCycleCard)drawnCard).canCycle()) {
-            		ConstructTumbleAction.drawnCards.add(AbstractDungeon.player.drawPile.getTopCard());
-            	}
+            	ConstructTumbleAction.drawnCards.add(AbstractDungeon.player.drawPile.getTopCard());
                 AbstractDungeon.player.draw();
                 AbstractDungeon.player.hand.refreshHandLayout();
             }

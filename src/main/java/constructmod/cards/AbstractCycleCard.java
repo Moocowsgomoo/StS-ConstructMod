@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import constructmod.ConstructMod;
 import constructmod.actions.CycleCardAction;
+import constructmod.actions.TumbleFollowupAction;
 import constructmod.powers.AbstractCyclePower;
 
 public abstract class AbstractCycleCard extends AbstractConstructCard {
@@ -45,6 +46,7 @@ public abstract class AbstractCycleCard extends AbstractConstructCard {
 				((AbstractCyclePower) pw).onCycleCard(card);
 			}
 		}
+		TumbleFollowupAction.onCycleCard(card);
 
 		for (AbstractCard c:AbstractDungeon.player.drawPile.group){
 			if (c instanceof AbstractConstructCard){

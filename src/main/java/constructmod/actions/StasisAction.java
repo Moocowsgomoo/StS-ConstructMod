@@ -20,6 +20,7 @@ public class StasisAction extends AbstractGameAction
     private AbstractPlayer p;
     private ArrayList<AbstractCard> cannotDuplicate;
     private AbstractCard returnedStasisCard = null;
+    private int prevAmount=0;
     
     public StasisAction(final AbstractCreature source, final int amount) {
         this.setValues(AbstractDungeon.player, source, amount);
@@ -32,10 +33,11 @@ public class StasisAction extends AbstractGameAction
     @Override
     public void update() {
         if (this.duration == Settings.ACTION_DUR_FAST) {
-        	
+
         	// find previously stored stasis card
         	if (p.hasPower(ConstructStasisPower.POWER_ID)) {
         		this.returnedStasisCard = ((ConstructStasisPower)p.getPower(ConstructStasisPower.POWER_ID)).heldCard;
+        		this.prevAmount = ((ConstructStasisPower)p.getPower(ConstructStasisPower.POWER_ID)).amount;
         		p.powers.remove(p.getPower(ConstructStasisPower.POWER_ID));
         	}
         	// Return previous stasis card to hand after this action
@@ -44,7 +46,7 @@ public class StasisAction extends AbstractGameAction
         			if (returnedStasisCard instanceof AbstractConstructCard) ((AbstractConstructCard)returnedStasisCard).upgrade(true, true);
             		else returnedStasisCard.upgrade();
         		}
-        		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(returnedStasisCard,this.amount));
+        		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(returnedStasisCard,this.prevAmount));
             }
         	
             for (final AbstractCard c : this.p.hand.group) {

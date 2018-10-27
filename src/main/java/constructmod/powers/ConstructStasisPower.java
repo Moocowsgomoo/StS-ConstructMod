@@ -24,6 +24,7 @@ public class ConstructStasisPower extends AbstractPower {
 	public static final String[] DESCRIPTIONS = new String[] {
 			"Holding: ",
 			". NL When Stasis is played again, add #b",
+			" #yMega-upgraded copy to your hand.",
 			" #yMega-upgraded copies to your hand."
 	};
 	
@@ -43,6 +44,6 @@ public class ConstructStasisPower extends AbstractPower {
 	
 	@Override
 	public void updateDescription() {
-		this.description = DESCRIPTIONS[0] + this.heldCard.name + DESCRIPTIONS[1] + this.amount + DESCRIPTIONS[2];
+		this.description = DESCRIPTIONS[0] + this.heldCard.name + DESCRIPTIONS[1] + this.amount + (this.amount == 1?DESCRIPTIONS[2]:DESCRIPTIONS[3]);
 	}
 }

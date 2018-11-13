@@ -42,13 +42,15 @@ public class Flamethrower extends AbstractCycleCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new DealMultiRandomDamageAction(
-				new DamageInfo(p, this.baseDamage, this.damageTypeForTurn), this.magicNumber, AbstractGameAction.AttackEffect.FIRE));
+		if (this.magicNumber > 0) {
+			AbstractDungeon.actionManager.addToBottom(new DealMultiRandomDamageAction(
+					new DamageInfo(p, this.baseDamage, this.damageTypeForTurn), this.magicNumber, AbstractGameAction.AttackEffect.FIRE));
+		}
 	}
 
 	@Override
 	public void applyPowers(){
-		this.baseMagicNumber = this.getStatusCount();
+		this.baseMagicNumber = this.magicNumber = this.getStatusCount();
 		super.applyPowers();
 
 		this.rawDescription = (this.magicNumber == 1?EXTENDED_DESCRIPTION[1]:EXTENDED_DESCRIPTION[2]) + desc;
@@ -72,6 +74,7 @@ public class Flamethrower extends AbstractCycleCard {
 		for (AbstractCard c : AbstractDungeon.player.discardPile.group){
 			if (c.cardID == Burn.ID || (this.megaUpgraded && c.type == CardType.STATUS)) count++;
 		}
+		ConstructMod.logger.debug("NUM BURNS: " + count);
 		return count;
 	}
 

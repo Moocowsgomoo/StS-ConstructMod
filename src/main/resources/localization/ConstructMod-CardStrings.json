@@ -531,7 +531,7 @@
 		"DESCRIPTION": "Cycle if already played this combat. NL Deal !D! damage. NL Apply !M! Weak and !M! Vulnerable."
 	},
 	"construct:Flamethrower": {
-		"NAME": "Flamethrower",
+		"NAME": "Inferno",
 		"DESCRIPTION": "Deal !D! damage to a random enemy for each Burn you have.",
 		"UPGRADE_DESCRIPTION": "Cycle if you have no Burns. NL Deal !D! damage to a random enemy for each Burn you have.",
 		"EXTENDED_DESCRIPTION": [

@@ -11,11 +11,13 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.DeckPoofEffect;
 import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import com.megacrit.cardcrawl.vfx.combat.ScreenOnFireEffect;
 import constructmod.ConstructMod;
+import constructmod.powers.AbstractCyclePower;
 
 import java.util.ArrayList;
 
@@ -71,6 +73,11 @@ public class OverheatAction extends AbstractGameAction
             group.add(index,burn);
         }
         group.remove(this.targetCard);
+
+        for (AbstractPower p:AbstractDungeon.player.powers){
+            if (p instanceof AbstractCyclePower) ((AbstractCyclePower) p).onOverheatCard(this.targetCard);
+        }
+
         this.isDone = true;
     }
 }

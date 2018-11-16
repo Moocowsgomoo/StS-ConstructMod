@@ -24,11 +24,11 @@ public class NuclearCore extends AbstractCycleCard {
 	private static final int COST = 0;
 	private static final int POISON = 4;
 	private static final int POOL = 1;
-	public static final int OVERHEAT = 8;
+	public static final int OVERHEAT = 10;
 
 	public NuclearCore() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, CardType.SKILL,
-				AbstractCardEnum.CONSTRUCTMOD, CardRarity.RARE, CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, CardRarity.UNCOMMON, CardTarget.SELF, POOL);
 		this.baseMagicNumber = this.magicNumber = POISON;
 		this.overheat = OVERHEAT;
 	}

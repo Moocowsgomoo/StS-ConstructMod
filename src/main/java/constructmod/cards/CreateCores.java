@@ -17,11 +17,13 @@ public class CreateCores extends AbstractConstructCard {
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-	private static final String M_UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+	private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+	private static final String M_UPGRADE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 	private static final int COST = 1;
-	private static final int NUM_CORES = 2;
-	private static final int UPGRADE_PLUS_NUM_CORES = 1;
+	private static final int NUM_CORES = 3;
+	//private static final int UPGRADE_PLUS_NUM_CORES = 1;
 	public static final int OVERHEAT = 10;
+	public static final int UPGRADE_PLUS_OVERHEAT = 5;
 	private static final int POOL = 1;
 
 	public CreateCores() {
@@ -49,7 +51,7 @@ public class CreateCores extends AbstractConstructCard {
 	public void upgrade() {
 		if (!this.upgraded) {
 			this.upgradeName();
-			this.upgradeMagicNumber(UPGRADE_PLUS_NUM_CORES);
+			this.upgradeOverheat(UPGRADE_PLUS_OVERHEAT);
 		} else if (this.canUpgrade()) {
 			this.megaUpgradeName();
 			this.rawDescription = M_UPGRADE_DESCRIPTION;

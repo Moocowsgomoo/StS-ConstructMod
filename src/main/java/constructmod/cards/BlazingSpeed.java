@@ -23,7 +23,7 @@ public class BlazingSpeed extends AbstractConstructCard {
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	private static final int COST = 0;
-	public static final int OVERHEAT = 1;
+	public static final int OVERHEAT = 5;
 	private static final int ATTACK_DMG = 3;
 	private static final int DRAW = 2;
 	private static final int UPGRADE_PLUS_DRAW = 1;
@@ -33,10 +33,10 @@ public class BlazingSpeed extends AbstractConstructCard {
 
 	public BlazingSpeed() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, CardType.ATTACK,
-				AbstractCardEnum.CONSTRUCTMOD, CardRarity.RARE, CardTarget.ENEMY, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, CardRarity.UNCOMMON, CardTarget.ENEMY, POOL);
 		this.damage = this.baseDamage = ATTACK_DMG;
 		this.baseMagicNumber = this.magicNumber = DRAW;
-		this.overheat = 6;
+		this.overheat = OVERHEAT;
 	}
 
 	@Override

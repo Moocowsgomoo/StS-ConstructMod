@@ -38,32 +38,7 @@ public abstract class AbstractCycleCard extends AbstractConstructCard {
 	}
 	
 	public static void cycle(AbstractCard card) {
-		ConstructMod.cyclesThisTurn++;
 		AbstractDungeon.actionManager.addToTop(new CycleCardAction(card, AbstractDungeon.player.hasPower(PanicFire.ID) && !card.upgraded));
-		
-		for (AbstractPower pw : AbstractDungeon.player.powers) {
-			if (pw instanceof AbstractCyclePower) {
-				((AbstractCyclePower) pw).onCycleCard(card);
-			}
-		}
-		TumbleFollowupAction.onCycleCard(card);
-
-		for (AbstractCard c:AbstractDungeon.player.drawPile.group){
-			if (c instanceof AbstractConstructCard){
-				((AbstractConstructCard) c).reduceOverheat();
-			}
-		}
-		for (AbstractCard c:AbstractDungeon.player.hand.group){
-			if (c instanceof AbstractConstructCard){
-				((AbstractConstructCard) c).reduceOverheat();
-			}
-		}
-		for (AbstractCard c:AbstractDungeon.player.discardPile.group){
-			if (c instanceof AbstractConstructCard){
-				((AbstractConstructCard) c).reduceOverheat();
-			}
-		}
-		
 		if (!ConstructMod.areCyclesFast()) AbstractDungeon.actionManager.addToTop(new WaitAction(0.2f));
 	}
 }

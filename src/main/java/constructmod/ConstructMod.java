@@ -2,27 +2,26 @@ package constructmod;
 
 import java.util.ArrayList;
 
+import basemod.*;
 import basemod.interfaces.*;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.Loader;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import constructmod.potions.MegaPotion;
 import constructmod.potions.ShiftPotion;
 import constructmod.powers.AbstractOnDrawPower;
-import constructmod.screens.MultiUpgradeSingleCardViewPopup;
-import constructmod.screens.MultiUpgradeSingleCardViewPopup_ORIGINAL;
+import constructmod.ui.HeatMeter;
+import constructmod.ui.HeatMeterSegment;
 import constructmod.variables.GatlingGunVariable;
 import constructmod.variables.OverheatVariable;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import basemod.BaseMod;
-import basemod.ModLabel;
-import basemod.ModLabeledToggleButton;
-import basemod.ModPanel;
-import basemod.ReflectionHacks;
 import basemod.helpers.RelicType;
 
 import com.badlogic.gdx.Gdx;
@@ -43,7 +42,7 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import constructmod.cards.*;
 import constructmod.relics.*;
-import java.nio.charset.StandardCharsets;
+
 import java.util.Properties;
 
 import constructmod.characters.TheConstruct;
@@ -52,7 +51,8 @@ import constructmod.patches.TheConstructEnum;
 
 @SpireInitializer
 public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscriber, EditRelicsSubscriber,
-	EditStringsSubscriber, EditCharactersSubscriber, EditKeywordsSubscriber, SetUnlocksSubscriber, PostDrawSubscriber, PreMonsterTurnSubscriber {
+	EditStringsSubscriber, EditCharactersSubscriber, EditKeywordsSubscriber, SetUnlocksSubscriber, PostDrawSubscriber,
+		PreMonsterTurnSubscriber, RenderSubscriber, OnStartBattleSubscriber {
 	
 	public static final Logger logger = LogManager.getLogger(ConstructMod.class.getName());
 			
@@ -61,6 +61,8 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     private static final String DESCRIPTION = "New Character: The Construct!";
 	
 	private static final Color CONSTRUCT_MOD_COLOR = CardHelper.getColor(170.0f, 150.0f, 50.0f);
+
+	public static HeatMeter heatBar;
 
 	public static Properties constructDefaults = new Properties();
 	public static boolean phoenixStart = false;
@@ -71,22 +73,30 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 	public static int marriedCard2 = -1;
 	public static Texture ringIconTexture;
 
+	public static int challengeLevel = 0;
+	private static String[] challengeStrings = {
+			"",
+			"Cards that shift your stats now Cycle under certain conditions.",
+			"Some of your starter cards Overheat.",
+			"Cards with the Retain keyword place themselves on top of your draw pile instead of Retaining.",
+			"Burn cards are now Mega-upgraded.",
+			"ALL Construct cards are less effective."
+	};
+
 	public static int cyclesThisTurn = 0;
 	public static final int CYCLES_BEFORE_FASTMODE = 20;
 
 	public static final ArrayList<AbstractCard> cores = new ArrayList<>();
 
-	public static final boolean isReplayLoaded;
-	public static final boolean isInfiniteLoaded;
+	public static final boolean isReplayLoaded = Loader.isModLoaded("ReplayTheSpireMod");
+	public static final boolean isInfiniteLoaded = Loader.isModLoaded("infinitespire");
 
 	static
 	{
-		isReplayLoaded = Loader.isModLoaded("ReplayTheSpireMod");
 		// CROSSOVER: Add reverse magic number tags so ring of chaos works better.
 		if (isReplayLoaded) {
 			logger.info("Construct | Detected Replay The Spire");
 		}
-		isInfiniteLoaded = Loader.isModLoaded("infinitespire");
 		// CROSSOVER: Nothing yet, but planning to add quests.
 		if (isInfiniteLoaded) {
 			logger.info("Construct | Detected Infinite Spire");
@@ -125,6 +135,8 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 
         // Mod badge
         Texture badgeTexture = new Texture(Gdx.files.internal("img/ConstructModBadge.png"));
+
+		heatBar = new HeatMeter();
         
         ModPanel settingsPanel = new ModPanel();
         
@@ -159,6 +171,23 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 			//adjustCards();
 			saveData();
 		});
+		ModLabel challengeIntroTxt1 = new ModLabel("Challenge Mode modifies your character-specific cards and items for a more difficult climb.",350.0f, 430.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
+		ModLabel challengeIntroTxt2 = new ModLabel("Level up your character to unlock higher challenge levels!",350.0f, 400.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
+		ModLabel challengeLabelTxt = new ModLabel("Challenge Level:",350.0f, 350.0f,settingsPanel,(me)->{});
+		ModLabel challengeLevelTxt = new ModLabel(""+challengeLevel,650.0f, 350.0f,settingsPanel,(me)->{});
+		ModLabel challengeDescTxt = new ModLabel(challengeStrings[challengeLevel],400.0f, 300.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
+		ModButton challengeLeftBtn = new ModButton(605.0f, 340.0f, ImageMaster.loadImage("img/tinyLeftArrow.png"),settingsPanel,(me)->{
+			if (challengeLevel > 0) challengeLevel--;
+			challengeLevelTxt.text = "" + challengeLevel;
+			challengeDescTxt.text = challengeStrings[challengeLevel];
+		});
+		ModButton challengeRightBtn = new ModButton(665.0f, 340.0f, ImageMaster.loadImage("img/tinyRightArrow.png"),settingsPanel,(me)->{
+			if (challengeLevel < 3) challengeLevel++;
+			challengeLevelTxt.text = "" + challengeLevel;
+			challengeDescTxt.text = challengeStrings[challengeLevel];
+		});
+
+
         if (UnlockTracker.getUnlockLevel(TheConstructEnum.THE_CONSTRUCT_MOD) >= 1) settingsPanel.addUIElement(phoenixBtn);
         else {
         	if (phoenixStart) {
@@ -171,6 +200,13 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
         settingsPanel.addUIElement(contentSharingBtn);
         settingsPanel.addUIElement(contentSharingPotionsBtn);
         settingsPanel.addUIElement(overheatedExpansionBtn);
+        settingsPanel.addUIElement(challengeIntroTxt1);
+        settingsPanel.addUIElement(challengeIntroTxt2);
+        settingsPanel.addUIElement(challengeLevelTxt);
+        settingsPanel.addUIElement(challengeLabelTxt);
+        settingsPanel.addUIElement(challengeDescTxt);
+        settingsPanel.addUIElement(challengeLeftBtn);
+        settingsPanel.addUIElement(challengeRightBtn);
         
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
         
@@ -305,20 +341,11 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 	}
 	
 	public void receiveEditStrings() {
-		
-		// RelicStrings
-        String relicStrings = Gdx.files.internal("localization/ConstructMod-RelicStrings.json").readString(
-        		String.valueOf(StandardCharsets.UTF_8));
-        BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
-		// CardStrings
-        String cardStrings = Gdx.files.internal("localization/ConstructMod-CardStrings.json").readString(
-        		String.valueOf(StandardCharsets.UTF_8));
-        BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
-		// PotionStrings
-		String potionStrings = Gdx.files.internal("localization/ConstructMod-PotionStrings.json").readString(
-				String.valueOf(StandardCharsets.UTF_8));
-		BaseMod.loadCustomStrings(PotionStrings.class, potionStrings);
-	}
+        BaseMod.loadCustomStringsFile(RelicStrings.class, "localization/ConstructMod-RelicStrings.json");
+        BaseMod.loadCustomStringsFile(CardStrings.class, "localization/ConstructMod-CardStrings.json");
+		BaseMod.loadCustomStringsFile(PotionStrings.class, "localization/ConstructMod-PotionStrings.json");
+		//BaseMod.loadCustomStringsFile(ChallengeStrings.class, "localization/ConstructMod-ChallengeStrings.json");
+    }
 	
 	public void receiveEditCards() {
 
@@ -348,7 +375,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		addCard(new Accumulate()); 	// atk, copy
 		
 		//	Skills (7/7)+2
-		addCard(new MetalShell());	// block
+		addCard(new Reinforce());	// block
 		addCard(new Anticipate());	// block
 		addCard(new ShiftGuard());	// block, str/dex
 		addCard(new Forcefield());  // block, retain
@@ -376,10 +403,10 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		
 		//	Skills (16/17)+1
 		addCard(new OneWayMirror());// block
-		addCard(new Reinforce());	// block
 		addCard(new Disrupt());		// block
 		addCard(new Impenetrable());// block
 		addCard(new Hazardproof()); // block, buff
+		addCard(new MetalShell());	// block
 		
 		//addCard(new ReactiveShield2()); // block (cycle)
 		//Trip Mine
@@ -439,19 +466,36 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		//addCard(new CoreShard()); // status, cycle
 
 		if (overheatedExpansion){
-			addCard(new PhosphorStorm());//atk, overheat
+			//ATK (-1 rare)
+			// common
+			addCard(new PhosphorStorm());//atk, overheat 5
+			addCard(new Rollout());		// atk, cycle synergy, overheat 10(15)
+			// uncommon
 			addCard(new Missile());		// atk, cycle
-			addCard(new Coolant());		// block, cooling
-			addCard(new CreateCores());	// cores, overheat
-			addCard(new OilSpill());	// overheat, overheat synergy
-			addCard(new Rollout());		// atk, cycle synergy, overheat
+			addCard(new BlazingSpeed());// atk, overheat 5
+			// rare
 			addCard(new Flamethrower());// atk, cycle?, burn synergy
-			addCard(new FlammableFog());// overheat, cooling synergy
-			addCard(new Failsafe());	 // anti-status
-			addCard(new BlazingSpeed());// atk, overheat
-			addCard(new NuclearCore());	// cycle, overheat
+
+			//SKL (+1 uncommon, rare)
+			//common
+			addCard(new Coolant());		// block, cooling
+			addCard(new FlammableFog());// block, overheat 5
+			addCard(new CreateCores());	// overheat 10(15)
+			//uncommon
+			addCard(new OilSpill());	// overheat 5, overheat synergy
+			addCard(new NuclearCore());	// cycle, overheat 10
+			addCard(new Afterburners());// multi-play, burns
+			//-----supernova
+			//rare
 			addCard(new Implosion());	// burn synergy, play
+			//-----flash freeze (8 Block X times, overheat 10)
+
+			//PWR (-1 uncommon)
+			//uncommon
+			addCard(new Failsafe());	 // anti-status
+			//rare
 			addCard(new Agitation());	// overheat synergy
+			//sunscreen
 
 			cores.add(new NuclearCore()); // can be randomly generated only if expansion is enabled
 		}
@@ -567,9 +611,32 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     }
 
     @Override
+	public void receiveRender(SpriteBatch sb){
+		if (AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom() != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT &&
+				AbstractDungeon.player != null){
+			heatBar.render(sb);
+		}
+	}
+
+    @Override
 	public boolean receivePreMonsterTurn(AbstractMonster m){
-    	cyclesThisTurn = 0;
+    	resetCycles();
     	return true;
+	}
+
+	@Override
+	public void receiveOnBattleStart(AbstractRoom room){
+		resetCycles();
+	}
+
+	public static void incrementCycles(){
+		cyclesThisTurn++;
+		heatBar.onIncrementCycles();
+	}
+
+	public static void resetCycles(){
+		cyclesThisTurn = 0;
+		heatBar.onResetCycles();
 	}
 
 	public static boolean areCyclesFast(){

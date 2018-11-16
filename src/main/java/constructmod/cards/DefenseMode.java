@@ -19,11 +19,12 @@ import basemod.abstracts.CustomCard;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
-public class DefenseMode extends AbstractConstructCard {
+public class DefenseMode extends AbstractCycleCard {
 	public static final String ID = ConstructMod.makeID("DefenseMode");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+	public static final String CHALLENGE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 	private static final int COST = 0;
 	private static final int DEX = 2;
 	private static final int UPGRADE_PLUS_DEX = 1;
@@ -31,12 +32,19 @@ public class DefenseMode extends AbstractConstructCard {
 	private static final int POOL = 1;
 
 	public DefenseMode() {
-		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
+		super(ID, NAME, "img/cards/"+ID+".png", COST, (ConstructMod.challengeLevel >= 1? CHALLENGE_DESCRIPTION:"")+DESCRIPTION, AbstractCard.CardType.SKILL,
 				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.SELF, POOL);
 		this.magicNumber = this.baseMagicNumber = DEX;
 		this.retain = true;
 	}
-	
+
+	@Override
+	public boolean canCycle() {
+		return ConstructMod.challengeLevel >= 1 && super.canCycle() &&
+				AbstractDungeon.player.hasPower(DexterityPower.POWER_ID) &&
+				AbstractDungeon.player.getPower(DexterityPower.POWER_ID).amount < 0;
+	}
+
 	@Override
 	public void applyPowers(){
 		super.applyPowers();

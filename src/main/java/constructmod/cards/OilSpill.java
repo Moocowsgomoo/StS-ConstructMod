@@ -22,15 +22,16 @@ public class OilSpill extends AbstractConstructCard {
 	private static final String M_UPGRADE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 	private static final int COST = 1;
 	private static final int OIL_DAMAGE = 10;
+	public static final int OVERHEAT = 5;
 	private static final int UPGRADE_PLUS_OIL_DAMAGE = 2;
 	private static final int M_UPGRADE_PLUS_OIL_DAMAGE = 3;
 	private static final int POOL = 1;
 
 	public OilSpill() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, CardType.SKILL,
-				AbstractCardEnum.CONSTRUCTMOD, CardRarity.COMMON, CardTarget.ENEMY, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, CardRarity.UNCOMMON, CardTarget.ENEMY, POOL);
 		this.baseMagicNumber = this.magicNumber = OIL_DAMAGE;
-		this.overheat = 3;
+		this.overheat = OVERHEAT;
 	}
 
 	@Override

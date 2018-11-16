@@ -33,7 +33,7 @@ public class FierceBash extends AbstractConstructCard {
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	public static final String M_UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	private static final int COST = 1;
-	private static final int ATTACK_DMG = 8;
+	private static final int ATTACK_DMG = 9;
 	private static final int UPGRADE_PLUS_ATTACK_DMG = 3;
 	private static final int M_UPGRADE_PLUS_ATTACK_DMG = 1;
 	private static final int POOL = 1;

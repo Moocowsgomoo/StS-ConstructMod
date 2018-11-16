@@ -29,7 +29,7 @@ public class RenderTinyCardColorPatch {
 		}
 	}
 	
-	@SpirePatch(clz=TinyCard.class, method = "getIconBackgroundColor")
+	@SpirePatch(clz=TinyCard.class, method = "getIconDescriptionColor")
 	public static class GetIconDescriptionColor {
 		public static SpireReturn<Color> Prefix(TinyCard obj, AbstractCard card) {
 			if (card.color == AbstractCardEnum.CONSTRUCTMOD) {

@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.red.BodySlam;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -21,26 +22,42 @@ public class Rollout extends AbstractConstructCard {
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+	public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
 	public static final int COST = 1;
-	public static final int ATTACK_DMG = 0;
-	public static final int CYCLE_PLUS_ATTACK_DMG = 2;
-	public static final int OVERHEAT = 12;
-	public static final int UPGRADE_PLUS_OVERHEAT = 3;
-	public static final int M_UPGRADE_PLUS_OVERHEAT = 5;
+	public static final int CYCLE_DMG_MULT = 2;
+	public static final int OVERHEAT = 10;
+	public static final int UPGRADE_PLUS_OVERHEAT = 5;
+	public static final int M_UPGRADE_PLUS_OVERHEAT = 10;
 	private static final int POOL = 1;
 
 	public Rollout() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, CardType.ATTACK,
-				AbstractCardEnum.CONSTRUCTMOD, CardRarity.UNCOMMON, CardTarget.ENEMY, POOL);
-		this.damage = this.baseDamage = ATTACK_DMG;
-		this.magicNumber = this.baseMagicNumber = CYCLE_PLUS_ATTACK_DMG;
+				AbstractCardEnum.CONSTRUCTMOD, CardRarity.COMMON, CardTarget.ENEMY, POOL);
+		this.damage = this.baseDamage = 0;
+		this.magicNumber = this.baseMagicNumber = CYCLE_DMG_MULT;
 		this.overheat = OVERHEAT;
 	}
 
 	@Override
-	public void reduceOverheat(){
-		this.baseDamage += this.magicNumber;
-		super.reduceOverheat();
+	public void applyPowers() {
+		this.baseDamage = ConstructMod.cyclesThisTurn * this.magicNumber;
+		super.applyPowers();
+		this.rawDescription = EXTENDED_DESCRIPTION[0] + DESCRIPTION;
+		this.initializeDescription();
+	}
+
+	@Override
+	public void onMoveToDiscard() {
+		this.rawDescription = DESCRIPTION;
+		this.initializeDescription();
+	}
+
+	@Override
+	public void calculateCardDamage(final AbstractMonster mo) {
+		this.baseDamage = ConstructMod.cyclesThisTurn * this.magicNumber;
+		super.calculateCardDamage(mo);
+		this.rawDescription = EXTENDED_DESCRIPTION[0] + DESCRIPTION;
+		this.initializeDescription();
 	}
 
 	@Override

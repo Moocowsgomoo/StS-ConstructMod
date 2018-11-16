@@ -21,11 +21,12 @@ import basemod.helpers.CardTags;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
-public class ShiftStrike extends AbstractConstructCard {
+public class ShiftStrike extends AbstractCycleCard {
 	public static final String ID = ConstructMod.makeID("ShiftStrike");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+	public static final String CHALLENGE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 	private static final int COST = 1;
 	private static final int ATTACK_DMG = 8;
 	private static final int GAIN_STR = 2;
@@ -36,11 +37,18 @@ public class ShiftStrike extends AbstractConstructCard {
 	private static final int POOL = 1;
 
 	public ShiftStrike() {
-		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.ATTACK,
+		super(ID, NAME, "img/cards/"+ID+".png", COST, (ConstructMod.challengeLevel >= 1? CHALLENGE_DESCRIPTION:"")+DESCRIPTION, AbstractCard.CardType.ATTACK,
 				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.ENEMY, POOL);
 		this.damage = this.baseDamage = ATTACK_DMG;
 		this.magicNumber = this.baseMagicNumber = GAIN_STR;
 		this.tags.add(CardTags.STRIKE);
+	}
+
+	@Override
+	public boolean canCycle() {
+		return ConstructMod.challengeLevel >= 1 && super.canCycle() &&
+				AbstractDungeon.player.hasPower(DexterityPower.POWER_ID) &&
+				AbstractDungeon.player.getPower(DexterityPower.POWER_ID).amount < 0;
 	}
 
 	@Override

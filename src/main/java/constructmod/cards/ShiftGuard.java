@@ -14,11 +14,12 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
-public class ShiftGuard extends AbstractConstructCard {
+public class ShiftGuard extends AbstractCycleCard {
 	public static final String ID = ConstructMod.makeID("ShiftGuard");
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+	public static final String CHALLENGE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 	private static final int COST = 1;
 	private static final int BLOCK_AMT = 7;
 	private static final int GAIN_DEX = 2;
@@ -29,10 +30,17 @@ public class ShiftGuard extends AbstractConstructCard {
 	private static final int POOL = 1;
 
 	public ShiftGuard() {
-		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.SKILL,
+		super(ID, NAME, "img/cards/"+ID+".png", COST, (ConstructMod.challengeLevel >= 1? CHALLENGE_DESCRIPTION:"")+DESCRIPTION, AbstractCard.CardType.SKILL,
 				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF, POOL);
 		this.block = this.baseBlock = BLOCK_AMT;
 		this.magicNumber = this.baseMagicNumber = GAIN_DEX;
+	}
+
+	@Override
+	public boolean canCycle() {
+		return ConstructMod.challengeLevel >= 1 && super.canCycle() &&
+				AbstractDungeon.player.hasPower(DexterityPower.POWER_ID) &&
+				AbstractDungeon.player.getPower(DexterityPower.POWER_ID).amount < 0;
 	}
 
 	@Override

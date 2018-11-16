@@ -9,11 +9,17 @@
 	},
 	"construct:AttackMode": {
 		"NAME": "Attack Mode",
-		"DESCRIPTION": "Retain. NL Gain !M! Strength. NL Lose !M! Dexterity."
+		"DESCRIPTION": "Retain. NL Gain !M! Strength. NL Lose !M! Dexterity.",
+		"EXTENDED_DESCRIPTION": [
+			"(Cycle if Dexterity < 0.) NL "
+		]
 	},
 	"construct:DefenseMode": {
 		"NAME": "Defense Mode",
-		"DESCRIPTION": "Retain. NL Gain !M! Dexterity. NL Lose !M! Strength."
+		"DESCRIPTION": "Retain. NL Gain !M! Dexterity. NL Lose !M! Strength.",
+		"EXTENDED_DESCRIPTION": [
+			"(Cycle if Strength < 0.) NL "
+		]
 	},
 	"construct:ScrapCannon": {
 		"NAME": "Scrap Cannon",
@@ -331,11 +337,17 @@
 	},
 	"construct:ShiftStrike": {
 		"NAME": "Shift Strike",
-		"DESCRIPTION": "Deal !D! damage. NL Gain !M! Strength. NL Lose !M! Dexterity."
+		"DESCRIPTION": "Deal !D! damage. NL Gain !M! Strength. NL Lose !M! Dexterity.",
+		"EXTENDED_DESCRIPTION": [
+			"(Cycle if Dexterity < 0.) NL "
+		]
 	},
 	"construct:ShiftGuard": {
 		"NAME": "Shift Guard",
-		"DESCRIPTION": "Gain !B! Block. NL Gain !M! Dexterity. NL Lose !M! Strength."
+		"DESCRIPTION": "Gain !B! Block. NL Gain !M! Dexterity. NL Lose !M! Strength.",
+		"EXTENDED_DESCRIPTION": [
+			"(Cycle if Strength < 0.) NL "
+		]
 	},
 	"construct:TripMine": {
 		"NAME": "Trip Mine",
@@ -491,6 +503,9 @@
 		"DESCRIPTION": "Deal !D! damage. NL ALL of your basic Strikes and Defends gain !M! power for this combat.",
 		"UPGRADE_DESCRIPTION": "Deal !D! damage. NL Double the power of ALL of your basic Strikes and Defends for this combat."
 	},
+
+
+
 	"construct:PhosphorStorm": {
 		"NAME": "Phosphor Storm",
 		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Deal !D! damage twice.",
@@ -498,15 +513,14 @@
 	},
 	"construct:Agitation": {
 		"NAME": "Agitation",
-		"DESCRIPTION": "Whenever a card fully Overheats, gain !M! Strength and !M! Dexterity.",
-		"UPGRADE_DESCRIPTION": "Innate. NL Whenever a card fully Overheats, gain !M! Strength and !M! Dexterity.",
-		"EXTENDED_DESCRIPTION": ["Start combat with this card in play. NL Whenever a card fully Overheats, gain !M! Strength and !M! Dexterity."]
+		"DESCRIPTION": "Whenever a card [#ff9900]Overheats, gain !M! Strength and !M! Dexterity.",
+		"UPGRADE_DESCRIPTION": "Innate. NL Whenever a card [#ff9900]Overheats, gain !M! Strength and !M! Dexterity.",
+		"EXTENDED_DESCRIPTION": ["Start combat with this card in play. NL Whenever a card [#ff9900]Overheats, gain !M! Strength and !M! Dexterity."]
 	},
 	"construct:Coolant": {
 		"NAME": "Coolant",
-		"DESCRIPTION": "Gain !B! Block. NL Increase the Overheat of ALL cards by !M!.",
-		"UPGRADE_DESCRIPTION": "Innate. NL Gain !B! Block. NL Increase the Overheat of ALL cards by !M!.",
-		"EXTENDED_DESCRIPTION": ["Innate. NL Gain !B! Block. NL Increase the Overheat of ALL cards by !M!. NL Put this on top of your draw pile."]
+		"DESCRIPTION": "Gain !B! Block. NL Increase the [#ff9900]Overheat limit of ALL cards by !M! for this combat.",
+		"UPGRADE_DESCRIPTION": "Innate. NL Gain !B! Block. NL Increase the [#ff9900]Overheat limit of ALL cards by !M! for this combat."
 	},
 	"construct:NuclearCore": {
 		"NAME": "Nuclear Core",
@@ -523,8 +537,8 @@
 	},
 	"construct:FlammableFog": {
 		"NAME": "Flammable Fog",
-		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Gain Block equal to this card's Overheat, this and next turn.",
-		"EXTENDED_DESCRIPTION": ["(Gain !B! Block.) NL "]
+		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Gain !B! Block. NL Gain !B! Block next turn.",
+		"EXTENDED_DESCRIPTION": ["[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Gain !B! Block this turn, next turn, and the turn after."]
 	},
 	"construct:Missile": {
 		"NAME": "Missile",
@@ -543,7 +557,10 @@
 	"construct:CreateCores": {
 		"NAME": "Create Cores",
 		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Shuffle !M! random Cores into your draw pile.",
-		"UPGRADE_DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Shuffle !M! random Upgraded Cores into your draw pile."
+		"UPGRADE_DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Shuffle !M! random Cores into your draw pile, and upgrade one.",
+		"EXTENDED_DESCRIPTION": [
+			"[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Shuffle !M! random upgraded Cores into your draw pile."
+		]
 	},
 	"construct:BlazingSpeed": {
 		"NAME": "Blazing Speed",
@@ -558,15 +575,47 @@
 			" + ",
 			") NL "
 			]
+	},
+	"construct:Supernova": {
+		"NAME": "Supernova",
+		"DESCRIPTION": "Exhaust all Status cards in your hand and replace them with random cards. Those cards cost 0 this combat. NL Exhaust.",
+		"UPGRADE_DESCRIPTION": "Retain. NL Exhaust all Status cards in your hand and replace them with random cards. Those cards cost 0 this combat. NL Exhaust.",
+		"EXTENDED_DESCRIPTION": [
+			"Retain. NL Exhaust ALL Status cards and replace them with random cards. Those cards cost 0 this combat. NL Exhaust."
+		]
 
+	},
+	"construct:SunScreen": {
+		"NAME": "Sun Screen",
+		"DESCRIPTION": "At the end of your turn, Exhaust a card. If it's a Burn, gain !M! Block.",
+		"UPGRADE_DESCRIPTION": "At the end of your turn, Exhaust up to 2 cards. For each Burn exhausted, gain !M! Block."
 	},
 	"construct:Rollout": {
 		"NAME": "Rollout",
-		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Deal !D! damage. NL Whenever ANY card cycles, increase this card's damage by !M!."
+		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Deal damage equal to double the number of cards that have Cycled this turn.",
+		"EXTENDED_DESCRIPTION": [
+			"(Deal !D! damage.) NL "
+		]
 	},
 	"construct:Failsafe": {
 		"NAME": "Failsafe",
 		"DESCRIPTION": "The first Status card you draw each turn Cycles.",
 		"UPGRADE_DESCRIPTION": "The first !M! Status cards you draw each turn Cycle."
+	},
+	"construct:Afterburners": {
+		"NAME": "Afterburners",
+		"DESCRIPTION": "Add 3 Burns to your hand. NL This turn, your next card is played !M! times.",
+		"UPGRADE_DESCRIPTION": "Add 2 Burns to your hand. NL This turn, your next card is played !M! times.",
+		"EXTENDED_DESCRIPTION": [
+			"Add 3 Burns to your hand. NL This turn, your next card is played !M! times."
+		]
+	},
+	"construct:ClusterBomb": {
+		"NAME": "Cluster Bomb",
+		"DESCRIPTION": "Add 3 Burns to your hand. NL This turn, your next card is played !M! times.",
+		"UPGRADE_DESCRIPTION": "Add 2 Burns to your hand. NL This turn, your next card is played !M! times.",
+		"EXTENDED_DESCRIPTION": [
+			"Add 3 Burns to your hand. NL This turn, your next card is played !M! times."
+		]
 	}
 }

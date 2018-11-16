@@ -20,6 +20,7 @@ import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
 import com.megacrit.cardcrawl.vfx.combat.SmokeBombEffect;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
+import constructmod.powers.FutureTurnBlockPower;
 
 public class FlammableFog extends AbstractConstructCard {
 	public static final String ID = ConstructMod.makeID("FlammableFog");
@@ -29,18 +30,19 @@ public class FlammableFog extends AbstractConstructCard {
 	public static final String M_UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
 	public static final int COST = 1;
-	public static final int OVERHEAT = 9;
-	public static final int UPGRADE_PLUS_OVERHEAT = 2;
-	public static final int M_UPGRADE_PLUS_OVERHEAT = 3;
+	public static final int OVERHEAT = 5;
+	public static final int BLOCK = 6;
+	public static final int UPGRADE_PLUS_BLOCK = 2;
 	private static final int POOL = 1;
 
 	public String desc;
 
 	public FlammableFog() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, CardType.SKILL,
-				AbstractCardEnum.CONSTRUCTMOD, CardRarity.UNCOMMON, CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, CardRarity.COMMON, CardTarget.SELF, POOL);
 		this.overheat = OVERHEAT;
 		this.desc = DESCRIPTION;
+		this.baseBlock = this.block = BLOCK;
 	}
 
 	@Override
@@ -49,21 +51,22 @@ public class FlammableFog extends AbstractConstructCard {
 		//AbstractDungeon.actionManager.addToBottom(new VFXAction(new SmokeBombEffect(m.hb.cX, m.hb.cY), 0.01f));
 		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p,p,this.block));
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new NextTurnBlockPower(p,this.block),this.block));
+		if (this.megaUpgraded) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new FutureTurnBlockPower(p,this.block),this.block));
 	}
 
-	@Override
+	/*@Override
 	public void applyPowers(){
 		this.baseBlock = this.overheat;
 		super.applyPowers();
 		this.rawDescription = EXTENDED_DESCRIPTION[0] + desc;
 		initializeDescription();
-	}
+	}*/
 
-	@Override
+	/*@Override
 	public void onMoveToDiscard(){
 		this.rawDescription = desc;
 		initializeDescription();
-	}
+	}*/
 
 	@Override
 	public AbstractCard makeCopy() {
@@ -74,10 +77,11 @@ public class FlammableFog extends AbstractConstructCard {
 	public void upgrade() {
 		if (!this.upgraded) {
 			this.upgradeName();
-			this.upgradeOverheat(UPGRADE_PLUS_OVERHEAT);
+			this.upgradeBlock(UPGRADE_PLUS_BLOCK);
+			//this.upgradeOverheat(UPGRADE_PLUS_OVERHEAT);
 		} else if (this.canUpgrade()) {
 			this.megaUpgradeName();
-			this.upgradeOverheat(M_UPGRADE_PLUS_OVERHEAT);
+			//this.upgradeOverheat(M_UPGRADE_PLUS_OVERHEAT);
 		}
 	}
 }

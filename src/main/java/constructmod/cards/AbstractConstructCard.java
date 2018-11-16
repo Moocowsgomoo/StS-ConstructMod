@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.actions.unique.TransmuteAction;
 import com.megacrit.cardcrawl.actions.unique.Transmutev2Action;
 import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import constructmod.ConstructMod;
 import constructmod.actions.OverheatAction;
 import constructmod.powers.AbstractCyclePower;
 import org.apache.logging.log4j.Level;
@@ -30,24 +31,20 @@ public abstract class AbstractConstructCard extends CustomCard {
 	public boolean startInPlay = false;
 
 	public boolean upgradedOverheat = false;
-	public int overheat = 0;
+	public int overheat = -1;
 	
 	public AbstractConstructCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target, int cardPool) {
 		super(id, name, img.replace("cards/construct:", "constructCards/"), cost, rawDescription, type, color, rarity, target);
 	}
 
-	public void reduceOverheat(){
-		if (overheat <= 0) return;
-		else if (AbstractDungeon.player.hand.contains(this)) this.flash(Color.ORANGE);
-
-		if (--overheat <= 0) overheatCard();
-	}
-
-	public void overheatCard(){
-		for (AbstractPower p:AbstractDungeon.player.powers){
-			if (p instanceof AbstractCyclePower) ((AbstractCyclePower) p).onOverheatCard(this);
+	public boolean checkOverheat(){
+		if (overheat <= 0) return false;
+		//if (AbstractDungeon.player.hand.contains(this)) this.flash(Color.RED.cpy());
+		if (ConstructMod.cyclesThisTurn >= overheat){
+			AbstractDungeon.actionManager.addToTop(new OverheatAction(this));
+			return true;
 		}
-		AbstractDungeon.actionManager.addToTop(new OverheatAction(this));
+		return false;
 	}
 
 	public void upgradeOverheat(int amount){

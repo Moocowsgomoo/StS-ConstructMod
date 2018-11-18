@@ -27,8 +27,7 @@ public class FlammableFog extends AbstractConstructCard {
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-	public static final String M_UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-	public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
+	public static final String M_UPGRADE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 	public static final int COST = 1;
 	public static final int OVERHEAT = 5;
 	public static final int BLOCK = 6;
@@ -81,6 +80,8 @@ public class FlammableFog extends AbstractConstructCard {
 			//this.upgradeOverheat(UPGRADE_PLUS_OVERHEAT);
 		} else if (this.canUpgrade()) {
 			this.megaUpgradeName();
+			this.rawDescription = M_UPGRADE_DESCRIPTION;
+			this.initializeDescription();
 			//this.upgradeOverheat(M_UPGRADE_PLUS_OVERHEAT);
 		}
 	}

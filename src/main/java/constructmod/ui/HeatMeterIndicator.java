@@ -21,7 +21,7 @@ public class HeatMeterIndicator {
     public void drawHeatMeterIndicator(int numCycles,int maxCyclesOnMeter, SpriteBatch sb){
 
         if (numCycles > maxCyclesOnMeter) numCycles = prevNumCycles; // as the meter fades (maxCycles = 0), stay where we are.
-        rotation += ((initialRotation - numCycles*12.5f) - rotation) * 0.3f;
+        rotation += ((initialRotation - numCycles*12f) - rotation) * 0.3f;
         prevNumCycles = numCycles;
 
         scale += (targetScale - scale) * 0.2f;

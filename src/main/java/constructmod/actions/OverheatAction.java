@@ -55,6 +55,29 @@ public class OverheatAction extends AbstractGameAction
             effect_x = DISCARD_X;
             effect_y = DISCARD_Y;
         }
+        else if (AbstractDungeon.player.limbo.contains(this.targetCard)){
+            group = AbstractDungeon.player.limbo.group;
+            effect_x = this.targetCard.current_x;
+            effect_y = this.targetCard.current_y;
+        }
+        else if (AbstractDungeon.player.cardInUse == this.targetCard){
+            group = AbstractDungeon.player.discardPile.group;
+            effect_x = this.targetCard.current_x;
+            effect_y = this.targetCard.current_y;
+
+            AbstractCard burn = new Burn();
+            burn.current_x = burn.target_x = this.targetCard.current_x;
+            burn.current_y = burn.target_y = this.targetCard.current_y;
+            burn.angle = this.targetCard.angle;
+            burn.drawScale = this.targetCard.drawScale;
+            burn.transparency = targetCard.transparency;
+            AbstractDungeon.topLevelEffects.add(new FlashAtkImgEffect(effect_x, effect_y, AttackEffect.FIRE));
+            AbstractDungeon.topLevelEffects.add(new ExplosionSmallEffect(effect_x,effect_y));
+            AbstractDungeon.topLevelEffects.add(new DeckPoofEffect(effect_x,effect_y,false));
+            CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.HIGH, ScreenShake.ShakeDur.SHORT,false);
+            AbstractDungeon.player.cardInUse = burn;
+            group.add(0,burn);
+        }
 
         if (group == null) return;
         int index = group.indexOf(this.targetCard);

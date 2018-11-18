@@ -1,6 +1,8 @@
 package constructmod.cards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.FastDrawCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -38,8 +40,9 @@ public class CreateCores extends AbstractConstructCard {
 		for (int i=0;i<this.magicNumber;i++) {
 			AbstractCard c = ConstructMod.getRandomCore();
 			if (this.megaUpgraded) c.upgrade();
-			AbstractDungeon.actionManager.addToTop(new MakeTempCardInDrawPileAction(c,1,true,true));
+			AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(c,1,true,true));
 		}
+		AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p,1));
 	}
 
 	@Override

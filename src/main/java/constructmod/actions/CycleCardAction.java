@@ -37,26 +37,6 @@ public class CycleCardAction extends AbstractGameAction
         }
         TumbleFollowupAction.onCycleCard(this.targetCard);
 
-        boolean overheatQueued = false; // trying to see if we can interrupt the cycle process to blow stuff up, not easy
-        for (AbstractCard c:AbstractDungeon.player.drawPile.group){
-            if (c instanceof AbstractConstructCard){
-                overheatQueued = overheatQueued || ((AbstractConstructCard) c).checkOverheat();
-            }
-        }
-        for (AbstractCard c:AbstractDungeon.player.hand.group){
-            if (c instanceof AbstractConstructCard){
-                overheatQueued = overheatQueued || ((AbstractConstructCard) c).checkOverheat();
-            }
-        }
-        for (AbstractCard c:AbstractDungeon.player.discardPile.group){
-            if (c instanceof AbstractConstructCard){
-                overheatQueued = overheatQueued || ((AbstractConstructCard) c).checkOverheat();
-            }
-        }
-        if (AbstractDungeon.player.cardInUse instanceof AbstractConstructCard){
-            overheatQueued = overheatQueued || ((AbstractConstructCard) AbstractDungeon.player.cardInUse).checkOverheat();
-        }
-
     	if (this.isExhaust) {
     		AbstractDungeon.player.hand.moveToExhaustPile(this.targetCard);
     		this.targetCard.triggerOnExhaust();
@@ -74,6 +54,9 @@ public class CycleCardAction extends AbstractGameAction
         else {
         	AbstractDungeon.actionManager.addToTop(new DrawCardAction(AbstractDungeon.player,1));
         }
+
+        AbstractDungeon.actionManager.addToBottom(new CheckOverheatAction());
+
         this.isDone = true;
     }
 }

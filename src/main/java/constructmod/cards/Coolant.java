@@ -22,7 +22,7 @@ public class Coolant extends AbstractConstructCard {
 	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	public static final int COST = 1;
 	public static final int BLOCK = 8;
-	public static final int COOLING = 2;
+	public static final int COOLING = 5;
 	public static final int M_UPGRADE_PLUS_COOLING = 4;
 	private static final int POOL = 1;
 

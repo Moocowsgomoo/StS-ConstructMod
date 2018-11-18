@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import constructmod.ConstructMod;
+import constructmod.powers.FlashFreezePower;
 
 import java.util.Random;
 
@@ -43,7 +44,14 @@ public class HeatMeterSegment {
         scale += (targetScale - scale) * 0.2f;
 
         Color prevColor = sb.getColor();
-        sb.setColor(1,(1-redColor*redColor>0?1-redColor*redColor:0),(1-redColor*2>0?1-redColor*2:0),alpha>0?alpha:0);
+        if (HeatMeter.flashFreezeActive){
+            sb.setColor(0f,1f,1f,alpha>0?alpha:0);
+            redColor = 0f;
+            targetRedColor = 0f;
+        }
+        else{
+            sb.setColor(1,(1-redColor*redColor>0?1-redColor*redColor:0),(1-redColor*2>0?1-redColor*2:0),alpha>0?alpha:0);
+        }
         sb.draw(HeatMeter.HEAT_BAR_IMG,
                 AbstractDungeon.player.drawX + 22f*Settings.scale /*- 40f*Settings.scale*/ -
                         width/2 - (float)Math.cos(rotation*Math.PI/180)*distFromOrigin + (redColor>0.1f && redColor < 0.9f?(random.nextFloat()*10f-5f)*Settings.scale*redColor:0f),

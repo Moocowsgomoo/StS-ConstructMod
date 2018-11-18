@@ -16,7 +16,6 @@ import constructmod.potions.MegaPotion;
 import constructmod.potions.ShiftPotion;
 import constructmod.powers.AbstractOnDrawPower;
 import constructmod.ui.HeatMeter;
-import constructmod.ui.HeatMeterSegment;
 import constructmod.variables.GatlingGunVariable;
 import constructmod.variables.OverheatVariable;
 import org.apache.logging.log4j.LogManager;
@@ -69,12 +68,19 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 	public static boolean contentSharing_relics = true;
 	public static boolean contentSharing_potions = true;
 	public static boolean overheatedExpansion = false;
+
+	public static final String PROP_PHOENIX_START = "phoenixStart";
+	public static final String PROP_RELIC_SHARING = "contentSharing";
+	public static final String PROP_POTION_SHARING = "contentSharing_potions";
+	public static final String PROP_OVERHEATED_BETA = "overheatedBETA";
+	public static final String PROP_CHALLENGE_LEVEL = "challengeLevel";
+
 	public static int marriedCard1 = -1;
 	public static int marriedCard2 = -1;
 	public static Texture ringIconTexture;
 
 	public static int challengeLevel = 0;
-	private static String[] challengeStrings = {
+	public static final String[] CHALLENGE_STRINGS = {
 			"",
 			"Cards that shift your stats now Cycle under certain conditions.",
 			"Some of your starter cards Overheat.",
@@ -118,10 +124,11 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
         Settings.isTrial = false;
         Settings.isDemo = false;
 
-		constructDefaults.setProperty("phoenixStart", "FALSE");
-		constructDefaults.setProperty("contentSharing", "TRUE");
-		constructDefaults.setProperty("contentSharing_potions", "TRUE");
-		constructDefaults.setProperty("overheatedBETA", "FALSE");
+		constructDefaults.setProperty(PROP_PHOENIX_START, "FALSE");
+		constructDefaults.setProperty(PROP_RELIC_SHARING, "TRUE");
+		constructDefaults.setProperty(PROP_POTION_SHARING, "TRUE");
+		constructDefaults.setProperty(PROP_OVERHEATED_BETA, "FALSE");
+		constructDefaults.setProperty(PROP_CHALLENGE_LEVEL, "0");
 		loadConfigData();
     }
     
@@ -164,7 +171,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 			//adjustPotions();
 			saveData();
 		});
-		ModLabeledToggleButton overheatedExpansionBtn = new ModLabeledToggleButton("Untested expansion cards - please tell me what you think! (REQUIRES RESTART)",
+		ModLabeledToggleButton overheatedExpansionBtn = new ModLabeledToggleButton("Untested expansion cards (v2) - please tell me what you think! (REQUIRES RESTART)",
 				350.0f, 500.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
 				overheatedExpansion, settingsPanel, (label) -> {}, (button) -> {
 			overheatedExpansion = button.enabled;
@@ -172,19 +179,21 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 			saveData();
 		});
 		ModLabel challengeIntroTxt1 = new ModLabel("Challenge Mode modifies your character-specific cards and items for a more difficult climb.",350.0f, 430.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
-		ModLabel challengeIntroTxt2 = new ModLabel("Level up your character to unlock higher challenge levels!",350.0f, 400.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
+		ModLabel challengeIntroTxt2 = new ModLabel("Currently only one level exists; more will be added soon!",350.0f, 400.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
 		ModLabel challengeLabelTxt = new ModLabel("Challenge Level:",350.0f, 350.0f,settingsPanel,(me)->{});
 		ModLabel challengeLevelTxt = new ModLabel(""+challengeLevel,650.0f, 350.0f,settingsPanel,(me)->{});
-		ModLabel challengeDescTxt = new ModLabel(challengeStrings[challengeLevel],400.0f, 300.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
+		ModLabel challengeDescTxt = new ModLabel(CHALLENGE_STRINGS[challengeLevel],400.0f, 300.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
 		ModButton challengeLeftBtn = new ModButton(605.0f, 340.0f, ImageMaster.loadImage("img/tinyLeftArrow.png"),settingsPanel,(me)->{
 			if (challengeLevel > 0) challengeLevel--;
 			challengeLevelTxt.text = "" + challengeLevel;
-			challengeDescTxt.text = challengeStrings[challengeLevel];
+			challengeDescTxt.text = CHALLENGE_STRINGS[challengeLevel];
+			saveData();
 		});
 		ModButton challengeRightBtn = new ModButton(665.0f, 340.0f, ImageMaster.loadImage("img/tinyRightArrow.png"),settingsPanel,(me)->{
-			if (challengeLevel < 3) challengeLevel++;
+			if (challengeLevel < 1) challengeLevel++;
 			challengeLevelTxt.text = "" + challengeLevel;
-			challengeDescTxt.text = challengeStrings[challengeLevel];
+			challengeDescTxt.text = CHALLENGE_STRINGS[challengeLevel];
+			saveData();
 		});
 
 
@@ -234,10 +243,11 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     public static void saveData() {
     	try {
     		SpireConfig config = new SpireConfig("ConstructMod", "ConstructSaveData", constructDefaults);
-    		config.setBool("phoenixStart", phoenixStart);
-    		config.setBool("contentSharing", contentSharing_relics);
-			config.setBool("contentSharing_potions", contentSharing_potions);
-    		config.setBool("overheatedBETA", overheatedExpansion);
+    		config.setBool(PROP_PHOENIX_START, phoenixStart);
+    		config.setBool(PROP_RELIC_SHARING, contentSharing_relics);
+			config.setBool(PROP_POTION_SHARING, contentSharing_potions);
+    		config.setBool(PROP_OVERHEATED_BETA, overheatedExpansion);
+    		config.setInt(PROP_CHALLENGE_LEVEL, challengeLevel);
     		if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(WeddingRing.ID)) {
     			config.setInt("marriedCard1", AbstractDungeon.player.masterDeck.group.indexOf(((WeddingRing)AbstractDungeon.player.getRelic(WeddingRing.ID)).card1));
     			config.setInt("marriedCard2", AbstractDungeon.player.masterDeck.group.indexOf(((WeddingRing)AbstractDungeon.player.getRelic(WeddingRing.ID)).card2));
@@ -258,10 +268,11 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     		logger.info("ConstructMod | Loading Config Preferences...");
 	    	SpireConfig config = new SpireConfig("ConstructMod", "ConstructSaveData", constructDefaults);
 			config.load();
-			phoenixStart = config.getBool("phoenixStart");
-			contentSharing_relics = config.getBool("contentSharing");
-			contentSharing_potions = config.getBool("contentSharing_potions");
-			overheatedExpansion = config.getBool("overheatedBETA");
+			phoenixStart = config.getBool(PROP_PHOENIX_START);
+			contentSharing_relics = config.getBool(PROP_RELIC_SHARING);
+			contentSharing_potions = config.getBool(PROP_POTION_SHARING);
+			overheatedExpansion = config.getBool(PROP_OVERHEATED_BETA);
+			challengeLevel = config.getInt(PROP_CHALLENGE_LEVEL);
     	}
     	catch(Exception e) {
     		e.printStackTrace();
@@ -305,13 +316,13 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     	final String[] slimed = {"slimed"};
     	BaseMod.addKeyword(slimed, "Slimed is a status card that costs [R] to exhaust.");
     	final String[] cores = {"cores"};
-    	BaseMod.addKeyword(cores, "Cores are cards that cycle and apply a small bonus effect.");
+    	BaseMod.addKeyword(cores, "Cores are cards that #yCycle and apply a small bonus effect.");
     	final String[] eggs = {"egg","eggs"};
     	BaseMod.addKeyword(eggs, "Eggs are relics that automatically upgrade cards when you acquire them.");
     	final String[] megaUpgrade = {"mega-upgrade","mega-upgraded"};
     	BaseMod.addKeyword(megaUpgrade, "A second upgrade that makes Construct cards even more powerful.");
 		final String[] overheat = {"overheat","[#ff9900]overheat","[#ff9900]overheats","[#ff9900]overheated", "[#ff9900]overheat:","overheats","overheated"};
-		BaseMod.addKeyword(overheat, "Counts down whenever ANY card #ycycles. When it hits #b0, transform this card into a #yBurn for this combat.");
+		BaseMod.addKeyword(overheat, "When too many cards #yCycle in one turn, transform this card into a #yBurn for this combat.");
     }
 	
 	public void receiveEditCharacters() {
@@ -474,21 +485,20 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 			addCard(new Missile());		// atk, cycle
 			addCard(new BlazingSpeed());// atk, overheat 5
 			// rare
-			addCard(new Flamethrower());// atk, cycle?, burn synergy
+			//addCard(new Flamethrower());// atk, cycle?, burn synergy
 
 			//SKL (+1 uncommon, rare)
 			//common
-			addCard(new Coolant());		// block, cooling
 			addCard(new FlammableFog());// block, overheat 5
 			addCard(new CreateCores());	// overheat 10(15)
 			//uncommon
+			addCard(new FlashFreeze());	// block, overheat counter/synergy
 			addCard(new OilSpill());	// overheat 5, overheat synergy
 			addCard(new NuclearCore());	// cycle, overheat 10
 			addCard(new Afterburners());// multi-play, burns
-			//-----supernova
 			//rare
 			addCard(new Implosion());	// burn synergy, play
-			//-----flash freeze (8 Block X times, overheat 10)
+			addCard(new Supernova());	// anti-status
 
 			//PWR (-1 uncommon)
 			//uncommon

@@ -20,7 +20,7 @@ public class Analyze extends AbstractConstructCard {
 	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	public static final String M_UPGRADE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 	private static final int COST = 1;
-	private static final int DRAW_AMT = 1;
+	private static final int DRAW_AMT = 2;
 	private static final int ENERGIZE_AMT = 1;
 	private static final int M_UPGRADE_PLUS_ENERGIZE_AMT = 1;
 	private static final int M_UPGRADE_PLUS_DRAW_AMT = 1;

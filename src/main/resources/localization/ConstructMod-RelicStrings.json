@@ -24,14 +24,14 @@
     "NAME": "Claw Grip",
     "FLAVOR": "An extendable arm used to grab hard-to-reach objects.",
     "DESCRIPTIONS": [
-      "At the end of each turn, #yRetain a random card. It costs #b1 less [R] next turn."
+      "At the end of each turn, #yRetain a random card. It costs #b1 less [E] next turn."
     ]
   },
   "construct:FoamFinger": {
     "NAME": "Foam Finger",
     "FLAVOR": "Always useful when you need a helping hand.",
     "DESCRIPTIONS": [
-      "Draw #b1 additional card at the start of each turn."
+      "For the first #b3 turns of each combat, draw #b1 additional card at the start of your turn."
     ]
   },
   "construct:MegaBattery": {
@@ -62,6 +62,8 @@
       "Upon pickup, choose 2 cards. Once per turn, after you play one of them, play the other one too."
     ]
   },
+
+
   "construct:FreezeFrame": {
     "NAME": "Freeze Frame",
     "FLAVOR": "This wooden picture frame is impossibly cold to the touch.",

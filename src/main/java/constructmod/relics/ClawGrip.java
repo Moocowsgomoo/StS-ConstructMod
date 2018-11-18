@@ -21,7 +21,7 @@ public class ClawGrip extends CustomRelic {
     public AbstractCard card;
 	
     public ClawGrip() {
-        super(ID, new Texture(IMG), RelicTier.BOSS, LandingSound.FLAT);
+        super(ID, new Texture(IMG), RelicTier.RARE, LandingSound.FLAT);
     }
     
     @Override

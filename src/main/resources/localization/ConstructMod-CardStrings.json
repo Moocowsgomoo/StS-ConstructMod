@@ -45,7 +45,7 @@
 	},
 	"construct:Analyze": {
 		"NAME": "Analyze",
-		"DESCRIPTION": "Next turn, gain [R]  and draw !M!  more card.",
+		"DESCRIPTION": "Next turn, gain [R]  and draw !M!  more cards.",
 		"UPGRADE_DESCRIPTION": "Next turn, gain [R]  and draw !M!  more cards.",
 		"EXTENDED_DESCRIPTION": [
 			"Next turn, gain [R] [R] and draw !M!  more cards."	
@@ -53,8 +53,8 @@
 	},
 	"construct:VentSteam": {
 		"NAME": "Vent Steam",
-		"DESCRIPTION": "Exhaust 1 card. NL Apply !M! Weak and Vulnerable.",
-		"UPGRADE_DESCRIPTION": "Exhaust 1 card. NL Apply !M! Weak and Vulnerable to ALL enemies."
+		"DESCRIPTION": "Exhaust 1 card. NL Apply !M! Weak and NL !M! Vulnerable.",
+		"UPGRADE_DESCRIPTION": "Exhaust 1 card. NL Apply !M! Weak and NL !M! Vulnerable to ALL enemies."
 	},
 	"construct:MetalShell": {
 		"NAME": "Metal Shell",
@@ -175,10 +175,11 @@
 	},
 	"construct:Backup": {
 		"NAME": "Backup",
-		"DESCRIPTION": "Choose a non-rare card from your hand. Add !M! copies on top of your draw pile.",
-		"UPGRADE_DESCRIPTION": "Retain. NL Choose a non-rare card from your hand. Add !M! copies on top of your draw pile.",
+		"DESCRIPTION": "Choose a non-rare card from your hand. Add !M! copies on top of your draw pile. NL Exhaust.",
+		"UPGRADE_DESCRIPTION": "Retain. NL Choose a non-rare card from your hand. Add !M! copies on top of your draw pile. NL Exhaust.",
 		"EXTENDED_DESCRIPTION": [
-			"No non-rare cards in hand."
+			"No non-rare cards in hand.",
+			"Retain. NL Choose a non-rare card from your hand. Add !M! copies on top of your draw pile."
 		]
 	},
 	"construct:SweepLaser": {
@@ -198,7 +199,8 @@
 	},
 	"construct:FlakBarrage": {
 		"NAME": "Flak Barrage",
-		"DESCRIPTION": "Cycle if Strength < 1. NL Deal !D! damage to a random enemy !M! times."
+		"DESCRIPTION": "Deal !D! damage to a random enemy !M! times.",
+		"UPGRADE_DESCRIPTION": "Cycle if Strength < 1. NL Deal !D! damage to a random enemy !M! times."
 	},
 	"construct:Disorient": {
 		"NAME": "Disorient",
@@ -517,11 +519,6 @@
 		"UPGRADE_DESCRIPTION": "Innate. NL Whenever a card [#ff9900]Overheats, gain !M! Strength and !M! Dexterity.",
 		"EXTENDED_DESCRIPTION": ["Start combat with this card in play. NL Whenever a card [#ff9900]Overheats, gain !M! Strength and !M! Dexterity."]
 	},
-	"construct:Coolant": {
-		"NAME": "Coolant",
-		"DESCRIPTION": "Gain !B! Block. NL Increase the [#ff9900]Overheat limit of ALL cards by !M! for this combat.",
-		"UPGRADE_DESCRIPTION": "Innate. NL Gain !B! Block. NL Increase the [#ff9900]Overheat limit of ALL cards by !M! for this combat."
-	},
 	"construct:NuclearCore": {
 		"NAME": "Nuclear Core",
 		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Cycle. When cycled: NL Apply !M! Poison to ALL enemies.",
@@ -532,8 +529,8 @@
 	},
 	"construct:OilSpill": {
 		"NAME": "Oil Spill",
-		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Whenever you draw a Burn, target enemy takes !M! damage.",
-		"EXTENDED_DESCRIPTION": ["[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Whenever you draw a Burn, ALL enemies take !M! damage."]
+		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Whenever a Burn hits you, target enemy takes !M! damage.",
+		"EXTENDED_DESCRIPTION": ["[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Whenever a Burn hits you, ALL enemies take !M! damage."]
 	},
 	"construct:FlammableFog": {
 		"NAME": "Flammable Fog",
@@ -543,6 +540,68 @@
 	"construct:Missile": {
 		"NAME": "Missile",
 		"DESCRIPTION": "Cycle if already played this combat. NL Deal !D! damage. NL Apply !M! Weak and !M! Vulnerable."
+	},
+	"construct:CreateCores": {
+		"NAME": "Create Cores",
+		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Shuffle !M! random Cores into your draw pile. NL Draw a card.",
+		"UPGRADE_DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Shuffle !M! random Cores into your draw pile, and upgrade one. NL Draw a card.",
+		"EXTENDED_DESCRIPTION": [
+			"[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Shuffle !M! random upgraded Cores into your draw pile. NL Draw a card."
+		]
+	},
+	"construct:BlazingSpeed": {
+		"NAME": "Blazing Speed",
+		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Deal !D! damage. NL Draw !M! cards."
+	},
+	"construct:Implosion": {
+		"NAME": "Implosion",
+		"DESCRIPTION": "Put ALL Burns from your exhaust pile into your hand. For each, play a random card from your draw pile.",
+		"UPGRADE_DESCRIPTION": "Retain. NL Put ALL Burns from your exhaust pile into your hand. For each, play a random card from your draw pile.",
+		"EXTENDED_DESCRIPTION": [
+			"(Burns: ",
+			") NL "
+			]
+	},
+	"construct:Supernova": {
+		"NAME": "Supernova",
+		"DESCRIPTION": "Exhaust ALL Status cards and replace them with random cards. Those cards cost 0 this combat. NL Exhaust.",
+		"UPGRADE_DESCRIPTION": "Retain. NL Exhaust ALL Status cards and replace them with random cards. Those cards cost 0 this combat. NL Exhaust."
+	},
+	"construct:Rollout": {
+		"NAME": "Rollout",
+		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Deal damage equal to !M! times the number of cards that have Cycled this turn.",
+		"EXTENDED_DESCRIPTION": [
+			"(Deal !D! damage.) NL "
+		]
+	},
+	"construct:Failsafe": {
+		"NAME": "Failsafe",
+		"DESCRIPTION": "The first !M! Status cards you draw each turn Cycle."
+	},
+	"construct:Afterburners": {
+		"NAME": "Afterburners",
+		"DESCRIPTION": "Add 3 Burns to your hand. NL This turn, your next card is played !M! times.",
+		"UPGRADE_DESCRIPTION": "Add 2 Burns to your hand. NL This turn, your next card is played !M! times.",
+		"EXTENDED_DESCRIPTION": [
+			"Add 3 Burns to your hand. NL This turn, your next card is played !M! times."
+		]
+	},
+	"construct:FlashFreeze": {
+		"NAME": "Flash Freeze",
+		"DESCRIPTION": "Gain !B! Block. NL Cards cannot [#ff9900]Overheat until the end of your next turn. NL Exhaust.",
+		"UPGRADE_DESCRIPTION": "Gain !B! Block. NL Cards cannot [#ff9900]Overheat for the next !M! turns. NL Exhaust.",
+		"EXTENDED_DESCRIPTION": [
+			"Retain. NL Gain !B! Block. NL Cards cannot [#ff9900]Overheat for the next !M! turns. NL Exhaust."
+		]
+	},
+
+
+
+
+	"construct:Coolant": {
+		"NAME": "Coolant",
+		"DESCRIPTION": "Gain !B! Block. NL Increase the [#ff9900]Overheat limit of ALL cards by 5 for this combat. NL Exhaust.",
+		"UPGRADE_DESCRIPTION": "Innate. NL Gain !B! Block. NL Increase the [#ff9900]Overheat limit of ALL cards by !M! for this combat. NL Exhaust."
 	},
 	"construct:Flamethrower": {
 		"NAME": "Inferno",
@@ -554,61 +613,10 @@
 			"(Hits !M! times.) NL "
 		]
 	},
-	"construct:CreateCores": {
-		"NAME": "Create Cores",
-		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Shuffle !M! random Cores into your draw pile.",
-		"UPGRADE_DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Shuffle !M! random Cores into your draw pile, and upgrade one.",
-		"EXTENDED_DESCRIPTION": [
-			"[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Shuffle !M! random upgraded Cores into your draw pile."
-		]
-	},
-	"construct:BlazingSpeed": {
-		"NAME": "Blazing Speed",
-		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Deal !D! damage. NL Draw !M! cards."
-	},
-	"construct:Implosion": {
-		"NAME": "Implosion",
-		"DESCRIPTION": "Place ALL Burns from your discard pile into your hand. For each, play a random card from your discard pile.",
-		"UPGRADE_DESCRIPTION": "Place ALL Burns into your hand. For each Burn moved from a pile, play a random card from that pile.",
-		"EXTENDED_DESCRIPTION": [
-			"(Burns: ",
-			" + ",
-			") NL "
-			]
-	},
-	"construct:Supernova": {
-		"NAME": "Supernova",
-		"DESCRIPTION": "Exhaust all Status cards in your hand and replace them with random cards. Those cards cost 0 this combat. NL Exhaust.",
-		"UPGRADE_DESCRIPTION": "Retain. NL Exhaust all Status cards in your hand and replace them with random cards. Those cards cost 0 this combat. NL Exhaust.",
-		"EXTENDED_DESCRIPTION": [
-			"Retain. NL Exhaust ALL Status cards and replace them with random cards. Those cards cost 0 this combat. NL Exhaust."
-		]
-
-	},
 	"construct:SunScreen": {
 		"NAME": "Sun Screen",
 		"DESCRIPTION": "At the end of your turn, Exhaust a card. If it's a Burn, gain !M! Block.",
 		"UPGRADE_DESCRIPTION": "At the end of your turn, Exhaust up to 2 cards. For each Burn exhausted, gain !M! Block."
-	},
-	"construct:Rollout": {
-		"NAME": "Rollout",
-		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Deal damage equal to double the number of cards that have Cycled this turn.",
-		"EXTENDED_DESCRIPTION": [
-			"(Deal !D! damage.) NL "
-		]
-	},
-	"construct:Failsafe": {
-		"NAME": "Failsafe",
-		"DESCRIPTION": "The first Status card you draw each turn Cycles.",
-		"UPGRADE_DESCRIPTION": "The first !M! Status cards you draw each turn Cycle."
-	},
-	"construct:Afterburners": {
-		"NAME": "Afterburners",
-		"DESCRIPTION": "Add 3 Burns to your hand. NL This turn, your next card is played !M! times.",
-		"UPGRADE_DESCRIPTION": "Add 2 Burns to your hand. NL This turn, your next card is played !M! times.",
-		"EXTENDED_DESCRIPTION": [
-			"Add 3 Burns to your hand. NL This turn, your next card is played !M! times."
-		]
 	},
 	"construct:ClusterBomb": {
 		"NAME": "Cluster Bomb",

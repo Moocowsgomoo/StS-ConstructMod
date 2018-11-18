@@ -26,10 +26,9 @@ public class Afterburners extends AbstractConstructCard {
 	private static final int COST = 2;
 	private static final int PLAY_TIMES = 3;
 	//public static final int UPGRADE_PLUS_PLAY_TIMES = 1;
-	public static final int M_UPGRADE_PLUS_PLAY_TIMES = 2;
+	public static final int M_UPGRADE_PLUS_PLAY_TIMES = 1;
 	public static final int BURNS = 3;
 	public static final int UPGRADED_BURNS = 2;
-	public static final int M_UPGRADED_BURNS = 3;
 	private static final int POOL = 1;
 
 	public Afterburners() {
@@ -40,7 +39,7 @@ public class Afterburners extends AbstractConstructCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new Burn(),upgraded?(megaUpgraded?M_UPGRADED_BURNS:UPGRADED_BURNS):BURNS));
+		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new Burn(),upgraded?(megaUpgraded?UPGRADED_BURNS:UPGRADED_BURNS):BURNS));
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new AfterburnersPower(p,this.magicNumber), this.magicNumber));
 	}
 

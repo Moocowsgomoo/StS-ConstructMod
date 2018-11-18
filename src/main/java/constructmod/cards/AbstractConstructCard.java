@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import constructmod.ConstructMod;
 import constructmod.actions.OverheatAction;
 import constructmod.powers.AbstractCyclePower;
+import constructmod.powers.FlashFreezePower;
 import org.apache.logging.log4j.Level;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -38,7 +39,7 @@ public abstract class AbstractConstructCard extends CustomCard {
 	}
 
 	public boolean checkOverheat(){
-		if (overheat <= 0) return false;
+		if (overheat <= 0 || AbstractDungeon.player.hasPower(FlashFreezePower.POWER_ID)) return false;
 		//if (AbstractDungeon.player.hand.contains(this)) this.flash(Color.RED.cpy());
 		if (ConstructMod.cyclesThisTurn >= overheat){
 			AbstractDungeon.actionManager.addToTop(new OverheatAction(this));

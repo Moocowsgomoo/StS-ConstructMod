@@ -18,10 +18,10 @@ public class Failsafe extends AbstractConstructCard {
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-	private static final int COST = 2;
-	private static final int NUM_CARDS = 1;
+	private static final int COST = 1;
+	private static final int NUM_CARDS = 2;
 	public static final int UPGRADE_PLUS_NUM_CARDS = 1;
-	public static final int M_UPGRADE_PLUS_NUM_CARDS = 3;
+	public static final int M_UPGRADE_PLUS_NUM_CARDS = 4;
 	private static final int POOL = 1;
 
 	public Failsafe() {
@@ -44,8 +44,6 @@ public class Failsafe extends AbstractConstructCard {
 	public void upgrade() {
 		if (!this.upgraded) {
 			this.upgradeName();
-			this.rawDescription = UPGRADE_DESCRIPTION;
-			this.initializeDescription();
 			this.upgradeMagicNumber(UPGRADE_PLUS_NUM_CARDS);
 		} else if (this.canUpgrade()) {
 			this.megaUpgradeName();

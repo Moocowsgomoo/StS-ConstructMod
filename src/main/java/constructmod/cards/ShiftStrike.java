@@ -20,6 +20,7 @@ import basemod.abstracts.CustomCard;
 import basemod.helpers.CardTags;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
+import constructmod.relics.Challenge1;
 
 public class ShiftStrike extends AbstractCycleCard {
 	public static final String ID = ConstructMod.makeID("ShiftStrike");
@@ -46,7 +47,7 @@ public class ShiftStrike extends AbstractCycleCard {
 
 	@Override
 	public boolean canCycle() {
-		return ConstructMod.challengeLevel >= 1 && super.canCycle() &&
+		return ConstructMod.hasChallengeActive(1) && super.canCycle() &&
 				AbstractDungeon.player.hasPower(DexterityPower.POWER_ID) &&
 				AbstractDungeon.player.getPower(DexterityPower.POWER_ID).amount < 0;
 	}

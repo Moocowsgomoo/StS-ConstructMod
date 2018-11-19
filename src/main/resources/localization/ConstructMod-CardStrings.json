@@ -7,6 +7,14 @@
 		"NAME": "Defend",
 		"DESCRIPTION": "Cycle if Dexterity < 0. NL Gain !B! Block."
 	},
+	"construct:HeatedStrike": {
+		"NAME": "Heated Strike",
+		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Cycle if Strength < 0. NL Deal !D! damage."
+	},
+	"construct:HeatedDefend": {
+		"NAME": "Heated Defend",
+		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Cycle if Dexterity < 0. NL Gain !B! Block."
+	},
 	"construct:AttackMode": {
 		"NAME": "Attack Mode",
 		"DESCRIPTION": "Retain. NL Gain !M! Strength. NL Lose !M! Dexterity.",

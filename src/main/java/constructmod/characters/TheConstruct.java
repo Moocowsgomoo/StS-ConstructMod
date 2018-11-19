@@ -38,8 +38,7 @@ import constructmod.ConstructMod;
 import constructmod.cards.*;
 import constructmod.patches.AbstractCardEnum;
 import constructmod.patches.TheConstructEnum;
-import constructmod.relics.ClockworkPhoenix;
-import constructmod.relics.Cogwheel;
+import constructmod.relics.*;
 
 public class TheConstruct extends CustomPlayer{
 	public static final int ENERGY_PER_TURN = 3;
@@ -143,18 +142,32 @@ public class TheConstruct extends CustomPlayer{
 
 	public ArrayList<String> getStartingDeck() {
 		ArrayList<String> retVal = new ArrayList<>();
+
+		if (ConstructMod.challengeLevel >= 2){
+			retVal.add(HeatedStrike.ID);
+			retVal.add(HeatedStrike.ID);
+		}else{
+			retVal.add(Strike_Gold.ID);
+			retVal.add(Strike_Gold.ID);
+		}
 		retVal.add(Strike_Gold.ID);
 		retVal.add(Strike_Gold.ID);
 		retVal.add(Strike_Gold.ID);
-		retVal.add(Strike_Gold.ID);
-		retVal.add(Strike_Gold.ID);
+
+		if (ConstructMod.challengeLevel >= 2){
+			retVal.add(HeatedDefend.ID);
+			retVal.add(HeatedDefend.ID);
+		}else{
+			retVal.add(Defend_Gold.ID);
+			retVal.add(Defend_Gold.ID);
+		}
 		retVal.add(Defend_Gold.ID);
 		retVal.add(Defend_Gold.ID);
 		retVal.add(Defend_Gold.ID);
-		retVal.add(Defend_Gold.ID);
-		retVal.add(Defend_Gold.ID);
+
 		retVal.add(AttackMode.ID);
 		retVal.add(DefenseMode.ID);
+
 		return retVal;
 	}
 	
@@ -168,6 +181,8 @@ public class TheConstruct extends CustomPlayer{
 			retVal.add(Cogwheel.ID);
 			UnlockTracker.markRelicAsSeen(Cogwheel.ID);
 		}
+
+		if (ConstructMod.challengeLevel > 0) retVal.add(ConstructMod.challengeRelics.get(ConstructMod.challengeLevel-1).relicId);
 		return retVal;
 	}
 	

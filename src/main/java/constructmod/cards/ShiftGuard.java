@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
+import constructmod.relics.Challenge1;
 
 public class ShiftGuard extends AbstractCycleCard {
 	public static final String ID = ConstructMod.makeID("ShiftGuard");
@@ -38,7 +39,7 @@ public class ShiftGuard extends AbstractCycleCard {
 
 	@Override
 	public boolean canCycle() {
-		return ConstructMod.challengeLevel >= 1 && super.canCycle() &&
+		return ConstructMod.hasChallengeActive(1) && super.canCycle() &&
 				AbstractDungeon.player.hasPower(DexterityPower.POWER_ID) &&
 				AbstractDungeon.player.getPower(DexterityPower.POWER_ID).amount < 0;
 	}

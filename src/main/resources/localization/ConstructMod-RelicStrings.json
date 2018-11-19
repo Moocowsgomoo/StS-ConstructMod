@@ -62,6 +62,26 @@
       "Upon pickup, choose 2 cards. Once per turn, after you play one of them, play the other one too."
     ]
   },
+  "construct:Challenge1": {
+    "NAME": "Challenger's Mark 1",
+    "FLAVOR": "The mark of one who chooses to undertake the Spire's toughest challenges."
+  },
+  "construct:Challenge2": {
+    "NAME": "Challenger's Mark 2",
+    "FLAVOR": "The mark of one who chooses to undertake the Spire's toughest challenges."
+  },
+  "construct:Challenge3": {
+    "NAME": "Challenger's Mark 3",
+    "FLAVOR": "The mark of one who chooses to undertake the Spire's toughest challenges."
+  },
+  "construct:Challenge4": {
+    "NAME": "Challenger's Mark 4",
+    "FLAVOR": "The mark of one who chooses to undertake the Spire's toughest challenges."
+  },
+  "construct:Challenge5": {
+    "NAME": "Challenger's Mark 5",
+    "FLAVOR": "The mark of one who chooses to undertake the Spire's toughest challenges."
+  },
 
 
   "construct:FreezeFrame": {

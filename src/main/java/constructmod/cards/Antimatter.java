@@ -49,7 +49,6 @@ public class Antimatter extends AbstractConstructCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		this.applyPowers();
 		if (this.megaUpgraded) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new EnergizedPower(p, EnergyPanel.totalCount),EnergyPanel.totalCount));
 		AbstractDungeon.actionManager.addToBottom(new LoseEnergyAction(EnergyPanel.totalCount));
 		//if (this.megaUpgraded) AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
@@ -75,6 +74,17 @@ public class Antimatter extends AbstractConstructCard {
 		
 		super.applyPowers();
 		
+		this.rawDescription = EXTENDED_DESCRIPTION + desc;
+		initializeDescription();
+	}
+
+	@Override
+	public void calculateCardDamage(AbstractMonster m){
+
+		this.damage = this.baseDamage = (AbstractDungeon.player.hand.size() - 1) * this.magicNumber;
+
+		super.calculateCardDamage(m);
+
 		this.rawDescription = EXTENDED_DESCRIPTION + desc;
 		initializeDescription();
 	}

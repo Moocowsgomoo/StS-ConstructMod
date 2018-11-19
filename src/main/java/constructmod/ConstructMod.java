@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import constructmod.potions.MegaPotion;
 import constructmod.potions.ShiftPotion;
@@ -83,9 +84,9 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 	public static final String[] CHALLENGE_STRINGS = {
 			"",
 			"Cards that shift your stats now Cycle under certain conditions.",
-			"Some of your starter cards Overheat.",
-			"Cards with the Retain keyword place themselves on top of your draw pile instead of Retaining.",
-			"Burn cards are now Mega-upgraded.",
+			"Some of your starter cards [#ff9900]Overheat.",
+			"Cards with the #yRetain keyword place themselves on top of your draw pile instead of Retaining.",
+			"#yBurn cards are now #yMega-upgraded.",
 			"ALL Construct cards are less effective."
 	};
 
@@ -93,6 +94,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 	public static final int CYCLES_BEFORE_FASTMODE = 20;
 
 	public static final ArrayList<AbstractCard> cores = new ArrayList<>();
+	public static final ArrayList<AbstractRelic> challengeRelics = new ArrayList<>();
 
 	public static final boolean isReplayLoaded = Loader.isModLoaded("ReplayTheSpireMod");
 	public static final boolean isInfiniteLoaded = Loader.isModLoaded("infinitespire");
@@ -179,7 +181,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 			saveData();
 		});
 		ModLabel challengeIntroTxt1 = new ModLabel("Challenge Mode modifies your character-specific cards and items for a more difficult climb.",350.0f, 430.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
-		ModLabel challengeIntroTxt2 = new ModLabel("Currently only one level exists; more will be added soon!",350.0f, 400.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
+		ModLabel challengeIntroTxt2 = new ModLabel("Currently only two levels exist; more will be added soon!",350.0f, 400.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
 		ModLabel challengeLabelTxt = new ModLabel("Challenge Level:",350.0f, 350.0f,settingsPanel,(me)->{});
 		ModLabel challengeLevelTxt = new ModLabel(""+challengeLevel,650.0f, 350.0f,settingsPanel,(me)->{});
 		ModLabel challengeDescTxt = new ModLabel(CHALLENGE_STRINGS[challengeLevel],400.0f, 300.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
@@ -187,12 +189,14 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 			if (challengeLevel > 0) challengeLevel--;
 			challengeLevelTxt.text = "" + challengeLevel;
 			challengeDescTxt.text = CHALLENGE_STRINGS[challengeLevel];
+			resetCharSelect();
 			saveData();
 		});
 		ModButton challengeRightBtn = new ModButton(665.0f, 340.0f, ImageMaster.loadImage("img/tinyRightArrow.png"),settingsPanel,(me)->{
-			if (challengeLevel < 1) challengeLevel++;
+			if (challengeLevel < 2) challengeLevel++;
 			challengeLevelTxt.text = "" + challengeLevel;
 			challengeDescTxt.text = CHALLENGE_STRINGS[challengeLevel];
+			resetCharSelect();
 			saveData();
 		});
 
@@ -368,6 +372,8 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		// BASIC
 		addCard(new Strike_Gold());
 		addCard(new Defend_Gold());
+		addCard(new HeatedStrike());
+		addCard(new HeatedDefend());
 		addCard(new AttackMode());
 		addCard(new DefenseMode());
 		
@@ -583,6 +589,15 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.addRelicToCustomPool(new ClockworkPhoenix(), AbstractCardEnum.CONSTRUCTMOD);
 		BaseMod.addRelicToCustomPool(new MegaBattery(), AbstractCardEnum.CONSTRUCTMOD);
 		BaseMod.addRelicToCustomPool(new PurpleEmber(), AbstractCardEnum.CONSTRUCTMOD);
+
+		challengeRelics.add(new Challenge1());
+		challengeRelics.add(new Challenge2());
+		challengeRelics.add(new Challenge3());
+		challengeRelics.add(new Challenge4());
+		challengeRelics.add(new Challenge5());
+		for (AbstractRelic relic : challengeRelics){
+			BaseMod.addRelicToCustomPool(relic, AbstractCardEnum.CONSTRUCTMOD);
+		}
 	}
 
 	/*public void adjustRelics(){
@@ -647,6 +662,26 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 	public static void resetCycles(){
 		cyclesThisTurn = 0;
 		heatBar.onResetCycles();
+	}
+
+	public static boolean hasChallengeActive(int num){
+		if (AbstractDungeon.player == null || num <= 0) return false;
+		for (int i=num-1;i<challengeRelics.size();i++){
+			if (AbstractDungeon.player.hasRelic(challengeRelics.get(i).relicId)){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public static String getAllChallengeDescriptionsUpTo(int num){
+		if (num > CHALLENGE_STRINGS.length) num = CHALLENGE_STRINGS.length;
+		String msg = "";
+		for (int i=1;i<=num;i++){
+			if (i>1) msg += " NL ";
+			msg += i + ": " + CHALLENGE_STRINGS[i];
+		}
+		return msg;
 	}
 
 	public static boolean areCyclesFast(){

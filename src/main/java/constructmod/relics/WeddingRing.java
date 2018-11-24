@@ -172,7 +172,8 @@ public class WeddingRing extends CustomRelic
 	                }
 	        	}
 	        }
-	        if (cardToPlay != null) AbstractDungeon.player.hand.removeCard(cardToPlay);
+	        // don't need to remove from hand; if we do, and the card can't kill its intended target, it is permanently removed!
+	        //if (cardToPlay != null) AbstractDungeon.player.hand.removeCard(cardToPlay);
 	        
 	        for (AbstractCard card : AbstractDungeon.player.discardPile.group) {
 	        	if (c != card && WeddingRingPatch.isMarried.get(card)) {

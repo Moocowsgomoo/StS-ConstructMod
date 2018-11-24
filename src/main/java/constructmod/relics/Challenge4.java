@@ -10,7 +10,7 @@ public class Challenge4 extends CustomRelic {
     private static final String IMG = "img/constructRelics/Challenge4.png";
 
     public Challenge4() {
-        super(ID, new Texture(IMG), RelicTier.STARTER, LandingSound.CLINK);
+        super(ID, new Texture(IMG), RelicTier.SPECIAL, LandingSound.CLINK);
     }
 
     @Override

@@ -571,7 +571,7 @@
 			]
 	},
 	"construct:Supernova": {
-		"NAME": "Supernova",
+		"NAME": "Sunburst",
 		"DESCRIPTION": "Exhaust ALL Status cards and replace them with random cards. Those cards cost 0 this combat. NL Exhaust.",
 		"UPGRADE_DESCRIPTION": "Retain. NL Exhaust ALL Status cards and replace them with random cards. Those cards cost 0 this combat. NL Exhaust."
 	},
@@ -579,7 +579,7 @@
 		"NAME": "Rollout",
 		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Deal damage equal to !M! times the number of cards that have Cycled this turn.",
 		"EXTENDED_DESCRIPTION": [
-			"(Deal !D! damage.) NL "
+			"(Deals !D! damage.) NL "
 		]
 	},
 	"construct:Failsafe": {

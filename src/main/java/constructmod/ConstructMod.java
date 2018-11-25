@@ -3,16 +3,19 @@ package constructmod;
 import java.util.ArrayList;
 
 import basemod.*;
+import basemod.abstracts.CustomUnlockBundle;
 import basemod.interfaces.*;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.Loader;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.unlock.AbstractUnlock;
 import constructmod.potions.MegaPotion;
 import constructmod.potions.ShiftPotion;
 import constructmod.powers.AbstractOnDrawPower;
@@ -83,11 +86,19 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 	public static int challengeLevel = 0;
 	public static final String[] CHALLENGE_STRINGS = {
 			"",
-			"Cards that shift your stats now Cycle under certain conditions.",
+			"Cards that shift your stats now [#ffff66]Cycle [#ffffff]under certain conditions.",
 			"Some of your starter cards [#ff9900]Overheat.",
-			"Cards with the #yRetain keyword place themselves on top of your draw pile instead of Retaining.",
-			"#yBurn cards are now #yMega-upgraded.",
-			"ALL Construct cards are less effective."
+			"[#ffff66]Retained [#ffffff]cards are now placed on top of your draw pile instead of staying in your hand.",
+			"[#ffff66]Burn [#ffffff]cards are now [#ffff66]Mega-upgraded.",
+			"(MAX LEVEL) ALL Construct cards are less effective."
+	};
+	public static final String[] SHORT_CHALLENGE_STRINGS = {
+			"",
+			"Stat-shifting cards #yCycle.",
+			"Starter cards [#ff9900]Overheat.",
+			"#yRetained cards rebound.",
+			"#yBurns are #yMega-upgraded.",
+			"Weaker cards."
 	};
 
 	public static int cyclesThisTurn = 0;
@@ -95,6 +106,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 
 	public static final ArrayList<AbstractCard> cores = new ArrayList<>();
 	public static final ArrayList<AbstractRelic> challengeRelics = new ArrayList<>();
+	public static final ArrayList<AbstractCard> expansionCards1 = new ArrayList<>();
 
 	public static final boolean isReplayLoaded = Loader.isModLoaded("ReplayTheSpireMod");
 	public static final boolean isInfiniteLoaded = Loader.isModLoaded("infinitespire");
@@ -173,15 +185,15 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 			//adjustPotions();
 			saveData();
 		});
-		ModLabeledToggleButton overheatedExpansionBtn = new ModLabeledToggleButton("Untested expansion cards (v2) - please tell me what you think! (REQUIRES RESTART)",
-				350.0f, 500.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
+		ModLabeledToggleButton overheatedExpansionBtn = new ModLabeledToggleButton("Enable Overheated expansion (14 new cards)",
+				350.0f, 650.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
 				overheatedExpansion, settingsPanel, (label) -> {}, (button) -> {
 			overheatedExpansion = button.enabled;
-			//adjustCards();
+			adjustCards();
 			saveData();
 		});
 		ModLabel challengeIntroTxt1 = new ModLabel("Challenge Mode modifies your character-specific cards and items for a more difficult climb.",350.0f, 430.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
-		ModLabel challengeIntroTxt2 = new ModLabel("Currently only two levels exist; more will be added soon!",350.0f, 400.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
+		ModLabel challengeIntroTxt2 = new ModLabel("Currently 3 levels exist; more coming soon!",350.0f, 400.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
 		ModLabel challengeLabelTxt = new ModLabel("Challenge Level:",350.0f, 350.0f,settingsPanel,(me)->{});
 		ModLabel challengeLevelTxt = new ModLabel(""+challengeLevel,650.0f, 350.0f,settingsPanel,(me)->{});
 		ModLabel challengeDescTxt = new ModLabel(CHALLENGE_STRINGS[challengeLevel],400.0f, 300.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
@@ -193,7 +205,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 			saveData();
 		});
 		ModButton challengeRightBtn = new ModButton(665.0f, 340.0f, ImageMaster.loadImage("img/tinyRightArrow.png"),settingsPanel,(me)->{
-			if (challengeLevel < 2) challengeLevel++;
+			if (challengeLevel < 3) challengeLevel++;
 			challengeLevelTxt.text = "" + challengeLevel;
 			challengeDescTxt.text = CHALLENGE_STRINGS[challengeLevel];
 			resetCharSelect();
@@ -233,6 +245,17 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		}
 		BaseMod.addPotion(MegaPotion.class, Color.PURPLE.cpy(), Color.VIOLET.cpy(), Color.PURPLE.cpy(), MegaPotion.POTION_ID, TheConstructEnum.THE_CONSTRUCT_MOD);
     }
+
+	/*@Override
+	public void receiveSetUnlocks() {
+		// servant unlock 1
+		BaseMod.addUnlockBundle(new CustomUnlockBundle(AbstractUnlock.UnlockType.MISC,
+				"Manipulate", "Moondial", "Enbodiment"
+		), TheServantEnum.THE_SERVANT, 0);
+		UnlockTracker.addCard("Manipulate");
+		UnlockTracker.addCard("Moondial");
+		UnlockTracker.addCard("Enbodiment");
+	}*/
 
     /*public void adjustPotions(){
 		BaseMod.removePotion(ShiftPotion.POTION_ID);
@@ -482,39 +505,37 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		// MISC.
 		//addCard(new CoreShard()); // status, cycle
 
-		if (overheatedExpansion){
-			//ATK (-1 rare)
-			// common
-			addCard(new PhosphorStorm());//atk, overheat 5
-			addCard(new Rollout());		// atk, cycle synergy, overheat 10(15)
-			// uncommon
-			addCard(new Missile());		// atk, cycle
-			addCard(new BlazingSpeed());// atk, overheat 5
-			// rare
-			//addCard(new Flamethrower());// atk, cycle?, burn synergy
+		//ATK (-1 rare)
+		// common
+		addHeatCard(new PhosphorStorm());//atk, overheat 5
+		addHeatCard(new Rollout());		// atk, cycle synergy, overheat 10(15)
+		// uncommon
+		addHeatCard(new Missile());		// atk, cycle
+		addHeatCard(new BlazingSpeed());// atk, overheat 5
+		// rare
+		//addHeatCard(new Flamethrower());// atk, cycle?, burn synergy
 
-			//SKL (+1 uncommon, rare)
-			//common
-			addCard(new FlammableFog());// block, overheat 5
-			addCard(new CreateCores());	// overheat 10(15)
-			//uncommon
-			addCard(new FlashFreeze());	// block, overheat counter/synergy
-			addCard(new OilSpill());	// overheat 5, overheat synergy
-			addCard(new NuclearCore());	// cycle, overheat 10
-			addCard(new Afterburners());// multi-play, burns
-			//rare
-			addCard(new Implosion());	// burn synergy, play
-			addCard(new Supernova());	// anti-status
+		//SKL (+1 uncommon, rare)
+		//common
+		addHeatCard(new FlammableFog());// block, overheat 5
+		addHeatCard(new CreateCores());	// overheat 10(15)
+		//uncommon
+		addHeatCard(new FlashFreeze());	// block, overheat counter/synergy
+		addHeatCard(new OilSpill());	// overheat 5, overheat synergy
+		addHeatCard(new NuclearCore());	// cycle, overheat 10
+		addHeatCard(new Afterburners());// multi-play, burns
+		//rare
+		addHeatCard(new Implosion());	// burn synergy, play
+		addHeatCard(new Supernova());	// anti-status
 
-			//PWR (-1 uncommon)
-			//uncommon
-			addCard(new Failsafe());	 // anti-status
-			//rare
-			addCard(new Agitation());	// overheat synergy
-			//sunscreen
+		//PWR (-1 uncommon)
+		//uncommon
+		addHeatCard(new Failsafe());	 // anti-status
+		//rare
+		addHeatCard(new Agitation());	// overheat synergy
+		//sunscreen
 
-			cores.add(new NuclearCore()); // can be randomly generated only if expansion is enabled
-		}
+		if (overheatedExpansion) cores.add(new NuclearCore()); // can be randomly generated only if expansion is enabled
 
 		// cores that can be randomly generated
 		cores.add(new FlameCore());
@@ -525,45 +546,36 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		cores.add(new BatteryCore());
 	}
 
-	/*public void adjustCards(){
+	public void adjustCards(){
 
-		BaseMod.removeCard(PhosphorStorm.ID,AbstractCardEnum.CONSTRUCTMOD);
-		BaseMod.removeCard(Missile.ID,AbstractCardEnum.CONSTRUCTMOD);
-		BaseMod.removeCard(Coolant.ID,AbstractCardEnum.CONSTRUCTMOD);
-		BaseMod.removeCard(CreateCores.ID,AbstractCardEnum.CONSTRUCTMOD);
-		BaseMod.removeCard(OilSpill.ID,AbstractCardEnum.CONSTRUCTMOD);
-		BaseMod.removeCard(Rollout.ID,AbstractCardEnum.CONSTRUCTMOD);
-		BaseMod.removeCard(Flamethrower.ID,AbstractCardEnum.CONSTRUCTMOD);
-		BaseMod.removeCard(FlammableFog.ID,AbstractCardEnum.CONSTRUCTMOD);
-		BaseMod.removeCard(Failsafe.ID,AbstractCardEnum.CONSTRUCTMOD);
-		BaseMod.removeCard(BlazingSpeed.ID,AbstractCardEnum.CONSTRUCTMOD);
-		BaseMod.removeCard(NuclearCore.ID,AbstractCardEnum.CONSTRUCTMOD);
-		BaseMod.removeCard(Implosion.ID,AbstractCardEnum.CONSTRUCTMOD);
-		BaseMod.removeCard(Agitation.ID,AbstractCardEnum.CONSTRUCTMOD);
-		if (cores.size() == 7) cores.remove(6); // remove nuclear core in the hackiest way possible
-
-		if (overheatedExpansion){
-			addCard(new PhosphorStorm());//atk, overheat
-			addCard(new Missile());		// atk, cycle
-			addCard(new Coolant());		// block, cooling
-			addCard(new CreateCores());	// cores, overheat
-			addCard(new OilSpill());	// overheat, overheat synergy
-			addCard(new Rollout());		// atk, cycle synergy, overheat
-			addCard(new Flamethrower());// atk, cycle?, burn synergy
-			addCard(new FlammableFog());// overheat, cooling synergy
-			addCard(new Failsafe());	 // anti-status
-			addCard(new BlazingSpeed());// atk, overheat
-			addCard(new NuclearCore());	// cycle, overheat
-			addCard(new Implosion());	// burn synergy, play
-			addCard(new Agitation());	// overheat synergy
-
+    	if (!overheatedExpansion) {
+    		for (AbstractCard c : expansionCards1){
+    			BaseMod.removeCard(c.cardID, AbstractCardEnum.CONSTRUCTMOD);
+			}
+			if (cores.size() == 7) cores.remove(6); // remove nuclear core in the hackiest way possible
+		}
+		else{
+			for (AbstractCard c : expansionCards1){
+				addCard(c);
+			}
 			cores.add(new NuclearCore()); // can be randomly generated only if expansion is enabled
 		}
-	}*/
+
+		CardLibrary.resetForReload();
+		CardLibrary.initialize();
+	}
 
 	public void addCard(AbstractCard card){
     	BaseMod.addCard(card);
     	UnlockTracker.unlockCard(card.cardID);
+	}
+
+	public void addHeatCard(AbstractCard card){
+    	if (overheatedExpansion) {
+			BaseMod.addCard(card);
+			UnlockTracker.unlockCard(card.cardID);
+		}
+		expansionCards1.add(card);
 	}
 
 	public static AbstractCard getRandomCore(){
@@ -638,7 +650,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     @Override
 	public void receiveRender(SpriteBatch sb){
 		if (AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom() != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT &&
-				AbstractDungeon.player != null){
+				AbstractDungeon.player != null && !AbstractDungeon.isScreenUp){
 			heatBar.render(sb);
 		}
 	}
@@ -675,11 +687,11 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 	}
 
 	public static String getAllChallengeDescriptionsUpTo(int num){
-		if (num > CHALLENGE_STRINGS.length) num = CHALLENGE_STRINGS.length;
+		if (num > SHORT_CHALLENGE_STRINGS.length) num = SHORT_CHALLENGE_STRINGS.length;
 		String msg = "";
 		for (int i=1;i<=num;i++){
 			if (i>1) msg += " NL ";
-			msg += i + ": " + CHALLENGE_STRINGS[i];
+			msg += i + ": " + SHORT_CHALLENGE_STRINGS[i];
 		}
 		return msg;
 	}

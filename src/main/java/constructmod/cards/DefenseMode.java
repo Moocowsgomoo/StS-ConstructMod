@@ -41,9 +41,10 @@ public class DefenseMode extends AbstractCycleCard {
 
 	@Override
 	public boolean canCycle() {
+		ConstructMod.logger.debug(ConstructMod.hasChallengeActive(1));
 		return ConstructMod.hasChallengeActive(1) && super.canCycle() &&
-				AbstractDungeon.player.hasPower(DexterityPower.POWER_ID) &&
-				AbstractDungeon.player.getPower(DexterityPower.POWER_ID).amount < 0;
+				AbstractDungeon.player.hasPower(StrengthPower.POWER_ID) &&
+				AbstractDungeon.player.getPower(StrengthPower.POWER_ID).amount < 0;
 	}
 
 	@Override

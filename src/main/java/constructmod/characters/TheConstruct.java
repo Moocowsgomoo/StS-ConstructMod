@@ -23,10 +23,7 @@ import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.city.Vampires;
-import com.megacrit.cardcrawl.helpers.CardHelper;
-import com.megacrit.cardcrawl.helpers.FontHelper;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.helpers.ScreenShake;
+import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -169,6 +166,24 @@ public class TheConstruct extends CustomPlayer{
 		retVal.add(DefenseMode.ID);
 
 		return retVal;
+	}
+
+	@Override
+	public void initializeStarterDeck(){
+		super.initializeStarterDeck();
+		for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
+			// if we have heated cards in starter deck (from Challenge Mode), upgrade one copy of each
+			if (c instanceof HeatedDefend) {
+				c.upgrade();
+				break;
+			}
+		}
+		for (AbstractCard c : AbstractDungeon.player.masterDeck.group){
+			if (c instanceof HeatedStrike){
+				c.upgrade();
+				break;
+			}
+		}
 	}
 	
 	public ArrayList<String> getStartingRelics() {

@@ -40,8 +40,8 @@ public class ShiftGuard extends AbstractCycleCard {
 	@Override
 	public boolean canCycle() {
 		return ConstructMod.hasChallengeActive(1) && super.canCycle() &&
-				AbstractDungeon.player.hasPower(DexterityPower.POWER_ID) &&
-				AbstractDungeon.player.getPower(DexterityPower.POWER_ID).amount < 0;
+				AbstractDungeon.player.hasPower(StrengthPower.POWER_ID) &&
+				AbstractDungeon.player.getPower(StrengthPower.POWER_ID).amount < 0;
 	}
 
 	@Override

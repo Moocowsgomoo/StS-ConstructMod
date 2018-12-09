@@ -193,7 +193,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 			saveData();
 		});
 		ModLabel challengeIntroTxt1 = new ModLabel("Challenge Mode modifies your character-specific cards and items for a more difficult climb.",350.0f, 430.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
-		ModLabel challengeIntroTxt2 = new ModLabel("Currently 3 levels exist; more coming soon!",350.0f, 400.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
+		ModLabel challengeIntroTxt2 = new ModLabel("Currently 4 levels exist; level 5 coming soon!",350.0f, 400.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
 		ModLabel challengeLabelTxt = new ModLabel("Challenge Level:",350.0f, 350.0f,settingsPanel,(me)->{});
 		ModLabel challengeLevelTxt = new ModLabel(""+challengeLevel,650.0f, 350.0f,settingsPanel,(me)->{});
 		ModLabel challengeDescTxt = new ModLabel(CHALLENGE_STRINGS[challengeLevel],400.0f, 300.0f,FontHelper.charDescFont,settingsPanel,(me)->{});

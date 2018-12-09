@@ -18,7 +18,7 @@ import constructmod.ConstructMod;
 
 public class DoubleNextDamagePower extends AbstractPower {
     public static final String POWER_ID = ConstructMod.makeID("DoubleNextDamage");
-    public static final String NAME = "Double Next";
+    public static final String NAME = "Double Next Damage";
     public static final String[] DESCRIPTIONS = new String[] {
             "Your next attack this turn deals double damage."
     };

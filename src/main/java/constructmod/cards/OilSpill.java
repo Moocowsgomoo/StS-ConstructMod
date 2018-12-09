@@ -21,7 +21,7 @@ public class OilSpill extends AbstractConstructCard {
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	private static final String M_UPGRADE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 	private static final int COST = 1;
-	private static final int OIL_DAMAGE = 10;
+	private static final int OIL_DAMAGE = 9;
 	public static final int OVERHEAT = 5;
 	private static final int UPGRADE_PLUS_OIL_DAMAGE = 2;
 	private static final int M_UPGRADE_PLUS_OIL_DAMAGE = 3;

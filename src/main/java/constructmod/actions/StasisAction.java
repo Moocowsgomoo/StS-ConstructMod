@@ -1,6 +1,7 @@
 package constructmod.actions;
 
 import com.megacrit.cardcrawl.actions.*;
+import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.localization.*;
 
 import constructmod.cards.AbstractConstructCard;
@@ -44,7 +45,7 @@ public class StasisAction extends AbstractGameAction
             if (returnedStasisCard != null) {
         		for (int j=0;j<5;j++) {
         			if (returnedStasisCard instanceof AbstractConstructCard) ((AbstractConstructCard)returnedStasisCard).upgrade(true, true);
-            		else returnedStasisCard.upgrade();
+            		else if (returnedStasisCard.canUpgrade()) returnedStasisCard.upgrade();
         		}
         		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(returnedStasisCard,this.prevAmount));
             }

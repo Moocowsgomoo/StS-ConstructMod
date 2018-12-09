@@ -33,7 +33,7 @@ public class Implosion extends AbstractConstructCard {
 
 	public Implosion() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, CardType.SKILL,
-				AbstractCardEnum.CONSTRUCTMOD, CardRarity.RARE, CardTarget.NONE, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, CardRarity.UNCOMMON, CardTarget.NONE, POOL);
 		desc = DESCRIPTION;
 	}
 

@@ -30,7 +30,7 @@ public class FlammableFog extends AbstractConstructCard {
 	public static final String M_UPGRADE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 	public static final int COST = 1;
 	public static final int OVERHEAT = 5;
-	public static final int BLOCK = 6;
+	public static final int BLOCK = 5;
 	public static final int UPGRADE_PLUS_BLOCK = 2;
 	private static final int POOL = 1;
 

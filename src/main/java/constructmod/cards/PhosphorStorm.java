@@ -25,7 +25,7 @@ public class PhosphorStorm extends AbstractConstructCard {
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	public static final String M_UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	public static final int COST = 1;
-	public static final int ATTACK_DMG = 8;
+	public static final int ATTACK_DMG = 7;
 	public static final int UPGRADE_PLUS_ATTACK_DMG = 2;
 	public static final int M_UPGRADE_PLUS_ATTACK_DMG = -1;
 	public static final int OVERHEAT = 5;

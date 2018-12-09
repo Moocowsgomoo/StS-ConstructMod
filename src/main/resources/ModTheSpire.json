@@ -2,9 +2,9 @@
   "modid": "constructmod",
   "name": "The Construct",
   "author_list": ["Moocowsgomoo, Spike Berd"],
-  "description": "New character - The Construct! \n\nRECENT CHANGES:\nv0.9.991 \n- Challenge 1 cycle effects now work correctly.\n- Challenge 2 made slightly less punishing.\n- Challenge 3 added!\n- Toggling Overheated Expansion no longer requires restart.\n- Minor rewording & UX.\n\nv0.9.99\n- Challenge relics no longer considered starter rarity.\n\n=============================\n\nEXTRA FEATURES (Enable in Config Menu):\nAlternate Starter Relic\n- Reach Level 1 to unlock a special starter relic!\n\nChallenge Mode\n- Makes the game harder in interesting ways.\n- Levels 1, 2, and 3 exist.\n- Levels 4 and 5 are in development.\n\nOverheated Expansion (Beta)\n- Adds 14 new cards.\n- Planned: 1 more new card, 2 new relics.",
-  "version": "0.9.991",
-  "sts_version": "11-15-2018",
+  "description": "New character - The Construct! \n\nENABLE EXTRA FEATURES IN THE MODS MENU!\n\nRECENT CHANGES:\nv0.9.992\n- Challenge 3 now rebounds ONE random card.\n- Challenge 4 added.\n- Afterburners uncommon -> rare, now shuffles Burns into draw pile.\n- Implosion rare -> uncommon.\n- Flammable Fog block 6 -> 5.\n- Phosphor Storm damage 8 -> 7.\n- Nuclear Core poison 4 -> 3.\n- Oil Spill damage 10 -> 9.\n- Isolate now doubles next attack's damage, then all damage when upgraded.\n- Tumble damage 4(7) -> 3(5), m-upgrade draw 7->5.\n- Shield Burst damage 2(3)x -> 1.5(2)x.\n- Scrap Cannon mega-upgrade damage 12 -> 17.\n- Bugfix: Stasis no longer upgrades Burns.\n- Bugfix: Mega-upgrades are no longer lost when loading a run with Conspire installed.\n- Bugfix: Flash Freeze updates its text correctly.\n- Added portrait-size images for Overheated expansion cards.",
+  "version": "0.9.992",
+  "sts_version": "12-06-2018",
   "mts_version": "3.4.0",
   "dependencies": ["basemod"],
   "update_json": "https://api.github.com/repos/Moocowsgomoo/StS-ConstructMod/releases/latest"

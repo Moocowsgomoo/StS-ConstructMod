@@ -28,6 +28,7 @@ public class ScrapCannon extends AbstractConstructCard {
 	private static final int ATTACK_DMG = 9;
 	private static final int UPGRADE_PLUS_ATTACK_DMG = 3;
 	private static final int NUM_EXHAUST = 1;
+	public static final int M_UPGRADE_PLUS_ATTACK_DMG = 5;
 	private static final int M_UPGRADE_PLUS_NUM_EXHAUST = 1;
 	private static final int POOL = 1;
 
@@ -60,6 +61,7 @@ public class ScrapCannon extends AbstractConstructCard {
 			this.upgradeDamage(UPGRADE_PLUS_ATTACK_DMG);
 		} else if (this.canUpgrade()) {
 			this.megaUpgradeName();
+			this.upgradeDamage(M_UPGRADE_PLUS_ATTACK_DMG);
 			this.upgradeMagicNumber(M_UPGRADE_PLUS_NUM_EXHAUST);
 			this.rawDescription = M_UPGRADE_DESCRIPTION;
 			this.initializeDescription();

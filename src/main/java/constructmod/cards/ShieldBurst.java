@@ -1,5 +1,6 @@
 package constructmod.cards;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
@@ -28,9 +29,10 @@ public class ShieldBurst extends AbstractConstructCard {
 	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	public static final String EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 	private static final int COST = 1;
-	private static final int DMG_MULT = 2;
+	private static final int DMG_MULT = 1;
 	private static final int UPGRADE_PLUS_DMG_MULT = 1;
-	private static final int M_UPGRADE_NEW_COST = 0;
+	private static final int M_UPGRADE_PLUS_DMG_MULT = 1;
+	//private static final int M_UPGRADE_NEW_COST = 0;
 	private static final int POOL = 1;
 	
 	private String desc = DESCRIPTION;
@@ -55,7 +57,7 @@ public class ShieldBurst extends AbstractConstructCard {
 	
 	@Override
 	public void applyPowers(){
-		this.damage = this.baseDamage = AbstractDungeon.player.currentBlock*this.magicNumber;
+		setBaseDamage();
 		super.applyPowers();
 		
 		this.rawDescription = desc + EXTENDED_DESCRIPTION;
@@ -64,11 +66,16 @@ public class ShieldBurst extends AbstractConstructCard {
 
 	@Override
 	public void calculateCardDamage(AbstractMonster m){
-		this.damage = this.baseDamage = AbstractDungeon.player.currentBlock*this.magicNumber;
+		setBaseDamage();
 		super.calculateCardDamage(m);
 
 		this.rawDescription = desc + EXTENDED_DESCRIPTION;
 		initializeDescription();
+	}
+
+	public void setBaseDamage(){
+		if (!upgraded) this.damage = this.baseDamage = MathUtils.floor(AbstractDungeon.player.currentBlock * 1.5f);
+		else this.damage = this.baseDamage = AbstractDungeon.player.currentBlock*this.magicNumber;
 	}
 	
 	@Override
@@ -92,7 +99,7 @@ public class ShieldBurst extends AbstractConstructCard {
 			initializeDescription();
 		} else if (this.canUpgrade()) {
 			this.megaUpgradeName();
-			this.upgradeBaseCost(M_UPGRADE_NEW_COST);
+			this.upgradeMagicNumber(M_UPGRADE_PLUS_DMG_MULT);
 		}
 	}
 }

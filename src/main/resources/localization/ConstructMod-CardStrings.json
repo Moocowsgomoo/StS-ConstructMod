@@ -277,10 +277,10 @@
 	},
 	"construct:ShieldBurst": {
 		"NAME": "Shield Burst",
-		"DESCRIPTION": "Lose all your Block. NL Deal twice that much damage to ALL enemies.",
-		"UPGRADE_DESCRIPTION": "Lose all your Block. NL Deal three times that much damage to ALL enemies.",
+		"DESCRIPTION": "Lose all your Block. NL Deal one and a half times that much damage to ALL enemies.",
+		"UPGRADE_DESCRIPTION": "Lose all your Block. NL Deal !M! times that much damage to ALL enemies.",
 		"EXTENDED_DESCRIPTION": [
-			" NL (Deals !D! damage.)"	
+			" NL (Deals !D! damage.)"
 		]
 	},
 	"construct:Antimatter": {
@@ -405,7 +405,7 @@
 	},
 	"construct:Isolate": {
 		"NAME": "Isolate",
-		"DESCRIPTION": "Cycle if there's more than one enemy. NL Your attacks deal double damage this turn. Exhaust.",
+		"DESCRIPTION": "Cycle if there's more than one enemy. NL Your next attack deals double damage this turn.",
 		"UPGRADE_DESCRIPTION": "Cycle if there's more than one enemy. NL Your attacks deal double damage this turn.",
 		"EXTENDED_DESCRIPTION": [
 			"Cycle if there's more than one enemy. NL Your attacks deal double damage this and next turn."
@@ -588,10 +588,10 @@
 	},
 	"construct:Afterburners": {
 		"NAME": "Afterburners",
-		"DESCRIPTION": "Add 3 Burns to your hand. NL This turn, your next card is played !M! times.",
-		"UPGRADE_DESCRIPTION": "Add 2 Burns to your hand. NL This turn, your next card is played !M! times.",
+		"DESCRIPTION": "Shuffle 3 Burns into your draw pile. NL This turn, your next card is played !M! times.",
+		"UPGRADE_DESCRIPTION": "Shuffle 2 Burns into your draw pile. NL This turn, your next card is played !M! times.",
 		"EXTENDED_DESCRIPTION": [
-			"Add 3 Burns to your hand. NL This turn, your next card is played !M! times."
+			"Shuffle 2 Burns into your draw pile. NL This turn, your next card is played !M! times."
 		]
 	},
 	"construct:FlashFreeze": {
@@ -600,6 +600,14 @@
 		"UPGRADE_DESCRIPTION": "Gain !B! Block. NL Cards cannot [#ff9900]Overheat for the next !M! turns. NL Exhaust.",
 		"EXTENDED_DESCRIPTION": [
 			"Retain. NL Gain !B! Block. NL Cards cannot [#ff9900]Overheat for the next !M! turns. NL Exhaust."
+		]
+	},
+	"construct:DarkFlames": {
+		"NAME": "Dark Flames",
+		"DESCRIPTION": "When played, add 2X Burns to your exhaust pile. At the start of your turn, deal damage to ALL enemies equal to the number of Burns in your exhaust pile.",
+		"UPGRADE_DESCRIPTION": "When played, add 2X+2 Burns to your exhaust pile. At the start of your turn, deal damage to ALL enemies equal to the number of Burns in your exhaust pile.",
+		"EXTENDED_DESCRIPTION": [
+			"When played, add 3X+3 Burns to your exhaust pile. At the start of your turn, deal damage to ALL enemies equal to the number of Burns in your exhaust pile."
 		]
 	},
 
@@ -625,13 +633,5 @@
 		"NAME": "Sun Screen",
 		"DESCRIPTION": "At the end of your turn, Exhaust a card. If it's a Burn, gain !M! Block.",
 		"UPGRADE_DESCRIPTION": "At the end of your turn, Exhaust up to 2 cards. For each Burn exhausted, gain !M! Block."
-	},
-	"construct:ClusterBomb": {
-		"NAME": "Cluster Bomb",
-		"DESCRIPTION": "Add 3 Burns to your hand. NL This turn, your next card is played !M! times.",
-		"UPGRADE_DESCRIPTION": "Add 2 Burns to your hand. NL This turn, your next card is played !M! times.",
-		"EXTENDED_DESCRIPTION": [
-			"Add 3 Burns to your hand. NL This turn, your next card is played !M! times."
-		]
 	}
 }

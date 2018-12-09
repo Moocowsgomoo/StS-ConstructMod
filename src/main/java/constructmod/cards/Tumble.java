@@ -28,10 +28,10 @@ public class Tumble extends AbstractConstructCard {
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	private static final int COST = 1;
-	private static final int ATTACK_DMG = 4;
+	private static final int ATTACK_DMG = 3;
 	private static final int CARDS = 3;
-	private static final int UPGRADE_PLUS_ATTACK_DMG = 3;
-	private static final int M_UPGRADE_PLUS_CARDS = 4;
+	private static final int UPGRADE_PLUS_ATTACK_DMG = 2;
+	private static final int M_UPGRADE_PLUS_CARDS = 2;
 	private static final int POOL = 1;
 
 	public Tumble() {

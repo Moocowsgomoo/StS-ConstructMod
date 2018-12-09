@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.powers.DoubleDamagePower;
 
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
+import constructmod.powers.DoubleNextDamagePower;
 
 public class Isolate extends AbstractCycleCard {
 	public static final String ID = ConstructMod.makeID("Isolate");
@@ -20,9 +21,9 @@ public class Isolate extends AbstractCycleCard {
 	private static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	private static final String M_UPGRADE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 	private static final int COST = 1;
-	private static final int UPGRADE_NEW_COST = 0;
-	private static final int DOUBLE_DMG_TURNS = 1;
-	private static final int M_UPGRADE_DOUBLE_DMG_TURNS = 1;
+	//private static final int UPGRADE_NEW_COST = 0;
+	//private static final int DOUBLE_DMG_TURNS = 1;
+	//private static final int M_UPGRADE_DOUBLE_DMG_TURNS = 1;
 	private static final int POOL = 1;
 
 	public Isolate() {
@@ -45,7 +46,8 @@ public class Isolate extends AbstractCycleCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,m,new DoubleDamagePower(p,(this.megaUpgraded?2:1),false),(this.megaUpgraded?2:1)));
+		if (!upgraded) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,m,new DoubleNextDamagePower(p,1),1));
+		else AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,m,new DoubleDamagePower(p,(this.megaUpgraded?2:1),false),(this.megaUpgraded?2:1)));
 	}
 
 	@Override
@@ -57,9 +59,9 @@ public class Isolate extends AbstractCycleCard {
 	public void upgrade() {
 		if (!this.upgraded) {
 			this.upgradeName();
-			this.upgradeBaseCost(UPGRADE_NEW_COST);
-			//this.rawDescription = UPGRADE_DESCRIPTION;
-			//this.initializeDescription();
+			//this.upgradeBaseCost(UPGRADE_NEW_COST);
+			this.rawDescription = UPGRADE_DESCRIPTION;
+			this.initializeDescription();
 		} else if (canUpgrade()) {
 			this.megaUpgradeName();
 			this.rawDescription = M_UPGRADE_DESCRIPTION;

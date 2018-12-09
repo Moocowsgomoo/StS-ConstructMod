@@ -40,16 +40,23 @@ public class ChargeShot extends AbstractConstructCard {
 		this.retain = true;
 	}
 
+	public int getTrueBaseDamage(){
+		int dmg = ATTACK_DMG;
+		if (this.upgraded) dmg += UPGRADE_PLUS_ATTACK_DMG;
+		if (this.megaUpgraded) dmg += M_UPGRADE_PLUS_ATTACK_DMG;
+		return dmg;
+	}
+
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		//AbstractDungeon.actionManager.addToBottom(new SFXAction("THUNDERCLAP", 0.05f));
 		AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.common.DamageAction(m,
 					new DamageInfo(p, this.damage, this.damageTypeForTurn),
 					AbstractGameAction.AttackEffect.SMASH));
-		AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.common.ModifyDamageAction(this.uuid, this.baseDamage - this.damage));
+		this.baseDamage = getTrueBaseDamage();
 	
-		this.rawDescription = DESCRIPTION;
-		initializeDescription();
+		//this.rawDescription = DESCRIPTION;
+		//initializeDescription();
 	}
 	
 	@Override
@@ -72,7 +79,8 @@ public class ChargeShot extends AbstractConstructCard {
 	@Override
 	public void triggerOnEndOfTurnForPlayingCard()
 	{
-		AbstractDungeon.actionManager.addToTop(new com.megacrit.cardcrawl.actions.common.ModifyDamageAction(this.uuid, this.magicNumber));
+		this.baseDamage += this.magicNumber;
+		applyPowers();
 		this.flash();
 	}
 

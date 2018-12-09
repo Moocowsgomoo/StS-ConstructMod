@@ -19,9 +19,10 @@ public class RetainToTopOfDrawPilePatch {
             if (ConstructMod.hasChallengeActive(3)) {
                 Field cardGroupField = RestoreRetainedCardsAction.class.getDeclaredField("group");
                 cardGroupField.setAccessible(true);
-                for (AbstractCard c : ((CardGroup) cardGroupField.get(obj)).group) {
-                    AbstractDungeon.actionManager.addToTop(new CardToTopOfDrawPileAction(c));
-                }
+                AbstractDungeon.actionManager.addToTop(new CardToTopOfDrawPileAction(((CardGroup) cardGroupField.get(obj)).getRandomCard(true)));
+                //for (AbstractCard c : ((CardGroup) cardGroupField.get(obj)).group) {
+                //    AbstractDungeon.actionManager.addToTop(new CardToTopOfDrawPileAction(c));
+                //}
             }
         }
         catch (Exception e){

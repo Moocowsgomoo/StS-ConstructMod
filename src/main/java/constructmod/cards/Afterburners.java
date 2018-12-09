@@ -2,6 +2,7 @@ package constructmod.cards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.status.Burn;
@@ -28,18 +29,19 @@ public class Afterburners extends AbstractConstructCard {
 	//public static final int UPGRADE_PLUS_PLAY_TIMES = 1;
 	public static final int M_UPGRADE_PLUS_PLAY_TIMES = 1;
 	public static final int BURNS = 3;
+	//public static final int UPGRADE_NEW_COST = 2;
 	public static final int UPGRADED_BURNS = 2;
 	private static final int POOL = 1;
 
 	public Afterburners() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, CardType.SKILL,
-				AbstractCardEnum.CONSTRUCTMOD, CardRarity.UNCOMMON, CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, CardRarity.RARE, CardTarget.SELF, POOL);
 		this.baseMagicNumber = this.magicNumber = PLAY_TIMES;
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new Burn(),upgraded?(megaUpgraded?UPGRADED_BURNS:UPGRADED_BURNS):BURNS));
+		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(new Burn(),(this.upgraded?UPGRADED_BURNS:BURNS),true,true));
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new AfterburnersPower(p,this.magicNumber), this.magicNumber));
 	}
 
@@ -52,13 +54,14 @@ public class Afterburners extends AbstractConstructCard {
 	public void upgrade() {
 		if (!this.upgraded) {
 			this.upgradeName();
+			//this.upgradeBaseCost(UPGRADE_NEW_COST);
 			this.rawDescription = UPGRADE_DESCRIPTION;
 			this.initializeDescription();
 			//this.upgradeMagicNumber(UPGRADE_PLUS_PLAY_TIMES);
 		} else if (this.canUpgrade()) {
 			this.megaUpgradeName();
-			this.rawDescription = M_UPGRADE_DESCRIPTION;
-			this.initializeDescription();
+			//this.rawDescription = M_UPGRADE_DESCRIPTION;
+			//this.initializeDescription();
 			this.upgradeMagicNumber(M_UPGRADE_PLUS_PLAY_TIMES);
 		}
 	}

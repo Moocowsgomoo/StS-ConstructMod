@@ -88,16 +88,16 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 			"",
 			"Cards that shift your stats now [#ffff66]Cycle [#ffffff]under certain conditions.",
 			"Some of your starter cards [#ff9900]Overheat.",
-			"[#ffff66]Retained [#ffffff]cards are now placed on top of your draw pile instead of staying in your hand.",
-			"[#ffff66]Burn [#ffffff]cards are now [#ffff66]Mega-upgraded.",
+			"At the end of your turn, a random [#ffff66]Retained [#ffffff] card is placed on top of your draw pile.",
+			"[#ffff66]Burn [#ffffff]cards are now [#ffff66]upgraded.",
 			"(MAX LEVEL) ALL Construct cards are less effective."
 	};
 	public static final String[] SHORT_CHALLENGE_STRINGS = {
 			"",
 			"Stat-shifting cards #yCycle.",
 			"Starter cards [#ff9900]Overheat.",
-			"#yRetained cards rebound.",
-			"#yBurns are #yMega-upgraded.",
+			"Rebound a #yretained card.",
+			"#yBurns are #yupgraded.",
 			"Weaker cards."
 	};
 
@@ -205,7 +205,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 			saveData();
 		});
 		ModButton challengeRightBtn = new ModButton(665.0f, 340.0f, ImageMaster.loadImage("img/tinyRightArrow.png"),settingsPanel,(me)->{
-			if (challengeLevel < 3) challengeLevel++;
+			if (challengeLevel < 4) challengeLevel++;
 			challengeLevelTxt.text = "" + challengeLevel;
 			challengeDescTxt.text = CHALLENGE_STRINGS[challengeLevel];
 			resetCharSelect();
@@ -523,10 +523,10 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		addHeatCard(new FlashFreeze());	// block, overheat counter/synergy
 		addHeatCard(new OilSpill());	// overheat 5, overheat synergy
 		addHeatCard(new NuclearCore());	// cycle, overheat 10
-		addHeatCard(new Afterburners());// multi-play, burns
-		//rare
 		addHeatCard(new Implosion());	// burn synergy, play
+		//rare
 		addHeatCard(new Supernova());	// anti-status
+		addHeatCard(new Afterburners());// multi-play, burns
 
 		//PWR (-1 uncommon)
 		//uncommon

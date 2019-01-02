@@ -62,6 +62,37 @@
       "Upon pickup, choose 2 cards. Once per turn, after you play one of them, play the other one too."
     ]
   },
+  "construct:IceCubes": {
+    "NAME": "Ice Cubes",
+    "FLAVOR": "Cool and refreshing.",
+    "DESCRIPTIONS": [
+      "Your cards cannot [#ff9900]Overheat for the first #b3 turns of combat."
+    ]
+  },
+  "construct:BoolHorns": {
+    "NAME": "Bool Horns",
+    "FLAVOR": "Horns from a rarely-seen species. Bools are known to only show aggression towards those who speak lies.",
+    "DESCRIPTIONS": [
+      "At the start of each combat, deal #b",
+      " damage to a random enemy. Upon entering a non-combat space, double the damage this relic deals next combat."
+    ]
+  },
+  "construct:LongRangeLance": {
+    "NAME": "Long-Range Lance",
+    "FLAVOR": "You hit exactly what you aimed at.",
+    "DESCRIPTIONS": [
+      "At the start of the next combat, deal #b",
+      " damage to a random enemy, then lose this relic."
+    ]
+  },
+  "construct:ExtraLongRangeLance": {
+    "NAME": "EXTRA-Long-Range Lance",
+    "FLAVOR": "Okay, you just launched this one randomly. But it's bound to hit something!",
+    "DESCRIPTIONS": [
+      "At the start of the combat after the next one, deal #b",
+      " damage to a random enemy, then lose this relic."
+    ]
+  },
   "construct:Challenge1": {
     "NAME": "Challenger's Mark 1",
     "FLAVOR": "The mark of one who chooses to undertake the Spire's toughest challenges."

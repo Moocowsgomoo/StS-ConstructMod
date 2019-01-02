@@ -13,10 +13,11 @@ import constructmod.ConstructMod;
 
 public class ClockworkPhoenix extends CustomRelic {
     public static final String ID = ConstructMod.makeID("ClockworkPhoenix");
-    private static final String IMG = "img/constructRelics/ClockworkPhoenix.png";
+    public static final String IMG = ConstructMod.makeRelicImg(ID);
+    public static final String OUTLINE_IMG = ConstructMod.makeRelicOutlineImg(ID);
 	
     public ClockworkPhoenix() {
-        super(ID, new Texture(IMG), RelicTier.SPECIAL, LandingSound.MAGICAL);
+        super(ID, new Texture(IMG),new Texture(OUTLINE_IMG), RelicTier.SPECIAL, LandingSound.MAGICAL);
     }
     
     @Override

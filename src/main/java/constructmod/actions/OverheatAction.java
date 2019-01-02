@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.cards.Soul;
 import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -30,16 +31,28 @@ public class OverheatAction extends AbstractGameAction
     public static float DRAW_PILE_X = Settings.WIDTH * 0.04f;
     public static float DRAW_PILE_Y = Settings.HEIGHT * 0.06f;
 
-    public OverheatAction(final AbstractCard targetCard) {
+    public  boolean triggerOnOverheat;
+
+    public OverheatAction(final AbstractCard targetCard, boolean triggerOnOverheat) {
         this.targetCard = targetCard;
         this.actionType = ActionType.SPECIAL;
+        this.triggerOnOverheat = triggerOnOverheat;
     }
     
     @Override
     public void update() {
+
+        if (this.targetCard == null){
+            this.isDone = true;
+            return;
+        }
+
         ArrayList<AbstractCard> group = null;
         float effect_x = 0f;
         float effect_y = 0f;
+
+        AbstractDungeon.actionManager.cardQueue.removeIf((item)->item.card.equals(this.targetCard));
+
         if (AbstractDungeon.player.drawPile.contains(this.targetCard)){
             group = AbstractDungeon.player.drawPile.group;
             effect_x = DRAW_PILE_X;
@@ -97,8 +110,10 @@ public class OverheatAction extends AbstractGameAction
         }
         group.remove(this.targetCard);
 
-        for (AbstractPower p:AbstractDungeon.player.powers){
-            if (p instanceof AbstractCyclePower) ((AbstractCyclePower) p).onOverheatCard(this.targetCard);
+        if (this.triggerOnOverheat) {
+            for (AbstractPower p : AbstractDungeon.player.powers) {
+                if (p instanceof AbstractCyclePower) ((AbstractCyclePower) p).onOverheatCard(this.targetCard);
+            }
         }
 
         this.isDone = true;

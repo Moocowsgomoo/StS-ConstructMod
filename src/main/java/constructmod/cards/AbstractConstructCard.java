@@ -38,11 +38,13 @@ public abstract class AbstractConstructCard extends CustomCard {
 		super(id, name, img.replace("cards/construct:", "constructCards/"), cost, rawDescription, type, color, rarity, target);
 	}
 
+	public void onBlockBroken(){};
+
 	public boolean checkOverheat(){
 		if (overheat <= 0 || AbstractDungeon.player.hasPower(FlashFreezePower.POWER_ID)) return false;
 		//if (AbstractDungeon.player.hand.contains(this)) this.flash(Color.RED.cpy());
 		if (ConstructMod.cyclesThisTurn >= overheat){
-			AbstractDungeon.actionManager.addToTop(new OverheatAction(this));
+			AbstractDungeon.actionManager.addToTop(new OverheatAction(this,true));
 			return true;
 		}
 		return false;

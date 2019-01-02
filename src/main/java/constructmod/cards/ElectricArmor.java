@@ -20,7 +20,7 @@ public class ElectricArmor extends AbstractCycleCard {
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	public static final String M_UPGRADE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
-	private static final int COST = 0;
+	private static final int COST = 1;
 	private static final int PLUS_DEX = 0;
 	private static final int UPGRADE_PLUS_DEX = 1;
 	private static final int M_UPGRADE_PLUS_DEX = 1;

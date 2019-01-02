@@ -1,14 +1,11 @@
 package constructmod.powers;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.WeakPower;
 import constructmod.ConstructMod;
 
 public class FlashFreezePower extends AbstractPower {
@@ -29,7 +26,7 @@ public class FlashFreezePower extends AbstractPower {
 		this.type = PowerType.BUFF;
 		this.isTurnBased = true;
 		this.justApplied = true;
-		this.img = new Texture("img/constructPowers/FlashFreeze.png");
+		ConstructMod.setPowerImages(this);
 	}
 
 	@Override

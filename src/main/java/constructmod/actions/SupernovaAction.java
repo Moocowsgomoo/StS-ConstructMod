@@ -16,7 +16,10 @@ import constructmod.patches.TheConstructEnum;
 public class SupernovaAction extends AbstractGameAction
 {
 
-    public SupernovaAction() {
+    boolean upgradeCards;
+
+    public SupernovaAction(boolean upgradeCards) {
+        this.upgradeCards = upgradeCards;
     }
     
     @Override
@@ -27,6 +30,7 @@ public class SupernovaAction extends AbstractGameAction
                 AbstractDungeon.actionManager.addToTop(new ExhaustSpecificCardAction(c,AbstractDungeon.player.hand,true));
                 newCard = AbstractDungeon.returnTrulyRandomCardInCombat().makeCopy();
                 newCard.modifyCostForCombat(-99);
+                if(upgradeCards) newCard.upgrade();
                 AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(newCard,1,true,true));
             }
         }
@@ -35,6 +39,7 @@ public class SupernovaAction extends AbstractGameAction
                 AbstractDungeon.actionManager.addToTop(new ExhaustSpecificCardAction(c,AbstractDungeon.player.hand,true));
                 newCard = AbstractDungeon.returnTrulyRandomCardInCombat().makeCopy();
                 newCard.modifyCostForCombat(-99);
+                if(upgradeCards) newCard.upgrade();
                 AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(newCard));
             }
         }
@@ -43,6 +48,7 @@ public class SupernovaAction extends AbstractGameAction
                 AbstractDungeon.actionManager.addToTop(new ExhaustSpecificCardAction(c,AbstractDungeon.player.hand,true));
                 newCard = AbstractDungeon.returnTrulyRandomCardInCombat().makeCopy();
                 newCard.modifyCostForCombat(-99);
+                if(upgradeCards) newCard.upgrade();
                 AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(newCard,1));
             }
         }

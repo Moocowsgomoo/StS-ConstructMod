@@ -17,17 +17,17 @@ public class SensoryStonePatch {
 		final String MEMORY_TEXT =
 						"#y~LONELINESS.~ NL " +
 						" NL " +
-						"When the first one fell, they built two more to take its place. NL " +
+						"When the first Spire fell, they built two more to take its place. NL " +
 						"They #ralways make backups. #y~...Don't~ #y~they?~ NL " +
 						" NL " +
 						"#yPAIRED #yGEOMETRY: 2,947,238,001 NL " +
 						"#yBYRD #yASPIRANT: 1,024,985,212,998 NL " +
 						"#yPYRAMIDAL #yCONSTRUCT: ~1~ NL " +
 						" NL " +
-						"There are, of course, legends of others who cannot be replaced. NL " +
+						"There are, of course, legends of others who cannot be copied. NL " +
 						"#rA #rmasked #rdemon. #gA #gdeadly #gwraith. #bAn #becho #bof #bthe #bpast. NL " +
-						"And the one behind it all... NL " +
-						"@[#3333FF]\"BEST@ @[#3333FF]TWO@ @[#3333FF]OUT@ @[#3333FF]OF@ @[#3333FF]THREE?\"@";
+						"If the Ancients will not spread your knowledge, perhaps they will. NL " +
+						"And perhaps... you can ensure that no one is ever forgotten again.";
 		memories.add(MEMORY_TEXT);
 	}
 }

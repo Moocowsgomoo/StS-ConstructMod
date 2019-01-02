@@ -18,10 +18,11 @@ import constructmod.ConstructMod;
 
 public class MasterCore extends CustomRelic {
     public static final String ID = ConstructMod.makeID("MasterCore");
-    private static final String IMG = "img/constructRelics/MasterCore.png";
+    public static final String IMG = ConstructMod.makeRelicImg(ID);
+    public static final String OUTLINE_IMG = ConstructMod.makeRelicOutlineImg(ID);
 	
     public MasterCore() {
-        super(ID, new Texture(IMG), RelicTier.COMMON, LandingSound.SOLID);
+        super(ID, new Texture(IMG),new Texture(OUTLINE_IMG), RelicTier.COMMON, LandingSound.SOLID);
     }
  
     @Override

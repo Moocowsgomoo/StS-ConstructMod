@@ -1,14 +1,20 @@
 package constructmod.cards;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.ScreenOnFireEffect;
 import constructmod.ConstructMod;
+import constructmod.actions.MakeTempCardInExhaustAction;
 import constructmod.patches.AbstractCardEnum;
 import constructmod.powers.FlashFreezePower;
 
@@ -19,24 +25,58 @@ public class DarkFlames extends AbstractConstructCard {
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	public static final String M_UPGRADE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
-	public static final int COST = -1;
+	public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
+	public static final int DAMAGE = 3;
+	public static final int ADD_BURNS = 0;
+	public static final int M_UPGRADE_PLUS_ADD_BURNS = 2;
+	public static final int COST = 1;
 	private static final int POOL = 1;
 
+	public String desc;
+
 	public DarkFlames() {
-		super(ID, NAME, "img/cards/"+ID+".png", COST, UPGRADE_DESCRIPTION, CardType.POWER,
-				AbstractCardEnum.CONSTRUCTMOD, CardRarity.UNCOMMON, CardTarget.SELF, POOL);
+		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, CardType.ATTACK,
+				AbstractCardEnum.CONSTRUCTMOD, CardRarity.RARE, CardTarget.ENEMY, POOL);
+		this.magicNumber = this.baseMagicNumber = ADD_BURNS;
+		this.damage = this.baseDamage = DAMAGE;
+		desc = DESCRIPTION;
 	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new FlashFreezePower(p,this.magicNumber),this.magicNumber));
+		AbstractDungeon.actionManager.addToBottom(new VFXAction(new ScreenOnFireEffect(),0.2f));
+		int burnCount = getBurnInPile(AbstractDungeon.player.exhaustPile) + this.magicNumber;
+		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInExhaustAction(new Burn(),this.magicNumber));
+		for (int i = 0;i<burnCount;i++){
+			AbstractDungeon.actionManager.addToBottom(new DamageAction(m,new DamageInfo(p,this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
+			AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
+		}
 	}
 
 	@Override
 	public void applyPowers(){
 		super.applyPowers();
-		if (megaUpgraded) this.retain = true;
+		if (this.magicNumber > 0){
+			this.rawDescription = EXTENDED_DESCRIPTION[1] + getBurnInPile(AbstractDungeon.player.exhaustPile) + EXTENDED_DESCRIPTION[2] + this.magicNumber + EXTENDED_DESCRIPTION[3] + desc;
+		}
+		else{
+			this.rawDescription = EXTENDED_DESCRIPTION[1] + getBurnInPile(AbstractDungeon.player.exhaustPile) + EXTENDED_DESCRIPTION[3] + desc;
+		}
+		initializeDescription();
+	}
+
+	@Override
+	public void onMoveToDiscard(){
+		this.rawDescription = DESCRIPTION;
+		initializeDescription();
+	}
+
+	public int getBurnInPile(CardGroup group){
+		int count = 0;
+		for (AbstractCard c:group.group){
+			if (c.cardID == Burn.ID) count++;
+		}
+		return count;
 	}
 
 	@Override
@@ -48,16 +88,14 @@ public class DarkFlames extends AbstractConstructCard {
 	public void upgrade() {
 		if (!this.upgraded) {
 			this.upgradeName();
-			//this.rawDescription = this.UPGRADE_DESCRIPTION;
-			//this.upgradeMagicNumber(UPGRADE_PLUS_FREEZE_TURNS);
-			//this.initializeDescription();
-			this.isInnate = true;
+			desc = this.rawDescription = this.UPGRADE_DESCRIPTION;
+			this.initializeDescription();
+			this.exhaust = false;
 		} else if (this.canUpgrade()) {
 			this.megaUpgradeName();
-			this.rawDescription = this.M_UPGRADE_DESCRIPTION;
+			this.upgradeMagicNumber(M_UPGRADE_PLUS_ADD_BURNS);
+			desc = this.rawDescription = this.M_UPGRADE_DESCRIPTION;
 			this.initializeDescription();
-			//this.upgradeMagicNumber(M_UPGRADE_PLUS_FREEZE_TURNS);
-			this.retain = true;
 		}
 	}
 }

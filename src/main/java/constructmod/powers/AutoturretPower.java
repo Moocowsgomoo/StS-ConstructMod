@@ -2,7 +2,6 @@ package constructmod.powers;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -28,7 +27,7 @@ public class AutoturretPower extends AbstractCyclePower {
 		updateDescription();
 		this.type = AbstractPower.PowerType.BUFF;
 		this.isTurnBased = false;
-		this.img = new Texture("img/constructPowers/autoturret.png");
+		ConstructMod.setPowerImages(this);
 	}
 	
 	@Override

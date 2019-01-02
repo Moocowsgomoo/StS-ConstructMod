@@ -16,12 +16,13 @@ import constructmod.actions.ClawGripAction;
 
 public class ClawGrip extends CustomRelic {
     public static final String ID = ConstructMod.makeID("ClawGrip");
-    private static final String IMG = "img/constructRelics/ClawGrip.png";
+    public static final String IMG = ConstructMod.makeRelicImg(ID);
+    public static final String OUTLINE_IMG = ConstructMod.makeRelicOutlineImg(ID);
     
     public AbstractCard card;
 	
     public ClawGrip() {
-        super(ID, new Texture(IMG), RelicTier.RARE, LandingSound.FLAT);
+        super(ID, new Texture(IMG),new Texture(OUTLINE_IMG), RelicTier.RARE, LandingSound.FLAT);
     }
     
     @Override

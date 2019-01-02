@@ -26,7 +26,7 @@ public class ReactiveShieldPower extends AbstractPower
         this.owner = owner;
         this.amount = newAmount;
         this.updateDescription();
-        this.img = new Texture("img/constructPowers/reactiveshield.png");
+        ConstructMod.setPowerImages(this);
     }
     
     @Override

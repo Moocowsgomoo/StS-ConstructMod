@@ -22,7 +22,7 @@ public class ShiftGuard extends AbstractCycleCard {
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	public static final String CHALLENGE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 	private static final int COST = 1;
-	private static final int BLOCK_AMT = 7;
+	private static final int BLOCK_AMT = 5;
 	private static final int GAIN_DEX = 2;
 	private static final int UPGRADE_PLUS_BLOCK = 1;
 	private static final int UPGRADE_PLUS_GAIN_DEX = 1;
@@ -32,7 +32,7 @@ public class ShiftGuard extends AbstractCycleCard {
 
 	public ShiftGuard() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, (ConstructMod.challengeLevel >= 1? CHALLENGE_DESCRIPTION:"")+DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.SELF, POOL);
 		this.block = this.baseBlock = BLOCK_AMT;
 		this.magicNumber = this.baseMagicNumber = GAIN_DEX;
 	}

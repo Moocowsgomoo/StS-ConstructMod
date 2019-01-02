@@ -19,10 +19,11 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 
 public class RocketBooster extends CustomRelic {
     public static final String ID = ConstructMod.makeID("RocketBooster");
-    private static final String IMG = "img/constructRelics/RocketBooster.png";
+    public static final String IMG = ConstructMod.makeRelicImg(ID);
+    public static final String OUTLINE_IMG = ConstructMod.makeRelicOutlineImg(ID);
 	
     public RocketBooster() {
-        super(ID, new Texture(IMG), RelicTier.RARE, LandingSound.MAGICAL);
+        super(ID, new Texture(IMG), new Texture(OUTLINE_IMG), RelicTier.RARE, LandingSound.MAGICAL);
     }
     
     @Override

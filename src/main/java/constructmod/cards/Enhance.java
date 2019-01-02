@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import basemod.abstracts.CustomCard;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
+import constructmod.powers.EnhanceMegaPower;
 import constructmod.powers.EnhancePower;
 import constructmod.powers.SiegeFormPower;
 
@@ -34,7 +35,8 @@ public class Enhance extends AbstractConstructCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new EnhancePower(p, this.magicNumber, this.megaUpgraded), this.magicNumber));
+		if (this.megaUpgraded) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new EnhanceMegaPower(p,this.magicNumber),this.magicNumber));
+		else AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new EnhancePower(p, this.magicNumber), this.magicNumber));
 	}
 
 	@Override

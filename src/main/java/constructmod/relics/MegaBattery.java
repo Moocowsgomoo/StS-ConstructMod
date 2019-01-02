@@ -26,10 +26,11 @@ import constructmod.patches.AbstractCardEnum;
 
 public class MegaBattery extends CustomRelic {
     public static final String ID = ConstructMod.makeID("MegaBattery");
-    private static final String IMG = "img/constructRelics/MegaBattery.png";
+    public static final String IMG = ConstructMod.makeRelicImg(ID);
+    public static final String OUTLINE_IMG = ConstructMod.makeRelicOutlineImg(ID);
 	
     public MegaBattery() {
-        super(ID, new Texture(IMG), RelicTier.UNCOMMON, LandingSound.SOLID);
+        super(ID, new Texture(IMG),new Texture(OUTLINE_IMG), RelicTier.UNCOMMON, LandingSound.SOLID);
     }
     
     @Override

@@ -2,6 +2,7 @@ package constructmod.characters;
 
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -21,6 +22,7 @@ import com.megacrit.cardcrawl.characters.Ironclad;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.cutscenes.CutscenePanel;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.city.Vampires;
 import com.megacrit.cardcrawl.helpers.*;
@@ -109,6 +111,21 @@ public class TheConstruct extends CustomPlayer{
 	@Override
 	public BitmapFont getEnergyNumFont() {
 		return FontHelper.energyNumFontRed;
+	}
+
+	@Override
+	public Texture getCutsceneBg() {
+		return ImageMaster.loadImage("images/scenes/blueBg.jpg");
+
+	}
+
+	@Override
+	public List<CutscenePanel> getCutscenePanels() {
+		List<CutscenePanel> panels = new ArrayList();
+		panels.add(new CutscenePanel("img/constructScenes/EndingScene1.png", "ATTACK_MAGIC_BEAM"));
+		panels.add(new CutscenePanel("img/constructScenes/EndingScene2.png"));
+		panels.add(new CutscenePanel("img/constructScenes/EndingScene3.png"));
+		return panels;
 	}
 
 	@Override

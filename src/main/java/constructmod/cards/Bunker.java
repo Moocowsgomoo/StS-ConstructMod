@@ -13,6 +13,7 @@ import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 import constructmod.powers.AutoturretPower;
 import constructmod.powers.BunkerPower;
+import constructmod.powers.RetainRandomPower;
 import constructmod.powers.SiegeFormPower;
 
 public class Bunker extends AbstractConstructCard {
@@ -37,7 +38,7 @@ public class Bunker extends AbstractConstructCard {
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new BunkerPower(p, this.magicNumber), this.magicNumber));
 		if (this.megaUpgraded) {
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new RetainCardPower(p, 1), 1));
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new RetainRandomPower(p,1), 1));
 		}
 	}
 

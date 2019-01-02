@@ -24,7 +24,7 @@ public class ClawGripAction extends AbstractGameAction
     	final CardGroup tmp = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
     	tmp.clear();
         for (final AbstractCard c : AbstractDungeon.player.hand.group) {
-            if ((c.costForTurn > 0 || !c.retain) && c.type != CardType.STATUS && c.type != CardType.CURSE) {
+            if ((c.costForTurn > 0 || !c.retain) && ((c.type != CardType.STATUS && c.type != CardType.CURSE)||c.cost > -2)) {
                 tmp.addToTop(c);
             }
         }

@@ -10,6 +10,7 @@ import constructmod.ConstructMod;
 import constructmod.actions.CycleCardAction;
 import constructmod.actions.TumbleFollowupAction;
 import constructmod.powers.AbstractCyclePower;
+import constructmod.powers.NoCyclePower;
 
 public abstract class AbstractCycleCard extends AbstractConstructCard {
 	
@@ -34,7 +35,7 @@ public abstract class AbstractCycleCard extends AbstractConstructCard {
 	
 	// Individual cards override this method to add their own cycle conditions. They always check this parent method as well.
 	public boolean canCycle() {
-		return timesCycled < 1;
+		return timesCycled < 1 && AbstractDungeon.player != null && !AbstractDungeon.player.hasPower(NoCyclePower.POWER_ID);
 	}
 	
 	public static void cycle(AbstractCard card) {

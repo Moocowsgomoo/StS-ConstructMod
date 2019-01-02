@@ -16,7 +16,7 @@ public class AfterburnersPower extends AbstractPower
 {
     public static final String POWER_ID = "construct:Afterburners";
     public static final String[] DESCRIPTIONS = new String[] {
-            "Your next card is played #b",
+            "Your next non-rare card is played #b",
             " times this turn."
     };
 
@@ -36,7 +36,7 @@ public class AfterburnersPower extends AbstractPower
 
     @Override
     public void onUseCard(final AbstractCard card, final UseCardAction action) {
-        if (!card.purgeOnUse && this.amount > 0) {
+        if (!card.purgeOnUse && this.amount > 0 && card.rarity != AbstractCard.CardRarity.RARE) {
             this.flash();
             AbstractMonster m = null;
             if (action.target != null) {

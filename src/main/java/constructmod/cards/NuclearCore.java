@@ -22,7 +22,7 @@ public class NuclearCore extends AbstractCycleCard {
 	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	public static final String M_UPGRADE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 	private static final int COST = 0;
-	private static final int POISON = 3;
+	private static final int POISON = 2;
 	private static final int POOL = 1;
 	public static final int OVERHEAT = 10;
 

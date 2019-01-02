@@ -3,7 +3,6 @@ package constructmod.powers;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.status.Burn;
@@ -26,7 +25,7 @@ public class DarkFlamesPower extends AbstractPower {
 		this.amount = -1;
 		this.type = PowerType.BUFF;
 		this.isTurnBased = false;
-		this.img = new Texture("img/constructPowers/meltdown.png");
+		this.img = new Texture("img/constructPowers/32/Meltdown.png");
 		updateDescription();
 	}
 	

@@ -26,7 +26,7 @@ public class Agitation extends AbstractConstructCard {
 
 	public Agitation() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, CardType.POWER,
-				AbstractCardEnum.CONSTRUCTMOD, CardRarity.RARE, CardTarget.SELF, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, CardRarity.UNCOMMON, CardTarget.SELF, POOL);
 		this.magicNumber = this.baseMagicNumber = BUFF_AMT;
 	}
 

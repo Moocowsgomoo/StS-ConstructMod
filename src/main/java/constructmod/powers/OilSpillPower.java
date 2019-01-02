@@ -1,24 +1,13 @@
 package constructmod.powers;
 
-import basemod.BaseMod;
-import basemod.interfaces.PostBattleSubscriber;
-import basemod.interfaces.PostDrawSubscriber;
-import basemod.interfaces.PostDungeonInitializeSubscriber;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import com.megacrit.cardcrawl.vfx.combat.BossCrystalImpactEffect;
 import constructmod.ConstructMod;
 
 public class OilSpillPower extends AbstractPower{
@@ -38,7 +27,7 @@ public class OilSpillPower extends AbstractPower{
 		updateDescription();
 		this.type = PowerType.DEBUFF;
 		this.isTurnBased = false;
-		this.img = new Texture("img/constructPowers/oilspill.png");
+		ConstructMod.setPowerImages(this);
 	}
 	
 	@Override

@@ -36,17 +36,7 @@ public class Supernova extends AbstractConstructCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new SupernovaAction());
-	}
-
-	@Override
-	public void applyPowers(){
-		super.applyPowers();
-
-		if (this.megaUpgraded) this.retain = true;
-
-		//this.rawDescription = EXTENDED_DESCRIPTION[0] + getStatusCount()+ EXTENDED_DESCRIPTION[1] + desc;
-		//initializeDescription();
+		AbstractDungeon.actionManager.addToBottom(new SupernovaAction(this.megaUpgraded));
 	}
 
 	/*@Override
@@ -83,7 +73,6 @@ public class Supernova extends AbstractConstructCard {
 			this.megaUpgradeName();
 			this.desc = this.rawDescription = M_UPGRADE_DESCRIPTION;
 			this.initializeDescription();
-			this.retain = true;
 		}
 	}
 }

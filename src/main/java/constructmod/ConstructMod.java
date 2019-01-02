@@ -6,8 +6,10 @@ import basemod.*;
 import basemod.abstracts.CustomUnlockBundle;
 import basemod.interfaces.*;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.modthespire.Loader;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.green.Burst;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PotionStrings;
@@ -15,6 +17,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.screens.compendium.CardLibraryScreen;
 import com.megacrit.cardcrawl.unlock.AbstractUnlock;
 import constructmod.potions.MegaPotion;
 import constructmod.potions.ShiftPotion;
@@ -154,23 +157,18 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 
 		//CardCrawlGame.cardPopup = new MultiUpgradeSingleCardViewPopup();
 
+		if (UnlockTracker.unlockProgress.getInteger(TheConstructEnum.THE_CONSTRUCT_MOD+"UnlockLevel") < 3){
+			UnlockTracker.unlockProgress.putInteger(TheConstructEnum.THE_CONSTRUCT_MOD + "UnlockLevel", 3);
+			UnlockTracker.unlockProgress.putInteger(TheConstructEnum.THE_CONSTRUCT_MOD + "Progress", 0);
+			UnlockTracker.unlockProgress.putInteger(TheConstructEnum.THE_CONSTRUCT_MOD + "CurrentCost", 500);
+		}
+
         // Mod badge
         Texture badgeTexture = new Texture(Gdx.files.internal("img/ConstructModBadge.png"));
 
 		heatBar = new HeatMeter();
         
         ModPanel settingsPanel = new ModPanel();
-        
-        ModLabel buttonLabel = new ModLabel("Reach EXP Level 1 as the Construct to unlock!", 350.0f, 700.0f, settingsPanel, (me)->{});
-        ModLabel buttonLabel2 = new ModLabel("(Restart the game if it doesn't show up)", 350.0f, 650.0f, settingsPanel, (me)->{});
-        
-        ModLabeledToggleButton phoenixBtn = new ModLabeledToggleButton("Starting Relic: Clockwork Phoenix",
-        		350.0f, 700.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
-        		phoenixStart, settingsPanel, (label) -> {}, (button) -> {
-        			phoenixStart = button.enabled;
-        			saveData();
-        			resetCharSelect();
-        		});
 		ModLabeledToggleButton contentSharingBtn = new ModLabeledToggleButton("Enable Construct relics for other characters (REQUIRES RESTART)",
 				350.0f, 600.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
 				contentSharing_relics, settingsPanel, (label) -> {}, (button) -> {
@@ -185,14 +183,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 			//adjustPotions();
 			saveData();
 		});
-		ModLabeledToggleButton overheatedExpansionBtn = new ModLabeledToggleButton("Enable Overheated expansion (14 new cards)",
-				350.0f, 650.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
-				overheatedExpansion, settingsPanel, (label) -> {}, (button) -> {
-			overheatedExpansion = button.enabled;
-			adjustCards();
-			saveData();
-		});
-		ModLabel challengeIntroTxt1 = new ModLabel("Challenge Mode modifies your character-specific cards and items for a more difficult climb.",350.0f, 430.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
+		ModLabel challengeIntroTxt1 = new ModLabel("Challenge Mode modifies your character-specific cards and items for a more difficult climb. (BETA)",350.0f, 430.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
 		ModLabel challengeIntroTxt2 = new ModLabel("Currently 4 levels exist; level 5 coming soon!",350.0f, 400.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
 		ModLabel challengeLabelTxt = new ModLabel("Challenge Level:",350.0f, 350.0f,settingsPanel,(me)->{});
 		ModLabel challengeLevelTxt = new ModLabel(""+challengeLevel,650.0f, 350.0f,settingsPanel,(me)->{});
@@ -212,19 +203,8 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 			saveData();
 		});
 
-
-        if (UnlockTracker.getUnlockLevel(TheConstructEnum.THE_CONSTRUCT_MOD) >= 1) settingsPanel.addUIElement(phoenixBtn);
-        else {
-        	if (phoenixStart) {
-        		phoenixStart = false;
-        		saveData();
-        	}
-        	settingsPanel.addUIElement(buttonLabel);
-        	settingsPanel.addUIElement(buttonLabel2);
-        }
         settingsPanel.addUIElement(contentSharingBtn);
         settingsPanel.addUIElement(contentSharingPotionsBtn);
-        settingsPanel.addUIElement(overheatedExpansionBtn);
         settingsPanel.addUIElement(challengeIntroTxt1);
         settingsPanel.addUIElement(challengeIntroTxt2);
         settingsPanel.addUIElement(challengeLevelTxt);
@@ -401,7 +381,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		addCard(new DefenseMode());
 		
 		// COMMON
-		//	Attacks (11/11)+2
+		//	Attacks (13/11)+2
 		addCard(new Boost()); 		// atk, block
 		addCard(new ScrapCannon());	// atk, exhaust
 		addCard(new SweepLaser());	// atk
@@ -409,26 +389,27 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		addCard(new SuppressiveFire());// atk, defense -> UNCOMMON, replace with draw?
 		addCard(new Backfire());	// atk
 		addCard(new HeavyBolt());	// atk
-		addCard(new ShiftStrike()); // atk, str/dex
 		addCard(new FierceBash());	// atk, (intent)
 		addCard(new FocusedBeam()); // atk
 		addCard(new Accumulate()); 	// atk, copy
+		addCard(new SyphonStrike());// atk, draw
+		addCard(new ClusterMines());// atk, block-broken
+		addCard(new ShiftStrike()); // atk, str/dex
 		
 		//	Skills (7/7)+2
 		addCard(new Reinforce());	// block
 		addCard(new Anticipate());	// block
-		addCard(new ShiftGuard());	// block, str/dex
 		addCard(new Forcefield());  // block, retain
-		
 		addCard(new ModeShift()); 	// modes, draw
 		addCard(new Analyze()); 	// draw/energy next turn
 		addCard(new VentSteam());	// debuff, exhaust
+		addCard(new SaveState());	// retain, draw
 		
 		//	Powers (1/1)
 		addCard(new Autoturret());	// atk from cycle
 		
 		// UNCOMMON
-		// 	Attacks(11/11) +2
+		// 	Attacks(12/11) +2
 		addCard(new ChargeShot());	// atk (retain)
 		addCard(new CripplingShot());//atk, debuff
 		addCard(new Electrocute()); // atk, debuff
@@ -440,13 +421,17 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		addCard(new OmegaCannon()); // atk, str-based
 		addCard(new QuickAttack()); // atk, dex
 		addCard(new PowerUp()); 	// atk, +basic cards
+		addCard(new Antimatter());	// atk
+		addCard(new Missile());		// atk, cycle
 		
-		//	Skills (16/17)+1
+		//	Skills (18/17)+1
 		addCard(new OneWayMirror());// block
 		addCard(new Disrupt());		// block
 		addCard(new Impenetrable());// block
 		addCard(new Hazardproof()); // block, buff
 		addCard(new MetalShell());	// block
+		addCard(new ShiftGuard()); 	// block, str/dex
+		addCard(new Dampening());	// block, draw, anti-cycle
 		
 		//addCard(new ReactiveShield2()); // block (cycle)
 		//Trip Mine
@@ -465,28 +450,28 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		addCard(new Isolate()); 	// cycle, buff
 		addCard(new Stasis()); 		// copy, mega-upgrade
 		addCard(new ElectricArmor());//block-based
+		addCard(new Multistage());	// attack combos, X-cost
 		//addCard(new BubbleShield());// block-based
 		
-		// 	Powers (8/7)+1
+		// 	Powers (8/7)
 		addCard(new Synchronize());	// copy-based
 		addCard(new Enhance());		// upgrade
 		addCard(new Overclock()); 	// burn, draw
 		addCard(new Overcharge()); 	// burn, energy
-		addCard(new ShieldGenerator());//defensive --> RARE? (synergy with Orb Assault as it currently is, Shield Burst; but can't be copied!)
 		addCard(new ReactiveShield());// block-based
 		addCard(new Zapper()); // defensive, stat-based
-		addCard(new PointDefense()); // block
+		addCard(new PointDefense()); // block;
+		addCard(new Failsafe());	 // anti-status
 		//-addCard(new Overpower());	// burn, stats
 		//-addCard(new Disruptor());  	// block
 		
 		// RARE
-		//	Attacks (6/5)+1
+		//	Attacks (5/5)+1
 		addCard(new HyperBeam());	// atk
 		addCard(new GoldenBullet());// atk
 		addCard(new ShieldBurst());	// atk from block --> UNCOMMON?
 		addCard(new GatlingGun());	// atk, X-cost
 		addCard(new HammerDown());	// atk, modes
-		addCard(new Antimatter());	// atk
 		//	Skills (6/7)+2
 		addCard(new MassProduction());//copy
 		addCard(new HastyRepair()); // heal
@@ -494,12 +479,14 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		addCard(new BatteryCore());	// energy
 		addCard(new MemoryTap());	// cards from other classes
 		addCard(new Reserves()); 	// cycle, draw/energy at low HP
-		//	Powers (5/5)+1
+		//	Powers (7/5)+1
 		addCard(new SiegeForm());	// buff, atk-based
 		addCard(new SpinDrive()); 	// cards
 		addCard(new Bunker()); 		// block --> RARE? (synergy with retain, which are mostly c/u), can't be copied!
 		addCard(new Meltdown()); 	// burn, damage
 		addCard(new PanicFire()); 	// atk & exhaust from cycle
+		addCard(new LongRangeLance());
+		addCard(new ShieldGenerator());//defensive
 		//-addCard(new CoreStorm()); 	// atk from cycle --> Bring back old Panic Fire, now that orbs copy again?
 
 		// MISC.
@@ -510,9 +497,10 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		addHeatCard(new PhosphorStorm());//atk, overheat 5
 		addHeatCard(new Rollout());		// atk, cycle synergy, overheat 10(15)
 		// uncommon
-		addHeatCard(new Missile());		// atk, cycle
 		addHeatCard(new BlazingSpeed());// atk, overheat 5
+		addHeatCard(new MoltenSmash());	// atk, burns
 		// rare
+		addHeatCard(new DarkFlames());	// atk, energy, exhausted burns
 		//addHeatCard(new Flamethrower());// atk, cycle?, burn synergy
 
 		//SKL (+1 uncommon, rare)
@@ -530,9 +518,10 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 
 		//PWR (-1 uncommon)
 		//uncommon
-		addHeatCard(new Failsafe());	 // anti-status
-		//rare
 		addHeatCard(new Agitation());	// overheat synergy
+		//addHeatCard(new Failsafe());	 // anti-status
+		//rare
+		//addHeatCard(new SunScreen());	// anti-status
 		//sunscreen
 
 		if (overheatedExpansion) cores.add(new NuclearCore()); // can be randomly generated only if expansion is enabled
@@ -546,31 +535,34 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		cores.add(new BatteryCore());
 	}
 
-	public void adjustCards(){
+	public static void adjustCards(){
 
     	if (!overheatedExpansion) {
     		for (AbstractCard c : expansionCards1){
-    			BaseMod.removeCard(c.cardID, AbstractCardEnum.CONSTRUCTMOD);
+				CardLibrary.cards.remove(c.cardID);
+				BaseMod.decrementCardCount(c.color);
+				CardLibrary.totalCardCount--;
 			}
-			if (cores.size() == 7) cores.remove(6); // remove nuclear core in the hackiest way possible
+			cores.removeIf((core)->core instanceof NuclearCore);
+			CardCrawlGame.mainMenuScreen.cardLibraryScreen.initialize();
 		}
 		else{
 			for (AbstractCard c : expansionCards1){
-				addCard(c);
+				CardLibrary.add(c);
+				BaseMod.incrementCardCount(c.color);
+				CardLibrary.totalCardCount++;
 			}
 			cores.add(new NuclearCore()); // can be randomly generated only if expansion is enabled
+			CardCrawlGame.mainMenuScreen.cardLibraryScreen.initialize();
 		}
-
-		CardLibrary.resetForReload();
-		CardLibrary.initialize();
 	}
 
-	public void addCard(AbstractCard card){
+	public static void addCard(AbstractCard card){
     	BaseMod.addCard(card);
     	UnlockTracker.unlockCard(card.cardID);
 	}
 
-	public void addHeatCard(AbstractCard card){
+	public static void addHeatCard(AbstractCard card){
     	if (overheatedExpansion) {
 			BaseMod.addCard(card);
 			UnlockTracker.unlockCard(card.cardID);
@@ -589,18 +581,22 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 			BaseMod.addRelic(new ClawGrip(), RelicType.SHARED);
 			BaseMod.addRelic(new RocketBooster(), RelicType.SHARED);
 			BaseMod.addRelic(new WeddingRing(), RelicType.SHARED);
+			BaseMod.addRelic(new BoolHorns(), RelicType.SHARED);
 		}
 		else{
 			BaseMod.addRelicToCustomPool(new FoamFinger(), AbstractCardEnum.CONSTRUCTMOD);
 			BaseMod.addRelicToCustomPool(new ClawGrip(), AbstractCardEnum.CONSTRUCTMOD);
 			BaseMod.addRelicToCustomPool(new RocketBooster(), AbstractCardEnum.CONSTRUCTMOD);
 			BaseMod.addRelicToCustomPool(new WeddingRing(), AbstractCardEnum.CONSTRUCTMOD);
+			BaseMod.addRelicToCustomPool(new BoolHorns(), AbstractCardEnum.CONSTRUCTMOD);
 		}
 		BaseMod.addRelicToCustomPool(new Cogwheel(), AbstractCardEnum.CONSTRUCTMOD);
 		BaseMod.addRelicToCustomPool(new MasterCore(), AbstractCardEnum.CONSTRUCTMOD);
 		BaseMod.addRelicToCustomPool(new ClockworkPhoenix(), AbstractCardEnum.CONSTRUCTMOD);
 		BaseMod.addRelicToCustomPool(new MegaBattery(), AbstractCardEnum.CONSTRUCTMOD);
 		BaseMod.addRelicToCustomPool(new PurpleEmber(), AbstractCardEnum.CONSTRUCTMOD);
+		BaseMod.addRelicToCustomPool(new LongRangeLanceRelic(), AbstractCardEnum.CONSTRUCTMOD);
+		BaseMod.addRelicToCustomPool(new ExtraLongRangeLanceRelic(), AbstractCardEnum.CONSTRUCTMOD);
 
 		challengeRelics.add(new Challenge1());
 		challengeRelics.add(new Challenge2());
@@ -702,5 +698,24 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 	
 	public static String makeID(String baseText) {
 		return "construct:" + baseText;
+	}
+
+	public static String makeRelicImg(String baseText) {
+		baseText = baseText.replace("construct:","");
+		return "img/constructRelics/" + baseText + ".png";
+	}
+
+	public static String makeRelicOutlineImg(String baseText) {
+		baseText = baseText.replace("construct:","");
+		return "img/constructRelics/outline/" + baseText + ".png";
+	}
+
+	public static void setPowerImages(AbstractPower power, String powerID){
+		power.region128 = new TextureAtlas.AtlasRegion(new Texture("img/constructPowers/84/"+(powerID)+".png"), 0, 0, 84, 84);
+		power.region48 = new TextureAtlas.AtlasRegion(new Texture("img/constructPowers/32/"+(powerID)+".png"), 0, 0, 32, 32);
+	}
+
+	public static void setPowerImages(AbstractPower power){
+		setPowerImages(power,power.ID);
 	}
 }

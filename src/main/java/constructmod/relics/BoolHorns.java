@@ -3,6 +3,7 @@ package constructmod.relics;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
@@ -13,6 +14,7 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.vfx.combat.IronWaveEffect;
 import constructmod.ConstructMod;
 
 public class BoolHorns extends CustomRelic {
@@ -30,6 +32,10 @@ public class BoolHorns extends CustomRelic {
     public void atBattleStart() {
         AbstractMonster mo = AbstractDungeon.getRandomMonster();
         this.flash();
+        AbstractPlayer p = AbstractDungeon.player;
+        if (p != null && mo != null) {
+            AbstractDungeon.actionManager.addToBottom(new VFXAction(new IronWaveEffect(p.hb.cX, p.hb.cY, mo.hb.cX), 0.5f));
+        }
         AbstractDungeon.actionManager.addToBottom(new DamageAction(mo,new DamageInfo(AbstractDungeon.player,this.counter, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SMASH));
         this.setCounter(3);
         this.stopPulse();

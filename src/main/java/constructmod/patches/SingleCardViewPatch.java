@@ -26,13 +26,13 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class SingleCardViewPatch {
-    @SpirePatch(clz= SingleCardViewPopup.class, method=SpirePatch.CLASS)
+    /*@SpirePatch(clz= SingleCardViewPopup.class, method=SpirePatch.CLASS)
     public static class SingleCardViewFields {
 
         public static final float UPGRADE_ARROW_H_OFFSET = 10.0f * Settings.scale;
         public static final float DOWNGRADE_ARROW_H_OFFSET = -20.0f * Settings.scale;
 
-        public static SpireField<Integer> numUpgrades = new SpireField<>(()->0);
+        public static SpireField<Integer> numUpgrades = new SpireField<>(()->5);
         public static SpireField<Boolean> showArrows = new SpireField<>(()->true);
         //public static SpireField<Hitbox> upgradeArrow = new SpireField<>(()->new Hitbox(250.0f * Settings.scale, 80.0f * Settings.scale));
         //public static SpireField<Hitbox> downgradeArrow = new SpireField<>(()->new Hitbox(250.0f * Settings.scale, 80.0f * Settings.scale));
@@ -41,7 +41,7 @@ public class SingleCardViewPatch {
     @SpirePatch(clz= SingleCardViewPopup.class, method="close")
     public static class OnClose {
         public static void Postfix(SingleCardViewPopup obj){
-            SingleCardViewFields.numUpgrades.set(obj,0);
+            SingleCardViewFields.numUpgrades.set(obj,5);
         }
     }
 
@@ -107,5 +107,5 @@ public class SingleCardViewPatch {
                 }
             };
         }
-    }
+    }*/
 }

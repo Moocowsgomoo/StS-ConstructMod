@@ -92,7 +92,10 @@ public class OverheatAction extends AbstractGameAction
             group.add(0,burn);
         }
 
-        if (group == null) return;
+        if (group == null){
+            this.isDone = true;
+            return;
+        }
         int index = group.indexOf(this.targetCard);
         ConstructMod.logger.debug("CARD INDEX:" + index);
         if (index >= 0 && index < group.size()){

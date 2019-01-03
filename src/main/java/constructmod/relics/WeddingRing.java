@@ -21,8 +21,8 @@ import com.megacrit.cardcrawl.actions.*;
 public class WeddingRing extends CustomRelic
 {
     public static final String ID = ConstructMod.makeID("WeddingRing");
-    private static final String IMG = "img/constructRelics/WeddingRing.png";
-    private static final String OUTLINE = "img/constructRelics/outline/WeddingRing.png";
+    private static final String IMG = ConstructMod.makeRelicImg(ID);
+    private static final String OUTLINE = ConstructMod.makeRelicOutlineImg(ID);
     private boolean cardSelected;
     public AbstractCard card1;
     public AbstractCard card2;

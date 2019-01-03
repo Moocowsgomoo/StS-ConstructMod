@@ -26,7 +26,7 @@ public class Backfire extends AbstractConstructCard {
 	private static final int M_UPGRADE_PLUS_ATTACK_DMG = 11;
 	private static final int SELF_DMG = 5;
 	private static final int UPGRADE_PLUS_SELF_DMG = -1;
-	private static final int M_UPGRADE_PLUS_SELF_DMG = 2;
+	private static final int M_UPGRADE_PLUS_SELF_DMG = 4;
 	private static final int POOL = 1;
 
 	public Backfire() {

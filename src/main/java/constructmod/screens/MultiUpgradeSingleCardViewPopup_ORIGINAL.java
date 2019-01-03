@@ -87,7 +87,7 @@ public class MultiUpgradeSingleCardViewPopup_ORIGINAL extends SingleCardViewPopu
             /*if (this.allowUpgradePreview()) {
                 this.renderUpgradeViewToggle(sb);
                 if (Settings.isControllerMode) {
-                    sb.draw(CInputActionSet.proceed.getKeyImg(), Settings.WIDTH / 2.0f - 32.0f - 155.0f * Settings.scale, -32.0f + 67.0f * Settings.scale, 32.0f, 32.0f, 64.0f, 64.0f, Settings.scale, Settings.scale, 0.0f, 0, 0, 64, 64, false, false);
+                    sb.draw(CInputActionSet.proceed.getKeyImg(), Settings.WIDTH / 2.0f - 48.0f - 155.0f * Settings.scale, -48.0f + 67.0f * Settings.scale, 48.0f, 48.0f, 64.0f, 64.0f, Settings.scale, Settings.scale, 0.0f, 0, 0, 64, 64, false, false);
                 }
             }*/
         }catch (Exception e){

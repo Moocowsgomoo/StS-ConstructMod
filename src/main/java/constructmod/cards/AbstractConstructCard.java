@@ -1,13 +1,16 @@
 package constructmod.cards;
 
+import basemod.ReflectionHacks;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.unique.TransmutationAction;
 import com.megacrit.cardcrawl.actions.unique.TransmuteAction;
 import com.megacrit.cardcrawl.actions.unique.Transmutev2Action;
 import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.screens.SingleCardViewPopup;
 import constructmod.ConstructMod;
 import constructmod.actions.OverheatAction;
+import constructmod.patches.SingleCardViewPatch;
 import constructmod.powers.AbstractCyclePower;
 import constructmod.powers.FlashFreezePower;
 import org.apache.logging.log4j.Level;
@@ -79,11 +82,15 @@ public abstract class AbstractConstructCard extends CustomCard {
     public boolean canUpgrade() {
 		
 		if (this.megaUpgraded) return false;
-		
+
+		AbstractCard viewCard = (AbstractCard)ReflectionHacks.getPrivate(CardCrawlGame.cardPopup,SingleCardViewPopup.class,"card");
+
 		return 	super.canUpgrade() || 
 				this.forcedUpgrade || 
 				CardCrawlGame.mainMenuScreen.screen == CurScreen.RUN_HISTORY ||
-				(AbstractDungeon.player.hasRelic(ClockworkPhoenix.ID) && AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom().phase != RoomPhase.COMBAT);
+				CardCrawlGame.mainMenuScreen.screen == CurScreen.CARD_LIBRARY ||
+				(AbstractDungeon.player.hasRelic(ClockworkPhoenix.ID) && AbstractDungeon.currMapNode != null &&
+						(AbstractDungeon.getCurrRoom().phase != RoomPhase.COMBAT || viewCard == this));
     }
 	
 	public boolean canUpgrade(boolean forced) {

@@ -46,10 +46,7 @@
 	"construct:ShieldGenerator": {
 		"NAME": "Shield Generator",
 		"DESCRIPTION": "Gain !M! Blur. NL Gain 2 Vulnerable.",
-		"UPGRADE_DESCRIPTION": "Gain !M! Blur. NL Gain 1 Vulnerable.",
-		"EXTENDED_DESCRIPTION": [
-			" NL Gain !B! Block."	
-		]
+		"UPGRADE_DESCRIPTION": "Gain !M! Blur. NL Gain 1 Vulnerable."
 	},
 	"construct:Analyze": {
 		"NAME": "Analyze",
@@ -239,7 +236,7 @@
 		"DESCRIPTION": "Deal !D! damage. NL Double your Strength and Dexterity.",
 		"UPGRADE_DESCRIPTION": "Deal !D! damage. NL Double your Strength and Dexterity.",
 		"EXTENDED_DESCRIPTION": [
-			"Deal !D! damage. NL Quadruple your Strength and Dexterity."	
+			"Deal !D! damage. NL Triple your Strength and Dexterity."
 		]
 	},
 	"construct:Enhance": {
@@ -306,7 +303,7 @@
 	"construct:HastyRepair": {
 		"NAME": "Hasty Repair",
 		"DESCRIPTION": "Heal !M! HP. NL Lose 2 Max HP. NL Exhaust.",
-		"UPGRADE_DESCRIPTION": "Heal !M! HP. NL Lose 1 Max HP. NL Put a Hasty Repair into your hand. NL Exhaust."
+		"UPGRADE_DESCRIPTION": "Heal !M! HP. NL Lose 2 Max HP. NL Put a Hasty Repair into your hand. NL Exhaust."
 	},
 	"construct:GatlingGun": {
 		"NAME": "Gatling Gun",
@@ -315,10 +312,10 @@
 	},
 	"construct:BatteryAcid": {
 		"NAME": "Battery Acid",
-		"DESCRIPTION": "Gain [R] [R] . NL Shuffle 1 Slimed into your draw pile.",
-		"UPGRADE_DESCRIPTION": "Gain [R] [R] [R] . NL Shuffle 1 Slimed into your draw pile.",
+		"DESCRIPTION": "Gain [E] [E] . NL Shuffle 1 Slimed into your draw pile.",
+		"UPGRADE_DESCRIPTION": "Gain [E] [E] [E] . NL Shuffle 1 Slimed into your draw pile.",
 		"EXTENDED_DESCRIPTION": [
-			"Gain [R] [R] [R] , this and next turn. NL Shuffle 2 Slimed into your draw pile."
+			"Gain [E] [E] [E] . NL Next turn, gain [E]. NL Shuffle 1 Slimed into your draw pile."
 		]
 	},
 	"construct:Bunker": {
@@ -387,12 +384,12 @@
 	"construct:Construct_Overclock": {
 		"NAME": "Overclock",
 		"DESCRIPTION": "At the start of your turn, draw !M! cards and add a Burn to your hand.",
-		"UPGRADE_DESCRIPTION": "Retain. NL Draw 4 cards. At the start of your turn, draw !M! cards and add a Burn to your hand."
+		"UPGRADE_DESCRIPTION": "Draw 4 cards. NL At the start of your turn, draw !M! cards and add a Burn to your hand."
 	},
 	"construct:Overcharge": {
 		"NAME": "Overcharge",
 		"DESCRIPTION": "At the start of your turn, gain [R] and add a Burn to your hand.",
-		"UPGRADE_DESCRIPTION": "Retain. NL Gain [R] [R] . At the start of your turn, gain [R] and add a Burn to your hand."
+		"UPGRADE_DESCRIPTION": "Gain [R] [R] . NL At the start of your turn, gain [R] and add a Burn to your hand."
 	},
 	"construct:Overpower": {
 		"NAME": "Overpower",
@@ -459,20 +456,17 @@
 	"construct:OmegaCannon": {
 		"NAME": "Omega Cannon",
 		"DESCRIPTION": "Deal !D! damage. NL Costs 1 less [R] for each Strength you have.",
-		"UPGRADE_DESCRIPTION": "Deal !D! damage twice. NL Costs 1 less [R] for each Strength you have."
+		"UPGRADE_DESCRIPTION": "Deal !D! damage. NL Costs 1 less [R] for each Strength (or negative Strength) you have."
 	},
 	"construct:Impenetrable": {
 		"NAME": "Impenetrable",
 		"DESCRIPTION": "Gain !B! Block. NL Gain [R] next turn. NL Exhaust.",
-		"UPGRADE_DESCRIPTION": "Gain !B! Block. NL Gain [R] [R] next turn. NL Exhaust.",
-		"EXTENDED_DESCRIPTION": [
-			"Gain !B! Block this and next turn. NL Gain [R] [R] next turn. NL Exhaust."
-		]
+		"UPGRADE_DESCRIPTION": "Gain !B! Block. NL Gain [R] [R] next turn. NL Exhaust."
 	},
 	"construct:PanicFire": {
 		"NAME": "Panic Fire",
 		"DESCRIPTION": "When a non-upgraded card cycles, Exhaust it and deal !M! damage to a random enemy.",
-		"UPGRADE_DESCRIPTION": " Shuffle 5 random Cores into your draw pile."
+		"UPGRADE_DESCRIPTION": " Shuffle 3 random Cores into your draw pile."
 	},
 	"construct:Stasis": {
 		"NAME": "Stasis",
@@ -514,13 +508,13 @@
 		"DESCRIPTION": "Retain your hand this turn. NL Exhaust.",
 		"UPGRADE_DESCRIPTION": "Retain your hand this turn. NL Draw 1 card. NL Exhaust.",
 		"EXTENDED_DESCRIPTION": [
-			"Retain. NL Retain your hand this and next turn. NL Exhaust."
+			"Retain your hand this and next turn. NL Draw 1 card. NL Exhaust."
 		]
 	},
 	"construct:SyphonStrike": {
 		"NAME": "Syphon Strike",
-		"DESCRIPTION": "Deal !D! damage. NL Whenever the enemy takes attack damage this turn, draw !M! card.",
-		"UPGRADE_DESCRIPTION": "Deal !D! damage. NL Whenever the enemy takes attack damage this and next turn, draw !M! card."
+		"DESCRIPTION": "Deal !D! damage. NL Whenever the enemy takes attack damage this turn, draw 1 card.",
+		"UPGRADE_DESCRIPTION": "Deal !D! damage. NL Whenever the enemy takes attack damage this and next turn, draw 1 card."
 	},
 	"construct:Multistage": {
 		"NAME": "Multistage",
@@ -544,6 +538,11 @@
 		"NAME": "Long-Range Lance",
 		"DESCRIPTION": "At the start of the next combat, deal !M! damage to a random enemy.",
 		"UPGRADE_DESCRIPTION": "At the start of the next 2 combats, deal !M! damage to a random enemy."
+	},
+	"construct:ShiftingStance": {
+		"NAME": "Shifting Stance",
+		"DESCRIPTION": "Every time you play !M! cards, swap your Strength and Dexterity.",
+		"UPGRADE_DESCRIPTION": "Every time you play !M! cards, swap your Strength and Dexterity, then increase the highest and decrease the lowest by 1."
 	},
 
 

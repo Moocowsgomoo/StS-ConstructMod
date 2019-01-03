@@ -22,7 +22,6 @@ public class OmegaCannon extends AbstractConstructCard {
 	private static final int COST = 5;
 	private static final int ATTACK_DMG = 15;
 	private static final int UPGRADE_PLUS_ATTACK_DMG = 5;
-	private static final int M_UPGRADE_NEW_COST = 6;
 	private static final int POOL = 1;
 	
 	private int prevDiscount = 0;
@@ -39,9 +38,12 @@ public class OmegaCannon extends AbstractConstructCard {
 		this.costForTurn += this.prevDiscount;
 		
 		super.applyPowers();
-		if (!AbstractDungeon.player.hasPower("Strength") || AbstractDungeon.player.getPower("Strength").amount < 0) return;
-		
-		this.prevDiscount = AbstractDungeon.player.getPower("Strength").amount;
+		if (!AbstractDungeon.player.hasPower("Strength")) return;
+		if (!this.megaUpgraded && AbstractDungeon.player.getPower("Strength").amount < 0) return;
+
+		int str = AbstractDungeon.player.getPower("Strength").amount;
+		if (str < 0) str = -str;
+		this.prevDiscount = str;
 		
 		if (this.costForTurn - this.prevDiscount < 0) this.prevDiscount = this.costForTurn;
 		
@@ -63,7 +65,6 @@ public class OmegaCannon extends AbstractConstructCard {
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),AttackEffect.SMASH));
-		if (this.megaUpgraded) AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),AttackEffect.SMASH));
 	}
 
 	@Override
@@ -78,7 +79,6 @@ public class OmegaCannon extends AbstractConstructCard {
 			this.upgradeDamage(UPGRADE_PLUS_ATTACK_DMG);
 		} else if (this.canUpgrade()) {
 			this.megaUpgradeName();
-			this.upgradeBaseCost(M_UPGRADE_NEW_COST);
 			this.rawDescription = M_UPGRADE_DESCRIPTION;
 			this.initializeDescription();
 		}

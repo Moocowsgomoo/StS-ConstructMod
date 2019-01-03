@@ -21,11 +21,11 @@ public class Impenetrable extends AbstractConstructCard {
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-	public static final String M_UPGRADE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 	private static final int COST = 3;
 	private static final int BLOCK_AMT = 25;
 	private static final int ENERGIZE_AMT = 1;
 	private static final int UPGRADE_PLUS_ENERGIZE_AMT = 1;
+	public static final int M_UPGRADE_PLUS_BLOCK_AMT = 20;
 	private static final int POOL = 1;
 
 	public Impenetrable() {
@@ -40,8 +40,6 @@ public class Impenetrable extends AbstractConstructCard {
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p,p,this.block));
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new EnergizedPower(p, this.magicNumber), this.magicNumber));
-		if (this.megaUpgraded)
-			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new NextTurnBlockPower(p,this.block),this.block));
 	}
 	
 	@Override
@@ -58,8 +56,7 @@ public class Impenetrable extends AbstractConstructCard {
 			this.upgradeMagicNumber(UPGRADE_PLUS_ENERGIZE_AMT);
 		} else if (canUpgrade()) {
 			this.megaUpgradeName();
-			this.rawDescription = M_UPGRADE_DESCRIPTION;
-			this.initializeDescription();
+			this.upgradeBlock(M_UPGRADE_PLUS_BLOCK_AMT);
 		}
 	}
 }

@@ -25,7 +25,7 @@ public class DarkFlamesPower extends AbstractPower {
 		this.amount = -1;
 		this.type = PowerType.BUFF;
 		this.isTurnBased = false;
-		this.img = new Texture("img/constructPowers/32/Meltdown.png");
+		this.img = new Texture("img/constructPowers/48/Meltdown.png");
 		updateDescription();
 	}
 	

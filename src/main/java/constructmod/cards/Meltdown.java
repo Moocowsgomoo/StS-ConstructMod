@@ -22,8 +22,8 @@ public class Meltdown extends AbstractConstructCard {
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	private static final int COST = 1;
 	private static final int DMG_PER_TURN = 12;
-	private static final int UPGRADE_DMG_PER_TURN = 3;
-	private static final int M_UPGRADE_DMG_PER_TURN = 10;
+	private static final int UPGRADE_DMG_PER_TURN = 2;
+	private static final int M_UPGRADE_DMG_PER_TURN = 4;
 	private static final int POOL = 1;
 
 	public Meltdown() {

@@ -64,7 +64,7 @@ public class HeatMeter {
         for (HeatMeterSegment h : segments) h.drawHeatMeterSegment(sb);
         for (HeatMeterLimit li : cardOverheatLimits.values()) li.drawHeatMeterLimit(heatBarRenderTimer, sb);
         if (numSegmentsToRender >= 1) indicator.drawHeatMeterIndicator(ConstructMod.cyclesThisTurn,numSegmentsToRender*5,sb);
-        if (flashFreezeActive && shouldRender) {
+        if (flashFreezeActive && shouldRender && numSegmentsToRender > 0) {
             for (HeatMeterSnowflake s : snowflakes) s.drawSnowflake(numSegmentsToRender * 5, sb);
         }
     }

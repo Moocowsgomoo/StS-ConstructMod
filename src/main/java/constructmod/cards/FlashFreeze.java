@@ -42,12 +42,6 @@ public class FlashFreeze extends AbstractConstructCard {
 	}
 
 	@Override
-	public void applyPowers(){
-		super.applyPowers();
-		if (megaUpgraded) this.retain = true;
-	}
-
-	@Override
 	public AbstractCard makeCopy() {
 		return new FlashFreeze();
 	}
@@ -62,10 +56,7 @@ public class FlashFreeze extends AbstractConstructCard {
 			this.isInnate = true;
 		} else if (this.canUpgrade()) {
 			this.megaUpgradeName();
-			this.rawDescription = this.M_UPGRADE_DESCRIPTION;
-			this.initializeDescription();
 			this.upgradeMagicNumber(M_UPGRADE_PLUS_FREEZE_TURNS);
-			this.retain = true;
 		}
 	}
 }

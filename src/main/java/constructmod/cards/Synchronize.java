@@ -21,7 +21,7 @@ public class Synchronize extends AbstractConstructCard {
 	private static final int COST = 1;
 	private static final int POWER_DAMAGE = 8;
 	//private static final int UPGRADE_PLUS_POWER_DAMAGE = 2;
-	private static final int M_UPGRADE_PLUS_POWER_DAMAGE = 7;
+	private static final int M_UPGRADE_PLUS_POWER_DAMAGE = 4;
 	private static final int POOL = 1;
 
 	public Synchronize() {

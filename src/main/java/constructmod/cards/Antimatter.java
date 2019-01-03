@@ -34,14 +34,13 @@ public class Antimatter extends AbstractConstructCard {
 	private static final int COST = 0;
 	private static final int CARD_DMG = 4;
 	private static final int UPGRADE_PLUS_CARD_DMG = 1;
-	private static final int M_UPGRADE_PLUS_CARD_DMG = 1;
 	private static final int POOL = 1;
 	
 	private String desc;
 
 	public Antimatter() {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.ATTACK,
-				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.RARE, AbstractCard.CardTarget.ENEMY, POOL);
+				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.ENEMY, POOL);
 		this.baseDamage = this.damage = 0;
 		this.magicNumber = this.baseMagicNumber = CARD_DMG;
 		this.desc = DESCRIPTION;
@@ -110,7 +109,6 @@ public class Antimatter extends AbstractConstructCard {
 			this.desc = M_UPGRADE_DESCRIPTION;
 			this.rawDescription = this.desc;
 			initializeDescription();
-			this.upgradeMagicNumber(M_UPGRADE_PLUS_CARD_DMG);
 		}
 	}
 }

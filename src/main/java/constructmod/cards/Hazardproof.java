@@ -23,7 +23,6 @@ public class Hazardproof extends AbstractConstructCard {
 	private static final int BLOCK_AMT = 2;
 	private static final int ARTIFACT_AMT = 1;
 	private static final int UPGRADE_BLOCK_AMT = 3;
-	private static final int M_UPGRADE_BLOCK_AMT = 3;
 	private static final int M_UPGRADE_PLUS_ARTIFACT_AMT = 2;
 	private static final int POOL = 1;
 
@@ -52,7 +51,6 @@ public class Hazardproof extends AbstractConstructCard {
 			this.upgradeBlock(UPGRADE_BLOCK_AMT);
 		} else if (this.canUpgrade()) {
 			this.megaUpgradeName();
-			this.upgradeBlock(M_UPGRADE_BLOCK_AMT);
 			this.upgradeMagicNumber(M_UPGRADE_PLUS_ARTIFACT_AMT);
 		}
 	}

@@ -29,7 +29,6 @@ public class BatteryAcid extends AbstractConstructCard {
 	private static final int ENERGY_GAIN = 2;
 	private static final int SLIMED_AMT = 1;
 	private static final int UPGRADE_PLUS_ENERGY_GAIN = 1;
-	private static final int M_UPGRADED_SLIMED_AMT = 2;
 	private static final int POOL = 1;
 
 	public BatteryAcid() {
@@ -42,9 +41,9 @@ public class BatteryAcid extends AbstractConstructCard {
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		//AbstractDungeon.actionManager.addToBottom(new SFXAction("THUNDERCLAP", 0.05f));
 		AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(this.magicNumber));
-		if (this.megaUpgraded) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new EnergizedPower(p, this.magicNumber), this.magicNumber));
+		if (this.megaUpgraded) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new EnergizedPower(p, 1),1));
 		//AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p,1));
-		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(new Slimed(), this.megaUpgraded?M_UPGRADED_SLIMED_AMT:SLIMED_AMT, true, true));
+		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(new Slimed(), SLIMED_AMT, true, true));
 	}
 
 	@Override

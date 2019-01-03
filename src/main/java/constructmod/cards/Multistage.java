@@ -26,6 +26,7 @@ public class Multistage extends AbstractConstructCard {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, CardType.SKILL,
 				AbstractCardEnum.CONSTRUCTMOD, CardRarity.RARE, CardTarget.NONE, POOL);
 		this.magicNumber = this.baseMagicNumber = TURNS;
+		this.exhaust = true;
 	}
 
 	@Override

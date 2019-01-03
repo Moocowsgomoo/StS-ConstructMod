@@ -23,7 +23,6 @@ public class MetalShell extends AbstractConstructCard {
 	private static final int COST = 1;
 	private static final int BLOCK_AMT = 4;
 	private static final int METALLICIZE_AMT = 2;
-	private static final int UPGRADE_PLUS_BLOCK_AMT = 1;
 	private static final int UPGRADE_PLUS_METALLICIZE_AMT = 1;
 	private static final int M_UPGRADE_PLUS_BLOCK_AMT = 1;
 	//private static final int M_UPGRADE_PLUS_METALLICIZE_AMT = 2;
@@ -54,7 +53,6 @@ public class MetalShell extends AbstractConstructCard {
 	public void upgrade() {
 		if (!this.upgraded) {
 			this.upgradeName();
-			this.upgradeBlock(UPGRADE_PLUS_BLOCK_AMT);
 			this.upgradeMagicNumber(UPGRADE_PLUS_METALLICIZE_AMT);
 		} else if (this.canUpgrade()) {
 			this.megaUpgradeName();

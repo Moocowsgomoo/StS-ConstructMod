@@ -32,12 +32,6 @@ public class Overclock extends AbstractConstructCard {
 				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.SELF, POOL);
 		this.magicNumber = this.baseMagicNumber = DRAW;
 	}
-	
-	@Override
-	public void applyPowers(){
-		super.applyPowers();
-		if (this.megaUpgraded) this.retain = true;
-	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
@@ -59,7 +53,6 @@ public class Overclock extends AbstractConstructCard {
 			this.megaUpgradeName();
 			this.rawDescription = M_UPGRADE_DESCRIPTION;
 			this.initializeDescription();
-			this.retain = true;
 		}
 	}
 }

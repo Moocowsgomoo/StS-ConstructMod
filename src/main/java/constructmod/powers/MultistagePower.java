@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.QuantumEgg;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
@@ -32,14 +33,14 @@ public class MultistagePower extends AbstractPower {
 		this.amount = amount;
 		this.type = PowerType.BUFF;
 		this.isTurnBased = true;
-		ConstructMod.setPowerImages(this);
+		ConstructMod.setPowerImages(this,"Multistage");
 		this.heldCard = heldCard.makeStatEquivalentCopy();
 		updateDescription();
 	}
 	
 	@Override
 	public void updateDescription() {
-		this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + this.heldCard.name + DESCRIPTIONS[2];
+		this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + FontHelper.colorString(this.heldCard.name, "y") + DESCRIPTIONS[2];
 	}
 
 	@Override

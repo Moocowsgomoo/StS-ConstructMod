@@ -24,7 +24,7 @@ public class SunScreenPower extends AbstractPower {
 		updateDescription();
 		this.type = PowerType.BUFF;
 		this.isTurnBased = false;
-		this.img = new Texture("img/constructPowers/32/SunScreen.png");
+		this.img = new Texture("img/constructPowers/48/SunScreen.png");
 	}
 	
 	@Override

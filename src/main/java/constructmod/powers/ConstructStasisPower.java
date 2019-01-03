@@ -3,6 +3,7 @@ package constructmod.powers;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import constructmod.ConstructMod;
@@ -26,13 +27,13 @@ public class ConstructStasisPower extends AbstractPower {
 		this.amount = amount;
 		this.type = AbstractPower.PowerType.BUFF;
 		this.isTurnBased = false;
-		ConstructMod.setPowerImages(this);
+		this.loadRegion("stasis");
 		this.heldCard = heldCard.makeCopy();
 		updateDescription();
 	}
 	
 	@Override
 	public void updateDescription() {
-		this.description = DESCRIPTIONS[0] + this.heldCard.name + DESCRIPTIONS[1] + this.amount + (this.amount == 1?DESCRIPTIONS[2]:DESCRIPTIONS[3]);
+		this.description = DESCRIPTIONS[0] + FontHelper.colorString(this.heldCard.name, "y") + DESCRIPTIONS[1] + this.amount + (this.amount == 1?DESCRIPTIONS[2]:DESCRIPTIONS[3]);
 	}
 }

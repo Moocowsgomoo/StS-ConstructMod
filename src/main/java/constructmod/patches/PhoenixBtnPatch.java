@@ -1,6 +1,7 @@
 package constructmod.patches;
 
 import basemod.BaseMod;
+import basemod.ReflectionHacks;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -31,8 +32,8 @@ public class PhoenixBtnPatch {
 	public static final Hitbox relicHitbox = new Hitbox(40.0f * Settings.scale * (0.01f + (1.0f - 0.019f)), 40.0f * Settings.scale);
 	public static final Hitbox expansionHitbox = new Hitbox(40.0f * Settings.scale * (0.01f + (1.0f - 0.019f)), 40.0f * Settings.scale);
 	public static AbstractRelic r;
-	public static float flameTimer;
-	public static final ArrayList<LogoFlameEffect> flame = new ArrayList<>();
+	public static final ArrayList<PowerTip> expansionTips = new ArrayList<>();
+	public static boolean shouldRefreshUnlocks = false;
 
 	@SpirePatch(clz = CharacterOption.class, method = "renderRelics")
 	public static class RenderBtn{
@@ -51,6 +52,10 @@ public class PhoenixBtnPatch {
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
+				}
+				if (shouldRefreshUnlocks){
+					ReflectionHacks.setPrivate(obj,obj.getClass(),"unlocksRemaining",5-UnlockTracker.getUnlockLevel(TheConstructEnum.THE_CONSTRUCT_MOD));
+					shouldRefreshUnlocks = false;
 				}
 				r.updateDescription(TheConstructEnum.THE_CONSTRUCT_MOD);
 				relicHitbox.move(190.0f * Settings.scale, Settings.HEIGHT / 2.0f - 190.0f * Settings.scale);
@@ -116,6 +121,16 @@ public class PhoenixBtnPatch {
 				if (UnlockTracker.getUnlockLevel(TheConstructEnum.THE_CONSTRUCT_MOD) >= 5) {
 					expansionHitbox.update();
 					if (expansionHitbox.hovered) {
+
+						if (expansionTips.isEmpty()){
+							expansionTips.add(new PowerTip("Overheated Expansion","Introduces a new [#ff9900]Overheat mechanic, #b15 new cards, and #b1 new relic."));
+						}
+						if (InputHelper.mX < 1400.0f * Settings.scale) {
+							TipHelper.queuePowerTips(InputHelper.mX + 60.0f * Settings.scale, InputHelper.mY - 50.0f * Settings.scale, expansionTips);
+						} else {
+							TipHelper.queuePowerTips(InputHelper.mX - 350.0f * Settings.scale, InputHelper.mY - 50.0f * Settings.scale, r.tips);
+						}
+
 						if (InputHelper.justClickedLeft) {
 							CardCrawlGame.sound.playA("UI_CLICK_1", -0.4f);
 							expansionHitbox.clickStarted = true;
@@ -126,9 +141,10 @@ public class PhoenixBtnPatch {
 								ConstructMod.overheatedExpansion = !ConstructMod.overheatedExpansion;
 								ConstructMod.saveData();
 								ConstructMod.adjustCards();
+								ConstructMod.adjustRelics();
 
 								if (ConstructMod.overheatedExpansion) {
-									CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT, false);
+									CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT, true);
 									CardCrawlGame.sound.playA("ATTACK_FIRE", 0.2f);
 								}
 

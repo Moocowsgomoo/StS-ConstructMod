@@ -31,12 +31,6 @@ public class Overcharge extends AbstractConstructCard {
 		super(ID, NAME, "img/cards/"+ID+".png", COST, DESCRIPTION, AbstractCard.CardType.POWER,
 				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.SELF, POOL);
 	}
-	
-	@Override
-	public void applyPowers(){
-		super.applyPowers();
-		if (this.megaUpgraded) this.retain = true;
-	}
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
@@ -58,7 +52,6 @@ public class Overcharge extends AbstractConstructCard {
 			this.megaUpgradeName();
 			this.rawDescription = M_UPGRADE_DESCRIPTION;
 			this.initializeDescription();
-			this.retain = true;
 		}
 	}
 }

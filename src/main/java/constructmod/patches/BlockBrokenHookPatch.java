@@ -9,17 +9,19 @@ import constructmod.cards.AbstractConstructCard;
 @SpirePatch(clz = AbstractCreature.class, method = "brokeBlock")
 public class BlockBrokenHookPatch {
 	public static void Postfix(AbstractCreature obj) {
-		for (final AbstractCard c : AbstractDungeon.player.drawPile.group){
-			if (c instanceof AbstractConstructCard) ((AbstractConstructCard) c).onBlockBroken();
-		}
-		for (final AbstractCard c : AbstractDungeon.player.hand.group){
-			if (c instanceof AbstractConstructCard) ((AbstractConstructCard) c).onBlockBroken();
-		}
-		for (final AbstractCard c : AbstractDungeon.player.discardPile.group){
-			if (c instanceof AbstractConstructCard) ((AbstractConstructCard) c).onBlockBroken();
-		}
-		for (final AbstractCard c : AbstractDungeon.player.exhaustPile.group){
-			if (c instanceof AbstractConstructCard) ((AbstractConstructCard) c).onBlockBroken();
+		if (obj == AbstractDungeon.player) {
+			for (final AbstractCard c : AbstractDungeon.player.drawPile.group) {
+				if (c instanceof AbstractConstructCard) ((AbstractConstructCard) c).onBlockBroken();
+			}
+			for (final AbstractCard c : AbstractDungeon.player.hand.group) {
+				if (c instanceof AbstractConstructCard) ((AbstractConstructCard) c).onBlockBroken();
+			}
+			for (final AbstractCard c : AbstractDungeon.player.discardPile.group) {
+				if (c instanceof AbstractConstructCard) ((AbstractConstructCard) c).onBlockBroken();
+			}
+			for (final AbstractCard c : AbstractDungeon.player.exhaustPile.group) {
+				if (c instanceof AbstractConstructCard) ((AbstractConstructCard) c).onBlockBroken();
+			}
 		}
 	}
 }

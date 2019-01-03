@@ -47,9 +47,8 @@ public class PanicFire extends AbstractConstructCard {
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PanicFirePower(p, this.magicNumber), this.magicNumber));
 		
 		if (this.megaUpgraded) {
-			for (int i=0;i<5;i++) {
-		    	AbstractCard c = cards.get(AbstractDungeon.cardRandomRng.random(cards.size()-1));
-		    	AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(c.makeCopy(),1,true,false));
+			for (int i=0;i<3;i++) {
+		    	AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(ConstructMod.getRandomCore(),1,true,true));
 	    	}
 		}
 	}

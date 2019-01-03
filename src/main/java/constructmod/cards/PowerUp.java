@@ -32,7 +32,6 @@ public class PowerUp extends AbstractConstructCard {
 	private static final int POWER_PLUS = 2;
 	private static final int UPGRADE_PLUS_ATTACK_DMG = 1;
 	private static final int UPGRADE_PLUS_POWER_PLUS = 1;
-	private static final int M_UPGRADE_PLUS_ATTACK_DMG = 2;
 	private static final int M_UPGRADE_PLUS_POWER_PLUS = 2;
 	private static final int POOL = 1;
 
@@ -65,7 +64,6 @@ public class PowerUp extends AbstractConstructCard {
 			this.upgradeMagicNumber(UPGRADE_PLUS_POWER_PLUS);
 		} else if (canUpgrade()) {
 			this.megaUpgradeName();
-			this.upgradeDamage(M_UPGRADE_PLUS_ATTACK_DMG);
 			this.upgradeMagicNumber(M_UPGRADE_PLUS_POWER_PLUS);
 		}
 	}

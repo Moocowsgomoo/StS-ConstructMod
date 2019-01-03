@@ -46,7 +46,7 @@ public class HammerDown extends AbstractConstructCard {
 		AbstractDungeon.actionManager.addToBottom(new DamageAction(
 				m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
 		
-		AbstractDungeon.actionManager.addToBottom(new DoubleStatsAction(p,(this.megaUpgraded?3:1)));
+		AbstractDungeon.actionManager.addToBottom(new DoubleStatsAction(p,(this.megaUpgraded?2:1)));
 
 	}
 

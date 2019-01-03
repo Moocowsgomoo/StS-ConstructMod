@@ -25,7 +25,7 @@ public class DisruptorPower extends AbstractPower {
 		updateDescription();
 		this.type = AbstractPower.PowerType.BUFF;
 		this.isTurnBased = false;
-		this.img = new Texture("img/constructPowers/32/Disruptor.png");
+		this.img = new Texture("img/constructPowers/48/Disruptor.png");
 	}
 	
 	@Override

@@ -24,7 +24,7 @@ public class HastyRepair extends AbstractConstructCard {
 	private static final int COST = 1;
 	private static final int HEAL_AMT = 12;
 	private static final int MAX_HP_GAIN_AMT = -2;
-	private static final int M_UPGRADE_PLUS_MAX_HP_GAIN_AMT = 1;
+	//private static final int M_UPGRADE_PLUS_MAX_HP_GAIN_AMT = 1;
 	private static final int UPGRADE_HEAL_AMT = 4;
 	private static final int POOL = 1;
 	
@@ -58,7 +58,6 @@ public class HastyRepair extends AbstractConstructCard {
 			this.upgradeMagicNumber(UPGRADE_HEAL_AMT);
 		} else if (this.canUpgrade()) {
 			this.megaUpgradeName();
-			maxHpGain += M_UPGRADE_PLUS_MAX_HP_GAIN_AMT;
 			this.rawDescription = M_UPGRADE_DESCRIPTION;
 			this.initializeDescription();
 		}

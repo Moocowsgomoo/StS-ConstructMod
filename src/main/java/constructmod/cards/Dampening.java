@@ -38,7 +38,7 @@ public class Dampening extends AbstractConstructCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new NoCyclePower(p,1)));
+		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new NoCyclePower(p,1),1));
 		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
 		AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p,this.magicNumber));
 	}

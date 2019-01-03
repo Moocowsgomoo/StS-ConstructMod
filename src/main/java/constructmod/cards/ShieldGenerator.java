@@ -21,14 +21,12 @@ public class ShieldGenerator extends AbstractConstructCard {
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-	public static final String M_UPGRADE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 	private static final int COST = 1;
 	private static final int BLUR_AMT = 4;
 	private static final int VULN_AMT = 2;
 	//private static final int UPGRADE_PLUS_BLUR_AMT =  1;
 	private static final int UPGRADED_VULN_AMT = 1;
-	private static final int M_UPGRADE_BLOCK_AMT = 5;
-	private static final int M_UPGRADE_PLUS_BLUR_AMT = 4;
+	private static final int M_UPGRADE_PLUS_BLUR_AMT = 2;
 	private static final int POOL = 1;
 
 	public ShieldGenerator() {
@@ -43,7 +41,6 @@ public class ShieldGenerator extends AbstractConstructCard {
 		int vuln = this.upgraded?UPGRADED_VULN_AMT:VULN_AMT;
 		AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.common.ApplyPowerAction(p, p, new BlurPower(p, this.magicNumber), this.magicNumber));
 		AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.common.ApplyPowerAction(p, p, new VulnerablePower(p, vuln, false), vuln));
-		if (this.megaUpgraded) AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
 	}
 
 	@Override
@@ -60,10 +57,7 @@ public class ShieldGenerator extends AbstractConstructCard {
 			this.initializeDescription();
 		} else if (this.canUpgrade()) {
 			this.megaUpgradeName();
-			this.upgradeBlock(M_UPGRADE_BLOCK_AMT);
 			this.upgradeMagicNumber(M_UPGRADE_PLUS_BLUR_AMT);
-			this.rawDescription = UPGRADE_DESCRIPTION + M_UPGRADE_DESCRIPTION;
-			this.initializeDescription();
 		}
 	}
 }

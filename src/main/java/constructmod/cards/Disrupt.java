@@ -24,10 +24,8 @@ public class Disrupt extends AbstractConstructCard {
 	private static final int COST = 1;
 	private static final int BLOCK_AMT = 7;
 	private static final int STR_DOWN_AMT = 2;
-	private static final int UPGRADE_BLOCK_AMT = 2;
 	private static final int UPGRADE_PLUS_STR_DOWN_AMT = 1;
-	private static final int M_UPGRADE_PLUS_BLOCK_AMT = 1;
-	private static final int M_UPGRADE_PLUS_STR_DOWN_AMT = 2;
+	private static final int M_UPGRADE_PLUS_STR_DOWN_AMT = 1;
 	private static final int POOL = 1;
 
 	public Disrupt() {
@@ -36,7 +34,7 @@ public class Disrupt extends AbstractConstructCard {
 		this.baseBlock = this.block = BLOCK_AMT;
 		this.baseMagicNumber = this.magicNumber = STR_DOWN_AMT;
 	}
-	
+
 	@Override
 	public void applyPowers() {
 		super.applyPowers();
@@ -63,11 +61,9 @@ public class Disrupt extends AbstractConstructCard {
 	public void upgrade() {
 		if (!this.upgraded) {
 			this.upgradeName();
-			this.upgradeBlock(UPGRADE_BLOCK_AMT);
 			this.upgradeMagicNumber(UPGRADE_PLUS_STR_DOWN_AMT);
 		} else if (this.canUpgrade()) {
 			this.megaUpgradeName();
-			this.upgradeBlock(M_UPGRADE_PLUS_BLOCK_AMT);
 			this.upgradeMagicNumber(M_UPGRADE_PLUS_STR_DOWN_AMT);
 			this.rawDescription = M_UPGRADE_DESCRIPTION;
 			this.initializeDescription();

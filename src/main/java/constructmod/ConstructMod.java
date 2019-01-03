@@ -157,6 +157,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 			UnlockTracker.unlockProgress.putInteger(TheConstructEnum.THE_CONSTRUCT_MOD + "UnlockLevel", 3);
 			UnlockTracker.unlockProgress.putInteger(TheConstructEnum.THE_CONSTRUCT_MOD + "Progress", 0);
 			UnlockTracker.unlockProgress.putInteger(TheConstructEnum.THE_CONSTRUCT_MOD + "CurrentCost", 500);
+			UnlockTracker.unlockProgress.flush();
 		}
 
         // Mod badge
@@ -181,6 +182,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		});
 		ModButton unlockAllButton = new ModButton(350.0f,480.0f,settingsPanel,(btn)->{
 			UnlockTracker.unlockProgress.putInteger(TheConstructEnum.THE_CONSTRUCT_MOD + "UnlockLevel", 5);
+			UnlockTracker.unlockProgress.flush();
 			PhoenixBtnPatch.shouldRefreshUnlocks = true;
 			CardCrawlGame.sound.playA("UNLOCK_PING", -0.1f);
 		});

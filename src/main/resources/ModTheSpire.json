@@ -2,9 +2,9 @@
   "modid": "constructmod",
   "name": "The Construct",
   "author_list": ["Moocowsgomoo, Spike Berd"],
-  "description": "New character - The Construct! \n\nENABLE EXTRA FEATURES IN THE MODS MENU!\n\nRECENT CHANGES:\nv0.9.992\n- Challenge 3 now rebounds ONE random card.\n- Challenge 4 added.\n- Afterburners uncommon -> rare, now shuffles Burns into draw pile.\n- Implosion rare -> uncommon.\n- Flammable Fog block 6 -> 5.\n- Phosphor Storm damage 8 -> 7.\n- Nuclear Core poison 4 -> 3.\n- Oil Spill damage 10 -> 9.\n- Isolate now doubles next attack's damage, then all damage when upgraded.\n- Tumble damage 4(7) -> 3(5), m-upgrade draw 7->5.\n- Shield Burst damage 2(3)x -> 1.5(2)x.\n- Scrap Cannon mega-upgrade damage 12 -> 17.\n- Bugfix: Stasis no longer upgrades Burns.\n- Bugfix: Mega-upgrades are no longer lost when loading a run with Conspire installed.\n- Bugfix: Flash Freeze updates its text correctly.\n- Added portrait-size images for Overheated expansion cards.",
-  "version": "0.9.992",
-  "sts_version": "12-06-2018",
+  "description": "New character - The Construct! \n\nRECENT CHANGES:\nv1.0\n- Unlock system and better UI for bonus content.\n- Added 9 new cards and 2 new relics.\n- Tons of minor card rebalancing.\n- Added ending cutscene and better lore.\n- Many fixes for long-standing minor bugs.\n- Hi-res power images and proper relic outlines.\n\nCheck the GitHub release page for a full list of changes; there are far too many to list here.\n\n\nThanks for playing the Construct! Please let Moocowsgomoo know on Steam, Discord, or GitHub if you have any feedback or bug reports!",
+  "version": "1.0",
+  "sts_version": "12-20-2018",
   "mts_version": "3.4.0",
   "dependencies": ["basemod"],
   "update_json": "https://api.github.com/repos/Moocowsgomoo/StS-ConstructMod/releases/latest"

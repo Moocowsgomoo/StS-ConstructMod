@@ -210,8 +210,10 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 
         settingsPanel.addUIElement(contentSharingBtn);
         settingsPanel.addUIElement(contentSharingPotionsBtn);
-        settingsPanel.addUIElement(unlockAllButton);
-        settingsPanel.addUIElement(unlockAllTxt);
+		if (UnlockTracker.getUnlockLevel(TheConstructEnum.THE_CONSTRUCT_MOD) < 5){
+			settingsPanel.addUIElement(unlockAllButton);
+			settingsPanel.addUIElement(unlockAllTxt);
+		}
         settingsPanel.addUIElement(challengeIntroTxt1);
         settingsPanel.addUIElement(challengeIntroTxt2);
         settingsPanel.addUIElement(challengeLevelTxt);

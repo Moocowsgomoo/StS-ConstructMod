@@ -81,11 +81,8 @@
 	},
 	"construct:ElectricArmor": {
 		"NAME": "Electric Armor",
-		"DESCRIPTION": "Cycle if Dexterity < 1. NL Gain Thorns equal to your Dexterity. NL Exhaust.",
-		"UPGRADE_DESCRIPTION": "Cycle if Dexterity < 1. NL Gain Thorns equal to your Dexterity + !M!. NL Exhaust.",
-		"EXTENDED_DESCRIPTION": [
-			"Cycle if Dexterity < 1. NL Gain !M! Dexterity, then gain Thorns equal to your Dexterity. NL Exhaust."	
-		]
+		"DESCRIPTION": "Cycle if Dexterity < 1. NL When an enemy attacks you this turn, it takes damage equal to your Dexterity.",
+		"UPGRADE_DESCRIPTION": "Cycle if Dexterity < 1. NL When an enemy attacks you this or next turn, it takes damage equal to your Dexterity."
 	},
 	"construct:BubbleShield": {
 		"NAME": "Bubble Shield",
@@ -225,7 +222,7 @@
 	"construct:Synchronize": {
 		"NAME": "Synchronize",
 		"DESCRIPTION": "When you draw 2 of the same card in a row, deal !M! damage to ALL enemies.",
-		"UPGRADE_DESCRIPTION": "Innate. When you draw 2 of the same card in a row, deal !M! damage to ALL enemies."
+		"UPGRADE_DESCRIPTION": "Innate. NL When you draw 2 of the same card in a row, deal !M! damage to ALL enemies."
 	},
 	"construct:SiegeForm": {
 		"NAME": "Siege Form",

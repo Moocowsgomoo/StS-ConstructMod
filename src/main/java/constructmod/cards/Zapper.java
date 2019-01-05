@@ -22,9 +22,9 @@ public class Zapper extends AbstractConstructCard {
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	public static final String M_UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-	private static final int COST = 1;
+	private static final int COST = 2;
+	public static final int UPGRADE_NEW_COST = 1;
 	private static final int POWER_DAMAGE = 3;
-	private static final int UPGRADE_PLUS_POWER_DAMAGE = 2;
 	private static final int POOL = 1;
 
 	public Zapper() {
@@ -48,7 +48,7 @@ public class Zapper extends AbstractConstructCard {
 	public void upgrade() {
 		if (!this.upgraded) {
 			this.upgradeName();
-			this.upgradeMagicNumber(UPGRADE_PLUS_POWER_DAMAGE);
+			this.upgradeBaseCost(UPGRADE_NEW_COST);
 		} else if (this.canUpgrade()) {
 			this.megaUpgradeName();
 			this.rawDescription = M_UPGRADE_DESCRIPTION;

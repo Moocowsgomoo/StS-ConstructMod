@@ -23,11 +23,11 @@ public class ShiftGuard extends AbstractCycleCard {
 	public static final String CHALLENGE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 	private static final int COST = 1;
 	private static final int BLOCK_AMT = 5;
-	private static final int GAIN_DEX = 2;
+	private static final int GAIN_DEX = 1;
 	private static final int UPGRADE_PLUS_BLOCK = 1;
 	private static final int UPGRADE_PLUS_GAIN_DEX = 1;
 	private static final int M_UPGRADE_PLUS_BLOCK = 2;
-	private static final int M_UPGRADE_PLUS_GAIN_DEX = 2;
+	private static final int M_UPGRADE_PLUS_GAIN_DEX = 1;
 	private static final int POOL = 1;
 
 	public ShiftGuard() {

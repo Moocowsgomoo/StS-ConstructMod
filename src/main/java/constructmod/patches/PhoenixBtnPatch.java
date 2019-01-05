@@ -107,7 +107,7 @@ public class PhoenixBtnPatch {
 								r = RelicLibrary.getRelic(charInfo.relics.get(0));
 								ConstructMod.logger.debug(r.name);
 								charInfo.relics.remove(0);
-								charInfo.relics.add(tmp);
+								charInfo.relics.add(0,tmp);
 								relicHitbox.clicked = false;
 								ConstructMod.phoenixStart = (charInfo.relics.get(0) == ClockworkPhoenix.ID);
 								ConstructMod.saveData();

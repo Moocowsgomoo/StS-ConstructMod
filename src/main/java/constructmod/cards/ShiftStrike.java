@@ -30,11 +30,11 @@ public class ShiftStrike extends AbstractCycleCard {
 	public static final String CHALLENGE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 	private static final int COST = 1;
 	private static final int ATTACK_DMG = 6;
-	private static final int GAIN_STR = 2;
+	private static final int GAIN_STR = 1;
 	private static final int UPGRADE_PLUS_ATTACK_DMG = 1;
 	private static final int UPGRADE_PLUS_GAIN_STR = 1;
 	private static final int M_UPGRADE_PLUS_ATTACK_DMG = 2;
-	private static final int M_UPGRADE_PLUS_GAIN_STR = 2;
+	private static final int M_UPGRADE_PLUS_GAIN_STR = 1;
 	private static final int POOL = 1;
 
 	public ShiftStrike() {

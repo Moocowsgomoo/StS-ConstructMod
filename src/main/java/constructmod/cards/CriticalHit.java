@@ -28,7 +28,6 @@ public class CriticalHit extends AbstractCycleCard {
 	private static final int ATTACK_DMG = 14;
 	private static final int UPGRADE_PLUS_ATTACK_DMG = 4;
 	private static final int M_UPGRADE_PLUS_ATTACK_DMG = 7;
-	private static final int M_UPGRADE_NEW_COST = 0;
 	private static final int POOL = 1;
 
 	public CriticalHit() {
@@ -76,7 +75,6 @@ public class CriticalHit extends AbstractCycleCard {
 			this.name = "Mega-Crit";
 			this.initializeTitle();
 			this.upgradeDamage(M_UPGRADE_PLUS_ATTACK_DMG);
-			this.upgradeBaseCost(M_UPGRADE_NEW_COST);
 		}
 	}
 }

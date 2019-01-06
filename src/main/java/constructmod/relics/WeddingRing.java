@@ -154,6 +154,9 @@ public class WeddingRing extends CustomRelic
 	                    card.applyPowers();
 	                    AbstractDungeon.actionManager.addToTop(new QueueCardAction(cardToPlay, mo));
 	                }
+	                else{
+	                    cardToPlay = null; // don't remove from pile if it can't be played, otherwise it'll disappear.
+                    }
 	        	}
 	        }
 	        if (cardToPlay != null) AbstractDungeon.player.drawPile.removeCard(cardToPlay);
@@ -170,6 +173,9 @@ public class WeddingRing extends CustomRelic
 	                    card.applyPowers();
 	                    AbstractDungeon.actionManager.addToTop(new QueueCardAction(cardToPlay, mo));
 	                }
+                    else{
+                        cardToPlay = null; // don't remove from pile if it can't be played, otherwise it'll disappear.
+                    }
 	        	}
 	        }
 	        // don't need to remove from hand; if we do, and the card can't kill its intended target, it is permanently removed!
@@ -190,9 +196,12 @@ public class WeddingRing extends CustomRelic
 	                    card.applyPowers();
 	                    AbstractDungeon.actionManager.addToTop(new QueueCardAction(cardToPlay, mo));
 	                }
+                    else{
+                        cardToPlay = null; // don't remove from pile if it can't be played, otherwise it'll disappear.
+                    }
 	        	}
 	        }
-	        if (cardToPlay != null) AbstractDungeon.player.discardPile.removeCard(cardToPlay);
+	        if (cardToPlay != null && cardToPlay.canUse(AbstractDungeon.player,m)) AbstractDungeon.player.discardPile.removeCard(cardToPlay);
 	        
 	        this.flash();
 	        AbstractDungeon.actionManager.addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));

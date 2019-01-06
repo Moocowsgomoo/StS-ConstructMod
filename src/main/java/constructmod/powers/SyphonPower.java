@@ -1,6 +1,7 @@
 package constructmod.powers;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.FastDrawCardAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -39,7 +40,7 @@ public class SyphonPower extends AbstractPower {
 	public int onAttacked(final DamageInfo info, final int damageAmount) {
 		if (damageAmount <= 0) return damageAmount;
 		// must actually deal damage, hitting for 0 doesn't count.
-		AbstractDungeon.actionManager.addToBottom(new FastDrawCardAction(this.owner,this.amount));
+		AbstractDungeon.actionManager.addToBottom(new DrawCardAction(this.owner,1));
 		this.flash();
 		return damageAmount;
 	}

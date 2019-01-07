@@ -114,7 +114,7 @@ public class WeddingRing extends CustomRelic
             this.initializeTips();
         }
     }
-    
+
     public void setDescriptionAfterLoading() {
     	this.description = "Once per turn, after you play " + FontHelper.colorString(this.card1.name, "y") + " or " + FontHelper.colorString(this.card2.name, "y") + ", play the other one too.";
         this.tips.clear();
@@ -125,6 +125,9 @@ public class WeddingRing extends CustomRelic
     @Override
     public void atTurnStart() {
     	this.canPlayCard = true;
+    	if (this.card1 != null){
+    	    this.setDescriptionAfterLoading();
+        }
     }
     
     @Override

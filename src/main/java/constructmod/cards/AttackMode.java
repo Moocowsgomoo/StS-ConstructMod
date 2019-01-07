@@ -24,20 +24,24 @@ public class AttackMode extends AbstractCycleCard {
 	public static final String CHALLENGE_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 	private static final int COST = 0;
 	private static final int STR = 2;
+	public static final int CHALLENGE_STR = 1;
 	private static final int UPGRADE_PLUS_STR = 1;
-	private static final int M_UPGRADE_PLUS_STR = 2;
+	private static final int M_UPGRADE_PLUS_STR = 1;
 	private static final int POOL = 1;
 
+	public static final int STATS_CHALLENGE_THRESHOLD = 1;
+	public static final int CYCLE_CHALLENGE_THRESHOLD = 6;
+
 	public AttackMode() {
-		super(ID, NAME, "img/cards/"+ID+".png", COST, (ConstructMod.challengeLevel >= 1? CHALLENGE_DESCRIPTION:"")+DESCRIPTION, AbstractCard.CardType.SKILL,
-				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.BASIC, AbstractCard.CardTarget.SELF, POOL);
-		this.magicNumber = this.baseMagicNumber = STR;
+		super(ID, NAME, "img/cards/"+ID+".png", COST, (ConstructMod.hasChallengeActive(CYCLE_CHALLENGE_THRESHOLD)? CHALLENGE_DESCRIPTION:"")+DESCRIPTION, AbstractCard.CardType.SKILL,
+				AbstractCardEnum.CONSTRUCTMOD, (ConstructMod.hasChallengeActive(STATS_CHALLENGE_THRESHOLD)?CardRarity.RARE:CardRarity.BASIC), AbstractCard.CardTarget.SELF, POOL);
+		this.magicNumber = this.baseMagicNumber = (ConstructMod.hasChallengeActive(STATS_CHALLENGE_THRESHOLD)?CHALLENGE_STR:STR);
 		this.retain = true;
 	}
 
 	@Override
 	public boolean canCycle() {
-		return ConstructMod.hasChallengeActive(1) && super.canCycle() &&
+		return ConstructMod.hasChallengeActive(CYCLE_CHALLENGE_THRESHOLD) && super.canCycle() &&
 				AbstractDungeon.player.hasPower(DexterityPower.POWER_ID) &&
 				AbstractDungeon.player.getPower(DexterityPower.POWER_ID).amount < 0;
 	}
@@ -46,6 +50,9 @@ public class AttackMode extends AbstractCycleCard {
 	public void applyPowers(){
 		super.applyPowers();
 		this.retain = true;
+		if (ConstructMod.hasChallengeActive(STATS_CHALLENGE_THRESHOLD)){
+			this.rarity = CardRarity.RARE;
+		}
 	}
 
 	@Override

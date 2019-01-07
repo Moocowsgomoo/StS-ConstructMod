@@ -497,8 +497,8 @@
 	},
 	"construct:PowerUp": {
 		"NAME": "Power Up",
-		"DESCRIPTION": "Deal !D! damage. NL ALL of your basic Strikes and Defends gain !M! power for this combat.",
-		"UPGRADE_DESCRIPTION": "Deal !D! damage. NL Double the power of ALL of your basic Strikes and Defends for this combat."
+		"DESCRIPTION": "Deal !D! damage. NL ALL of your basic Strikes and Defends gain !M! power for this combat. NL Exhaust.",
+		"UPGRADE_DESCRIPTION": "Deal !D! damage. NL ALL of your basic Strikes and Defends gain !M! power for this combat."
 	},
 	"construct:SaveState": {
 		"NAME": "Save State",

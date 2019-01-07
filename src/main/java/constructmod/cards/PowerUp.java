@@ -26,13 +26,11 @@ public class PowerUp extends AbstractConstructCard {
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-	//public static final String M_UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+	public static final String M_UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	private static final int COST = 2;
-	private static final int ATTACK_DMG = 5;
+	private static final int ATTACK_DMG = 7;
 	private static final int POWER_PLUS = 2;
-	private static final int UPGRADE_PLUS_ATTACK_DMG = 1;
 	private static final int UPGRADE_PLUS_POWER_PLUS = 1;
-	private static final int M_UPGRADE_PLUS_POWER_PLUS = 2;
 	private static final int POOL = 1;
 
 	public PowerUp() {
@@ -40,6 +38,7 @@ public class PowerUp extends AbstractConstructCard {
 				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.ENEMY, POOL);
 		this.damage = this.baseDamage = ATTACK_DMG;
 		this.magicNumber = this.baseMagicNumber = POWER_PLUS;
+		this.exhaust = true;
 	}
 
 	@Override
@@ -60,11 +59,12 @@ public class PowerUp extends AbstractConstructCard {
 	public void upgrade() {
 		if (!this.upgraded) {
 			this.upgradeName();
-			this.upgradeDamage(UPGRADE_PLUS_ATTACK_DMG);
 			this.upgradeMagicNumber(UPGRADE_PLUS_POWER_PLUS);
 		} else if (canUpgrade()) {
 			this.megaUpgradeName();
-			this.upgradeMagicNumber(M_UPGRADE_PLUS_POWER_PLUS);
+			this.exhaust = false;
+			this.rawDescription = M_UPGRADE_DESCRIPTION;
+			this.initializeDescription();
 		}
 	}
 }

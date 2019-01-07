@@ -83,17 +83,17 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 	public static int challengeLevel = 0;
 	public static final String[] CHALLENGE_STRINGS = {
 			"",
-			"Cards that shift your stats now [#ffff66]Cycle [#ffffff]under certain conditions.",
+			"Attack and Defense Mode are less effective, and cannot be copied.",
 			"Some of your starter cards [#ff9900]Overheat.",
-			"At the end of your turn, a random [#ffff66]Retained [#ffffff] card is placed on top of your draw pile.",
+			"At the end of your turn, half your [#ffff66]Retained [#ffffff] cards are discarded.",
 			"[#ffff66]Burn [#ffffff]cards are now [#ffff66]upgraded.",
 			"(MAX LEVEL) ALL Construct cards are less effective."
 	};
 	public static final String[] SHORT_CHALLENGE_STRINGS = {
 			"",
-			"Stat-shifting cards #yCycle.",
+			"Modes give #b+1/-1 & can't be copied.",
 			"Starter cards [#ff9900]Overheat.",
-			"Rebound a #yretained card.",
+			"Discard 50% of #yRetained cards.",
 			"#yBurns are #yupgraded.",
 			"Weaker cards."
 	};
@@ -188,8 +188,8 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		});
 		ModLabel unlockAllTxt = new ModLabel("Set Unlock level to MAX. Unlocks appear on the character select screen.",470.0f, 540.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
 
-		ModLabel challengeIntroTxt1 = new ModLabel("Challenge Mode modifies your character-specific cards and items for a more difficult climb. (BETA)",350.0f, 430.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
-		ModLabel challengeIntroTxt2 = new ModLabel("Currently 4 levels exist; level 5 coming soon!",350.0f, 400.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
+		ModLabel challengeIntroTxt1 = new ModLabel("Experimental future levels for Challenge Mode. These are subject to change.",350.0f, 430.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
+		ModLabel challengeIntroTxt2 = new ModLabel("Currently 4 levels exist. The focus is on polishing these and eventually adding a 5th.",350.0f, 400.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
 		ModLabel challengeLabelTxt = new ModLabel("Challenge Level:",350.0f, 350.0f,settingsPanel,(me)->{});
 		ModLabel challengeLevelTxt = new ModLabel(""+challengeLevel,650.0f, 350.0f,settingsPanel,(me)->{});
 		ModLabel challengeDescTxt = new ModLabel(CHALLENGE_STRINGS[challengeLevel],400.0f, 300.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
@@ -300,8 +300,6 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     public void receiveEditKeywords() {
     	final String[] cycle = {"cycle", "cycles"};
     	BaseMod.addKeyword(cycle, "When drawn, discard this and draw a new card. Only works once per turn.");
-    	final String[] thorns = {"thorns"};
-    	BaseMod.addKeyword(thorns, "Enemies take damage when they attack you.");
     	final String[] blur = {"blur"};
     	BaseMod.addKeyword(blur, "Your Block is carried over between turns.");
     	final String[] metallicize = {"metallicize"};
@@ -664,7 +662,8 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		String msg = "";
 		for (int i=1;i<=num;i++){
 			if (i>1) msg += " NL ";
-			msg += i + ": " + SHORT_CHALLENGE_STRINGS[i];
+			msg += SHORT_CHALLENGE_STRINGS[i];
+			//msg += i + ": " + SHORT_CHALLENGE_STRINGS[i];
 		}
 		return msg;
 	}

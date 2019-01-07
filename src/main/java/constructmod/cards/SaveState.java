@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.powers.EnergizedPower;
 import com.megacrit.cardcrawl.powers.EquilibriumPower;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
+import constructmod.powers.RetainAllPower;
 
 public class SaveState extends AbstractConstructCard {
 	public static final String ID = ConstructMod.makeID("SaveState");
@@ -37,7 +38,7 @@ public class SaveState extends AbstractConstructCard {
 
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new EquilibriumPower(p,this.magicNumber),this.magicNumber));
+		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p,new RetainAllPower(p,this.magicNumber),this.magicNumber));
 		if (upgraded) AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p,1));
 	}
 	

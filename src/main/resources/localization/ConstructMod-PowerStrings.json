@@ -1,0 +1,14 @@
+{
+	"construct:Afterburners": {
+		"NAME": "Afterburners",
+		"DESCRIPTIONS": [
+			"Your next non-rare card is played #b%s times this turn."
+		]
+  	},
+	"construct:Agitation": {
+		"NAME": "Agitation",
+		"DESCRIPTIONS": [
+			"Your next non-rare card is played #b%s times this turn."
+		]
+	}
+}

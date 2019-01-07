@@ -31,8 +31,12 @@ public class PhoenixBtnPatch {
 	public static Field charInfoField;
 	public static final Hitbox relicHitbox = new Hitbox(40.0f * Settings.scale * (0.01f + (1.0f - 0.019f)), 40.0f * Settings.scale);
 	public static final Hitbox expansionHitbox = new Hitbox(40.0f * Settings.scale * (0.01f + (1.0f - 0.019f)), 40.0f * Settings.scale);
+	public static final Hitbox challengeDownHitbox = new Hitbox(40.0f * Settings.scale * (0.01f + (1.0f - 0.019f)), 40.0f * Settings.scale);
+	public static final Hitbox challengeUpHitbox = new Hitbox(40.0f * Settings.scale * (0.01f + (1.0f - 0.019f)), 40.0f * Settings.scale);
+
 	public static AbstractRelic r;
 	public static final ArrayList<PowerTip> expansionTips = new ArrayList<>();
+	public static final ArrayList<PowerTip> challengeTips = new ArrayList<>();
 	public static boolean shouldRefreshUnlocks = false;
 
 	@SpirePatch(clz = CharacterOption.class, method = "renderRelics")
@@ -60,8 +64,23 @@ public class PhoenixBtnPatch {
 				r.updateDescription(TheConstructEnum.THE_CONSTRUCT_MOD);
 				relicHitbox.move(190.0f * Settings.scale, Settings.HEIGHT / 2.0f - 190.0f * Settings.scale);
 				expansionHitbox.move(190.0f * Settings.scale, Settings.HEIGHT / 2.0f - 140.0f * Settings.scale);
+				//challengeDownHitbox.move(170.0f * Settings.scale, Settings.HEIGHT / 2.0f - 260.0f * Settings.scale);
+				challengeDownHitbox.move(190.0f * Settings.scale, Settings.HEIGHT / 2.0f - 240.0f * Settings.scale);
+				//challengeUpHitbox.move(220.0f * Settings.scale, Settings.HEIGHT / 2.0f - 260.0f * Settings.scale);
 				relicHitbox.render(sb);
 				expansionHitbox.render(sb);
+				challengeDownHitbox.render(sb);
+				//challengeUpHitbox.render(sb);
+
+				sb.setColor(Color.WHITE);
+				//sb.draw(ImageMaster.CF_LEFT_ARROW, challengeDownHitbox.cX - 64.0f, challengeDownHitbox.cY - 64.0f, 64.0f, 64.0f, 128.0f, 128.0f, Settings.scale * 0.5f * (0.01f + (1.0f - 0.019f)), Settings.scale * 0.5f * (0.01f + (1.0f - 0.019f)), 0.0f, 0, 0, 64, 64, false, false);
+				//sb.draw(ImageMaster.CF_RIGHT_ARROW, challengeUpHitbox.cX - 64.0f, challengeUpHitbox.cY - 64.0f, 64.0f, 64.0f, 128.0f, 128.0f, Settings.scale * 0.5f * (0.01f + (1.0f - 0.019f)), Settings.scale * 0.5f * (0.01f + (1.0f - 0.019f)), 0.0f, 0, 0, 64, 64, false, false);
+				//FontHelper.renderSmartText(sb, FontHelper.tipHeaderFont, "Challenge Mode", challengeUpHitbox.cX + 25f * Settings.scale, challengeUpHitbox.cY + 20f * Settings.scale, Settings.BLUE_TEXT_COLOR);
+				sb.draw(ImageMaster.CHECKBOX, challengeDownHitbox.cX - 32.0f, challengeDownHitbox.cY - 32.0f, 32.0f, 32.0f, 64.0f, 64.0f, Settings.scale * (0.01f + (1.0f - 0.019f)), Settings.scale * (0.01f + (1.0f - 0.019f)), 0.0f, 0, 0, 64, 64, false, false);
+				if (ConstructMod.challengeLevel > 0)
+					sb.draw(ImageMaster.TICK, challengeDownHitbox.cX - 32.0f, challengeDownHitbox.cY - 32.0f, 32.0f, 32.0f, 64.0f, 64.0f, Settings.scale * (0.01f + (1.0f - 0.019f)), Settings.scale * (0.01f + (1.0f - 0.019f)), 0.0f, 0, 0, 64, 64, false, false);
+				FontHelper.renderSmartText(sb, FontHelper.tipHeaderFont, "Challenge Mode", challengeDownHitbox.cX + 25f * Settings.scale, challengeDownHitbox.cY, Settings.BLUE_TEXT_COLOR);
+
 				if (UnlockTracker.getUnlockLevel(TheConstructEnum.THE_CONSTRUCT_MOD) >= 4) {
 					sb.draw(ImageMaster.CHECKBOX, relicHitbox.cX - 32.0f, relicHitbox.cY - 32.0f, 32.0f, 32.0f, 64.0f, 64.0f, Settings.scale * (0.01f + (1.0f - 0.019f)), Settings.scale * (0.01f + (1.0f - 0.019f)), 0.0f, 0, 0, 64, 64, false, false);
 					sb.setColor(new Color(0.0f, 0.0f, 0.0f, 0.25f));
@@ -128,7 +147,7 @@ public class PhoenixBtnPatch {
 						if (InputHelper.mX < 1400.0f * Settings.scale) {
 							TipHelper.queuePowerTips(InputHelper.mX + 60.0f * Settings.scale, InputHelper.mY - 50.0f * Settings.scale, expansionTips);
 						} else {
-							TipHelper.queuePowerTips(InputHelper.mX - 350.0f * Settings.scale, InputHelper.mY - 50.0f * Settings.scale, r.tips);
+							TipHelper.queuePowerTips(InputHelper.mX - 350.0f * Settings.scale, InputHelper.mY - 50.0f * Settings.scale, expansionTips);
 						}
 
 						if (InputHelper.justClickedLeft) {
@@ -154,6 +173,105 @@ public class PhoenixBtnPatch {
 						}
 					}
 				}
+				challengeDownHitbox.update();
+				if (challengeDownHitbox.hovered) {
+
+					if (challengeTips.isEmpty()){
+						challengeTips.add(new PowerTip("Challenge Mode","Challenge Mode modifies your character-specific cards and items for a more difficult climb. More levels coming soon!"));
+					}
+					if (InputHelper.mX < 1400.0f * Settings.scale) {
+						TipHelper.queuePowerTips(InputHelper.mX + 60.0f * Settings.scale, InputHelper.mY - 50.0f * Settings.scale, challengeTips);
+					} else {
+						TipHelper.queuePowerTips(InputHelper.mX - 350.0f * Settings.scale, InputHelper.mY - 50.0f * Settings.scale, challengeTips);
+					}
+
+					if (InputHelper.justClickedLeft) {
+						CardCrawlGame.sound.playA("UI_CLICK_1", -0.4f);
+						challengeDownHitbox.clickStarted = true;
+					}
+					if (challengeDownHitbox.clicked) {
+						try {
+							CharSelectInfo charInfo = (CharSelectInfo) charInfoField.get(obj);
+
+							challengeDownHitbox.clicked = false;
+							if (ConstructMod.challengeLevel == 0){
+								ConstructMod.challengeLevel = 1;
+								charInfo.relics.add(1,ConstructMod.challengeRelics.get(ConstructMod.challengeLevel-1).relicId);
+							}
+							else{
+								charInfo.relics.remove(1);
+								ConstructMod.challengeLevel = 0;
+							}
+							ConstructMod.saveData();
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				}
+				/*challengeDownHitbox.update();
+				if (challengeDownHitbox.hovered) {
+
+					if (challengeTips.isEmpty()){
+						challengeTips.add(new PowerTip("Challenge Mode","Challenge Mode modifies your character-specific cards and items for a more difficult climb."));
+					}
+					if (InputHelper.mX < 1400.0f * Settings.scale) {
+						TipHelper.queuePowerTips(InputHelper.mX + 60.0f * Settings.scale, InputHelper.mY - 50.0f * Settings.scale, challengeTips);
+					} else {
+						TipHelper.queuePowerTips(InputHelper.mX - 350.0f * Settings.scale, InputHelper.mY - 50.0f * Settings.scale, challengeTips);
+					}
+
+					if (InputHelper.justClickedLeft) {
+						CardCrawlGame.sound.playA("UI_CLICK_1", -0.4f);
+						challengeDownHitbox.clickStarted = true;
+					}
+					if (challengeDownHitbox.clicked) {
+						try {
+							CharSelectInfo charInfo = (CharSelectInfo) charInfoField.get(obj);
+
+							challengeDownHitbox.clicked = false;
+							if (ConstructMod.challengeLevel > 0){
+								charInfo.relics.remove(1);
+								ConstructMod.challengeLevel = ConstructMod.challengeLevel-1;
+								if (ConstructMod.challengeLevel > 0) charInfo.relics.add(1,ConstructMod.challengeRelics.get(ConstructMod.challengeLevel-1).relicId);
+							}
+							ConstructMod.saveData();
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				}
+				challengeUpHitbox.update();
+				if (challengeUpHitbox.hovered) {
+
+					if (challengeTips.isEmpty()){
+						challengeTips.add(new PowerTip("Challenge Mode","Challenge Mode modifies your character-specific cards and items for a more difficult climb."));
+					}
+					if (InputHelper.mX < 1400.0f * Settings.scale) {
+						TipHelper.queuePowerTips(InputHelper.mX + 60.0f * Settings.scale, InputHelper.mY - 50.0f * Settings.scale, challengeTips);
+					} else {
+						TipHelper.queuePowerTips(InputHelper.mX - 350.0f * Settings.scale, InputHelper.mY - 50.0f * Settings.scale, challengeTips);
+					}
+
+					if (InputHelper.justClickedLeft) {
+						CardCrawlGame.sound.playA("UI_CLICK_1", -0.4f);
+						challengeUpHitbox.clickStarted = true;
+					}
+					if (challengeUpHitbox.clicked) {
+						try {
+							CharSelectInfo charInfo = (CharSelectInfo) charInfoField.get(obj);
+
+							challengeUpHitbox.clicked = false;
+							if (ConstructMod.challengeLevel < 3){
+								if (charInfo.relics.size() > 1) charInfo.relics.remove(1);
+								ConstructMod.challengeLevel = ConstructMod.challengeLevel+1;
+								charInfo.relics.add(1,ConstructMod.challengeRelics.get(ConstructMod.challengeLevel-1).relicId);
+							}
+							ConstructMod.saveData();
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				}*/
 			}
 		}
 	}

@@ -7,11 +7,12 @@ import com.megacrit.cardcrawl.characters.*;
 import com.megacrit.cardcrawl.dungeons.*;
 import com.megacrit.cardcrawl.cards.*;
 import com.megacrit.cardcrawl.core.*;
+import com.megacrit.cardcrawl.localization.UIStrings;
 
 public class MassProductionAction extends AbstractGameAction
 {
-    public static final String TEXT;
     private AbstractPlayer p;
+    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("constructActionText");
     
     public MassProductionAction() {
         this.setValues(this.p = AbstractDungeon.player, AbstractDungeon.player, amount);
@@ -56,11 +57,7 @@ public class MassProductionAction extends AbstractGameAction
             this.isDone = true;
             return;
         }
-        AbstractDungeon.gridSelectScreen.open(tmp, 1, MassProductionAction.TEXT, false);
+        AbstractDungeon.gridSelectScreen.open(tmp, 1, uiStrings.TEXT[4], false);
         this.tickDuration();
-    }
-    
-    static {
-        TEXT = "Choose a card to replace hand with.";
     }
 }

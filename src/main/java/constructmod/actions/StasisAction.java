@@ -16,9 +16,9 @@ import com.megacrit.cardcrawl.core.*;
 
 public class StasisAction extends AbstractGameAction
 {
-    public static final String TEXT;
     private static final float DURATION_PER_CARD = 0.25f;
     private AbstractPlayer p;
+    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("constructActionText");
     private ArrayList<AbstractCard> cannotDuplicate;
     private AbstractCard returnedStasisCard = null;
     private int prevAmount=0;
@@ -71,7 +71,7 @@ public class StasisAction extends AbstractGameAction
             }
             this.p.hand.group.removeAll(this.cannotDuplicate);
             if (this.p.hand.group.size() > 1) {
-                AbstractDungeon.handCardSelectScreen.open(StasisAction.TEXT, 1, false, false, false, false);
+                AbstractDungeon.handCardSelectScreen.open(uiStrings.TEXT[3], 1, false, false, false, false);
                 this.tickDuration();
                 return;
             }
@@ -106,9 +106,5 @@ public class StasisAction extends AbstractGameAction
     
     private boolean isCopiable(final AbstractCard card) {
         return true;//card instanceof AbstractConstructCard;
-    }
-    
-    static {
-        TEXT = "put into stasis.";
     }
 }

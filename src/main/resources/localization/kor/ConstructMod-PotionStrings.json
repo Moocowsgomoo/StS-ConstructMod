@@ -1,16 +1,16 @@
 {
   "construct:ShiftPotion": {
-    "NAME": "Shift Potion",
+    "NAME": "전환 포션",
     "DESCRIPTIONS": [
-      "Swap your #yStrength and #yDexterity. Draw #b%s card.",
-      "Swap your #yStrength and #yDexterity. Draw #b%s cards."
+      "#y힘 과 #y민첩 을 바꿉니다. 카드를 #b%s 장 뽑습니다.",
+      "#y힘 과 #y민첩 을 바굽니다. 카드를 #b%s 장 뽑습니다."
     ]
   },
   "construct:MegaPotion": {
-    "NAME": "Mega Potion",
+    "NAME": "특급 포션",
     "DESCRIPTIONS": [
-      "#yMega-upgrade #b%s random card in your hand for the rest of combat.",
-      "#yMega-upgrade #b%s random cards in your hand for the rest of combat."
+      "손에 있는 무작위 카드 #b%s 장을 이번 전투동안 #y특급강화 합니다.",
+      "손에 있는 무작위 카드 #b%s 장을 이번 전투동안 #y특급강화 합니다."
     ]
   }
 }

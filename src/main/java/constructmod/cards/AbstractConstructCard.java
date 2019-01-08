@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.unique.TransmuteAction;
 import com.megacrit.cardcrawl.actions.unique.Transmutev2Action;
 import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.relics.QuantumEgg;
 import com.megacrit.cardcrawl.screens.SingleCardViewPopup;
 import constructmod.ConstructMod;
 import constructmod.actions.OverheatAction;
@@ -67,10 +68,10 @@ public abstract class AbstractConstructCard extends CustomCard {
 		if (this.upgraded) {
 			AbstractCard c = this.makeCopy();
 			
-			if (this.megaUpgraded || AbstractDungeon.player.hasRelic("Quantum Egg")) c.upgrade();
+			if (this.megaUpgraded || AbstractDungeon.player.hasRelic(QuantumEgg.ID)) c.upgrade();
 			
-			if (AbstractDungeon.player.hasRelic("Quantum Egg")) {
-				AbstractDungeon.player.getRelic("Quantum Egg").flash();
+			if (AbstractDungeon.player.hasRelic(QuantumEgg.ID)) {
+				AbstractDungeon.player.getRelic(QuantumEgg.ID).flash();
 			}
 			
 			AbstractDungeon.player.discardPile.addToTop(c);
@@ -111,7 +112,7 @@ public abstract class AbstractConstructCard extends CustomCard {
 	}
 	
 	public AbstractCard makeStatEquivalentCopy() {
-        BaseMod.logger.log(Level.DEBUG,"Copying card " + this.name + " with " + this.timesUpgraded + " upgrades.");
+        //BaseMod.logger.log(Level.DEBUG,"Copying card " + this.name + " with " + this.timesUpgraded + " upgrades.");
         
         // Most of this logic is handled in MakeStatEquivalentCopyPatch.
         

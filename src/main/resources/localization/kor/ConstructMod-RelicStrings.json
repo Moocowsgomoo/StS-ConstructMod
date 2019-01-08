@@ -1,140 +1,140 @@
 {
   "construct:Cogwheel": {
-    "NAME": "Cogwheel",
-    "FLAVOR": "A piece of old machinery, carefully preserved.",
+    "NAME": "톱니바퀴",
+    "FLAVOR": "오래된 기계의 부품입니다만, 상태는 좋습니다.",
     "DESCRIPTIONS": [
-      "Gain #b1 #yArtifact at the start of each combat."
+      "전투 시작 시 #y인공물 을 #b1 얻습니다."
     ]
   },
   "construct:MasterCore": {
-    "NAME": "Master Core",
-    "FLAVOR": "A core stolen from one of the Guardians. Summons other cores to your aid.",
+    "NAME": "마스터 코어",
+    "FLAVOR": "수호자에게서 훔쳐온 코어입니다. 당신을 도와줄 코어 소환합니다.",
     "DESCRIPTIONS": [
-      "At the start of combat, shuffle #b3 random #yCores into your draw pile."
+      "전투 시작 시, 무작위 #y코어 카드 #b3 장을 뽑을 카드 더미에 넣고 섞습니다."
     ]
   },
   "construct:ClockworkPhoenix": {
-    "NAME": "Clockwork Phoenix",
-    "FLAVOR": "An artificial being designed to imitate the real thing. Amazingly lifelike.",
+    "NAME": "태엽장치 불사조",
+    "FLAVOR": "진짜 불사조를 모방해서 만든 입니다. 정말 살아있는 .",
     "DESCRIPTIONS": [
-      "Your #yupgraded Construct cards can now be #yMega-upgraded outside of combat."
+      "비전투 상황에서 #y강화된 컨스트럭트 카드를 #y특급강화 할 수 있습니다."
     ]
   },
   "construct:ClawGrip": {
-    "NAME": "Claw Grip",
-    "FLAVOR": "An extendable arm used to grab hard-to-reach objects.",
+    "NAME": "집게손",
+    "FLAVOR": "멀리있는 물체를 잡을 수 있게 늘어나는 팔입니다.",
     "DESCRIPTIONS": [
-      "At the end of each turn, #yRetain a random card. It costs #b1 less [E] next turn."
+      "매 턴 종료 시, 무작위 카드 한 장을 #y보존 합니다. 이 카드는 다음 턴에 [E] 소모가 #b1 감소합니다."
     ]
   },
   "construct:FoamFinger": {
-    "NAME": "Foam Finger",
-    "FLAVOR": "Always useful when you need a helping hand.",
+    "NAME": "고무장갑",
+    "FLAVOR": "도움이 필요 할 때 유용합니다.",
     "DESCRIPTIONS": [
-      "For the first #b3 turns of each combat, draw #b1 additional card at the start of your turn."
+      "매 전투의 첫 #b3 턴 동안, 카드 #b1 장을 더 뽑습니다."
     ]
   },
   "construct:MegaBattery": {
-    "NAME": "Mega Battery",
-    "FLAVOR": "Developed by gremlin inventors in an attempt to create a self-aware robot. It did not go well.",
+    "NAME": "특급 배터리",
+    "FLAVOR": "자아를 가진 로봇을 만들려고 했던 그렘린 과학자가 개발했습니다. 결과는 좋지 않았죠.",
     "DESCRIPTIONS": [
-      "Upon pick up, #yMega-upgrade a random Construct card."
+      "획득 시, 무작위 컨스트럭트 카드 1 장을 #y특급강화 합니다."
     ]
   },
   "construct:RocketBooster": {
-    "NAME": "Rocket Booster",
-    "FLAVOR": "It doesn't matter how weak your swing is when you're moving at 200 miles per hour.",
+    "NAME": "로켓 추진기",
+    "FLAVOR": "시속 300km 속도로 움직이고 있다면 팔 힘이 약한 것 쯤은 문제가 아닙니다.",
     "DESCRIPTIONS": [
-      "When you defeat an Elite, #yUpgrade a random card."
+      "엘리트 전투에서 승리할 때마다, 무작위 카드 1 장을 #y강화 합니다."
     ]
   },
   "construct:PurpleEmber": {
-    "NAME": "Purple Ember",
-    "FLAVOR": "A ghostly, flickering flame. It seems to absorb the power of nearby fires.",
+    "NAME": "보랏빛 불씨",
+    "FLAVOR": "으스스하게 일렁이는 불꽃입니다. 주변의 불을 흡수하고 있는 것 같습니다.",
     "DESCRIPTIONS": [
-      "When you enter a Rest Site, your starting hand next combat is #yMega-upgraded until the end of combat."
+      "휴식 장소를 거친 뒤의 전투에서, 첫 번째 턴에 손에 잡힌 카드들이 해당 전투 동안 #y특급강화 됩니다."
     ]
   },
   "construct:WeddingRing": {
-    "NAME": "Wedding Ring",
-    "FLAVOR": "It's inscribed with \"FT2J\".",
+    "NAME": "결혼 반지",
+    "FLAVOR": "\"FT2J\" 라고 새겨져 있습니다.",
     "DESCRIPTIONS": [
-      "Upon pickup, choose 2 cards. Once per turn, after you play one of them, play the other one too.",
-      "Once per turn, after you play %s or %s, play the other one too.",
-      "Choose 2 cards to link."
+      "획득하면, 카드를 2 장 선택합니다. 매 턴당 한 번, 해당 카드를 사용하면 나머지 다른 카드도 사용됩니다.",
+      "매 턴당 한 번, %s 나 %s 를 사용하면 나머지 카드도 사용됩니다.",
+      "이어줄 카드 2 장을 선택하세요."
     ]
   },
   "construct:IceCubes": {
-    "NAME": "Ice Cubes",
-    "FLAVOR": "Cool and refreshing.",
+    "NAME": "얼음 큐브",
+    "FLAVOR": "시원하고 상쾌합니다.",
     "DESCRIPTIONS": [
-      "Your cards cannot [#ff9900]Overheat for the first #b3 turns of combat."
+      "전투 시작 후 #b3 턴 동안 카드가 [#ff9900]과열 되지 않습니다."
     ]
   },
   "construct:BoolHorns": {
-    "NAME": "Bool Horns",
-    "FLAVOR": "Horns from a rarely-seen species. Bools are known to only show aggression towards those who speak lies.",
+    "NAME": "불의 머리뿔",
+    "FLAVOR": "불(Bool)이라는 희귀생물의 뿔입니다. 불은 거짓말을 하는 사람을 공격하는 것으로 알려져 있습니다.",
     "DESCRIPTIONS": [
-      "At the start of each combat, deal #b3 damage to a random enemy. Upon entering a non-combat space, double the damage this relic deals next combat."
+      "매 전투 시작 시, 무작위 적에게 피해를 #b3 줍니다. 비전투 장소에 입장하면, 피해량이 2 배로 증가합니다."
     ]
   },
   "construct:LongRangeLance": {
-    "NAME": "Long-Range Lance",
-    "FLAVOR": "You hit exactly what you aimed at.",
+    "NAME": "장거리 포격",
+    "FLAVOR": "쏘면 반드시 맞는다.",
     "DESCRIPTIONS": [
-      "At the start of the next combat, deal #b",
-      " damage to a random enemy, then lose this relic."
+      "다음 전투 시작 시 무작위 적에게 피해를 #b 주고",
+      " 유물을 잃습니다."
     ]
   },
   "construct:ExtraLongRangeLance": {
-    "NAME": "EXTRA-Long-Range Lance",
-    "FLAVOR": "Okay, you just launched this one randomly. But it's bound to hit something!",
+    "NAME": "초장거리 포격",
+    "FLAVOR": "아무렇게나 쏘셨더군요. 그래도 누군가는 무조건 맞게 되어있죠!",
     "DESCRIPTIONS": [
-      "At the start of the combat after the next one, deal #b",
-      " damage to a random enemy, then lose this relic."
+      "다음 전투 시작 시 무작위 적에게 피해를 #b 주고",
+      " 유물을 잃습니다."
     ]
   },
   "construct:Challenge1": {
-    "NAME": "Challenger's Mark 1",
-    "FLAVOR": "The mark of one who chooses to undertake the Spire's toughest challenges."
+    "NAME": "도전자의 표식 1",
+    "FLAVOR": "첨탑의 가혹한 시련에 도전하는 자를 위한 표식."
   },
   "construct:Challenge2": {
-    "NAME": "Challenger's Mark 2",
-    "FLAVOR": "The mark of one who chooses to undertake the Spire's toughest challenges."
+    "NAME": "도전자의 표식 2",
+    "FLAVOR": "첨탑의 가혹한 시련에 도전하는 자를 위한 표식."
   },
   "construct:Challenge3": {
-    "NAME": "Challenger's Mark 3",
-    "FLAVOR": "The mark of one who chooses to undertake the Spire's toughest challenges."
+    "NAME": "도전자의 표식 3",
+    "FLAVOR": "첨탑의 가혹한 시련에 도전하는 자를 위한 표식."
   },
   "construct:Challenge4": {
-    "NAME": "Challenger's Mark 4",
-    "FLAVOR": "The mark of one who chooses to undertake the Spire's toughest challenges."
+    "NAME": "도전자의 표식 4",
+    "FLAVOR": "첨탑의 가혹한 시련에 도전하는 자를 위한 표식."
   },
   "construct:Challenge5": {
-    "NAME": "Challenger's Mark 5",
-    "FLAVOR": "The mark of one who chooses to undertake the Spire's toughest challenges."
+    "NAME": "도전자의 표식 5",
+    "FLAVOR": "첨탑의 가혹한 시련에 도전하는 자를 위한 표식."
   },
 
 
   "construct:FreezeFrame": {
-    "NAME": "Freeze Frame",
-    "FLAVOR": "This wooden picture frame is impossibly cold to the touch.",
+    "NAME": "얼어붙은 액자",
+    "FLAVOR": "이 나무로 만든 액자는 너무 차가워서 도저히 만질 수가 없습니다.",
     "DESCRIPTIONS": [
-      "Right-click to activate or deactivate. While active, cards do not Cycle when drawn."
+      "우클릭해서 활성화하거나 비활성화합니다. 할성화하면 카드들이 사이클 되지 않습니다."
     ]
   },
   "construct:Bumper": {
-    "NAME": "Bumper",
-    "FLAVOR": "BOIIING!",
+    "NAME": "범퍼",
+    "FLAVOR": "뽀잉!",
     "DESCRIPTIONS": [
-      "When a card would deal damage to you, it deals that damage to a random enemy instead."
+      "카드 효과로 인한 피해를 받을 때, 무작위 적이 대신 피해를 받습니다."
     ]
   },
   "construct:Photocopier": {
-    "NAME": "Photocopier",
-    "FLAVOR": "Used to copy anything 2-dimensional.",
+    "NAME": "복사기",
+    "FLAVOR": "2차원의 것이라면 무엇이든 복사할 수 .",
     "DESCRIPTIONS": [
-      "The first time you play a non-Rare card each combat, shuffle 2 copies of that card into your draw pile."
+      "매 전투에서 처음으로 사용하는 비희귀 카드를 2 장 복사해서 뽑을 카드 더미에 넣고 섞습니다."
     ]
   }
 }

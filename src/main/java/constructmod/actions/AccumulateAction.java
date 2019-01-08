@@ -8,11 +8,12 @@ import com.megacrit.cardcrawl.characters.*;
 import com.megacrit.cardcrawl.dungeons.*;
 import com.megacrit.cardcrawl.cards.*;
 import com.megacrit.cardcrawl.core.*;
+import com.megacrit.cardcrawl.localization.UIStrings;
 
 public class AccumulateAction extends AbstractGameAction
 {
-    public static final String TEXT;
     private AbstractPlayer p;
+    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("constructActionText");
     
     public AccumulateAction(int amount) {
         this.setValues(this.p = AbstractDungeon.player, AbstractDungeon.player, amount);
@@ -52,11 +53,7 @@ public class AccumulateAction extends AbstractGameAction
             this.isDone = true;
             return;
         }
-        AbstractDungeon.gridSelectScreen.open(tmp, 1, AccumulateAction.TEXT, false);
+        AbstractDungeon.gridSelectScreen.open(tmp, 1, uiStrings.TEXT[2], false);
         this.tickDuration();
-    }
-    
-    static {
-        TEXT = "Choose a card to copy.";
     }
 }

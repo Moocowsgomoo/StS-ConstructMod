@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.UIStrings;
 import constructmod.cards.AbstractConstructCard;
 import constructmod.powers.ConstructStasisPower;
 import constructmod.powers.MultistagePower;
@@ -18,8 +19,8 @@ import java.util.ArrayList;
 
 public class MultistageExhaustAction extends AbstractGameAction
 {
-    public static final String TEXT;
     private AbstractPlayer p;
+    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("constructActionText");
     private ArrayList<AbstractCard> cannotDuplicate;
 
     public MultistageExhaustAction(final AbstractCreature source, final int amount) {
@@ -55,7 +56,7 @@ public class MultistageExhaustAction extends AbstractGameAction
             }
             this.p.hand.group.removeAll(this.cannotDuplicate);
             if (this.p.hand.group.size() > 1) {
-                AbstractDungeon.handCardSelectScreen.open(MultistageExhaustAction.TEXT, 1, false, false, false, false);
+                AbstractDungeon.handCardSelectScreen.open(uiStrings.TEXT[1], 1, false, false, false, false);
                 this.tickDuration();
                 return;
             }
@@ -90,9 +91,5 @@ public class MultistageExhaustAction extends AbstractGameAction
     
     private boolean isCopiable(final AbstractCard card) {
         return card.cost >= 0 && card.costForTurn <= this.amount && card.type == AbstractCard.CardType.ATTACK;
-    }
-    
-    static {
-        TEXT = "exhaust.";
     }
 }

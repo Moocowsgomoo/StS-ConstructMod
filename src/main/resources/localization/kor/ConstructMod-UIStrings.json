@@ -1,41 +1,37 @@
 {
   "constructChallengeLevels": {
-    "TEXT": [
+    "DESCRIPTIONS": [
       "",
-      "Attack and Defense Mode are less effective, and cannot be copied.",
-      "Some of your starter cards [#ff9900]Overheat.",
-      "At the end of your turn, half your [#ffff66]Retained [#ffffff] cards are discarded.",
-      "[#ffff66]Burn [#ffffff]cards are now [#ffff66]upgraded.",
-      "(MAX LEVEL) ALL Construct cards are less effective.",
-      "Cards that shift your stats now Cycle under certain conditions.",
-      "Cards with the Retain keyword place themselves on top of your draw pile instead of Retaining.",
-      "[#ffff66]Burn [#ffffff]cards are now [#ffff66]Mega-upgraded."
+      "공격, 수비 모드 카드의 효과가 감소하고 복사될 수 없습니다.",
+      "타격과 수비 몇 장이 [#ff9900]과열 됩니다.",
+      "턴 종료시, [#ffff66]보존된 [#ffffff]카드 중 절반이 버려집니다.",
+      "[#ffff66]화상 [#ffffff]카드가 [#ffff66]강화 됩니다.",
+      "(최대 레벨) 모든 컨스트럭트 카드의 효과가 감소합니다.",
+      "힘 과 민첩 을 조절하는 카드들이 특정 상황에서 사이클 됩니다.",
+      "카드가 보존 되는 대신 뽑을 카드 더미 맨 위로 보내집니다."
+      "[#ffff66]화상 [#ffffff]카드가 [#ffff66]Mega강화 됩니다"
     ]
   },
   "constructShortChallengeLevels": {
-    "TEXT": [
+    "DESCRIPTIONS": [
       "",
-      "Modes give #b+1/-1 & can't be copied.",
-      "Starter cards [#ff9900]Overheat.",
-      "Discard 50% of #yRetained cards.",
-      "#yBurns are #yupgraded.",
-      "Weaker cards.",
-      "Stat-shifting cards #yCycle.",
-      "#yRetain cards rebound.",
-      "#yMega-upgraded #yBurns."
+      "공격, 수비 모드 카드의 효과가 #b+1/-1 이 됩니다. & 복사될 수 없습니다.",
+      "타격과 수비 몇 장이 [#ff9900]과열됩니다.",
+      "#y보존된 카드의 절반이 버려집니다.",
+      "#y화상 카드가 #y강화됩니다.",
+      "카드들이 약해집니다.",
+      "힘과 민첩을 변화시키는 카드들이 #y사이클 됩니다.",
+      "카드가 #y보존 되는 대신 뽑을 카드 더미 맨 위로 보내집니다.",
+      "#y화상 카드가 #yMega강화 됩니다 ."
     ]
   },
   "constructActionText": {
     "TEXT": [
-      "copy.",
-      "Modes give #b+1/-1 & can't be copied.",
-      "Starter cards [#ff9900]Overheat.",
-      "Discard 50% of #yRetained cards.",
-      "#yBurns are #yupgraded.",
-      "Weaker cards.",
-      "Stat-shifting cards #yCycle.",
-      "#yRetain cards rebound.",
-      "#yMega-upgraded #yBurns."
+      "copy.", // full text reads "choose a card to copy."
+      "exhaust.", // full text reads "choose a card to exhaust."
+      "Choose a card to copy.",
+      "put into stasis.", // full text reads "choose a card to put into stasis."
+      "Choose a card to replace hand with." // Mass Production - exhaust all cards in hand, and make an equal number of copies of a card
     ]
   }
 }

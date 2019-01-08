@@ -251,7 +251,9 @@
 			"(Next time, try not to take shortcuts...) NL Become Confused. NL Draw 5 cards.",
 			"Add an Attack Mode+ and a Defense Mode+ to your hand. NL Can be Upgraded 2 more times.",
 			"Gain 3 Strength. NL Gain 3 Dexterity. NL Can be Upgraded 1 more time.",
-			"Gain all 3 Egg relics and a Clockwork Phoenix. Permanently remove this card from your deck."
+			"Gain all 3 Egg relics and a Clockwork Phoenix. Permanently remove this card from your deck.",
+			"Scrambled Egg",
+			"Clockwork Chicken"
 		]
 	},
 	"construct:HastyRepair": {

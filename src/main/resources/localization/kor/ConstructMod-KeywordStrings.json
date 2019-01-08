@@ -1,67 +1,67 @@
 [
   {
     "NAMES": [
-      "cycle",
+      "사이클",
       "cycles"
     ],
-    "DESCRIPTION": "When drawn, discard this and draw a new card. Only works once per turn."
+    "DESCRIPTION": "이 카드를 뽑으면, 즉시 버려집니다. 이 효과는 카드당 한 턴에 한 번씩만 발동합니다."
   },
   {
     "NAMES": [
-      "blur"
+      "흐릿함"
     ],
-    "DESCRIPTION": "Your #yBlock is carried over between turns."
+    "DESCRIPTION": "#y방어도 가 다음 턴에도 유지됩니다."
   },
   {
     "NAMES": [
-      "metallicize"
+      "금속화"
     ],
-    "DESCRIPTION": "Gain #yBlock at the end of each turn."
+    "DESCRIPTION": "턴 종료시 #y방어도 를 얻습니다."
   },
   {
-    "PROPER_NAME": "Plated Armor",
+    "PROPER_NAME": "판금갑옷",
     "NAMES": [
-      "plated armor",
+      "판금갑옷",
       "plated_armor"
     ],
-    "DESCRIPTION": "Gain #yBlock at the end of each turn. Reduced when you take unblocked damage."
+    "DESCRIPTION": "턴 종료시 #y방어도 를 얻습니다. 방어도를 넘는 피해를 받으면 감소합니다."
   },
   {
     "NAMES": [
-      "slimed"
+      "점액투성이"
     ],
-    "DESCRIPTION": "Slimed is a status card that costs [R] to exhaust."
+    "DESCRIPTION": "점액투성이 는 [R] 을 소모해 소멸 시킬 수 있는 상태이상 카드입니다.."
   },
   {
     "NAMES": [
-      "cores"
+      "코어"
     ],
-    "DESCRIPTION": "Cores are cards that #yCycle and apply a small bonus effect."
+    "DESCRIPTION": "코어 카드는 #y사이클 시 작은 효과를 발생시킵니다."
   },
   {
     "NAMES": [
-      "egg",
+      "알",
       "eggs"
     ],
-    "DESCRIPTION": "Eggs are relics that automatically #yUpgrade cards when you acquire them."
+    "DESCRIPTION": "알은 획득시 이후에 얻는 카드를 자동으로 #y강화 하는 유물입니다."
   },
   {
     "NAMES": [
-      "mega-upgrade",
-      "mega-upgraded"
+      "특급강화",
+      "특급강화된"
     ],
-    "DESCRIPTION": "A second upgrade that makes Construct cards even more powerful."
+    "DESCRIPTION": "컨스트럭트 카드는 두 번까지 강화하여 더욱 강력한 효과를 얻을 수 있습니다."
   },
   {
     "NAMES": [
-      "overheat",
+      "과열",
       "overheats",
-      "overheated",
-      "[#ff9900]overheat",
+      "과열된",
+      "[#ff9900]과열",
       "[#ff9900]overheats",
-      "[#ff9900]overheated",
-      "[#ff9900]overheat:"
+      "[#ff9900]과열된",
+      "[#ff9900]과열:"
     ],
-    "DESCRIPTION": "When too many cards #yCycle in one turn, transform this card into a #yBurn for this combat."
+    "DESCRIPTION": "한 턴에 너무 많은 카드를 #y사이클 시키면, 해당 카드들이 이번 전투 동안 #y화상 카드로 변합니다."
   }
 ]

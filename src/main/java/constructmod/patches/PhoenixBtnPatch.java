@@ -29,6 +29,7 @@ import constructmod.relics.Cogwheel;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Set;
 
 public class PhoenixBtnPatch {
 	public static Field charInfoField;
@@ -125,6 +126,24 @@ public class PhoenixBtnPatch {
 						}
 						if (relicHitbox.clicked) {
 							try {
+
+								ConstructMod.logger.debug("BLUE" + Settings.BLUE_TEXT_COLOR.r);
+								ConstructMod.logger.debug("BLUE" + Settings.BLUE_TEXT_COLOR.g);
+								ConstructMod.logger.debug("BLUE" + Settings.BLUE_TEXT_COLOR.b);
+
+								ConstructMod.logger.debug("RED" + Settings.RED_TEXT_COLOR.r);
+								ConstructMod.logger.debug("RED" + Settings.RED_TEXT_COLOR.g);
+								ConstructMod.logger.debug("RED" + Settings.RED_TEXT_COLOR.b);
+
+								ConstructMod.logger.debug("GREEN" + Settings.GREEN_TEXT_COLOR.r);
+								ConstructMod.logger.debug("GREEN" + Settings.GREEN_TEXT_COLOR.g);
+								ConstructMod.logger.debug("GREEN" + Settings.GREEN_TEXT_COLOR.b);
+
+								ConstructMod.logger.debug("YELLOW" + Settings.LIGHT_YELLOW_COLOR.r);
+								ConstructMod.logger.debug("YELLOW" + Settings.LIGHT_YELLOW_COLOR.g);
+								ConstructMod.logger.debug("YELLOW" + Settings.LIGHT_YELLOW_COLOR.b);
+
+
 								CharSelectInfo charInfo = (CharSelectInfo) charInfoField.get(obj);
 
 								String tmp = r.relicId;
@@ -182,7 +201,7 @@ public class PhoenixBtnPatch {
 				if (challengeDownHitbox.hovered) {
 
 					if (challengeTips.isEmpty()){
-						challengeTips.add(new PowerTip(uiStrings.TEXT[0],uiStrings.TEXT[6] + uiStrings.TEXT[7]));
+						challengeTips.add(new PowerTip(uiStrings.TEXT[0],uiStrings.TEXT[5] + uiStrings.TEXT[6]));
 					}
 					if (InputHelper.mX < 1400.0f * Settings.scale) {
 						TipHelper.queuePowerTips(InputHelper.mX + 60.0f * Settings.scale, InputHelper.mY - 50.0f * Settings.scale, challengeTips);

@@ -36,10 +36,8 @@ public class FoamFinger extends CustomRelic {
             --this.counter;
             if (this.counter == 0) {
                 stopPulse();
-                ConstructMod.logger.debug("STOP PULSE");
             }
         } else if (isIncreasingHandSize){
-            ConstructMod.logger.debug("SHUT OFF");
             --AbstractDungeon.player.gameHandSize;
             this.isIncreasingHandSize = false;
         }

@@ -1,19 +1,23 @@
 package constructmod;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import basemod.*;
 import basemod.interfaces.*;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.utils.compression.lzma.Base;
 import com.evacipated.cardcrawl.modthespire.Loader;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.localization.PotionStrings;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import constructmod.localization.ChallengeStrings;
 import constructmod.patches.PhoenixBtnPatch;
 import constructmod.potions.MegaPotion;
 import constructmod.potions.ShiftPotion;
@@ -333,6 +337,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
         BaseMod.loadCustomStringsFile(RelicStrings.class, "localization/ConstructMod-RelicStrings.json");
         BaseMod.loadCustomStringsFile(CardStrings.class, "localization/ConstructMod-CardStrings.json");
 		BaseMod.loadCustomStringsFile(PotionStrings.class, "localization/ConstructMod-PotionStrings.json");
+		BaseMod.loadCustomStringsFile(PowerStrings.class, "localization/ConstructMod-PowerStrings.json");
 		//BaseMod.loadCustomStringsFile(ChallengeStrings.class, "localization/ConstructMod-ChallengeStrings.json");
     }
 	

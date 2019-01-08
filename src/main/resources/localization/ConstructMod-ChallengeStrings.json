@@ -2,9 +2,27 @@
   "constructChallengeLevels": {
     "DESCRIPTIONS": [
       "",
+      "Attack and Defense Mode are less effective, and cannot be copied.",
+      "Some of your starter cards [#ff9900]Overheat.",
+      "At the end of your turn, half your [#ffff66]Retained [#ffffff] cards are discarded.",
+      "[#ffff66]Burn [#ffffff]cards are now [#ffff66]upgraded.",
+      "(MAX LEVEL) ALL Construct cards are less effective.",
       "Cards that shift your stats now Cycle under certain conditions.",
-      "Some of your starter cards Overheat.",
       "Cards with the Retain keyword place themselves on top of your draw pile instead of Retaining."
+      "[#ffff66]Burn [#ffffff]cards are now [#ffff66]Mega-upgraded."
+    ]
+  },
+  "constructShortChallengeLevels": {
+    "DESCRIPTIONS": [
+      "",
+      "Modes give #b+1/-1 & can't be copied.",
+      "Starter cards [#ff9900]Overheat.",
+      "Discard 50% of #yRetained cards.",
+      "#yBurns are #yupgraded.",
+      "Weaker cards.",
+      "Stat-shifting cards #yCycle.",
+      "#yRetain cards rebound.",
+      "#yMega-upgraded #yBurns."
     ]
   }
 }

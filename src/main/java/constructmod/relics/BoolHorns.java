@@ -54,7 +54,7 @@ public class BoolHorns extends CustomRelic {
     
     @Override
     public String getUpdatedDescription() {
-        return DESCRIPTIONS[0] + 3 + DESCRIPTIONS[1]; // don't update number since it says "start of EACH combat"
+        return DESCRIPTIONS[0]; // don't update number since it says "start of EACH combat"
     }
 
     @Override

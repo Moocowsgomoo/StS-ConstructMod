@@ -30,8 +30,10 @@ public class ShiftGuard extends AbstractCycleCard {
 	private static final int M_UPGRADE_PLUS_GAIN_DEX = 1;
 	private static final int POOL = 1;
 
+	public static final int CYCLE_CHALLENGE_THRESHOLD = 6;
+
 	public ShiftGuard() {
-		super(ID, NAME, "img/cards/"+ID+".png", COST, (ConstructMod.challengeLevel >= 1? CHALLENGE_DESCRIPTION:"")+DESCRIPTION, AbstractCard.CardType.SKILL,
+		super(ID, NAME, "img/cards/"+ID+".png", COST, (ConstructMod.hasChallengeActive(CYCLE_CHALLENGE_THRESHOLD)? CHALLENGE_DESCRIPTION:"")+DESCRIPTION, AbstractCard.CardType.SKILL,
 				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardTarget.SELF, POOL);
 		this.block = this.baseBlock = BLOCK_AMT;
 		this.magicNumber = this.baseMagicNumber = GAIN_DEX;
@@ -39,7 +41,7 @@ public class ShiftGuard extends AbstractCycleCard {
 
 	@Override
 	public boolean canCycle() {
-		return ConstructMod.hasChallengeActive(1) && super.canCycle() &&
+		return ConstructMod.hasChallengeActive(CYCLE_CHALLENGE_THRESHOLD) && super.canCycle() &&
 				AbstractDungeon.player.hasPower(StrengthPower.POWER_ID) &&
 				AbstractDungeon.player.getPower(StrengthPower.POWER_ID).amount < 0;
 	}

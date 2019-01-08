@@ -50,7 +50,7 @@ public class WeddingRing extends CustomRelic
             this.card2 = AbstractDungeon.player.masterDeck.group.get(ConstructMod.marriedCard2);
             WeddingRingPatch.isMarried.set(this.card1, true);
             WeddingRingPatch.isMarried.set(this.card2, true);
-            return "Once per turn, after you play " + FontHelper.colorString(this.card1.name, "y") + " or " + FontHelper.colorString(this.card2.name, "y") + ", play the other one too.";
+            return String.format(DESCRIPTIONS[1],FontHelper.colorString(this.card1.name, "y"),FontHelper.colorString(this.card2.name, "y"));
         }
     	else return DESCRIPTIONS[0];
     }
@@ -75,7 +75,7 @@ public class WeddingRing extends CustomRelic
         	if (c.cost > -2) validCards.addToTop(c);
         }
         
-        AbstractDungeon.gridSelectScreen.open(validCards, 2, "Choose 2 cards to link.", false, false, false, false);
+        AbstractDungeon.gridSelectScreen.open(validCards, 2, DESCRIPTIONS[2], false, false, false, false);
     }
     
     @Override
@@ -108,15 +108,12 @@ public class WeddingRing extends CustomRelic
             WeddingRingPatch.isMarried.set(this.card2, true);
             AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
             AbstractDungeon.gridSelectScreen.selectedCards.clear();
-            this.description = "Once per turn, after you play " + FontHelper.colorString(this.card1.name, "y") + " or " + FontHelper.colorString(this.card2.name, "y") + ", play the other one too.";
-            this.tips.clear();
-            this.tips.add(new PowerTip(this.name, this.description));
-            this.initializeTips();
+            this.setDescriptionAfterLoading();
         }
     }
 
     public void setDescriptionAfterLoading() {
-    	this.description = "Once per turn, after you play " + FontHelper.colorString(this.card1.name, "y") + " or " + FontHelper.colorString(this.card2.name, "y") + ", play the other one too.";
+    	this.description = String.format(DESCRIPTIONS[1],FontHelper.colorString(this.card1.name, "y"),FontHelper.colorString(this.card2.name, "y"));
         this.tips.clear();
         this.tips.add(new PowerTip(this.name, this.description));
         this.initializeTips();

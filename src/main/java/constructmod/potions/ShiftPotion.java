@@ -25,7 +25,7 @@ public class ShiftPotion extends AbstractPotion {
         super(NAME, POTION_ID, PotionRarity.UNCOMMON, PotionSize.S, PotionColor.GREEN);
 
         this.potency = this.getPotency();
-        this.description = ShiftPotion.DESCRIPTIONS[0] + this.potency + (this.potency==1?ShiftPotion.DESCRIPTIONS[1]:ShiftPotion.DESCRIPTIONS[2]);
+        this.description = String.format(this.potency==1?ShiftPotion.DESCRIPTIONS[0]:ShiftPotion.DESCRIPTIONS[1],this.potency);
         this.isThrown = false;
         this.tips.add(new PowerTip(this.name, this.description));
         this.tips.add(new PowerTip(TipHelper.capitalize(GameDictionary.STRENGTH.NAMES[0]), GameDictionary.keywords.get(GameDictionary.STRENGTH.NAMES[0])));

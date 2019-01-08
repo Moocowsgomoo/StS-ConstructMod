@@ -50,10 +50,10 @@
 	},
 	"construct:Analyze": {
 		"NAME": "Analyze",
-		"DESCRIPTION": "Next turn, gain [R]  and draw !M!  more cards.",
-		"UPGRADE_DESCRIPTION": "Next turn, gain [R]  and draw !M!  more cards.",
+		"DESCRIPTION": "Next turn, gain [E]  and draw !M!  more cards.",
+		"UPGRADE_DESCRIPTION": "Next turn, gain [E]  and draw !M!  more cards.",
 		"EXTENDED_DESCRIPTION": [
-			"Next turn, gain [R] [R] and draw !M!  more cards."	
+			"Next turn, gain [E] [E] and draw !M!  more cards."
 		]
 	},
 	"construct:VentSteam": {
@@ -83,22 +83,6 @@
 		"NAME": "Electric Armor",
 		"DESCRIPTION": "Cycle if Dexterity < 1. NL When an enemy attacks you this turn, it takes damage equal to your Dexterity.",
 		"UPGRADE_DESCRIPTION": "Cycle if Dexterity < 1. NL When an enemy attacks you this or next turn, it takes damage equal to your Dexterity."
-	},
-	"construct:BubbleShield": {
-		"NAME": "Bubble Shield",
-		"DESCRIPTION": "Cycle if Dexterity < 1. NL Gain Armor equal to your Dexterity. NL Exhaust.",
-		"UPGRADE_DESCRIPTION": "Cycle if Dexterity < 1. NL Gain Armor equal to your Dexterity + !M!. NL Exhaust.",
-		"EXTENDED_DESCRIPTION": [
-			"Cycle if Dexterity < 1. NL Gain !M! Dexterity, then gain Armor equal to your Dexterity. NL Exhaust."	
-		]
-	},
-	"construct:ReactiveShield2": {
-		"NAME": "Reactive Shield 2",
-		"DESCRIPTION": "Gain !B! Block for each enemy in combat.",
-		"UPGRADE_DESCRIPTION": "Cycle if there's only one enemy in combat. NL Gain !B! Block for each enemy in combat.",
-		"EXTENDED_DESCRIPTION": [
-			" NL (Gains !B! Block.)"	
-		]
 	},
 	"construct:FlameCore": {
 		"NAME": "Flame Core",
@@ -148,20 +132,6 @@
 			" NL Put a Force Core+ into your discard pile."	
 		]
 	},
-	"construct:OrbGenesis": {
-		"NAME": "Orb Genesis",
-		"DESCRIPTION": "Add !M! random Orbs to your draw pile.",
-		"UPGRADE_DESCRIPTION": "Add !M! random upgraded Orbs to your draw pile."
-	},
-	"construct:OrbAssault": {
-		"NAME": "Orb Assault",
-		"DESCRIPTION": "Shuffle 5 Broken Orbs into your draw pile. NL When a card cycles, deal !M! damage to a random enemy.",
-		"UPGRADE_DESCRIPTION": "Shuffle 10 Broken Orbs into your draw pile. When a card cycles, deal !M! damage to a random enemy."
-	},
-	"construct:BrokenOrb": {
-		"NAME": "Broken Orb",
-		"DESCRIPTION": "Unplayable. NL Cycle. When cycled: NL Take !M! damage."
-	},
 	"construct:Autoturret": {
 		"NAME": "Autoturret",
 		"DESCRIPTION": "When a card cycles, deal !M! damage to a random enemy."
@@ -203,14 +173,6 @@
 		"NAME": "Flak Barrage",
 		"DESCRIPTION": "Deal !D! damage to a random enemy !M! times.",
 		"UPGRADE_DESCRIPTION": "Cycle if Strength < 1. NL Deal !D! damage to a random enemy !M! times."
-	},
-	"construct:Disorient": {
-		"NAME": "Disorient",
-		"DESCRIPTION": "ALL enemies lose Strength equal to your Dexterity. NL Exhaust.",
-		"UPGRADE_DESCRIPTION": "ALL enemies lose Strength equal to your Dexterity + !M!. NL Exhaust.",
-		"EXTENDED_DESCRIPTION": [
-			"Gain !M! Dexterity, then ALL enemies lose Strength equal to your Dexterity. NL Exhaust."	
-		]
 	},
 	"construct:MassProduction": {
 		"NAME": "Mass Production",
@@ -260,11 +222,6 @@
 		"NAME": "Spin Drive",
 		"DESCRIPTION": "When you play a card, draw a card. NL Works !M! times per turn."
 	},
-	"construct:Disruptor": {
-		"NAME": "Disruptor",
-		"DESCRIPTION": "When you lose HP, gain that much Block.",
-		"UPGRADE_DESCRIPTION": "When you lose HP, gain twice that much Block."
-	},
 	"construct:Backfire": {
 		"NAME": "Backfire",
 		"DESCRIPTION": "Take !M! damage. NL Deal !D! damage."
@@ -279,11 +236,11 @@
 	},
 	"construct:Antimatter": {
 		"NAME": "Antimatter",
-		"DESCRIPTION": "Reduce your [R] to 0. NL Deal damage equal to !M! times the number of cards in your hand.",
+		"DESCRIPTION": "Reduce your [E] to 0. NL Deal damage equal to !M! times the number of cards in your hand.",
 		"EXTENDED_DESCRIPTION": [
 			"(Deals !D! damage.) NL ",
 			"I have more than 0 energy!",
-			"Reduce your [R] to 0, and regain it next turn. NL Deal damage equal to !M! times the number of cards in your hand."
+			"Reduce your [E] to 0, and regain it next turn. NL Deal damage equal to !M! times the number of cards in your hand."
 		]
 	},
 	"construct:ClockworkEgg": {
@@ -353,18 +310,6 @@
 			"(Cycle if Strength < 0.) NL "
 		]
 	},
-	"construct:TripMine": {
-		"NAME": "Trip Mine",
-		"DESCRIPTION": "Gain !B! Block. NL If your Block is broken this turn, deal !M! damage to ALL enemies."
-	},
-	"construct:Lockdown": {
-		"NAME": "Lockdown",
-		"DESCRIPTION": "EVERYONE gains !B! Block and 1 Blur. NL Exhaust.",
-		"UPGRADE_DESCRIPTION": "Retain. NL EVERYONE gains !B! Block and 1 Blur. NL Exhaust.",
-		"EXTENDED_DESCRIPTION": [
-			"Retain. NL Gain !B! Block, then EVERYONE gains !B! Block and 1 Blur. NL  NL Exhaust."
-		]
-	},
 	"construct:Chainstrike": {
 		"NAME": "Chainstrike",
 		"DESCRIPTION": "Deal !D! damage, then play a random Attack from your draw pile on the same target.",
@@ -387,11 +332,6 @@
 		"NAME": "Overcharge",
 		"DESCRIPTION": "At the start of your turn, gain [R] and add a Burn to your hand.",
 		"UPGRADE_DESCRIPTION": "Gain [R] [R] . NL At the start of your turn, gain [R] and add a Burn to your hand."
-	},
-	"construct:Overpower": {
-		"NAME": "Overpower",
-		"DESCRIPTION": "Gain !M! Strength. NL Gain !M! Dexterity. NL At the start of your turn, add a Burn to your hand.",
-		"UPGRADE_DESCRIPTION": "Retain. NL Gain !M! Strength. NL Gain !M! Dexterity. NL At the start of your turn, add a Burn to your hand."
 	},
 	"construct:Meltdown": {
 		"NAME": "Meltdown",
@@ -452,13 +392,13 @@
 	},
 	"construct:OmegaCannon": {
 		"NAME": "Omega Cannon",
-		"DESCRIPTION": "Deal !D! damage. NL Costs 1 less [R] for each Strength you have.",
-		"UPGRADE_DESCRIPTION": "Deal !D! damage. NL Costs 1 less [R] for each Strength (or negative Strength) you have."
+		"DESCRIPTION": "Deal !D! damage. NL Costs 1 less [E] for each Strength you have.",
+		"UPGRADE_DESCRIPTION": "Deal !D! damage. NL Costs 1 less [E] for each Strength (or negative Strength) you have."
 	},
 	"construct:Impenetrable": {
 		"NAME": "Impenetrable",
-		"DESCRIPTION": "Gain !B! Block. NL Gain [R] next turn. NL Exhaust.",
-		"UPGRADE_DESCRIPTION": "Gain !B! Block. NL Gain [R] [R] next turn. NL Exhaust."
+		"DESCRIPTION": "Gain !B! Block. NL Gain [E] next turn. NL Exhaust.",
+		"UPGRADE_DESCRIPTION": "Gain !B! Block. NL Gain [E] [E] next turn. NL Exhaust."
 	},
 	"construct:PanicFire": {
 		"NAME": "Panic Fire",
@@ -639,30 +579,6 @@
 			"(Burns: ",
 			" + ",
 			") NL "
-		]
-	},
-	"construct:SunScreen": {
-		"NAME": "Sun Screen",
-		"DESCRIPTION": "At the end of your turn, Exhaust a random Status card in your hand in order to gain !M! Block.",
-		"UPGRADE_DESCRIPTION": "At the end of your turn, Exhaust a random Status and Curse card in your hand. Gain !M! Block for each."
-	},
-
-
-
-
-	"construct:Coolant": {
-		"NAME": "Coolant",
-		"DESCRIPTION": "Gain !B! Block. NL Increase the [#ff9900]Overheat limit of ALL cards by 5 for this combat. NL Exhaust.",
-		"UPGRADE_DESCRIPTION": "Innate. NL Gain !B! Block. NL Increase the [#ff9900]Overheat limit of ALL cards by !M! for this combat. NL Exhaust."
-	},
-	"construct:Flamethrower": {
-		"NAME": "Inferno",
-		"DESCRIPTION": "Deal !D! damage to a random enemy for each Burn you have.",
-		"UPGRADE_DESCRIPTION": "Cycle if you have no Burns. NL Deal !D! damage to a random enemy for each Burn you have.",
-		"EXTENDED_DESCRIPTION": [
-			"Cycle if you have no Statuses. NL Deal !D! damage to a random enemy for each Status card you have.",
-			"(Hits !M! time.) NL ",
-			"(Hits !M! times.) NL "
 		]
 	}
 }

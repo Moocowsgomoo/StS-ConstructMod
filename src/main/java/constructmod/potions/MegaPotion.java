@@ -25,7 +25,7 @@ public class MegaPotion extends AbstractPotion {
         super(NAME, POTION_ID, PotionRarity.RARE, PotionSize.BOLT, PotionColor.WHITE);
 
         this.potency = this.getPotency();
-        this.description = (this.potency==1?MegaPotion.DESCRIPTIONS[0]:MegaPotion.DESCRIPTIONS[1] + this.potency + MegaPotion.DESCRIPTIONS[2]);
+        this.description = String.format(this.potency==1?MegaPotion.DESCRIPTIONS[0]:MegaPotion.DESCRIPTIONS[1],this.potency);
         this.isThrown = false;
         this.tips.add(new PowerTip(this.name, this.description));
         this.tips.add(new PowerTip(TipHelper.capitalize("mega-upgrade"), GameDictionary.keywords.get("mega-upgrade")));

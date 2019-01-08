@@ -10,18 +10,17 @@ import com.megacrit.cardcrawl.actions.*;
 import com.megacrit.cardcrawl.core.*;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DoubleTapPower;
+import com.megacrit.cardcrawl.powers.MagnetismPower;
 import constructmod.actions.QueueCardFrontAction;
 
 public class AfterburnersPower extends AbstractPower
 {
     public static final String POWER_ID = "construct:Afterburners";
-    public static final String[] DESCRIPTIONS = new String[] {
-            "Your next non-rare card is played #b",
-            " times this turn."
-    };
+    public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
+    public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     public AfterburnersPower(final AbstractCreature owner, final int amount) {
-        this.name = "Afterburners";
+        this.name = powerStrings.NAME;
         this.ID = POWER_ID;
         this.owner = owner;
         this.amount = amount;
@@ -31,7 +30,7 @@ public class AfterburnersPower extends AbstractPower
 
     @Override
     public void updateDescription() {
-        this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
+        this.description = String.format(this.DESCRIPTIONS[0], this.amount);
     }
 
     @Override

@@ -37,8 +37,10 @@ public class ShiftStrike extends AbstractCycleCard {
 	private static final int M_UPGRADE_PLUS_GAIN_STR = 1;
 	private static final int POOL = 1;
 
+	public static final int CYCLE_CHALLENGE_THRESHOLD = 6;
+
 	public ShiftStrike() {
-		super(ID, NAME, "img/cards/"+ID+".png", COST, (ConstructMod.challengeLevel >= 1? CHALLENGE_DESCRIPTION:"")+DESCRIPTION, AbstractCard.CardType.ATTACK,
+		super(ID, NAME, "img/cards/"+ID+".png", COST, (ConstructMod.hasChallengeActive(CYCLE_CHALLENGE_THRESHOLD)? CHALLENGE_DESCRIPTION:"")+DESCRIPTION, AbstractCard.CardType.ATTACK,
 				AbstractCardEnum.CONSTRUCTMOD, AbstractCard.CardRarity.COMMON, AbstractCard.CardTarget.ENEMY, POOL);
 		this.damage = this.baseDamage = ATTACK_DMG;
 		this.magicNumber = this.baseMagicNumber = GAIN_STR;
@@ -47,7 +49,7 @@ public class ShiftStrike extends AbstractCycleCard {
 
 	@Override
 	public boolean canCycle() {
-		return ConstructMod.hasChallengeActive(1) && super.canCycle() &&
+		return ConstructMod.hasChallengeActive(CYCLE_CHALLENGE_THRESHOLD) && super.canCycle() &&
 				AbstractDungeon.player.hasPower(DexterityPower.POWER_ID) &&
 				AbstractDungeon.player.getPower(DexterityPower.POWER_ID).amount < 0;
 	}

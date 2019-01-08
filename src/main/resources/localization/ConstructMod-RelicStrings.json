@@ -59,7 +59,9 @@
     "NAME": "Wedding Ring",
     "FLAVOR": "It's inscribed with \"FT2J\".",
     "DESCRIPTIONS": [
-      "Upon pickup, choose 2 cards. Once per turn, after you play one of them, play the other one too."
+      "Upon pickup, choose 2 cards. Once per turn, after you play one of them, play the other one too.",
+      "Once per turn, after you play %s or %s, play the other one too.",
+      "Choose 2 cards to link."
     ]
   },
   "construct:IceCubes": {
@@ -73,8 +75,7 @@
     "NAME": "Bool Horns",
     "FLAVOR": "Horns from a rarely-seen species. Bools are known to only show aggression towards those who speak lies.",
     "DESCRIPTIONS": [
-      "At the start of each combat, deal #b",
-      " damage to a random enemy. Upon entering a non-combat space, double the damage this relic deals next combat."
+      "At the start of each combat, deal #b3 damage to a random enemy. Upon entering a non-combat space, double the damage this relic deals next combat."
     ]
   },
   "construct:LongRangeLance": {

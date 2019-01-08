@@ -21,13 +21,13 @@
      
 		public void update()
 		{
-			if (target.hasPower("Strength")) {
-				final int str = target.getPower("Strength").amount;
+			if (target.hasPower(StrengthPower.POWER_ID)) {
+				final int str = target.getPower(StrengthPower.POWER_ID).amount;
 				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
 						target,target,new StrengthPower(target,str*timesToApply),str*timesToApply));
 			}
-			if (target.hasPower("Dexterity")) {
-				final int dex = target.getPower("Dexterity").amount;
+			if (target.hasPower(DexterityPower.POWER_ID)) {
+				final int dex = target.getPower(DexterityPower.POWER_ID).amount;
 				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
 						target,target,new DexterityPower(target, dex*timesToApply),dex*timesToApply));
 			}

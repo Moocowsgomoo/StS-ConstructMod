@@ -11,8 +11,8 @@ import com.megacrit.cardcrawl.core.*;
 
 public class CopyCardToDiscardPileAction extends AbstractGameAction
 {
-    public static final String TEXT;
     private static final float DURATION_PER_CARD = 0.25f;
+    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("constructActionText");
     private AbstractPlayer p;
     private int dupeAmount;
     private ArrayList<AbstractCard> cannotDuplicate;
@@ -50,7 +50,7 @@ public class CopyCardToDiscardPileAction extends AbstractGameAction
             }
             this.p.hand.group.removeAll(this.cannotDuplicate);
             if (this.p.hand.group.size() > 1) {
-                AbstractDungeon.handCardSelectScreen.open(CopyCardToDiscardPileAction.TEXT, 1, false, false, false, false);
+                AbstractDungeon.handCardSelectScreen.open(uiStrings.TEXT[0], 1, false, false, false, false);
                 this.tickDuration();
                 return;
             }
@@ -85,9 +85,5 @@ public class CopyCardToDiscardPileAction extends AbstractGameAction
     
     private boolean isCopiable(final AbstractCard card) {
         return !card.rarity.equals(AbstractCard.CardRarity.RARE);
-    }
-    
-    static {
-        TEXT = "copy.";
     }
 }

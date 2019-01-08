@@ -7,12 +7,10 @@ import basemod.*;
 import basemod.interfaces.*;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.utils.compression.lzma.Base;
 import com.evacipated.cardcrawl.modthespire.Loader;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.*;
-import com.megacrit.cardcrawl.localization.PotionStrings;
-import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -38,8 +36,6 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.localization.CardStrings;
-import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterOption;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterSelectScreen;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
@@ -85,22 +81,6 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 	public static Texture ringIconTexture;
 
 	public static int challengeLevel = 0;
-	public static final String[] CHALLENGE_STRINGS = {
-			"",
-			"Attack and Defense Mode are less effective, and cannot be copied.",
-			"Some of your starter cards [#ff9900]Overheat.",
-			"At the end of your turn, half your [#ffff66]Retained [#ffffff] cards are discarded.",
-			"[#ffff66]Burn [#ffffff]cards are now [#ffff66]upgraded.",
-			"(MAX LEVEL) ALL Construct cards are less effective."
-	};
-	public static final String[] SHORT_CHALLENGE_STRINGS = {
-			"",
-			"Modes give #b+1/-1 & can't be copied.",
-			"Starter cards [#ff9900]Overheat.",
-			"Discard 50% of #yRetained cards.",
-			"#yBurns are #yupgraded.",
-			"Weaker cards."
-	};
 
 	public static int cyclesThisTurn = 0;
 	public static final int CYCLES_BEFORE_FASTMODE = 20;
@@ -192,22 +172,24 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		});
 		ModLabel unlockAllTxt = new ModLabel("Set Unlock level to MAX. Unlocks appear on the character select screen.",470.0f, 540.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
 
+		UIStrings challengeStrings = CardCrawlGame.languagePack.getUIString("constructChallengeLevels");
+
 		ModLabel challengeIntroTxt1 = new ModLabel("Experimental future levels for Challenge Mode. These are subject to change.",350.0f, 430.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
 		ModLabel challengeIntroTxt2 = new ModLabel("Currently 4 levels exist. The focus is on polishing these and eventually adding a 5th.",350.0f, 400.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
 		ModLabel challengeLabelTxt = new ModLabel("Challenge Level:",350.0f, 350.0f,settingsPanel,(me)->{});
 		ModLabel challengeLevelTxt = new ModLabel(""+challengeLevel,650.0f, 350.0f,settingsPanel,(me)->{});
-		ModLabel challengeDescTxt = new ModLabel(CHALLENGE_STRINGS[challengeLevel],400.0f, 300.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
+		ModLabel challengeDescTxt = new ModLabel(challengeStrings.TEXT[challengeLevel],400.0f, 300.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
 		ModButton challengeLeftBtn = new ModButton(605.0f, 340.0f, ImageMaster.loadImage("img/tinyLeftArrow.png"),settingsPanel,(me)->{
 			if (challengeLevel > 0) challengeLevel--;
 			challengeLevelTxt.text = "" + challengeLevel;
-			challengeDescTxt.text = CHALLENGE_STRINGS[challengeLevel];
+			challengeDescTxt.text = challengeStrings.TEXT[challengeLevel];
 			resetCharSelect();
 			saveData();
 		});
 		ModButton challengeRightBtn = new ModButton(665.0f, 340.0f, ImageMaster.loadImage("img/tinyRightArrow.png"),settingsPanel,(me)->{
 			if (challengeLevel < 4) challengeLevel++;
 			challengeLevelTxt.text = "" + challengeLevel;
-			challengeDescTxt.text = CHALLENGE_STRINGS[challengeLevel];
+			challengeDescTxt.text = challengeStrings.TEXT[challengeLevel];
 			resetCharSelect();
 			saveData();
 		});
@@ -334,12 +316,15 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 	}
 	
 	public void receiveEditStrings() {
-        BaseMod.loadCustomStringsFile(RelicStrings.class, "localization/ConstructMod-RelicStrings.json");
-        BaseMod.loadCustomStringsFile(CardStrings.class, "localization/ConstructMod-CardStrings.json");
-		BaseMod.loadCustomStringsFile(PotionStrings.class, "localization/ConstructMod-PotionStrings.json");
-		BaseMod.loadCustomStringsFile(PowerStrings.class, "localization/ConstructMod-PowerStrings.json");
-		//BaseMod.loadCustomStringsFile(ChallengeStrings.class, "localization/ConstructMod-ChallengeStrings.json");
-    }
+		String language = "eng";
+		if (Settings.language == Settings.GameLanguage.KOR) language = "kor";
+        BaseMod.loadCustomStringsFile(RelicStrings.class, "localization/"+language+"/ConstructMod-RelicStrings.json");
+        BaseMod.loadCustomStringsFile(CardStrings.class, "localization/"+language+"/ConstructMod-CardStrings.json");
+		BaseMod.loadCustomStringsFile(PotionStrings.class, "localization/"+language+"/ConstructMod-PotionStrings.json");
+		BaseMod.loadCustomStringsFile(PowerStrings.class, "localization/"+language+"/ConstructMod-PowerStrings.json");
+		BaseMod.loadCustomStringsFile(UIStrings.class, "localization/"+language+"/ConstructMod-UIStrings.json");
+
+	}
 	
 	public void receiveEditCards() {
 
@@ -663,11 +648,12 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 	}
 
 	public static String getAllChallengeDescriptionsUpTo(int num){
-		if (num > SHORT_CHALLENGE_STRINGS.length) num = SHORT_CHALLENGE_STRINGS.length;
+		UIStrings scStrings = CardCrawlGame.languagePack.getUIString("constructShortChallengeLevels");
+		if (num > scStrings.TEXT.length) num = scStrings.TEXT.length;
 		String msg = "";
 		for (int i=1;i<=num;i++){
 			if (i>1) msg += " NL ";
-			msg += SHORT_CHALLENGE_STRINGS[i];
+			msg += scStrings.TEXT[i];
 			//msg += i + ": " + SHORT_CHALLENGE_STRINGS[i];
 		}
 		return msg;

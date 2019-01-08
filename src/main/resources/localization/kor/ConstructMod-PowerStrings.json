@@ -1,0 +1,215 @@
+{
+	"construct:Afterburners": {
+		"NAME": "Afterburners",
+		"DESCRIPTIONS": [
+			"Your next non-rare card is played #b%s times this turn."
+		]
+  	},
+	"construct:Agitation": {
+		"NAME": "Agitation",
+		"DESCRIPTIONS": [
+			"Whenever a card [#ff9900]Overheats, gain #b%s #yStrength and #b%s #yDexterity."
+		]
+	},
+	"construct:Autoturret": {
+		"NAME": "Autoturret",
+		"DESCRIPTIONS": [
+			"Whenever a card #ycycles, deal #b%s damage to a random enemy."
+		]
+	},
+	"construct:Bunker": {
+		"NAME": "Bunker",
+		"DESCRIPTIONS": [
+			"When a card is #yRetained, gain #b%s #yBlock."
+		]
+	},
+	"construct:SelfStasis": {
+		"NAME": "Self-Stasis",
+		"DESCRIPTIONS": [
+			"Holding: ",
+			". NL When Stasis is played again, add #b%s #yMega-upgraded copy to your hand.",
+			". NL When Stasis is played again, add #b%s #yMega-upgraded copies to your hand."
+		]
+	},
+	"construct:DoubleNextDamage": {
+		"NAME": "Double Next Damage",
+		"DESCRIPTIONS": [
+			"Your next attack this turn deals double damage.",
+			"Your next #b%s attacks this turn deal double damage."
+		]
+	},
+	"construct:ElectricArmor": {
+		"NAME": "Electric Armor",
+		"DESCRIPTIONS": [
+			"When attacked this turn, deals damage back equal to your #yDexterity.",
+			"When attacked for the next #b%s turns, deals damage back equal to your #yDexterity."
+		]
+	},
+	"construct:EnhanceMega": {
+		"NAME": "Enhance (Mega)",
+		"DESCRIPTIONS": [
+			"At the end of your turn, #yUpgrade #b%s card in your discard pile. (Can #yMega-upgrade.)",
+			"At the end of your turn, #yUpgrade #b%s cards in your discard pile. (Can #yMega-upgrade.)"
+		]
+	},
+	"construct:Enhance": {
+		"NAME": "Enhance",
+		"DESCRIPTIONS": [
+			"At the end of your turn, #yUpgrade #b%s card in your discard pile.",
+			"At the end of your turn, #yUpgrade #b%s cards in your discard pile."
+		]
+	},
+	"construct:ExtraLongRangeLance": {
+		"NAME": "EXTRA-Long-Range Lance",
+		"DESCRIPTIONS": [
+			"At the start of the combat after the next one, deal #b%s damage to a random enemy."
+		]
+	},
+	"construct:Failsafe": {
+		"NAME": "Failsafe",
+		"DESCRIPTIONS": [
+			"The next Status card you draw will #yCycle. Resets to #b%s at the start of your turn.",
+			"The next #b%s Status cards you draw will #yCycle. Resets to #b%s at the start of your turn."
+		]
+	},
+	"construct:FlashFreeze": {
+		"NAME": "FlashFreeze",
+		"DESCRIPTIONS": [
+			"Your cards cannot [#ff9900]Overheat for #b%s more turn.",
+			"Your cards cannot [#ff9900]Overheat for #b%s more turns."
+		]
+	},
+	"construct:FutureTurnBlock": {
+		"NAME": "Next Next Turn Block",
+		"DESCRIPTIONS": [
+			"Two turns from now, gain #b%s #yBlock."
+		]
+	},
+	"construct:LongRangeLance": {
+		"NAME": "Long-Range Lance",
+		"DESCRIPTIONS": [
+			"At the start of the next combat, deal #b%s damage to a random enemy."
+		]
+	},
+	"construct:MegaZapper": {
+		"NAME": "Zapper (Mega)",
+		"DESCRIPTIONS": [
+			"Whenever you lose #yStrength or #yDexterity, deal #b%s damage to a random enemy. It loses #b1 #yStrength this turn."
+		]
+	},
+	"construct:Meltdown": {
+		"NAME": "Meltdown",
+		"DESCRIPTIONS": [
+			"At the start of your turn, deal #b%s damage to ALL enemies and add a #yBurn to your hand."
+		]
+	},
+	"construct:Multistage": {
+		"NAME": "Multistage",
+		"DESCRIPTIONS": [
+			"At the start of your next turn, play a copy of %s.",
+			"At the start of your next #b%s turns, play a copy of %s."
+		]
+	},
+	"construct:NoCycle": {
+		"NAME": "No Cycle",
+		"DESCRIPTIONS": [
+			"Your cards cannot #yCycle for #b%s more turn.",
+			"Your cards cannot #yCycle for #b%s more turns."
+		]
+	},
+	"construct:OilSpill": {
+		"NAME": "Oil",
+		"DESCRIPTIONS": [
+			"Whenever a #yBurn card hits you, deal #b%s damage to %s."
+		]
+	},
+	"construct:Overcharge": {
+		"NAME": "Overcharge",
+		"DESCRIPTIONS": [
+			"At the start of your turn, gain #b%s [E] and add #b%s #yBurns to your hand."
+		]
+	},
+	"construct:Overclock": {
+		"NAME": "Overclock",
+		"DESCRIPTIONS": [
+			"At the start of your turn, draw #b%s cards and add #b%s #yBurns to your hand."
+		]
+	},
+	"construct:PanicFire": {
+		"NAME": "Panic Fire",
+		"DESCRIPTIONS": [
+			"Whenever an non-upgraded card #ycycles, #yExhaust it and deal #b%s damage to a random enemy."
+		]
+	},
+	"construct:PointDefense": {
+		"NAME": "Point Defense",
+		"DESCRIPTIONS": [
+			"Whenever a card #ycycles, gain #b1 #yBlock. Works #b%s times each turn."
+		]
+	},
+	"construct:ReactiveShield": {
+		"NAME": "Reactive Shield",
+		"DESCRIPTIONS": [
+			"When you gain #yBlock, deal #b%s damage to the enemy with the lowest HP."
+		]
+	},
+	"construct:SaveState": {
+		"NAME": "Save State",
+		"DESCRIPTIONS": [
+			"At the end of your turn, #yRetain your hand."
+		]
+	},
+	"construct:RetainRandom": {
+		"NAME": "Retain Random",
+		"DESCRIPTIONS": [
+			"At the end of your turn, #yRetain #b%s random card.",
+			"At the end of your turn, #yRetain #b%s random cards."
+		]
+	},
+	"construct:ShiftingStanceMega": {
+		"NAME": "Shifting Stance (Mega)",
+		"DESCRIPTIONS": [
+			"After you play #b%s more card, swap your #yStrength and #yDexterity, then increase the highest and decrease the lowest by #b1.",
+			"After you play #b%s more cards, swap your #yStrength and #yDexterity, then increase the highest and decrease the lowest by #b1."
+		]
+	},
+	"construct:ShiftingStance": {
+		"NAME": "Shifting Stance",
+		"DESCRIPTIONS": [
+			"After you play #b%s more card, swap your #yStrength and #yDexterity.",
+			"After you play #b%s more cards, swap your #yStrength and #yDexterity."
+		]
+	},
+	"construct:SiegeForm": {
+		"NAME": "Siege Form",
+		"DESCRIPTIONS": [
+			"After you play a card, gain #b%s #yStrength until the end of your turn.",
+			"After you play an Attack, gain #b%s #yStrength until the end of your turn."
+		]
+	},
+	"construct:SpinDrive": {
+		"NAME": "Spin Drive",
+		"DESCRIPTIONS": [
+			"After you play a card, draw a card. Works #b%s times each turn."
+		]
+	},
+	"construct:Synchronize": {
+		"NAME": "Synchronize",
+		"DESCRIPTIONS": [
+			"Whenever you draw 2 of the same card in a row, deal #b%s damage to ALL enemies.",
+			" NL (Last drawn: %s)."
+		]
+	},
+	"construct:Syphon": {
+		"NAME": "Syphon",
+		"DESCRIPTIONS": [
+			"Whenever %s takes Attack damage, draw #b1 card."
+		]
+	},
+	"construct:Zapper": {
+		"NAME": "Zapper",
+		"DESCRIPTIONS": [
+			"Whenever you gain #yStrength or #yDexterity, deal #b%s damage to a random enemy. It loses #b1 #yStrength this turn."
+		]
+	}
+}

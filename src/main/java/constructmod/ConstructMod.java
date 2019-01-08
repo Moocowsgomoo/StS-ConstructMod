@@ -1,5 +1,6 @@
 package constructmod;
 
+import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
@@ -8,6 +9,8 @@ import basemod.interfaces.*;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.modthespire.Loader;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.localization.*;
@@ -43,6 +46,7 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import constructmod.cards.*;
 import constructmod.relics.*;
 
+import java.util.Map;
 import java.util.Properties;
 
 import constructmod.characters.TheConstruct;
@@ -284,26 +288,39 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
     }
     
     public void receiveEditKeywords() {
-    	final String[] cycle = {"cycle", "cycles"};
-    	BaseMod.addKeyword(cycle, "When drawn, discard this and draw a new card. Only works once per turn.");
-    	final String[] blur = {"blur"};
-    	BaseMod.addKeyword(blur, "Your Block is carried over between turns.");
-    	final String[] metallicize = {"metallicize"};
-    	BaseMod.addKeyword(metallicize, "Gain Block at the end of each turn.");
-    	final String[] pArmor = {"plated armor"}; // not working b/c it's two words?
-    	BaseMod.addKeyword(pArmor, "Gain Block at the end of each turn. Reduced when you take unblocked damage.");
-    	final String[] slimed = {"slimed"};
-    	BaseMod.addKeyword(slimed, "Slimed is a status card that costs [R] to exhaust.");
-    	final String[] cores = {"cores"};
-    	BaseMod.addKeyword(cores, "Cores are cards that #yCycle and apply a small bonus effect.");
-    	final String[] eggs = {"egg","eggs"};
-    	BaseMod.addKeyword(eggs, "Eggs are relics that automatically upgrade cards when you acquire them.");
-    	final String[] megaUpgrade = {"mega-upgrade","mega-upgraded"};
-    	BaseMod.addKeyword(megaUpgrade, "A second upgrade that makes Construct cards even more powerful.");
-		final String[] overheat = {"overheat","[#ff9900]overheat","[#ff9900]overheats","[#ff9900]overheated", "[#ff9900]overheat:","overheats","overheated"};
-		BaseMod.addKeyword(overheat, "When too many cards #yCycle in one turn, transform this card into a #yBurn for this combat.");
+
+		String language = "eng";
+
+		if (Settings.language == Settings.GameLanguage.KOR) language = "kor";
+
+		Type typeToken = new TypeToken <Map<String, Keyword>>(){}.getType();
+		Gson gson = new Gson();
+		String strings = loadJson("localization/" + language + "/ConstructMod-KeywordStrings.json");
+		@SuppressWarnings("unchecked")
+		Map<String,Keyword> keywords = (Map<String,Keyword>)gson.fromJson(strings, typeToken);
+		for (Keyword kw : keywords.values()) {
+			BaseMod.addKeyword(kw.NAMES, kw.DESCRIPTION);
+		}
+		logger.info("done editing keywords");
+		/*final Gson gson = new Gson();
+		String language = "eng";
+
+		if (Settings.language == Settings.GameLanguage.KOR) language = "kor";
+
+		final String json = Gdx.files.internal("localization/" + language + "/ConstructMod-KeywordStrings.json").readString(String.valueOf(StandardCharsets.UTF_8));
+
+		final Keyword[] keywords = (Keyword[]) gson.fromJson(json, (Class) Keyword.class);
+		if (keywords != null) {
+			for (final Keyword keyword : keywords) {
+				BaseMod.addKeyword(keyword.NAMES, keyword.DESCRIPTION);
+			}
+		}*/
     }
-	
+
+	private static String loadJson(String jsonPath) {
+		return Gdx.files.internal(jsonPath).readString(String.valueOf(StandardCharsets.UTF_8));
+	}
+
 	public void receiveEditCharacters() {
 		logger.info("begin editing characters");
 		

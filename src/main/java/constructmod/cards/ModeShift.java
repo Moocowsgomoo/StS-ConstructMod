@@ -1,6 +1,5 @@
 package constructmod.cards;
 
-import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -13,8 +12,6 @@ import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
 
-import basemod.abstracts.CustomCard;
-import basemod.helpers.CardTags;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
@@ -45,8 +42,8 @@ public class ModeShift extends AbstractConstructCard {
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		//AbstractDungeon.actionManager.addToBottom(new SFXAction("THUNDERCLAP", 0.05f));
-		final int str = p.hasPower("Strength")?p.getPower("Strength").amount:0;
-		final int dex = p.hasPower("Dexterity")?p.getPower("Dexterity").amount:0;
+		final int str = p.hasPower(StrengthPower.POWER_ID)?p.getPower(StrengthPower.POWER_ID).amount:0;
+		final int dex = p.hasPower(DexterityPower.POWER_ID)?p.getPower(DexterityPower.POWER_ID).amount:0;
 		if (dex-str != 0) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthPower(p, dex-str), dex-str));
 		if (str-dex != 0) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new DexterityPower(p, str-dex), str-dex));
 		AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p,this.magicNumber));

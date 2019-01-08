@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class MakeStatEquivalentCopyPatch {
 	
-	@SpirePatch(cls="com.megacrit.cardcrawl.cards.AbstractCard", method = "makeStatEquivalentCopy")
+	@SpirePatch(clz=AbstractCard.class, method = "makeStatEquivalentCopy")
 	public static class CopyForcedUpgradePatch{
 		@SpireInsertPatch(rloc=1,localvars="card")
 		public static void Insert(AbstractCard obj, AbstractCard card) {
@@ -27,7 +27,7 @@ public class MakeStatEquivalentCopyPatch {
 		}
 	}
 	
-	@SpirePatch(cls="com.megacrit.cardcrawl.cards.AbstractCard", method = "makeStatEquivalentCopy")
+	@SpirePatch(clz=AbstractCard.class, method = "makeStatEquivalentCopy")
 	public static class CopyIsMarriedPatch{
 		public static AbstractCard Postfix(AbstractCard retVal, AbstractCard obj) {
 			// only copy if specified beforehand with the copyIsMarried variable

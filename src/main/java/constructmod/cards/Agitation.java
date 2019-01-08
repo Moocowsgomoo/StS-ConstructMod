@@ -10,7 +10,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 import constructmod.powers.AgitationPower;
-import constructmod.powers.BunkerPower;
 
 public class Agitation extends AbstractConstructCard {
 	public static final String ID = ConstructMod.makeID("Agitation");

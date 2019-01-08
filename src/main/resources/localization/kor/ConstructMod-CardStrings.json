@@ -251,7 +251,10 @@
 			"(다음 번엔 서두르지 마세요...) NL 혼란 상태가 됩니다. NL 카드를 5 장 뽑습니다.",
 			"손에 공격 모드+ 와 수비 모드+ 를 추가합니다. NL 2 번 더 강화할 수 있습니다.",
 			"힘 을 3 얻습니다. NL 민첩 을 3 얻습니다. NL 1 번 더 강화할 수 있습니다.",
-			"3 종류의 알 유물과 시계태엽 불사조 유물을 얻습니다. 이 카드는 덱에서 제거됩니다."
+			"3 종류의 알 유물과 시계태엽 불사조 유물을 얻습니다. 이 카드는 덱에서 제거됩니다.",
+			"Scrambled Egg",
+			"Clockwork Chicken",
+			"Relic limit reached for this combat!"
 		]
 	},
 	"construct:HastyRepair": {
@@ -347,7 +350,10 @@
 	},
 	"construct:CriticalHit": {
 		"NAME": "회심의 일격",
-		"DESCRIPTION": "Cycle unless an enemy is Weak or Vulnerable. NL Deal !D! damage."
+		"DESCRIPTION": "Cycle unless an enemy is Weak or Vulnerable. NL Deal !D! damage.",
+		"EXTENDED_DESCRIPTION": [
+			"Mega-Crit"
+		]
 	},
 	"construct:Reserves": {
 		"NAME": "예비 동력",
@@ -415,8 +421,8 @@
 	},
 	"construct:Autopilot": {
 		"NAME": "Autopilot",
-		"DESCRIPTION": "Play the top X cards of your draw pile.",
-		"UPGRADE_DESCRIPTION": "Play the top X+1 cards of your draw pile."
+		"DESCRIPTION": "Play the top X cards of your draw pile. NL Exhaust.",
+		"UPGRADE_DESCRIPTION": "Play the top X+1 cards of your draw pile. NL Exhaust."
 	},
 	"construct:ReactiveShield": {
 		"NAME": "반응성 장갑",

@@ -11,7 +11,6 @@ import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 import constructmod.powers.ExtraLongRangeLancePower;
 import constructmod.powers.LongRangeLancePower;
-import constructmod.powers.SpinDrivePower;
 
 public class LongRangeLance extends AbstractConstructCard {
 	public static final String ID = ConstructMod.makeID("LongRangeLance");

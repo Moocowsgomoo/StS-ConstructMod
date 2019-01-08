@@ -2,41 +2,29 @@ package constructmod.cards;
 
 import org.apache.logging.log4j.Level;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ConfusionPower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
-import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
-import com.megacrit.cardcrawl.powers.DrawPower;
-import com.megacrit.cardcrawl.powers.EnergizedPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.relics.AbstractRelic.RelicTier;
 import com.megacrit.cardcrawl.relics.FrozenEgg2;
 import com.megacrit.cardcrawl.relics.MoltenEgg2;
 import com.megacrit.cardcrawl.relics.ToxicEgg2;
-import com.megacrit.cardcrawl.rewards.RewardItem;
-import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import com.megacrit.cardcrawl.vfx.ThoughtBubble;
 import com.megacrit.cardcrawl.vfx.combat.IntenseZoomEffect;
 
 import basemod.BaseMod;
-import basemod.abstracts.CustomCard;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 import constructmod.relics.ClockworkPhoenix;
@@ -98,17 +86,17 @@ public class ClockworkEgg extends AbstractConstructCard {
 			
 			AbstractRelic relic;
 			
-			if (!p.hasRelic("Molten Egg 2")) {
+			if (!p.hasRelic(MoltenEgg2.ID)) {
 				relic = RelicLibrary.getRelic(MoltenEgg2.ID).makeCopy();
 				AbstractDungeon.getCurrRoom().spawnRelicAndObtain(Settings.WIDTH / 2, Settings.HEIGHT / 2, relic);
 				AbstractDungeon.uncommonRelicPool.remove(relic.relicId);
 			}
-			if (!p.hasRelic("Toxic Egg 2")) {
+			if (!p.hasRelic(ToxicEgg2.ID)) {
 				relic = RelicLibrary.getRelic(ToxicEgg2.ID).makeCopy();
 				AbstractDungeon.getCurrRoom().spawnRelicAndObtain(Settings.WIDTH / 2, Settings.HEIGHT / 2, relic);
 				AbstractDungeon.uncommonRelicPool.remove(relic.relicId);
 			}
-			if (!p.hasRelic("Frozen Egg 2")) {
+			if (!p.hasRelic(FrozenEgg2.ID)) {
 				relic = RelicLibrary.getRelic(FrozenEgg2.ID).makeCopy();
 				AbstractDungeon.getCurrRoom().spawnRelicAndObtain(Settings.WIDTH / 2, Settings.HEIGHT / 2, relic);
 				AbstractDungeon.uncommonRelicPool.remove(relic.relicId);
@@ -143,7 +131,7 @@ public class ClockworkEgg extends AbstractConstructCard {
 					final AbstractRelic.RelicTier tier = this.returnRandomRelicTier();
 					AbstractDungeon.getCurrRoom().addRelicToRewards(tier);
 				} else {
-					AbstractDungeon.effectList.add(new ThoughtBubble(p.dialogX, p.dialogY, 3.0f, "Relic limit reached for this combat!", true));
+					AbstractDungeon.effectList.add(new ThoughtBubble(p.dialogX, p.dialogY, 3.0f, EXTENDED_DESCRIPTION[6], true));
 				}
 			}
 		}
@@ -231,7 +219,7 @@ public class ClockworkEgg extends AbstractConstructCard {
 			if (this.isScrambled) {
 				this.cost = 0;
 				this.costForTurn = 0;
-				this.name = "Scrambled Egg";
+				this.name = EXTENDED_DESCRIPTION[4];
 				this.initializeTitle();
 				this.rawDescription = M_SCRAMBLED_DESCRIPTION;
 				this.initializeDescription();
@@ -241,7 +229,7 @@ public class ClockworkEgg extends AbstractConstructCard {
 			else {
 				this.cost = 0;
 				this.costForTurn = 0;
-				this.name = "Clockwork Chicken";
+				this.name = EXTENDED_DESCRIPTION[5];
 				this.initializeTitle();
 				this.rawDescription = M_UPGRADE_DESCRIPTION;
 				this.initializeDescription();

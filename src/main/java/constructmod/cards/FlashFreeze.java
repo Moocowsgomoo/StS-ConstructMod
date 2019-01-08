@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import constructmod.ConstructMod;
-import constructmod.actions.CoolantAction;
 import constructmod.patches.AbstractCardEnum;
 import constructmod.powers.FlashFreezePower;
 

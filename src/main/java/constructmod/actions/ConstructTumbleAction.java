@@ -5,16 +5,11 @@ import com.megacrit.cardcrawl.actions.*;
 import java.util.*;
 import com.megacrit.cardcrawl.dungeons.*;
 import com.megacrit.cardcrawl.powers.NoDrawPower;
-import com.megacrit.cardcrawl.vfx.*;
-
-import constructmod.cards.AbstractCycleCard;
 
 import com.megacrit.cardcrawl.core.*;
 import com.megacrit.cardcrawl.cards.*;
 import com.badlogic.gdx.*;
 import com.megacrit.cardcrawl.actions.common.*;
-import constructmod.cards.Failsafe;
-import constructmod.powers.FailsafePower;
 import org.apache.logging.log4j.*;
 
 public class ConstructTumbleAction extends AbstractGameAction

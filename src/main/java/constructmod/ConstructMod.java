@@ -18,7 +18,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import constructmod.localization.ChallengeStrings;
 import constructmod.patches.PhoenixBtnPatch;
 import constructmod.potions.MegaPotion;
 import constructmod.potions.ShiftPotion;
@@ -152,16 +151,19 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
         Texture badgeTexture = new Texture(Gdx.files.internal("img/ConstructModBadge.png"));
 
 		heatBar = new HeatMeter();
-        
+
+		UIStrings challengeStrings = CardCrawlGame.languagePack.getUIString("constructChallengeLevels");
+		UIStrings configStrings = CardCrawlGame.languagePack.getUIString("constructConfigMenuText");
+
         ModPanel settingsPanel = new ModPanel();
-		ModLabeledToggleButton contentSharingBtn = new ModLabeledToggleButton("Allow other characters to encounter some Construct relics.",
+		ModLabeledToggleButton contentSharingBtn = new ModLabeledToggleButton(configStrings.TEXT[0],
 				350.0f, 650.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
 				contentSharing_relics, settingsPanel, (label) -> {}, (button) -> {
 					contentSharing_relics = button.enabled;
 					adjustRelics();
 					saveData();
 				});
-		ModLabeledToggleButton contentSharingPotionsBtn = new ModLabeledToggleButton("Allow other characters to encounter some Construct potions. (REQUIRES RESTART)",
+		ModLabeledToggleButton contentSharingPotionsBtn = new ModLabeledToggleButton(configStrings.TEXT[1]+configStrings.TEXT[2],
 				350.0f, 600.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
 				contentSharing_potions, settingsPanel, (label) -> {}, (button) -> {
 			contentSharing_potions = button.enabled;
@@ -174,13 +176,11 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 			PhoenixBtnPatch.shouldRefreshUnlocks = true;
 			CardCrawlGame.sound.playA("UNLOCK_PING", -0.1f);
 		});
-		ModLabel unlockAllTxt = new ModLabel("Set Unlock level to MAX. Unlocks appear on the character select screen.",470.0f, 540.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
+		ModLabel unlockAllTxt = new ModLabel(configStrings.TEXT[3]+configStrings.TEXT[4],470.0f, 540.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
 
-		UIStrings challengeStrings = CardCrawlGame.languagePack.getUIString("constructChallengeLevels");
-
-		ModLabel challengeIntroTxt1 = new ModLabel("Experimental future levels for Challenge Mode. These are subject to change.",350.0f, 430.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
-		ModLabel challengeIntroTxt2 = new ModLabel("Currently 4 levels exist. The focus is on polishing these and eventually adding a 5th.",350.0f, 400.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
-		ModLabel challengeLabelTxt = new ModLabel("Challenge Level:",350.0f, 350.0f,settingsPanel,(me)->{});
+		ModLabel challengeIntroTxt1 = new ModLabel(configStrings.TEXT[5],350.0f, 430.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
+		ModLabel challengeIntroTxt2 = new ModLabel(String.format(configStrings.TEXT[6],4,5),350.0f, 400.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
+		ModLabel challengeLabelTxt = new ModLabel(configStrings.TEXT[7],350.0f, 350.0f,settingsPanel,(me)->{});
 		ModLabel challengeLevelTxt = new ModLabel(""+challengeLevel,650.0f, 350.0f,settingsPanel,(me)->{});
 		ModLabel challengeDescTxt = new ModLabel(challengeStrings.TEXT[challengeLevel],400.0f, 300.0f,FontHelper.charDescFont,settingsPanel,(me)->{});
 		ModButton challengeLeftBtn = new ModButton(605.0f, 340.0f, ImageMaster.loadImage("img/tinyLeftArrow.png"),settingsPanel,(me)->{
@@ -325,7 +325,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		logger.info("begin editing characters");
 		
 		logger.info("add " + TheConstructEnum.THE_CONSTRUCT_MOD.toString());
-		BaseMod.addCharacter(new TheConstruct("The Construct", TheConstructEnum.THE_CONSTRUCT_MOD),
+		BaseMod.addCharacter(new TheConstruct(TheConstruct.charStrings.NAMES[1], TheConstructEnum.THE_CONSTRUCT_MOD),
 				"img/charSelect/constructButton.png", "img/charSelect/constructPortrait.jpg",
 				TheConstructEnum.THE_CONSTRUCT_MOD);
 		
@@ -340,7 +340,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 		BaseMod.loadCustomStringsFile(PotionStrings.class, "localization/"+language+"/ConstructMod-PotionStrings.json");
 		BaseMod.loadCustomStringsFile(PowerStrings.class, "localization/"+language+"/ConstructMod-PowerStrings.json");
 		BaseMod.loadCustomStringsFile(UIStrings.class, "localization/"+language+"/ConstructMod-UIStrings.json");
-
+		BaseMod.loadCustomStringsFile(CharacterStrings.class, "localization/"+language+"/ConstructMod-CharacterStrings.json");
 	}
 	
 	public void receiveEditCards() {

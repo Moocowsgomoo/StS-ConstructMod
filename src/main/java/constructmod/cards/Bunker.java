@@ -7,14 +7,10 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import basemod.abstracts.CustomCard;
-import com.megacrit.cardcrawl.powers.RetainCardPower;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
-import constructmod.powers.AutoturretPower;
 import constructmod.powers.BunkerPower;
 import constructmod.powers.RetainRandomPower;
-import constructmod.powers.SiegeFormPower;
 
 public class Bunker extends AbstractConstructCard {
 	public static final String ID = ConstructMod.makeID("Bunker");

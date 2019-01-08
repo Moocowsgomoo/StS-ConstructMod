@@ -33,5 +33,41 @@
       "put into stasis.", // full text reads "choose a card to put into stasis."
       "Choose a card to replace hand with." // Mass Production - exhaust all cards in hand, and make an equal number of copies of a card
     ]
+  },
+  "constructCharScreenText": {
+    "TEXT": [
+      "Challenge Mode",
+      "Change starting relic",
+      "Enable Overheated expansion pack",
+      "Overheated Expansion",
+      "Introduces a new [#ff9900]Overheat mechanic, #b15 new cards, and #b1 new relic.",
+      "Challenge Mode modifies your character-specific cards and items for a more difficult climb.",
+      " More levels coming soon!"
+    ]
+  },
+  "constructMemoryText": {
+    "TEXT": [
+      "#y~LONELINESS.~ NL NL When the first Spire fell, they built two more to take its place. NL They #ralways make backups. #y~...Don't~ #y~they?~ NL NL ",
+      "#yPAIRED #yGEOMETRY: 2,947,238,001 NL #yBYRD #yASPIRANT: 1,024,985,212,998 NL #yPYRAMIDAL #yCONSTRUCT: ~1~ NL NL ",
+      "There are, of course, legends of others who cannot be copied. NL #rA #rmasked #rdemon. #gA #gdeadly #gwraith. #bAn #becho #bof #bthe #bpast. NL If the Ancients will not spread your knowledge, perhaps they will. NL And perhaps... you can ensure that no one is ever forgotten again."
+    ]
+  },
+  "constructCharacterTipText": {
+    "TEXT": [
+      "Cards cycled this turn: ",
+      "Warning symbols indicate when cards will [#ff9900]Overheat."
+    ]
+  },
+  "constructConfigMenuText": {
+    "TEXT": [
+      "Allow other characters to encounter some Construct relics.",
+      "Allow other characters to encounter some Construct potions.",
+      " (REQUIRES RESTART)",
+      "Set Unlock level to MAX. ",
+      "Unlocks appear on the character select screen.",
+      "Experimental future levels for Challenge Mode. These are subject to change.",
+      "Currently %s levels exist. There are planned to be %s in total.",
+      "Challenge Level:"
+    ]
   }
 }

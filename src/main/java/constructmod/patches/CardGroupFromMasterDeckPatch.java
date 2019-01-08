@@ -12,7 +12,7 @@ import constructmod.relics.WeddingRing;
 
 import java.util.ArrayList;
 
-@SpirePatch(cls="com.megacrit.cardcrawl.cards.CardGroup", method = "initializeDeck")
+@SpirePatch(clz=CardGroup.class, method = "initializeDeck")
 public class CardGroupFromMasterDeckPatch {
 	public static void Prefix(CardGroup obj, final CardGroup masterDeck) {
 		// the one time we want to copy the isMarried property, when the master deck is being converted into your draw pile.

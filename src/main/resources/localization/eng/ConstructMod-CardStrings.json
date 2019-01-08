@@ -253,7 +253,8 @@
 			"Gain 3 Strength. NL Gain 3 Dexterity. NL Can be Upgraded 1 more time.",
 			"Gain all 3 Egg relics and a Clockwork Phoenix. Permanently remove this card from your deck.",
 			"Scrambled Egg",
-			"Clockwork Chicken"
+			"Clockwork Chicken",
+			"Relic limit reached for this combat!"
 		]
 	},
 	"construct:HastyRepair": {
@@ -349,7 +350,10 @@
 	},
 	"construct:CriticalHit": {
 		"NAME": "Critical Hit",
-		"DESCRIPTION": "Cycle unless an enemy is Weak or Vulnerable. NL Deal !D! damage."
+		"DESCRIPTION": "Cycle unless an enemy is Weak or Vulnerable. NL Deal !D! damage.",
+		"EXTENDED_DESCRIPTION": [
+			"Mega-Crit"
+		]
 	},
 	"construct:Reserves": {
 		"NAME": "Reserves",
@@ -417,8 +421,8 @@
 	},
 	"construct:Autopilot": {
 		"NAME": "Autopilot",
-		"DESCRIPTION": "Play the top X cards of your draw pile.",
-		"UPGRADE_DESCRIPTION": "Play the top X+1 cards of your draw pile."
+		"DESCRIPTION": "Play the top X cards of your draw pile. NL Exhaust.",
+		"UPGRADE_DESCRIPTION": "Play the top X+1 cards of your draw pile. NL Exhaust."
 	},
 	"construct:ReactiveShield": {
 		"NAME": "Reactive Shield",

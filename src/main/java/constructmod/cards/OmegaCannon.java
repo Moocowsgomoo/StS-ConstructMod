@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
 
@@ -38,10 +39,10 @@ public class OmegaCannon extends AbstractConstructCard {
 		this.costForTurn += this.prevDiscount;
 		
 		super.applyPowers();
-		if (!AbstractDungeon.player.hasPower("Strength")) return;
-		if (!this.megaUpgraded && AbstractDungeon.player.getPower("Strength").amount < 0) return;
+		if (!AbstractDungeon.player.hasPower(StrengthPower.POWER_ID)) return;
+		if (!this.megaUpgraded && AbstractDungeon.player.getPower(StrengthPower.POWER_ID).amount < 0) return;
 
-		int str = AbstractDungeon.player.getPower("Strength").amount;
+		int str = AbstractDungeon.player.getPower(StrengthPower.POWER_ID).amount;
 		if (str < 0) str = -str;
 		this.prevDiscount = str;
 		

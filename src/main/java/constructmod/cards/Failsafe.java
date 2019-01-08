@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
-import constructmod.powers.AgitationPower;
 import constructmod.powers.FailsafePower;
 
 public class Failsafe extends AbstractConstructCard {

@@ -13,6 +13,8 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
+import com.megacrit.cardcrawl.localization.CharacterStrings;
+import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterOption;
@@ -20,6 +22,7 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.megacrit.cardcrawl.vfx.scene.LogoFlameEffect;
 import constructmod.ConstructMod;
 import constructmod.cards.AbstractConstructCard;
+import constructmod.characters.TheConstruct;
 import constructmod.relics.ClockworkPhoenix;
 import constructmod.relics.Cogwheel;
 
@@ -39,10 +42,12 @@ public class PhoenixBtnPatch {
 	public static final ArrayList<PowerTip> challengeTips = new ArrayList<>();
 	public static boolean shouldRefreshUnlocks = false;
 
+	public static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("constructCharScreenText");
+
 	@SpirePatch(clz = CharacterOption.class, method = "renderRelics")
 	public static class RenderBtn{
 		public static void Postfix(CharacterOption obj, SpriteBatch sb) {
-			if (obj.name == "The Construct" && obj.selected) {
+			if (obj.name == TheConstruct.charStrings.NAMES[1] && obj.selected) {
 				if (charInfoField == null) {
 					try {
 						charInfoField = CharacterOption.class.getDeclaredField("charInfo");
@@ -79,7 +84,7 @@ public class PhoenixBtnPatch {
 				sb.draw(ImageMaster.CHECKBOX, challengeDownHitbox.cX - 32.0f, challengeDownHitbox.cY - 32.0f, 32.0f, 32.0f, 64.0f, 64.0f, Settings.scale * (0.01f + (1.0f - 0.019f)), Settings.scale * (0.01f + (1.0f - 0.019f)), 0.0f, 0, 0, 64, 64, false, false);
 				if (ConstructMod.challengeLevel > 0)
 					sb.draw(ImageMaster.TICK, challengeDownHitbox.cX - 32.0f, challengeDownHitbox.cY - 32.0f, 32.0f, 32.0f, 64.0f, 64.0f, Settings.scale * (0.01f + (1.0f - 0.019f)), Settings.scale * (0.01f + (1.0f - 0.019f)), 0.0f, 0, 0, 64, 64, false, false);
-				FontHelper.renderSmartText(sb, FontHelper.tipHeaderFont, "Challenge Mode", challengeDownHitbox.cX + 25f * Settings.scale, challengeDownHitbox.cY, Settings.BLUE_TEXT_COLOR);
+				FontHelper.renderSmartText(sb, FontHelper.tipHeaderFont, uiStrings.TEXT[0], challengeDownHitbox.cX + 25f * Settings.scale, challengeDownHitbox.cY, Settings.BLUE_TEXT_COLOR);
 
 				if (UnlockTracker.getUnlockLevel(TheConstructEnum.THE_CONSTRUCT_MOD) >= 4) {
 					sb.draw(ImageMaster.CHECKBOX, relicHitbox.cX - 32.0f, relicHitbox.cY - 32.0f, 32.0f, 32.0f, 64.0f, 64.0f, Settings.scale * (0.01f + (1.0f - 0.019f)), Settings.scale * (0.01f + (1.0f - 0.019f)), 0.0f, 0, 0, 64, 64, false, false);
@@ -87,14 +92,14 @@ public class PhoenixBtnPatch {
 					sb.draw(r.outlineImg, relicHitbox.cX - 64.0f, relicHitbox.cY - 64.0f, 64.0f, 64.0f, 128.0f, 128.0f, Settings.scale * 0.5f * (0.01f + (1.0f - 0.019f)), Settings.scale * 0.5f * (0.01f + (1.0f - 0.019f)), 0.0f, 0, 0, 128, 128, false, false);
 					sb.setColor(Color.WHITE);
 					sb.draw(r.img, relicHitbox.cX - 64.0f, relicHitbox.cY - 64.0f, 64.0f, 64.0f, 128.0f, 128.0f, Settings.scale * 0.5f * (0.01f + (1.0f - 0.019f)), Settings.scale * 0.5f * (0.01f + (1.0f - 0.019f)), 0.0f, 0, 0, 128, 128, false, false);
-					FontHelper.renderSmartText(sb, FontHelper.tipHeaderFont, "Change starting relic", relicHitbox.cX + 25f * Settings.scale, relicHitbox.cY, Settings.BLUE_TEXT_COLOR);
+					FontHelper.renderSmartText(sb, FontHelper.tipHeaderFont, uiStrings.TEXT[1], relicHitbox.cX + 25f * Settings.scale, relicHitbox.cY, Settings.BLUE_TEXT_COLOR);
 
 					if (UnlockTracker.getUnlockLevel(TheConstructEnum.THE_CONSTRUCT_MOD) >= 5) {
 						sb.draw(ImageMaster.CHECKBOX, expansionHitbox.cX - 32.0f, expansionHitbox.cY - 32.0f, 32.0f, 32.0f, 64.0f, 64.0f, Settings.scale * (0.01f + (1.0f - 0.019f)), Settings.scale * (0.01f + (1.0f - 0.019f)), 0.0f, 0, 0, 64, 64, false, false);
 						sb.setColor(Color.ORANGE);
 						if (ConstructMod.overheatedExpansion)
 							sb.draw(ImageMaster.TICK, expansionHitbox.cX - 32.0f, expansionHitbox.cY - 32.0f, 32.0f, 32.0f, 64.0f, 64.0f, Settings.scale * (0.01f + (1.0f - 0.019f)), Settings.scale * (0.01f + (1.0f - 0.019f)), 0.0f, 0, 0, 64, 64, false, false);
-						FontHelper.renderSmartText(sb, FontHelper.tipHeaderFont, "Enable Overheated expansion pack", expansionHitbox.cX + 25f * Settings.scale, expansionHitbox.cY, Settings.BLUE_TEXT_COLOR);
+						FontHelper.renderSmartText(sb, FontHelper.tipHeaderFont, uiStrings.TEXT[2], expansionHitbox.cX + 25f * Settings.scale, expansionHitbox.cY, Settings.BLUE_TEXT_COLOR);
 					}
 				}
 			}
@@ -104,7 +109,7 @@ public class PhoenixBtnPatch {
 	@SpirePatch(clz = CharacterOption.class, method = "updateHitbox")
 	public static class UpdateHitbox{
 		public static void Postfix(CharacterOption obj) {
-			if (obj.name == "The Construct" && obj.selected) {
+			if (obj.name == TheConstruct.charStrings.NAMES[1] && obj.selected) {
 				if (UnlockTracker.getUnlockLevel(TheConstructEnum.THE_CONSTRUCT_MOD) >= 4) {
 					relicHitbox.update();
 					if (relicHitbox.hovered) {
@@ -142,7 +147,7 @@ public class PhoenixBtnPatch {
 					if (expansionHitbox.hovered) {
 
 						if (expansionTips.isEmpty()){
-							expansionTips.add(new PowerTip("Overheated Expansion","Introduces a new [#ff9900]Overheat mechanic, #b15 new cards, and #b1 new relic."));
+							expansionTips.add(new PowerTip(uiStrings.TEXT[3],uiStrings.TEXT[4]));
 						}
 						if (InputHelper.mX < 1400.0f * Settings.scale) {
 							TipHelper.queuePowerTips(InputHelper.mX + 60.0f * Settings.scale, InputHelper.mY - 50.0f * Settings.scale, expansionTips);
@@ -177,7 +182,7 @@ public class PhoenixBtnPatch {
 				if (challengeDownHitbox.hovered) {
 
 					if (challengeTips.isEmpty()){
-						challengeTips.add(new PowerTip("Challenge Mode","Challenge Mode modifies your character-specific cards and items for a more difficult climb. More levels coming soon!"));
+						challengeTips.add(new PowerTip(uiStrings.TEXT[0],uiStrings.TEXT[6] + uiStrings.TEXT[7]));
 					}
 					if (InputHelper.mX < 1400.0f * Settings.scale) {
 						TipHelper.queuePowerTips(InputHelper.mX + 60.0f * Settings.scale, InputHelper.mY - 50.0f * Settings.scale, challengeTips);

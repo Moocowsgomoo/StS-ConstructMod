@@ -13,7 +13,6 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
-import constructmod.relics.Challenge1;
 
 public class ShiftGuard extends AbstractCycleCard {
 	public static final String ID = ConstructMod.makeID("ShiftGuard");

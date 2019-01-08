@@ -1,8 +1,6 @@
 package constructmod.cards;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.FastDrawCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -12,7 +10,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
-import constructmod.powers.OilSpillPower;
 
 public class CreateCores extends AbstractConstructCard {
 	public static final String ID = ConstructMod.makeID("CreateCores");

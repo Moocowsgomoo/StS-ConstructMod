@@ -11,10 +11,8 @@ import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
 
-import basemod.abstracts.CustomCard;
 import constructmod.ConstructMod;
 import constructmod.patches.AbstractCardEnum;
-import constructmod.relics.Challenge1;
 
 public class AttackMode extends AbstractCycleCard {
 	public static final String ID = ConstructMod.makeID("AttackMode");

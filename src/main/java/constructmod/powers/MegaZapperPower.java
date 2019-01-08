@@ -1,6 +1,5 @@
 package constructmod.powers;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -13,7 +12,6 @@ import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import constructmod.ConstructMod;
-import constructmod.cards.Zapper;
 
 public class MegaZapperPower extends AbstractPower {
 	public static final String POWER_ID = ConstructMod.makeID("MegaZapper");

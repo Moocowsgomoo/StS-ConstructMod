@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import constructmod.ConstructMod;
 import constructmod.relics.WeddingRing;
 
-@SpirePatch(cls="com.megacrit.cardcrawl.cards.AbstractCard", method = "render", paramtypes={"com.badlogic.gdx.graphics.g2d.SpriteBatch","boolean"})
+@SpirePatch(clz=AbstractCard.class, method = "render", paramtypes={"com.badlogic.gdx.graphics.g2d.SpriteBatch","boolean"})
 public class RenderWeddingRingPatch {
 	public static void Postfix(AbstractCard obj, final SpriteBatch sb, boolean selected) {
 		if (WeddingRingPatch.isMarried.get(obj) && AbstractDungeon.player.hasRelic(WeddingRing.ID)) {

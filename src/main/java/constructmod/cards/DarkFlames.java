@@ -16,7 +16,6 @@ import com.megacrit.cardcrawl.vfx.combat.ScreenOnFireEffect;
 import constructmod.ConstructMod;
 import constructmod.actions.MakeTempCardInExhaustAction;
 import constructmod.patches.AbstractCardEnum;
-import constructmod.powers.FlashFreezePower;
 
 public class DarkFlames extends AbstractConstructCard {
 	public static final String ID = ConstructMod.makeID("DarkFlames");

@@ -10,7 +10,7 @@ import constructmod.relics.WeddingRing;
 
 public class AbstractDungeonRelicPatch {
 	
-	@SpirePatch(cls="com.megacrit.cardcrawl.dungeons.AbstractDungeon", method = "returnRandomScreenlessRelic")
+	@SpirePatch(clz=AbstractDungeon.class, method = "returnRandomScreenlessRelic")
 	public static class ReturnRandomScreenlessRelicPatch {
 		public static AbstractRelic Postfix(AbstractRelic retVal, RelicTier tier) {
 			while (retVal.relicId.equals(WeddingRing.ID)) {

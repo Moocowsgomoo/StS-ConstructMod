@@ -2,13 +2,8 @@ package constructmod.relics;
 
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import constructmod.ConstructMod;
-import constructmod.cards.HeatedDefend;
-import constructmod.cards.HeatedStrike;
-import constructmod.patches.AbstractCardEnum;
 
 public class Challenge2 extends CustomRelic {
     public static final String ID = ConstructMod.makeID("Challenge2");

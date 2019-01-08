@@ -1,47 +1,44 @@
 package constructmod.characters;
 
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.math.MathUtils;
-import com.esotericsoftware.spine.AnimationState;
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpriterAnimation;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.characters.Defect;
-import com.megacrit.cardcrawl.characters.Ironclad;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.cutscenes.CutscenePanel;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.city.Vampires;
 import com.megacrit.cardcrawl.helpers.*;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.screens.stats.CharStat;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import constructmod.ConstructMod;
-import constructmod.cards.*;
+import constructmod.cards.AttackMode;
+import constructmod.cards.Defend_Gold;
+import constructmod.cards.DefenseMode;
+import constructmod.cards.HeatedDefend;
+import constructmod.cards.HeatedStrike;
+import constructmod.cards.ModeShift;
+import constructmod.cards.Strike_Gold;
 import constructmod.patches.AbstractCardEnum;
-import constructmod.patches.TheConstructEnum;
 import constructmod.relics.*;
 
 public class TheConstruct extends CustomPlayer{
 	public static final int ENERGY_PER_TURN = 3;
-	
+	public static final CharacterStrings charStrings = CardCrawlGame.languagePack.getCharacterString("TheConstruct");
 	
 	public TheConstruct(String name, PlayerClass setClass) {
 		super(name, setClass, null, null, null, new SpriterAnimation("img/char/construct/anim/Construct.scml"));
@@ -57,7 +54,7 @@ public class TheConstruct extends CustomPlayer{
 
 	@Override
 	public String getTitle(AbstractPlayer.PlayerClass playerClass){
-		return "the Construct";
+		return charStrings.NAMES[0];
 	}
 
 	@Override
@@ -70,7 +67,7 @@ public class TheConstruct extends CustomPlayer{
 
 	@Override
 	public String getSpireHeartText(){
-		return "You enter self-destruct mode...";
+		return charStrings.TEXT[1];
 	}
 
 	@Override
@@ -141,7 +138,7 @@ public class TheConstruct extends CustomPlayer{
 
 	@Override
 	public String getLocalizedCharacterName() {
-		return "The Construct";
+		return charStrings.NAMES[1];
 	}
 
 	@Override
@@ -219,7 +216,7 @@ public class TheConstruct extends CustomPlayer{
 	}
 	
 	public CharSelectInfo getLoadout() {
-		return new CharSelectInfo("The Construct", "Ancient machinery given new purpose by Neow. NL Reconfigures itself to adapt to any situation.",
+		return new CharSelectInfo(getLocalizedCharacterName(), charStrings.TEXT[0],
 				85, 85, 0, 99, 5,
 			this, getStartingRelics(), getStartingDeck(), false);
 	}

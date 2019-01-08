@@ -3,13 +3,10 @@ package constructmod.cards;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 
 
 import constructmod.ConstructMod;
 import constructmod.actions.CycleCardAction;
-import constructmod.actions.TumbleFollowupAction;
-import constructmod.powers.AbstractCyclePower;
 import constructmod.powers.NoCyclePower;
 
 public abstract class AbstractCycleCard extends AbstractConstructCard {

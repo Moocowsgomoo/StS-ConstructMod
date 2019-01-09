@@ -291,7 +291,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 
 		String language = "eng";
 
-		if (Settings.language == Settings.GameLanguage.KOR) language = "kor";
+		//if (Settings.language == Settings.GameLanguage.KOR) language = "kor";
 
 		Type typeToken = new TypeToken <Map<String, Keyword>>(){}.getType();
 		Gson gson = new Gson();
@@ -302,19 +302,6 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 			BaseMod.addKeyword(kw.NAMES, kw.DESCRIPTION);
 		}
 		logger.info("done editing keywords");
-		/*final Gson gson = new Gson();
-		String language = "eng";
-
-		if (Settings.language == Settings.GameLanguage.KOR) language = "kor";
-
-		final String json = Gdx.files.internal("localization/" + language + "/ConstructMod-KeywordStrings.json").readString(String.valueOf(StandardCharsets.UTF_8));
-
-		final Keyword[] keywords = (Keyword[]) gson.fromJson(json, (Class) Keyword.class);
-		if (keywords != null) {
-			for (final Keyword keyword : keywords) {
-				BaseMod.addKeyword(keyword.NAMES, keyword.DESCRIPTION);
-			}
-		}*/
     }
 
 	private static String loadJson(String jsonPath) {
@@ -334,7 +321,7 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 	
 	public void receiveEditStrings() {
 		String language = "eng";
-		if (Settings.language == Settings.GameLanguage.KOR) language = "kor";
+		//if (Settings.language == Settings.GameLanguage.KOR) language = "kor";
         BaseMod.loadCustomStringsFile(RelicStrings.class, "localization/"+language+"/ConstructMod-RelicStrings.json");
         BaseMod.loadCustomStringsFile(CardStrings.class, "localization/"+language+"/ConstructMod-CardStrings.json");
 		BaseMod.loadCustomStringsFile(PotionStrings.class, "localization/"+language+"/ConstructMod-PotionStrings.json");

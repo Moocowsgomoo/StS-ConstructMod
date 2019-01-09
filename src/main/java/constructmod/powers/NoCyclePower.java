@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import constructmod.ConstructMod;
 
-public class NoCyclePower extends AbstractPower {
+public class NoCyclePower extends AbstractPower implements IModifyMaxCyclesPower {
 	public static final String POWER_ID = ConstructMod.makeID("NoCycle");
 	public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 	public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -31,6 +31,12 @@ public class NoCyclePower extends AbstractPower {
 	@Override
 	public void updateDescription() {
 		this.description = String.format(this.amount==1?DESCRIPTIONS[0]:DESCRIPTIONS[1],this.amount);
+	}
+
+	@Override
+	public int modifyMaxCycles(int max,int current){
+		this.flash();
+		return -9;
 	}
 
 	@Override

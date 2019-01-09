@@ -44,8 +44,8 @@ public class LongRangeLanceRelic extends CustomRelic {
     public void atBattleStart() {
         AbstractMonster mo = AbstractDungeon.getRandomMonster();
         this.flash();
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(mo,new DamageInfo(AbstractDungeon.player,this.counter, DamageInfo.DamageType.THORNS)));
-        AbstractDungeon.actionManager.addToBottom(new VFXAction(new VerticalImpactEffect(mo.hb.cX + mo.hb.width / 4.0f, mo.hb.cY - mo.hb.height / 4.0f)));
+        if (mo != null && mo.hb != null) AbstractDungeon.actionManager.addToBottom(new VFXAction(new VerticalImpactEffect(mo.hb.cX + mo.hb.width / 4.0f, mo.hb.cY - mo.hb.height / 4.0f)));
+        if (mo != null && !mo.isDeadOrEscaped()) AbstractDungeon.actionManager.addToBottom(new DamageAction(mo,new DamageInfo(AbstractDungeon.player,this.counter, DamageInfo.DamageType.THORNS)));
         AbstractDungeon.actionManager.addToBottom(new LoseRelicAction(this.ID)); // need an action so no concurrentModificationException
         //AbstractDungeon.player.loseRelic(this.ID);
     }

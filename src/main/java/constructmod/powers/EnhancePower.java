@@ -4,21 +4,21 @@ import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import constructmod.ConstructMod;
+import constructmod.cards.Enhance;
 
 public class EnhancePower extends AbstractPower {
 	public static final String POWER_ID = ConstructMod.makeID("Enhance");
-	public static final String NAME = "Enhance";
-	public static final String[] DESCRIPTIONS = new String[] {
-			"At the end of your turn, upgrade #b",
-			" card(s) in your discard pile."
-	};
+	public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
+	public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 	
 	public EnhancePower(AbstractCreature owner, int amount) {
-		this.name = NAME;
+		this.name = powerStrings.NAME;
 		this.ID = POWER_ID;
 		this.owner = owner;
 		this.amount = amount;
@@ -30,7 +30,7 @@ public class EnhancePower extends AbstractPower {
 	
 	@Override
 	public void updateDescription() {
-		this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
+		this.description = String.format(amount==1?DESCRIPTIONS[0]:DESCRIPTIONS[1],this.amount);
 	}
 	
 	@Override

@@ -5,7 +5,9 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
@@ -15,14 +17,11 @@ import constructmod.ConstructMod;
 
 public class MegaZapperPower extends AbstractPower {
 	public static final String POWER_ID = ConstructMod.makeID("MegaZapper");
-	public static final String NAME = "Zapper (Mega)";
-	public static final String[] DESCRIPTIONS = new String[] {
-			"Whenever you lose #yStrength or #yDexterity, deal #b",
-			" damage to a random enemy. It loses 1 #yStrength this turn."
-	};
+	public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
+	public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 	
 	public MegaZapperPower(AbstractCreature owner, int amount) {
-		this.name = NAME;
+		this.name = powerStrings.NAME;
 		this.ID = POWER_ID;
 		this.owner = owner;
 		this.amount = amount;
@@ -34,7 +33,7 @@ public class MegaZapperPower extends AbstractPower {
 	
 	@Override
 	public void updateDescription() {
-		this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
+		this.description = String.format(DESCRIPTIONS[0],this.amount);
 	}
 	
 	@Override

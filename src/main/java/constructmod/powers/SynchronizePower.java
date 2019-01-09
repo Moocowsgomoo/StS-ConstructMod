@@ -7,7 +7,9 @@ import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.BossCrystalImpactEffect;
@@ -16,18 +18,13 @@ import constructmod.ConstructMod;
 
 public class SynchronizePower extends AbstractOnDrawPower{
 	public static final String POWER_ID = ConstructMod.makeID("Synchronize");
-	public static final String NAME = "Synchronize";
-	public static final String[] DESCRIPTIONS = new String[] {
-			"Whenever you draw 2 of the same card in a row, deal #b",
-			" damage to ALL enemies.",
-			" NL (Last drawn: ",
-			")."
-	};
+	public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
+	public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 	
 	private String drawnCardName = "";
 	
 	public SynchronizePower(AbstractCreature owner, int amount) {
-		this.name = NAME;
+		this.name = powerStrings.NAME;
 		this.ID = POWER_ID;
 		this.owner = owner;
 		this.amount = amount;
@@ -39,8 +36,8 @@ public class SynchronizePower extends AbstractOnDrawPower{
 	
 	@Override
 	public void updateDescription() {
-		this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
-		if (!drawnCardName.equals("")) this.description = this.description + DESCRIPTIONS[2] + this.drawnCardName + DESCRIPTIONS[3];
+		this.description = String.format(DESCRIPTIONS[0],this.amount);
+		if (!drawnCardName.equals("")) this.description = this.description + String.format(DESCRIPTIONS[1],drawnCardName);
 	}
 	
 	@Override

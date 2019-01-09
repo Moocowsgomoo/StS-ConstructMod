@@ -1,5 +1,6 @@
 package constructmod.powers;
 
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
@@ -15,13 +16,11 @@ import com.megacrit.cardcrawl.core.*;
 public class ReactiveShieldPower extends AbstractPower
 {
     public static final String POWER_ID = ConstructMod.makeID("ReactiveShield");
-    public static final String[] DESCRIPTIONS = new String[] {
-			"When you gain #yBlock, deal #b",
-			" damage to the enemy with the lowest HP."
-	};
+    public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
+    public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     
     public ReactiveShieldPower(final AbstractCreature owner, final int newAmount) {
-        this.name = "Reactive Shield";
+        this.name = powerStrings.NAME;
         this.ID = POWER_ID;
         this.owner = owner;
         this.amount = newAmount;
@@ -54,6 +53,6 @@ public class ReactiveShieldPower extends AbstractPower
     
     @Override
     public void updateDescription() {
-        this.description = ReactiveShieldPower.DESCRIPTIONS[0] + this.amount + ReactiveShieldPower.DESCRIPTIONS[1];
+        this.description = String.format(DESCRIPTIONS[0],this.amount);
     }
 }

@@ -5,24 +5,22 @@ import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import constructmod.ConstructMod;
 
 public class OverchargePower extends AbstractPower {
 	public static final String POWER_ID = ConstructMod.makeID("Overcharge");
-	public static final String NAME = "Overcharge";
-	public static final String[] DESCRIPTIONS = new String[] {
-			"At the start of your turn, gain #b",
-			" [R] and add #b",
-			" to your hand."
-	};
+	public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
+	public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 	
 	private int statMultiplier;
 	
 	public OverchargePower(AbstractCreature owner, int amount, int mult) {
-		this.name = NAME;
+		this.name = powerStrings.NAME;
 		this.ID = POWER_ID;
 		this.owner = owner;
 		this.amount = amount;
@@ -35,7 +33,7 @@ public class OverchargePower extends AbstractPower {
 	
 	@Override
 	public void updateDescription() {
-		this.description = DESCRIPTIONS[0] + this.amount*statMultiplier + DESCRIPTIONS[1] + this.amount + (this.amount>1?" Burns":" Burn") + DESCRIPTIONS[2];
+		this.description = String.format(this.amount==1?DESCRIPTIONS[0]:DESCRIPTIONS[1], this.amount*statMultiplier, this.amount);
 	}
 	
 	@Override

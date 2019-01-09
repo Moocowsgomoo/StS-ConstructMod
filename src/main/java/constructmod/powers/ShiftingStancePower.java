@@ -7,8 +7,10 @@ import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
@@ -22,18 +24,13 @@ import constructmod.actions.ShiftingStanceAction;
 
 public class ShiftingStancePower extends AbstractPower {
 	public static final String POWER_ID = ConstructMod.makeID("ShiftingStance");
-	public static final String NAME = "Shifting Stance";
-	public static final String[] DESCRIPTIONS = new String[] {
-			"After you play #b",
-			" more card, ",
-			" more cards, ",
-			"swap your #yStrength and #yDexterity."
-	};
+	public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
+	public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 	public static int idOffset = 0;
 	public int maxAmount;
 
 	public ShiftingStancePower(AbstractCreature owner, int amount) {
-		this.name = NAME;
+		this.name = powerStrings.NAME;
 		this.ID = POWER_ID + idOffset; // prevents power stacking
 		idOffset++;
 		this.owner = owner;
@@ -46,7 +43,7 @@ public class ShiftingStancePower extends AbstractPower {
 	
 	@Override
 	public void updateDescription() {
-		this.description = DESCRIPTIONS[0] + this.amount + (this.amount==1?DESCRIPTIONS[1]:DESCRIPTIONS[2])  + DESCRIPTIONS[3];
+		this.description = String.format(this.amount==1?DESCRIPTIONS[0]:DESCRIPTIONS[1],this.amount);
 	}
 
 	@Override
@@ -59,6 +56,7 @@ public class ShiftingStancePower extends AbstractPower {
 			this.amount = this.maxAmount;
 			AbstractPlayer p = AbstractDungeon.player;
 			AbstractDungeon.actionManager.addToBottom(new ShiftingStanceAction(p,false));
+			this.updateDescription();
 		}
 	}
 }

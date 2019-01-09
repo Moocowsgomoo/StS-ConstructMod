@@ -3,22 +3,20 @@ package constructmod.powers;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import constructmod.ConstructMod;
 import constructmod.cards.AbstractCycleCard;
 
 public class FailsafePower extends AbstractOnDrawPower{
 	public static final String POWER_ID = ConstructMod.makeID("Failsafe");
-	public static final String NAME = "Failsafe";
-	public static final String[] DESCRIPTIONS = new String[] {
-			"The next #b",
-			" Status cards drawn will #yCycle. Resets to #b",
-			" at the start of your turn.",
-	};
+	public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
+	public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
 	private int amountPerTurn=0;
 
 	public FailsafePower(AbstractCreature owner, int amount) {
-		this.name = NAME;
+		this.name = powerStrings.NAME;
 		this.ID = POWER_ID;
 		this.owner = owner;
 		this.amount = this.amountPerTurn = amount;
@@ -36,7 +34,8 @@ public class FailsafePower extends AbstractOnDrawPower{
 	
 	@Override
 	public void updateDescription() {
-		this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + this.amountPerTurn + DESCRIPTIONS[2];
+		if (this.amount == 1) this.description = String.format(DESCRIPTIONS[0],this.amountPerTurn);
+		else this.description = String.format(DESCRIPTIONS[1],this.amount,this.amountPerTurn);
 	}
 	
 	@Override

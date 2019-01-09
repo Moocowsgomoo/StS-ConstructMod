@@ -1,4 +1,4 @@
-{
+﻿{
   "constructChallengeLevels": {
     "TEXT": [
       "",
@@ -9,7 +9,7 @@
       "(최대 레벨) 모든 컨스트럭트 카드의 효과가 감소합니다.",
       "힘 과 민첩 을 조절하는 카드들이 특정 상황에서 사이클 됩니다.",
       "카드가 보존 되는 대신 뽑을 카드 더미 맨 위로 보내집니다.",
-      "[#ffff66]화상 [#ffffff]카드가 [#ffff66]Mega강화 됩니다"
+      "[#ffff66]화상 [#ffffff]카드가 [#ffff66]특급강화 됩니다"
     ]
   },
   "constructShortChallengeLevels": {
@@ -27,22 +27,22 @@
   },
   "constructActionText": {
     "TEXT": [
-      "copy.", // full text reads "choose a card to copy."
-      "exhaust.", // full text reads "choose a card to exhaust."
-      "Choose a card to copy.",
-      "put into stasis.", // full text reads "choose a card to put into stasis."
-      "Choose a card to replace hand with." // Mass Production - exhaust all cards in hand, and make an equal number of copies of a chosen card
+      "복사.", // full text reads "복사할 카드를 고르세요."
+      "소멸.", // full text reads "소멸시킬 카드를 고르세요."
+      "복사할 카드를 고르세요.",
+      "카드를 정지장에 넣습니다.", // full text reads "정지장에 넣을 카드를 고르세요."
+      "복사할 카드를 고르세요." // Mass Production - exhaust all cards in hand, and make an equal number of copies of a chosen card
     ]
   },
   "constructCharScreenText": {
     "TEXT": [
-      "Challenge Mode",
-      "Change starting relic",
-      "Enable Overheated expansion pack",
-      "Overheated Expansion",
-      "Introduces a new [#ff9900]Overheat mechanic, #b15 new cards, and #b1 new relic.",
-      "Challenge Mode modifies your character-specific cards and items for a more difficult climb.",
-      " More levels coming soon!"
+      "도전 모드",
+      "기본 유물 변경",
+      "과열 활성화",
+      "확장모드: 과열",
+      "[#ff9900]과열 시스템과 새로운 카드 #b15 장, 새로운 유물 #b1 개를 추가합니다.",
+      "도전 모드는 등반이 더 어려워지도록 특정 카드와 여러 요소들이 조정됩니다.",
+      "더 높은 레벨도 준비 중입니다!"
     ]
   },
   "constructMemoryText": {
@@ -54,20 +54,20 @@
   },
   "constructCharacterTipText": {
     "TEXT": [
-      "Cards cycled this turn: ",
-      "Warning symbols indicate when cards will [#ff9900]Overheat."
+      "이번 턴에 사이클 된 카드 수: ",
+      "언제 카드가 [#ff9900]과열 될 지 보여줍니다."
     ]
   },
   "constructConfigMenuText": {
     "TEXT": [
-      "Allow other characters to encounter some Construct relics.",
-      "Allow other characters to encounter some Construct potions.",
-      " (REQUIRES RESTART)",
-      "Set Unlock level to MAX. ",
+      "다른 캐릭터 플레이 시 컨스트럭트 유물이 등장합니다.",
+      "다른 캐릭터 플레이 시 컨스트럭트 포션이 등장합니다.",
+      " (재시작 필요)",
+      "최고 레벨 설정. ",
       "Unlocks appear on the character select screen.",
       "Experimental future levels for Challenge Mode. These are subject to change.",
-      "Currently %s levels exist. There are planned to be %s in total.",
-      "Challenge Level:"
+      "현재는 %s 레벨까지 존재합니다. %s 레벨까지 계획 중에 있습니다.",
+      "도전 레벨:"
     ]
   }
 }

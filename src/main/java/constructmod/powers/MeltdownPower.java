@@ -7,21 +7,20 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import constructmod.ConstructMod;
 
 public class MeltdownPower extends AbstractPower {
 	public static final String POWER_ID = ConstructMod.makeID("Meltdown");
-	public static final String NAME = "Meltdown";
-	public static final String[] DESCRIPTIONS = new String[] {
-			"At the start of your turn, deal #b",
-			" damage to ALL enemies and add a #yBurn to your hand."
-	};
+	public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
+	public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 	
 	public MeltdownPower(AbstractCreature owner, int amount) {
-		this.name = NAME;
+		this.name = powerStrings.NAME;
 		this.ID = POWER_ID;
 		this.owner = owner;
 		this.amount = amount;
@@ -33,7 +32,7 @@ public class MeltdownPower extends AbstractPower {
 	
 	@Override
 	public void updateDescription() {
-		this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
+		this.description = String.format(DESCRIPTIONS[0],this.amount);
 	}
 	
 	@Override

@@ -4,22 +4,22 @@ import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import constructmod.ConstructMod;
 
 public class PointDefensePower extends AbstractCyclePower {
 	public static final String POWER_ID = ConstructMod.makeID("PointDefense");
-	public static final String NAME = "Point Defense";
-	public static final String[] DESCRIPTIONS = new String[] {
-			"Whenever a card #ycycles, gain #b1 #yBlock."
-	};
+	public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
+	public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 	
 	private int amountPerTurn=0;
 	
 	public PointDefensePower(AbstractCreature owner, int amount) {
-		this.name = NAME;
+		this.name = powerStrings.NAME;
 		this.ID = POWER_ID;
 		this.owner = owner;
 		this.amount = this.amountPerTurn = amount;
@@ -37,7 +37,7 @@ public class PointDefensePower extends AbstractCyclePower {
 	
 	@Override
 	public void updateDescription() {
-		this.description = DESCRIPTIONS[0];
+		this.description = String.format(DESCRIPTIONS[0],this.amountPerTurn);
 	}
 	
 	@Override

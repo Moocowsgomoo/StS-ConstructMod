@@ -15,12 +15,11 @@ import com.megacrit.cardcrawl.core.*;
 public class ElectricArmorPower extends AbstractPower
 {
     public static final String POWER_ID = "construct:ElectricArmor";
-    public static final String[] DESCRIPTIONS = new String[] {
-            "When attacked, deals damage back equal to your #yDexterity."
-    };
+    public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
+    public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     
     public ElectricArmorPower(final AbstractCreature owner, final int amount) {
-        this.name = "Electric Armor";
+        this.name = powerStrings.NAME;
         this.ID = POWER_ID;
         this.owner = owner;
         this.amount = amount;
@@ -51,6 +50,6 @@ public class ElectricArmorPower extends AbstractPower
     
     @Override
     public void updateDescription() {
-        this.description = DESCRIPTIONS[0];
+        this.description = this.amount==1?DESCRIPTIONS[0]:String.format(DESCRIPTIONS[1],this.amount);
     }
 }

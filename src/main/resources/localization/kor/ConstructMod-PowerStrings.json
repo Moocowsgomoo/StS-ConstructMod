@@ -73,7 +73,7 @@
 		]
 	},
 	"construct:FlashFreeze": {
-		"NAME": "FlashFreeze",
+		"NAME": "Flash Freeze",
 		"DESCRIPTIONS": [
 			"Your cards cannot [#ff9900]Overheat for #b%s more turn.",
 			"Your cards cannot [#ff9900]Overheat for #b%s more turns."
@@ -126,12 +126,14 @@
 	"construct:Overcharge": {
 		"NAME": "Overcharge",
 		"DESCRIPTIONS": [
+			"At the start of your turn, gain #b%s [E] and add #b%s #yBurn to your hand.",
 			"At the start of your turn, gain #b%s [E] and add #b%s #yBurns to your hand."
 		]
 	},
 	"construct:Overclock": {
 		"NAME": "Overclock",
 		"DESCRIPTIONS": [
+			"At the start of your turn, draw #b%s cards and add #b%s #yBurn to your hand.",
 			"At the start of your turn, draw #b%s cards and add #b%s #yBurns to your hand."
 		]
 	},

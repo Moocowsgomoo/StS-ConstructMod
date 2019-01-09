@@ -4,22 +4,20 @@ import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import constructmod.ConstructMod;
 
 public class NoCyclePower extends AbstractPower {
 	public static final String POWER_ID = ConstructMod.makeID("NoCycle");
-	public static final String NAME = "No Cycle";
-	public static final String[] DESCRIPTIONS = new String[] {
-			"Your cards cannot #yCycle for #b",
-			" turn.",
-			" turns."
-	};
+	public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
+	public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 	public boolean justApplied = true;
 
 	public NoCyclePower(AbstractCreature owner, int amount) {
-		this.name = NAME;
+		this.name = powerStrings.NAME;
 		this.ID = POWER_ID;
 		this.owner = owner;
 		this.amount = amount;
@@ -32,7 +30,7 @@ public class NoCyclePower extends AbstractPower {
 	
 	@Override
 	public void updateDescription() {
-		this.description = DESCRIPTIONS[0] + this.amount + (this.amount == 1?DESCRIPTIONS[1]:DESCRIPTIONS[2]);
+		this.description = String.format(this.amount==1?DESCRIPTIONS[0]:DESCRIPTIONS[1],this.amount);
 	}
 
 	@Override

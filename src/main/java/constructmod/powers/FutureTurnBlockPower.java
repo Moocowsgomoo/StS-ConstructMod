@@ -14,13 +14,11 @@ import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 
 public class FutureTurnBlockPower extends AbstractPower {
     public static final String POWER_ID = "construct:FutureTurnBlock";
-    public static final String[] DESCRIPTIONS = new String[] {
-            "Two turns from now, gain #b",
-            " #yBlock.",
-    };
+    public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
+    public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     public FutureTurnBlockPower(AbstractCreature owner, int armorAmt) {
-        this.name = "Next Next Turn Block";
+        this.name = powerStrings.NAME;
         this.ID = POWER_ID;
         this.owner = owner;
         this.amount = armorAmt;
@@ -29,7 +27,7 @@ public class FutureTurnBlockPower extends AbstractPower {
     }
 
     public void updateDescription() {
-        this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
+        this.description = String.format(DESCRIPTIONS[0],this.amount);
     }
 
     public void atStartOfTurn() {

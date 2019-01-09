@@ -5,8 +5,10 @@ import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.QuantumEgg;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
@@ -15,18 +17,14 @@ import constructmod.actions.QueueCardFrontAction;
 
 public class MultistagePower extends AbstractPower {
 	public static final String POWER_ID = ConstructMod.makeID("Multistage");
-	public static final String NAME = "Multistage";
-	public static final String[] DESCRIPTIONS = new String[] {
-			"At the start of your next #b",
-			" turn(s), play a copy of ",
-			"."
-	};
+	public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
+	public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 	public static int idOffset = 0;
 
 	public AbstractCard heldCard;
 
 	public MultistagePower(AbstractCreature owner, int amount, AbstractCard heldCard) {
-		this.name = NAME;
+		this.name = powerStrings.NAME;
 		this.ID = POWER_ID + idOffset; // prevents power stacking
 		idOffset++;
 		this.owner = owner;
@@ -40,7 +38,12 @@ public class MultistagePower extends AbstractPower {
 	
 	@Override
 	public void updateDescription() {
-		this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + FontHelper.colorString(this.heldCard.name, "y") + DESCRIPTIONS[2];
+		if (this.amount == 1){
+			this.description = String.format(DESCRIPTIONS[0],FontHelper.colorString(this.heldCard.name, "y"));
+		}
+		else{
+			this.description = String.format(DESCRIPTIONS[1], this.amount,FontHelper.colorString(this.heldCard.name, "y"));
+		}
 	}
 
 	@Override

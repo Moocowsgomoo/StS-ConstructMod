@@ -1,0 +1,86 @@
+[
+  {
+    "NAMES": [
+      "cycle",
+      "cycles"
+    ],
+    "DESCRIPTION": "When drawn, discard this and draw a new card. Only works once per turn."
+  },
+  {
+    "NAMES": [
+      "blur"
+    ],
+    "DESCRIPTION": "Your #yBlock is carried over between turns."
+  },
+  {
+    "NAMES": [
+      "metallicize"
+    ],
+    "DESCRIPTION": "Gain #yBlock at the end of each turn."
+  },
+  {
+    "NAMES": [
+      "plated armor",
+      "plated_armor"
+    ],
+    "DESCRIPTION": "Gain #yBlock at the end of each turn. Reduced when you take unblocked damage."
+  },
+  {
+    "NAMES": [
+      "slimed"
+    ],
+    "DESCRIPTION": "Slimed is a status card that costs [R] to exhaust."
+  },
+  {
+    "NAMES": [
+      "cores"
+    ],
+    "DESCRIPTION": "Cores are cards that #yCycle and apply a small bonus effect."
+  },
+  {
+    "NAMES": [
+      "egg",
+      "eggs"
+    ],
+    "DESCRIPTION": "Eggs are relics that automatically #yUpgrade cards when you acquire them."
+  },
+  {
+    "PROPER_NAME": "Temporary HP",
+    "NAMES": [
+      "mega-upgrade",
+      "mega-upgraded"
+    ],
+    "DESCRIPTION": "A second upgrade that makes Construct cards even more powerful."
+  },
+  {
+    "NAMES": [
+      "overheat",
+      "overheats",
+      "overheated",
+      "[#ff9900]overheat",
+      "[#ff9900]overheats",
+      "[#ff9900]overheated",
+      "[#ff9900]overheat:"
+    ],
+    "DESCRIPTION": "Choose a specified card from a specified pile and place it into your hand."
+  },
+  {
+    "NAMES": [
+      "refund",
+      "refunds"
+    ],
+    "DESCRIPTION": "Returns energy spent on playing the card, up to the Refund value."
+  },
+  {
+    "NAMES": [
+      "exhaustive"
+    ],
+    "DESCRIPTION": "#yExhausts after a certain number of uses."
+  },
+  {
+    "NAMES": [
+      "startup"
+    ],
+    "DESCRIPTION": "Triggers at the start of each combat."
+  }
+]

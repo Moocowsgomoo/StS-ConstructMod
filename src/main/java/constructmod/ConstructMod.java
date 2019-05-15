@@ -291,7 +291,8 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 
 		String language = "eng";
 
-		//if (Settings.language == Settings.GameLanguage.KOR) language = "kor";
+		if (Settings.language == Settings.GameLanguage.KOR) language = "kor";
+		if (Settings.language == Settings.GameLanguage.ZHS) language = "zhs";
 
 		Type typeToken = new TypeToken <Map<String, Keyword>>(){}.getType();
 		Gson gson = new Gson();
@@ -321,7 +322,8 @@ public class ConstructMod implements PostInitializeSubscriber, EditCardsSubscrib
 	
 	public void receiveEditStrings() {
 		String language = "eng";
-		//if (Settings.language == Settings.GameLanguage.KOR) language = "kor";
+		if (Settings.language == Settings.GameLanguage.KOR) language = "kor";
+		if (Settings.language == Settings.GameLanguage.ZHS) language = "zhs";
         BaseMod.loadCustomStringsFile(RelicStrings.class, "localization/"+language+"/ConstructMod-RelicStrings.json");
         BaseMod.loadCustomStringsFile(CardStrings.class, "localization/"+language+"/ConstructMod-CardStrings.json");
 		BaseMod.loadCustomStringsFile(PotionStrings.class, "localization/"+language+"/ConstructMod-PotionStrings.json");

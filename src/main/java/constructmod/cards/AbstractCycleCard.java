@@ -44,7 +44,12 @@ public abstract class AbstractCycleCard extends AbstractConstructCard {
 		int maxCycles = 1;
 		if (AbstractDungeon.player == null) return 1;
 		for (AbstractRelic r:AbstractDungeon.player.relics){
-			if (r instanceof IModifyMaxCyclesRelic){
+			if (r.relicId == "hubris:ClockworkCow"){
+				// does clockwork cow work again without this change? it didn't before but it's been months oh geez
+				maxCycles = maxCycles+1;
+				if (currentTimesCycled >= 1) r.flash();
+			}
+			else if (r instanceof IModifyMaxCyclesRelic){
 				maxCycles = ((IModifyMaxCyclesRelic) r).modifyMaxCycles(maxCycles,currentTimesCycled);
 			}
 		}

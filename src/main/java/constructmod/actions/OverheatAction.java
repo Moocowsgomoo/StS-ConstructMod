@@ -51,7 +51,7 @@ public class OverheatAction extends AbstractGameAction
         float effect_x = 0f;
         float effect_y = 0f;
 
-        AbstractDungeon.actionManager.cardQueue.removeIf((item)->item.card.equals(this.targetCard));
+        AbstractDungeon.actionManager.cardQueue.removeIf((item)->item.card != null && item.card.equals(this.targetCard));
 
         if (AbstractDungeon.player.drawPile.contains(this.targetCard)){
             group = AbstractDungeon.player.drawPile.group;

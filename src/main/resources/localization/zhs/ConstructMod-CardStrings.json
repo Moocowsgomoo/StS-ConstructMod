@@ -290,7 +290,7 @@
 		"DESCRIPTION": "获得 !B! 点 格挡 。 NL 获得 !M! 层 人工制品 。"
 	},
 	"construct:HeavyBolt": {
-		"NAME": "重型螺栓",
+		"NAME": "螺栓重击",
 		"DESCRIPTION": "造成 !D! 点伤害。 NL 随机丢弃 !M! 张牌，然后抽 !M! 张牌。",
 		"UPGRADE_DESCRIPTION": "造成 !D! 点伤害。 NL 随机丢弃 !M! 张牌，然后抽 !M! 张牌。"
 	},

@@ -1,590 +1,590 @@
 {
 	"construct:Strike_Gold": {
-		"NAME": "Strike",
-		"DESCRIPTION": "Cycle if Strength < 0. NL Deal !D! damage."
+		"NAME": "打击",
+		"DESCRIPTION": " 力量 小于0时 循环 。 NL 造成 !D! 点伤害。"
 	},
 	"construct:Defend_Gold": {
-		"NAME": "Defend",
-		"DESCRIPTION": "Cycle if Dexterity < 0. NL Gain !B! Block."
+		"NAME": "防御",
+		"DESCRIPTION": " 敏捷 小于0时 循环 。 NL 获得 !B! 点 格挡 。"
 	},
 	"construct:HeatedStrike": {
-		"NAME": "Heated Strike",
-		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Cycle if Strength < 0. NL Deal !D! damage."
+		"NAME": "加热打击",
+		"DESCRIPTION": " 过热 ： < !construct:O! > NL 力量 小于0时 循环 。 NL 造成 !D! 点伤害。"
 	},
 	"construct:HeatedDefend": {
-		"NAME": "Heated Defend",
-		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Cycle if Dexterity < 0. NL Gain !B! Block."
+		"NAME": "加热防御",
+		"DESCRIPTION": " 过热 ： < !construct:O! > NL 敏捷 小于0时 循环 。 NL 获得 !B! 点 格挡 。"
 	},
 	"construct:AttackMode": {
-		"NAME": "Attack Mode",
-		"DESCRIPTION": "Retain. NL Gain !M! Strength. NL Lose !M! Dexterity.",
+		"NAME": "攻击模式",
+		"DESCRIPTION": " 保留 。 NL 获得 !M! 点 力量 。 NL 失去 !M! 点 敏捷。",
 		"EXTENDED_DESCRIPTION": [
-			"(Cycle if Dexterity < 0.) NL "
+			"（ 敏捷 小于0时 循环 ） NL "
 		]
 	},
 	"construct:DefenseMode": {
-		"NAME": "Defense Mode",
-		"DESCRIPTION": "Retain. NL Gain !M! Dexterity. NL Lose !M! Strength.",
+		"NAME": "防御模式",
+		"DESCRIPTION": " 保留 。 NL 获得 !M! 点 敏捷 。 NL 失去 !M! 点 力量 。",
 		"EXTENDED_DESCRIPTION": [
-			"(Cycle if Strength < 0.) NL "
+			"（ 力量 小于0时 循环 ） NL "
 		]
 	},
 	"construct:ScrapCannon": {
-		"NAME": "Scrap Cannon",
-		"DESCRIPTION": "Deal !D! damage. NL Exhaust !M! card.",
-		"UPGRADE_DESCRIPTION": "Deal !D! damage. NL Exhaust up to !M! cards."
+		"NAME": "废弃大炮",
+		"DESCRIPTION": "造成 !D! 点伤害。 NL 消耗 !M! 张牌。",
+		"UPGRADE_DESCRIPTION": "造成 !D! 点伤害。 NL 最多消耗 !M! 张牌。"
 	},
 	"construct:Reinforce": {
-		"NAME": "Reinforce",
-		"DESCRIPTION": "Gain !B! Block !M! times."
+		"NAME": "加固",
+		"DESCRIPTION": "获得 !B! 点格挡 !M! 次。"
 	},
 	"construct:HyperBeam": {
-		"NAME": "Hyper Beam",
-		"DESCRIPTION": "Ethereal. NL Deal !D! damage. NL Put !M! Dazed on top of your draw pile.",
-		"UPGRADE_DESCRIPTION": "Deal !D! damage. NL Put !M! Dazed on top of your draw pile."
+		"NAME": "超能射线",
+		"DESCRIPTION": "虚无。 NL 造成 !D! 点伤害。 NL 将 !M! 张眩晕放入你的抽牌堆顶部。",
+		"UPGRADE_DESCRIPTION": "造成 !D! 点伤害。 NL 将 !M! 张眩晕放入你的抽牌堆顶部。"
 	},
 	"construct:ShieldGenerator": {
-		"NAME": "Shield Generator",
-		"DESCRIPTION": "Gain !M! Blur. NL Gain 2 Vulnerable.",
-		"UPGRADE_DESCRIPTION": "Gain !M! Blur. NL Gain 1 Vulnerable."
+		"NAME": "护盾生成器",
+		"DESCRIPTION": "获得 !M! 残影。 NL 获得 2 层 易伤 。",
+		"UPGRADE_DESCRIPTION": "获得 !M! 残影。 NL 获得 1 层 易伤 。"
 	},
 	"construct:Analyze": {
-		"NAME": "Analyze",
-		"DESCRIPTION": "Next turn, gain [E]  and draw !M!  more cards.",
-		"UPGRADE_DESCRIPTION": "Next turn, gain [E]  and draw !M!  more cards.",
+		"NAME": "分析",
+		"DESCRIPTION": "下一回合，获得 [E] 并多抽 !M! 张牌。",
+		"UPGRADE_DESCRIPTION": "下一回合，获得 [E] 并多抽 !M! 张牌。",
 		"EXTENDED_DESCRIPTION": [
-			"Next turn, gain [E] [E] and draw !M!  more cards."
+			"下一回合，获得 [E] [E] 并多抽 !M! 张牌。"
 		]
 	},
 	"construct:VentSteam": {
-		"NAME": "Vent Steam",
-		"DESCRIPTION": "Exhaust 1 card. NL Apply !M! Weak and NL !M! Vulnerable.",
-		"UPGRADE_DESCRIPTION": "Exhaust 1 card. NL Apply !M! Weak and NL !M! Vulnerable to ALL enemies."
+		"NAME": "蒸汽喷射",
+		"DESCRIPTION": "消耗 1 张牌。 NL 给予 !M! 层 虚弱 和 !M! 层 易伤 。",
+		"UPGRADE_DESCRIPTION": "消耗 1 张牌。 NL 对所有敌人给予 !M! 层 虚弱 和 !M! 层 易伤 。"
 	},
 	"construct:MetalShell": {
-		"NAME": "Metal Shell",
-		"DESCRIPTION": "Gain !B! Block. NL Gain !M! Plated Armor.",
-		"UPGRADE_DESCRIPTION": "Gain !B! Block. NL Gain !M! Metallicize."
+		"NAME": "金属外壳",
+		"DESCRIPTION": "获得 !B! 点 格挡 。 NL 获得 !M! 层 多层护甲 。",
+		"UPGRADE_DESCRIPTION": "获得 !B! 点 格挡 。 NL 获得 !M! 层 金属化 。"
 	},
 	"construct:ChargeShot": {
-		"NAME": "Charge Shot",
-		"DESCRIPTION": "Retain. Deal !D! damage, plus !M! for each turn this was retained."
+		"NAME": "充能射击",
+		"DESCRIPTION": " 保留 。 造成 !D! 点伤害，每回合保留增加 !M! 点伤害。"
 	},
 	"construct:Boost": {
-		"NAME": "Boost",
-		"DESCRIPTION": "Deal !D! damage. NL Gain !B! Block.",
-		"EXTENDED_DESCRIPTION": ["Deal !D! damage. NL Gain !B! Block. NL Draw a card."]
+		"NAME": "功率增大",
+		"DESCRIPTION": "造成 !D! 点伤害。 NL 获得 !B! 点 格挡 。",
+		"EXTENDED_DESCRIPTION": ["造成 !D! 点伤害。 NL 获得 !B! 点 格挡 。 NL 抽一张牌。"]
 	},
 	"construct:GoldenBullet": {
-		"NAME": "Golden Bullet",
-		"DESCRIPTION": "Lose !M! gold. NL Deal !D! damage."
+		"NAME": "黄金子弹",
+		"DESCRIPTION": "失去 !M! 金币。 NL 造成 !D! 点伤害。"
 	},
 	"construct:ElectricArmor": {
-		"NAME": "Electric Armor",
-		"DESCRIPTION": "Cycle if Dexterity < 1. NL When an enemy attacks you this turn, it takes damage equal to your Dexterity.",
-		"UPGRADE_DESCRIPTION": "Cycle if Dexterity < 1. NL When an enemy attacks you this or next turn, it takes damage equal to your Dexterity."
+		"NAME": "电动装甲",
+		"DESCRIPTION": " 敏捷 小于1时 循环。 NL 本回合，如果你受到攻击，则对攻击者造成等于你敏捷的反伤。",
+		"UPGRADE_DESCRIPTION": "敏捷 小于1时 循环。 NL 本2个回合，如果你受到攻击，则对攻击者造成等于你敏捷的反伤。"
 	},
 	"construct:FlameCore": {
-		"NAME": "Flame Core",
-		"DESCRIPTION": "Cycle. When cycled: NL A random enemy takes !M! damage.",
-		"UPGRADE_DESCRIPTION": " NL Put a Flame Core into your discard pile.",
+		"NAME": "火焰核心",
+		"DESCRIPTION": " 循环 。 循环 时： NL 随机一名敌人受到 !M! 点伤害。",
+		"UPGRADE_DESCRIPTION": " NL 将一张 火焰核心 加入你的弃牌堆。",
 		"EXTENDED_DESCRIPTION": [
-			" NL Put a Flame Core+ into your discard pile."	
+			" NL 将一张 火焰核心+ 加入你的弃牌堆。"	
 		]
 	},
 	"construct:LaserCore": {
-		"NAME": "Laser Core",
-		"DESCRIPTION": "Cycle. When cycled: NL ALL enemies NL take !M! damage.",
-		"UPGRADE_DESCRIPTION": " NL Put a Laser Core into your discard pile.",
+		"NAME": "射线核心",
+		"DESCRIPTION": " 循环 。 循环 时： NL 所有敌人受到 !M! 点伤害。",
+		"UPGRADE_DESCRIPTION": " NL 将一张 射线核心 加入你的弃牌堆。",
 		"EXTENDED_DESCRIPTION": [
-			" NL Put a Laser Core+ into your discard pile."	
+			" NL 将一张 射线核心+ 加入你的弃牌堆。"	
 		]
 	},
 	"construct:GuardCore": {
-		"NAME": "Guard Core",
-		"DESCRIPTION": "Cycle. When cycled: NL Gain !B! Block.",
-		"UPGRADE_DESCRIPTION": " NL Put a Guard Core into your discard pile.",
+		"NAME": "防御核心",
+		"DESCRIPTION": "循环 。 循环 时： NL 获得 !B! 点 格挡 。",
+		"UPGRADE_DESCRIPTION": " NL 将一张 防御核心 加入你的弃牌堆。",
 		"EXTENDED_DESCRIPTION": [
-			" NL Put a Guard Core+ into your discard pile."	
+			" NL 将一张 防御核心+ 加入你的弃牌堆。"	
 		]
 	},
 	"construct:ScopeCore": {
-		"NAME": "Scope Core",
-		"DESCRIPTION": "Cycle. When cycled: NL A random enemy gains !M! Vulnerable.",
-		"UPGRADE_DESCRIPTION": " NL Put a Scope Core into your discard pile.",
+		"NAME": "侦查核心",
+		"DESCRIPTION": "循环 。 循环 时： NL 给予随机一名敌人 !M! 层 易伤 。",
+		"UPGRADE_DESCRIPTION": " NL 将一张 侦查核心 加入你的弃牌堆。",
 		"EXTENDED_DESCRIPTION": [
-			" NL Put a Scope Core+ into your discard pile."	
+			" NL 将一张 侦查核心+ 加入你的弃牌堆。"	
 		]
 	},
 	"construct:BatteryCore": {
-		"NAME": "Battery Core",
-		"DESCRIPTION": "Cycle. When cycled: NL A card in your hand costs !M! less this turn.",
-		"UPGRADE_DESCRIPTION": " NL Put a Battery Core into your discard pile.",
+		"NAME": "能源核心",
+		"DESCRIPTION": "循环 。 循环 时： NL 本回合将你手牌的一张牌费用减少 !M! 。",
+		"UPGRADE_DESCRIPTION": " NL 将一张 能源核心 加入你的弃牌堆。",
 		"EXTENDED_DESCRIPTION": [
-			" NL Put a Battery Core+ into your discard pile."	
+			" NL 将一张 能源核心+ 加入你的弃牌堆。"	
 		]
 	},
 	"construct:ForceCore": {
-		"NAME": "Force Core",
-		"DESCRIPTION": "Cycle. When cycled: NL Gain !M! Strength until the end of this turn.",
-		"UPGRADE_DESCRIPTION": " NL Put a Force Core into your discard pile.",
+		"NAME": "集中核心",
+		"DESCRIPTION": "循环 。 循环 时： NL 本回合，获得 !M! 点 力量 。",
+		"UPGRADE_DESCRIPTION": " NL 将一张 集中核心 加入你的弃牌堆。",
 		"EXTENDED_DESCRIPTION": [
-			" NL Put a Force Core+ into your discard pile."	
+			" NL 将一张 集中核心+ 加入你的弃牌堆。"	
 		]
 	},
 	"construct:Autoturret": {
-		"NAME": "Autoturret",
-		"DESCRIPTION": "When a card cycles, deal !M! damage to a random enemy."
+		"NAME": "自动炮塔",
+		"DESCRIPTION": "每当一张牌 循环 时，对随机一名敌人造成 !M! 点伤害。"
 	},
 	"construct:Electrocute": {
-		"NAME": "Electrocute",
-		"DESCRIPTION": "Deal !D! damage. NL Target loses !M! Strength for the rest of this turn."
+		"NAME": "电刑",
+		"DESCRIPTION": "造成 !D! 点伤害。 NL 本回合敌人失去 !M! 点力量。"
 	},
 	"construct:CripplingShot": {
-		"NAME": "Crippling Shot",
-		"DESCRIPTION": "Deal !D! damage. NL If this dealt unblocked damage, apply 99 Weak. Exhaust.",
-		"UPGRADE_DESCRIPTION": "Deal !D! damage. NL If this dealt unblocked damage, apply 99 Weak and -2 Strength. Exhaust."
+		"NAME": "致残射击",
+		"DESCRIPTION": "造成 !D! 点伤害。 NL 如果它造成了未被格挡的伤害，给予 99 层 虚弱 。  消耗 。",
+		"UPGRADE_DESCRIPTION": "造成 !D! 点伤害。 NL 如果它造成了未被格挡的伤害，给予 99 层 虚弱 和 -2 点 力量 。 消耗 。"
 	},
 	"construct:Backup": {
-		"NAME": "Backup",
-		"DESCRIPTION": "Choose a non-rare card from your hand. Add !M! copies on top of your draw pile. NL Exhaust.",
-		"UPGRADE_DESCRIPTION": "Retain. NL Choose a non-rare card from your hand. Add !M! copies on top of your draw pile. NL Exhaust.",
+		"NAME": "备份",
+		"DESCRIPTION": "选择手牌中的一张非稀有牌。 将它的 !M! 张复制品加入你的抽牌堆。 NL 消耗 。",
+		"UPGRADE_DESCRIPTION": " 保留 。 NL 选择手牌中的一张非稀有牌。 将它的 !M! 张复制品加入你的抽牌堆。 NL 消耗 。",
 		"EXTENDED_DESCRIPTION": [
-			"No non-rare cards in hand.",
-			"Retain. NL Choose a non-rare card from your hand. Add !M! copies on top of your draw pile."
+			"我的手牌没非稀有牌。",
+			" 保留 。 NL 选择手牌中的一张非稀有牌。 将它的 !M! 张复制品加入你的抽牌堆。"
 		]
 	},
 	"construct:SweepLaser": {
-		"NAME": "Sweep Laser",
-		"DESCRIPTION": "Deal !D! damage, then deal !D! damage to ALL enemies.",
-		"UPGRADE_DESCRIPTION": "Deal !D! damage, then deal !D! damage to ALL enemies twice."
+		"NAME": "扫荡激光",
+		"DESCRIPTION": "造成 !D! 点伤害，对所有敌人造成 !D! 点伤害。",
+		"UPGRADE_DESCRIPTION": "造成 !D! 点伤害，对所有敌人造成 !D! 点伤害两次。"
 	},
 	"construct:ModeShift": {
-		"NAME": "Mode Shift",
-		"DESCRIPTION": "Swap your Strength and Dexterity. NL Draw a card.",
-		"UPGRADE_DESCRIPTION": "Retain. NL Swap your Strength and Dexterity. NL Draw !M! cards."
+		"NAME": "模式转换",
+		"DESCRIPTION": "对调你的 力量 与 敏捷 。 NL 抽一张牌。",
+		"UPGRADE_DESCRIPTION": " 保留 。 NL 对调你的 力量 与 敏捷 。 NL 抽 !M! 张牌。"
 	},
 	"construct:Versatility": {
-		"NAME": "Versatility",
-		"DESCRIPTION": "If the target intends to attack, gain !B! Block. Otherwise, deal !D! damage.",
-		"UPGRADE_DESCRIPTION": " NL Draw 2 cards."
+		"NAME": "各有对策",
+		"DESCRIPTION": "如果敌人的意图是攻击， 获得 !B! 点 格挡 。 否则，造成 !D! 点伤害。",
+		"UPGRADE_DESCRIPTION": " NL 抽 2 张牌。"
 	},
 	"construct:FlakBarrage": {
-		"NAME": "Flak Barrage",
-		"DESCRIPTION": "Deal !D! damage to a random enemy !M! times.",
-		"UPGRADE_DESCRIPTION": "Cycle if Strength < 1. NL Deal !D! damage to a random enemy !M! times."
+		"NAME": "高射炮弹",
+		"DESCRIPTION": "对随机一名敌人造成 !D! 点伤害 !M! 次。",
+		"UPGRADE_DESCRIPTION": "如果 力量 小于 1 时 循环 。 NL 对随机一名敌人造成 !D! 点伤害 !M! 次。"
 	},
 	"construct:MassProduction": {
-		"NAME": "Mass Production",
-		"DESCRIPTION": "Choose a non-rare card in your draw pile. Exhaust your hand and replace it with copies of that card. Exhaust.",
+		"NAME": "量产",
+		"DESCRIPTION": "选择抽牌堆中的一张非稀有牌。  消耗你的手牌并将他们替换为那张牌的复制品。 消耗 。",
 		"EXTENDED_DESCRIPTION": [
-			"No non-rare cards in draw pile."	
+			"我的抽牌堆没有非稀有牌。"	
 		]
 	},
 	"construct:Synchronize": {
-		"NAME": "Synchronize",
-		"DESCRIPTION": "When you draw 2 of the same card in a row, deal !M! damage to ALL enemies.",
-		"UPGRADE_DESCRIPTION": "Innate. NL When you draw 2 of the same card in a row, deal !M! damage to ALL enemies."
+		"NAME": "同调",
+		"DESCRIPTION": "每当你连续抽到 2 张相同的牌，对所有敌人造成 !M! 点伤害。",
+		"UPGRADE_DESCRIPTION": " 固有 。 NL 每当你连续抽到 2 张相同的牌，对所有敌人造成 !M! 点伤害。"
 	},
 	"construct:SiegeForm": {
-		"NAME": "Siege Form",
-		"DESCRIPTION": "After you play a card, gain !M! Strength until the end of the turn."
+		"NAME": "围攻形态",
+		"DESCRIPTION": "打出一张牌后， 直到回合结束前，获得 !M! 点 力量 。"
 	},
 	"construct:HammerDown": {
-		"NAME": "Hammer Down",
-		"DESCRIPTION": "Deal !D! damage. NL Double your Strength and Dexterity.",
-		"UPGRADE_DESCRIPTION": "Deal !D! damage. NL Double your Strength and Dexterity.",
+		"NAME": "轰天锤",
+		"DESCRIPTION": "造成 !D! 点伤害。 NL 翻倍你的 力量 和 敏捷 。",
+		"UPGRADE_DESCRIPTION": "造成 !D! 点伤害。 NL 翻倍你的 力量 和 敏捷 。",
 		"EXTENDED_DESCRIPTION": [
-			"Deal !D! damage. NL Triple your Strength and Dexterity."
+			"造成 !D! 点伤害。 NL 三倍你的 力量 和 敏捷 。"
 		]
 	},
 	"construct:Enhance": {
-		"NAME": "Enhance",
-		"DESCRIPTION": "Each turn, Upgrade a random card in your discard pile for this combat.",
-		"UPGRADE_DESCRIPTION": "Each turn, Upgrade !M! random cards in your discard pile for this combat.",
+		"NAME": "强化",
+		"DESCRIPTION": "每回合开始时，本场战斗，将你弃牌堆的随机一张牌 升级 。",
+		"UPGRADE_DESCRIPTION": "每回合开始时，本场战斗，将你弃牌堆的随机 !M! 张牌 升级 。",
 		"EXTENDED_DESCRIPTION": [
-			"Each turn, Upgrade !M! random cards in your discard pile for this combat. (Can Mega-upgrade cards.)"	
+			"每回合开始时，本场战斗，将你弃牌堆的随机 !M! 张牌 升级 。（能 超升级 牌）"	
 		]
 	},
 	"construct:SuppressiveFire": {
-		"NAME": "Suppressive Fire",
-		"DESCRIPTION": "Deal !D! damage to ALL enemies. NL Gain !M! Blur."
+		"NAME": "火力压制",
+		"DESCRIPTION": "对所有敌人造成 !D! 点伤害。 NL 获得 !M! 层 残影。"
 	},
 	"construct:Anticipate": {
-		"NAME": "Anticipate",
-		"DESCRIPTION": "Next turn, gain !B! Block."
+		"NAME": "预判",
+		"DESCRIPTION": "下一回合，获得 !B! 点 格挡 。"
 	},
 	"construct:OneWayMirror": {
-		"NAME": "One-Way Mirror",
-		"DESCRIPTION": "Gain !B! Block.  NL Apply !M! Vulnerable to ALL enemies."
+		"NAME": "单面镜",
+		"DESCRIPTION": "获得 !B! 点 格挡 。  NL 给予所有敌人 !M! 层 易伤 。"
 	},
 	"construct:SpinDrive": {
-		"NAME": "Spin Drive",
-		"DESCRIPTION": "When you play a card, draw a card. NL Works !M! times per turn."
+		"NAME": "循环加速",
+		"DESCRIPTION": "每当你打出一张牌，抽一张牌。 NL 每回合只能触发 !M! 次效果。"
 	},
 	"construct:Backfire": {
-		"NAME": "Backfire",
-		"DESCRIPTION": "Take !M! damage. NL Deal !D! damage."
+		"NAME": "回火",
+		"DESCRIPTION": "受到 !M! 点伤害。 NL 造成 !D! 点伤害。"
 	},
 	"construct:ShieldBurst": {
-		"NAME": "Shield Burst",
-		"DESCRIPTION": "Lose all your Block. NL Deal one and a half times that much damage to ALL enemies.",
-		"UPGRADE_DESCRIPTION": "Lose all your Block. NL Deal !M! times that much damage to ALL enemies.",
+		"NAME": "盾构爆破",
+		"DESCRIPTION": "失去全部的 格挡 。 NL 对所有敌人造成1.5倍失去 格挡 数量的伤害。",
+		"UPGRADE_DESCRIPTION": "失去全部的 格挡 。 NL 对所有敌人造成 !M! 倍失去 格挡 数量的伤害。",
 		"EXTENDED_DESCRIPTION": [
-			" NL (Deals !D! damage.)"
+			" NL （造成 !D! 点伤害）"
 		]
 	},
 	"construct:Antimatter": {
-		"NAME": "Antimatter",
-		"DESCRIPTION": "Reduce your [E] to 0. NL Deal damage equal to !M! times the number of cards in your hand.",
+		"NAME": "反物质",
+		"DESCRIPTION": "将你的能量变为0。 NL 造成手牌数量的 !M! 倍伤害。",
 		"EXTENDED_DESCRIPTION": [
-			"(Deals !D! damage.) NL ",
-			"I have more than 0 energy!",
-			"Reduce your [E] to 0, and regain it next turn. NL Deal damage equal to !M! times the number of cards in your hand."
+			"（造成 !D! 点伤害） NL ",
+			"我有超过零费了!",
+			"将你的能量变为0，下一回合获得失去的能量。 NL 造成手牌数量的 !M! 倍伤害。"
 		]
 	},
 	"construct:ClockworkEgg": {
-		"NAME": "Clockwork Egg",
-		"DESCRIPTION": "Draw a card. NL Exhaust. NL Can be Upgraded 3 more times.",
-		"UPGRADE_DESCRIPTION": "Gain a random relic at the end of combat. NL Exhaust.",
+		"NAME": "发条之蛋",
+		"DESCRIPTION": "抽一张牌。 NL 消耗 。 NL 能被 升级 3次。",
+		"UPGRADE_DESCRIPTION": "在战斗结束后获得一件随机遗物。 NL 消耗 。",
 		"EXTENDED_DESCRIPTION": [
-			"(Next time, try not to take shortcuts...) NL Become Confused. NL Draw 5 cards.",
-			"Add an Attack Mode+ and a Defense Mode+ to your hand. NL Can be Upgraded 2 more times.",
-			"Gain 3 Strength. NL Gain 3 Dexterity. NL Can be Upgraded 1 more time.",
-			"Gain all 3 Egg relics and a Clockwork Phoenix. Permanently remove this card from your deck.",
-			"Scrambled Egg",
-			"Clockwork Chicken",
-			"Relic limit reached for this combat!"
+			"（老实慢慢敲牌吧……） NL 被 混乱 。 NL 抽 5 张牌。",
+			"向你的手牌加入攻击模式+和防御模式+。 NL 还能被 升级 2 次。",
+			"获得 3 点 力量 。 NL 获得 3 点 敏捷。 NL 还能被 升级 1 次。",
+			"获得全部的三种 蛋 遗物和一件 发条凤凰。 这张牌从牌库中移除。。",
+			"煎蛋",
+			"发条雏鸡",
+			"本场战斗遗物获得达到上限！"
 		]
 	},
 	"construct:HastyRepair": {
-		"NAME": "Hasty Repair",
-		"DESCRIPTION": "Heal !M! HP. NL Lose 2 Max HP. NL Exhaust.",
-		"UPGRADE_DESCRIPTION": "Heal !M! HP. NL Lose 2 Max HP. NL Put a Hasty Repair into your hand. NL Exhaust."
+		"NAME": "仓促修复",
+		"DESCRIPTION": "恢复 !M! 生命。 NL 失去 2 最大生命。 NL 消耗 。",
+		"UPGRADE_DESCRIPTION": "恢复 !M! 生命。 NL 失去 2 最大生命。 NL 将一张 Hasty Repair 加入你的手牌。 NL 消耗 。"
 	},
 	"construct:GatlingGun": {
-		"NAME": "Gatling Gun",
-		"DESCRIPTION": "Deal !D! damage to a random enemy !M! X times.",
-		"EXTENDED_DESCRIPTION": ["(Total damage: !construct:G!) NL "]
+		"NAME": "加特林机枪",
+		"DESCRIPTION": "随机一名敌人造成 !D! 点伤害 !M! X 次。",
+		"EXTENDED_DESCRIPTION": ["（总伤害： !construct:G! ） NL "]
 	},
 	"construct:BatteryAcid": {
-		"NAME": "Battery Acid",
-		"DESCRIPTION": "Gain [E] [E] . NL Shuffle 1 Slimed into your draw pile.",
-		"UPGRADE_DESCRIPTION": "Gain [E] [E] [E] . NL Shuffle 1 Slimed into your draw pile.",
+		"NAME": "酸性电池",
+		"DESCRIPTION": "获得 [E] [E] 。 NL 向你的抽牌堆加入一张黏液。",
+		"UPGRADE_DESCRIPTION": "获得 [E] [E] [E] 。 NL 向你的抽牌堆加入一张黏液。",
 		"EXTENDED_DESCRIPTION": [
-			"Gain [E] [E] [E] . NL Next turn, gain [E]. NL Shuffle 1 Slimed into your draw pile."
+			"获得 [E] [E] [E] 。 NL 下一回合，获得 [E] 。 NL 向你的抽牌堆加入一张黏液。"
 		]
 	},
 	"construct:Bunker": {
-		"NAME": "Bunker",
-		"DESCRIPTION": "When a card is Retained, gain !M! Block.",
-		"UPGRADE_DESCRIPTION": "When a card is Retained, gain !M! Block. NL At the end of your turn, Retain a random card."
+		"NAME": "掩体",
+		"DESCRIPTION": "每当你 保留 一张牌，获得 !M! 点 格挡 。",
+		"UPGRADE_DESCRIPTION": "每当你 保留 一张牌，获得 !M! 点 格挡 。 NL 你的回合结束时，随机 保留 一张牌。"
 	},
 	"construct:HardReboot": {
-		"NAME": "Hard Reboot",
-		"DESCRIPTION": "Exhaust your hand. NL Draw !M! cards. NL Exhaust.",
-		"UPGRADE_DESCRIPTION": "Exhaust your hand. NL Draw !M! cards."
+		"NAME": "强制重启",
+		"DESCRIPTION": " 消耗 你的手牌。 NL 抽 !M! 张牌。 NL 消耗 。",
+		"UPGRADE_DESCRIPTION": " 消耗 你的手牌。 NL 抽 !M! 张牌。"
 	},
 	"construct:Hazardproof": {
-		"NAME": "Hazardproof",
-		"DESCRIPTION": "Gain !B! Block. NL Gain !M! Artifact."
+		"NAME": "风险评估",
+		"DESCRIPTION": "获得 !B! 点 格挡 。 NL 获得 !M! 层 人工制品 。"
 	},
 	"construct:HeavyBolt": {
-		"NAME": "Heavy Bolt",
-		"DESCRIPTION": "Deal !D! damage. NL Discard !M! random cards, then draw !M! cards.",
-		"UPGRADE_DESCRIPTION": "Deal !D! damage. NL Discard !M! cards, then draw !M! cards."
+		"NAME": "重型螺栓",
+		"DESCRIPTION": "造成 !D! 点伤害。 NL 随机丢弃 !M! 张牌，然后抽 !M! 张牌。",
+		"UPGRADE_DESCRIPTION": "造成 !D! 点伤害。 NL 随机丢弃 !M! 张牌，然后抽 !M! 张牌。"
 	},
 	"construct:FierceBash": {
-		"NAME": "Fierce Bash",
-		"DESCRIPTION": "Deal !D! damage. NL Hits twice if the enemy doesn't intend to attack or defend.",
-		"UPGRADE_DESCRIPTION": "Retain. NL Deal !D! damage. NL Hits twice if the enemy doesn't intend to attack or defend."
+		"NAME": "猛烈痛击",
+		"DESCRIPTION": "造成 !D! 点伤害。 NL 如果敌人的意图不是攻击或防御，攻击两次。",
+		"UPGRADE_DESCRIPTION": " 保留 。 NL 造成 !D! 点伤害。 NL 如果敌人的意图不是攻击或防御，攻击两次。"
 	},
 	"construct:ShiftStrike": {
-		"NAME": "Shift Strike",
-		"DESCRIPTION": "Deal !D! damage. NL Gain !M! Strength. NL Lose !M! Dexterity.",
+		"NAME": "切换打击",
+		"DESCRIPTION": "造成 !D! 点伤害。 NL 获得 !M! 点 力量 。 NL 失去 !M! 点 敏捷。",
 		"EXTENDED_DESCRIPTION": [
-			"(Cycle if Dexterity < 0.) NL "
+			"（ 敏捷 小于0时 循环 ） NL "
 		]
 	},
 	"construct:ShiftGuard": {
-		"NAME": "Shift Guard",
-		"DESCRIPTION": "Gain !B! Block. NL Gain !M! Dexterity. NL Lose !M! Strength.",
+		"NAME": "切换防御",
+		"DESCRIPTION": "获得 !B! 点 格挡 。 NL 获得 !M! 点 敏捷 。 NL 失去 !M! 点 力量 。",
 		"EXTENDED_DESCRIPTION": [
-			"(Cycle if Strength < 0.) NL "
+			"（ 力量 小于0时 循环 ） NL "
 		]
 	},
 	"construct:Chainstrike": {
-		"NAME": "Chainstrike",
-		"DESCRIPTION": "Deal !D! damage, then play a random Attack from your draw pile on the same target.",
-		"UPGRADE_DESCRIPTION": "Deal !D! damage, then play !M! random Attacks from your draw pile on the same target."
+		"NAME": "连锁打击",
+		"DESCRIPTION": "造成 !D! 点伤害，将抽牌堆中的随机一张攻击牌打向相同的目标。",
+		"UPGRADE_DESCRIPTION": "造成 !D! 点伤害，将抽牌堆中的随机 !M! 张攻击牌打向相同的目标。"
 	},
 	"construct:MemoryTap": {
-		"NAME": "Memory Tap",
-		"DESCRIPTION": "Add a random red, green, and blue card to your hand. NL They cost 0 this turn. NL Exhaust.",
-		"UPGRADE_DESCRIPTION": "Add a random Upgraded red, green, and blue card to your hand. They cost 0 this turn. Exhaust.",
+		"NAME": "记忆发掘",
+		"DESCRIPTION": "将随机一张 红色、绿色和蓝色牌加入你的手牌。 NL 它们的能耗本回合为0。 NL 消耗 。",
+		"UPGRADE_DESCRIPTION": "将随机一张已 升级 的 红色、绿色和蓝色牌加入你的手牌。 NL 它们的能耗本回合为0。 NL 消耗 。",
 		"EXTENDED_DESCRIPTION": [
-			"Add two random Upgraded red, green, and blue cards to your hand. They cost 0 this turn. Exhaust."
+			"将随机两张已 升级 的 红色、绿色和蓝色牌加入你的手牌。 NL 它们的能耗本回合为0。 NL 消耗 。"
 		]
 	},
 	"construct:Construct_Overclock": {
-		"NAME": "Overclock",
-		"DESCRIPTION": "At the start of your turn, draw !M! cards and add a Burn to your hand.",
-		"UPGRADE_DESCRIPTION": "Draw 4 cards. NL At the start of your turn, draw !M! cards and add a Burn to your hand."
+		"NAME": "超频",
+		"DESCRIPTION": "你的回合开始时， 抽 !M! 张牌并将一张灼烧加入你的手牌。",
+		"UPGRADE_DESCRIPTION": "抽4张牌。 NL 你的回合开始时， 抽 !M! 张牌并将一张灼烧加入你的手牌。"
 	},
 	"construct:Overcharge": {
-		"NAME": "Overcharge",
-		"DESCRIPTION": "At the start of your turn, gain [R] and add a Burn to your hand.",
-		"UPGRADE_DESCRIPTION": "Gain [R] [R] . NL At the start of your turn, gain [R] and add a Burn to your hand."
+		"NAME": "过载",
+		"DESCRIPTION": "你的回合开始时，获得 [R] 并将一张灼烧加入你的手牌。",
+		"UPGRADE_DESCRIPTION": "获得 [R] [R] 。 NL 你的回合开始时，获得 [R] 并将一张灼烧加入你的手牌。"
 	},
 	"construct:Meltdown": {
-		"NAME": "Meltdown",
-		"DESCRIPTION": "At the start of your turn, deal !M! damage to ALL enemies and add a Burn to your hand."
+		"NAME": "融毁",
+		"DESCRIPTION": "你的回合开始时，对所有敌人造成 !M! 点伤害并将一张灼烧加入你的手牌。"
 	},
 	"construct:Isolate": {
-		"NAME": "Isolate",
-		"DESCRIPTION": "Cycle if there's more than one enemy. NL Your next attack deals double damage this turn.",
-		"UPGRADE_DESCRIPTION": "Cycle if there's more than one enemy. NL Your attacks deal double damage this turn.",
+		"NAME": "孤立无援",
+		"DESCRIPTION": "大于一名敌人时 循环 。 NL 本回合，你的下一张攻击牌造成双倍伤害。",
+		"UPGRADE_DESCRIPTION": "大于一名敌人时 循环 。 NL 本回合，你的攻击牌造成双倍伤害。",
 		"EXTENDED_DESCRIPTION": [
-			"Cycle if there's more than one enemy. NL Your attacks deal double damage this and next turn."
+			"大于一名敌人时 循环 。 NL 两个回合内，你的攻击牌造成双倍伤害。"
 		]
 	},
 	"construct:CriticalHit": {
-		"NAME": "Critical Hit",
-		"DESCRIPTION": "Cycle unless an enemy is Weak or Vulnerable. NL Deal !D! damage.",
+		"NAME": "暴击",
+		"DESCRIPTION": "敌人没有 虚弱 或 易伤 时 循环 。 NL 造成 !D! 点伤害。",
 		"EXTENDED_DESCRIPTION": [
-			"Mega-Crit"
+			"超暴击"
 		]
 	},
 	"construct:Reserves": {
-		"NAME": "Reserves",
-		"DESCRIPTION": "Cycle if HP > !M!. NL Gain [R] [R] [R]. NL Draw 3 cards. NL Exhaust."
+		"NAME": "后备",
+		"DESCRIPTION": "生命大于 !M! 时 循环 。 NL 获得 [R] [R] [R]。 NL 抽3张牌。 NL 消耗 。"
 	},
 	"construct:UnbalancingBlast": {
-		"NAME": "Unbalancing Blast",
-		"DESCRIPTION": "Deal !D! damage. NL Swap your draw pile and discard pile.",
-		"UPGRADE_DESCRIPTION": "Retain. NL Deal !D! damage. NL Swap your draw pile and discard pile."
+		"NAME": "失衡冲击",
+		"DESCRIPTION": "造成 !D! 点伤害。 NL 对调抽牌堆和弃牌堆。",
+		"UPGRADE_DESCRIPTION": " 保留 。 NL 造成 !D! 点伤害。 NL 对调抽牌堆和弃牌堆。"
 	},
 	"construct:Accumulate": {
-		"NAME": "Accumulate",
-		"DESCRIPTION": "Deal !D! damage. NL Make a copy of a non-rare card in your draw pile.",
-		"UPGRADE_DESCRIPTION": "Deal !D! damage. NL Make !M! copies of a non-rare card in your draw pile."
+		"NAME": "累加",
+		"DESCRIPTION": "造成 !D! 点伤害。 NL 将抽牌堆中的一张非稀有牌复制1份。",
+		"UPGRADE_DESCRIPTION": "造成 !D! 点伤害。 NL 将抽牌堆中的一张非稀有牌复制 !M! 份。。"
 	},
 	"construct:FocusedBeam": {
-		"NAME": "Focused Beam",
-		"DESCRIPTION": "Deal !D! damage. NL Put this on top of your draw pile.",
-		"EXTENDED_DESCRIPTION": ["Deal !D! damage. NL Draw a card, then put this on top of your draw pile."]
+		"NAME": "聚焦射线",
+		"DESCRIPTION": "造成 !D! 点伤害。 NL 将本牌放到抽牌堆顶部。",
+		"EXTENDED_DESCRIPTION": ["造成 !D! 点伤害。 NL 抽一张牌，将本牌放到抽牌堆顶部。"]
 	},
 	"construct:Tumble": {
-		"NAME": "Tumble",
-		"DESCRIPTION": "Draw !M! cards. NL For each one that cycles, deal !D! damage."
+		"NAME": "翻滚",
+		"DESCRIPTION": "抽 !M! 张牌。 NL 每 循环 一张牌， 造成 !D! 点伤害。"
 	},
 	"construct:Forcefield": {
-		"NAME": "Forcefield",
-		"DESCRIPTION": "Retain. NL Gain !B! Block.",
-		"UPGRADE_DESCRIPTION": "Innate. Retain. NL Gain !B! Block.",
+		"NAME": "力场",
+		"DESCRIPTION": " 保留 。 NL 获得 !B! 点 格挡 。",
+		"UPGRADE_DESCRIPTION": " 固有 。  保留 。 NL 获得 !B! 点 格挡 。",
 		"EXTENDED_DESCRIPTION": [
-			"Innate. Retain. NL Gain !B! Block. NL Put this on top of your draw pile."
+			" 固有 。  保留 。 NL 获得 !B! 点 格挡 。 NL 将本牌放到抽牌堆顶部。"
 		]
 	},
 	"construct:QuickAttack": {
-		"NAME": "Quick Attack",
-		"DESCRIPTION": "Deal !D! damage. NL Gain !M! Dexterity. NL At the end of your turn, lose !M! Dexterity.",
-		"UPGRADE_DESCRIPTION": "Deal !D! damage. NL Gain !M! Dexterity. NL At the end of your turn, lose 3 Dexterity."
+		"NAME": "快速攻击",
+		"DESCRIPTION": "造成 !D! 点伤害。 NL 获得 !M! 点 敏捷 。 NL 你的回合结束时， 失去 !M! 点 敏捷。",
+		"UPGRADE_DESCRIPTION": "造成 !D! 点伤害。 NL 获得 !M! 点 敏捷 。 NL 你的回合结束时，失去 3 点 敏捷。"
 	},
 	"construct:Disrupt": {
-		"NAME": "Disrupt",
-		"DESCRIPTION": "Gain !B! Block. NL Enemy loses !M! Strength for the rest of this turn.",
-		"UPGRADE_DESCRIPTION": "Retain. NL Gain !B! Block. NL Enemy loses !M! Strength for the rest of this turn."
+		"NAME": "打断",
+		"DESCRIPTION": "获得 !B! 点 格挡 。 NL 本回合，敌人失去 !M! 点 力量 。",
+		"UPGRADE_DESCRIPTION": " 保留 。 NL 获得 !B! 点 格挡 。 NL 本回合，敌人失去 !M! 点 力量 。"
 	},
 	"construct:OmegaCannon": {
-		"NAME": "Omega Cannon",
-		"DESCRIPTION": "Deal !D! damage. NL Costs 1 less [E] for each Strength you have.",
-		"UPGRADE_DESCRIPTION": "Deal !D! damage. NL Costs 1 less [E] for each Strength (or negative Strength) you have."
+		"NAME": "终极大炮",
+		"DESCRIPTION": "造成 !D! 点伤害。 NL 你每有一点 力量 ，本牌能耗降低1。",
+		"UPGRADE_DESCRIPTION": "造成 !D! 点伤害。 NL 你每有一点（负） 力量 ，本牌能耗降低1。"
 	},
 	"construct:Impenetrable": {
-		"NAME": "Impenetrable",
-		"DESCRIPTION": "Gain !B! Block. NL Gain [E] next turn. NL Exhaust.",
-		"UPGRADE_DESCRIPTION": "Gain !B! Block. NL Gain [E] [E] next turn. NL Exhaust."
+		"NAME": "无懈可击",
+		"DESCRIPTION": "获得 !B! 点 格挡 。 NL 下一回合，获得 [E] 。 NL 消耗 。",
+		"UPGRADE_DESCRIPTION": "获得 !B! 点 格挡 。 NL 下一回合，获得 [E] [E] 。 NL 消耗 。"
 	},
 	"construct:PanicFire": {
-		"NAME": "Panic Fire",
-		"DESCRIPTION": "When a non-upgraded card cycles, Exhaust it and deal !M! damage to a random enemy.",
-		"UPGRADE_DESCRIPTION": " Shuffle 3 random Cores into your draw pile."
+		"NAME": "慌乱开火",
+		"DESCRIPTION": "每当一张非稀有牌被 循环 ， 消耗 并对随机一名敌人造成 !M! 点伤害。",
+		"UPGRADE_DESCRIPTION": " 向你的抽牌堆加入三张随机 核心 牌。"
 	},
 	"construct:Stasis": {
-		"NAME": "Stasis",
-		"DESCRIPTION": "Exhaust a card. NL Next time you play this, add !M! Mega-upgraded copy of that card to your hand.",
-		"UPGRADE_DESCRIPTION": "Exhaust a card. NL Next time you play this, add !M! Mega-upgraded copies of that card to your hand.",
+		"NAME": "凝滞",
+		"DESCRIPTION": " 消耗 一张牌。 NL 下一次你打出本牌，将 !M! 张 超升级 的那张牌加入你的手牌。",
+		"UPGRADE_DESCRIPTION": " 消耗 一张牌。 NL 下一次你打出本牌，将 !M! 张 超升级 的那张牌加入你的手牌。",
 		"EXTENDED_DESCRIPTION": [
-			"Innate. Retain. NL Exhaust a card. NL Next time you play this, add !M! Mega-upgraded copies of that card to your hand."
+			" 固有 。 保留 。 NL  消耗 一张牌。 NL 下一次你打出本牌，将 !M! 张 超升级 的那张牌加入你的手牌。"
 		]
 	},
 	"construct:Autopilot": {
-		"NAME": "Autopilot",
-		"DESCRIPTION": "Play the top X cards of your draw pile. NL Exhaust.",
-		"UPGRADE_DESCRIPTION": "Play the top X+1 cards of your draw pile. NL Exhaust."
+		"NAME": "自动操作",
+		"DESCRIPTION": "打出你抽牌堆顶部的 X 张牌。 NL 消耗 。",
+		"UPGRADE_DESCRIPTION": "打出你抽牌堆顶部的 X+1 张牌。 NL 消耗 。"
 	},
 	"construct:ReactiveShield": {
-		"NAME": "Reactive Shield",
-		"DESCRIPTION": "When you gain Block, deal !M! damage to the lowest-HP enemy.",
-		"UPGRADE_DESCRIPTION": "Innate. NL When you gain Block, deal !M! damage to the lowest-HP enemy.",
+		"NAME": "反应护盾",
+		"DESCRIPTION": "每当你获得 格挡 ，对生命最少的敌人造成 !M! 点伤害。",
+		"UPGRADE_DESCRIPTION": " 固有 。 NL 每当你获得 格挡 ，对生命最少的敌人造成 !M! 点伤害。",
 		"EXTENDED_DESCRIPTION": [
-			"Innate. NL When you gain Block, deal !M! damage to the lowest-HP enemy. NL Gain 1 Metallicize."
+			" 固有 。 NL W每当你获得 格挡 ，对生命最少的敌人造成 !M! 点伤害。 NL 获得 1 层 金属化 。"
 		]
 	},
 	"construct:PointDefense": {
-		"NAME": "Point Defense",
-		"DESCRIPTION": "When a card cycles, gain 1 Block. NL Works !M! times per turn."
+		"NAME": "单点防御",
+		"DESCRIPTION": "每当一张牌被 循环， 获得 1 点 格挡 。 NL 每回合只能触发 !M! 次效果。"
 	},
 	"construct:Zapper": {
-		"NAME": "Zapper",
-		"DESCRIPTION": "When you gain Strength or Dexterity, deal !M! damage to a random enemy. It loses 1 Strength this turn.",
-		"UPGRADE_DESCRIPTION": "When you gain or lose Strength or Dexterity, deal !M! damage to a random enemy. It loses 1 Strength this turn."
+		"NAME": "碾压",
+		"DESCRIPTION": "每当你获得 力量 或 敏捷 ，对随机一名敌人造成 !M! 点伤害。本回合，它失去 1 点 力量 。",
+		"UPGRADE_DESCRIPTION": "每当你获得 力量 或 敏捷 ，对随机一名敌人造成 !M! 点伤害。本回合，它失去 1 点 力量 。"
 	},
 	"construct:PowerUp": {
-		"NAME": "Power Up",
-		"DESCRIPTION": "Deal !D! damage. NL ALL of your basic Strikes and Defends gain !M! power for this combat. NL Exhaust.",
-		"UPGRADE_DESCRIPTION": "Deal !D! damage. NL ALL of your basic Strikes and Defends gain !M! power for this combat."
+		"NAME": "能力提升",
+		"DESCRIPTION": "造成 !D! 点伤害。 NL 本场战斗，你的所有基础打击和防御数值提升 !M! 点。 NL 消耗 。",
+		"UPGRADE_DESCRIPTION": "造成 !D! 点伤害。 NL 本场战斗，你的所有基础打击和防御数值提升 !M! 点。"
 	},
 	"construct:SaveState": {
-		"NAME": "Save State",
-		"DESCRIPTION": "Retain your hand this turn. NL Exhaust.",
-		"UPGRADE_DESCRIPTION": "Retain your hand this turn. NL Draw 1 card. NL Exhaust.",
+		"NAME": "状态保存",
+		"DESCRIPTION": "本回合 保留 你的手牌。 NL 消耗 。",
+		"UPGRADE_DESCRIPTION": "本回合 保留 你的手牌。 NL 抽1张牌。 NL 消耗 。",
 		"EXTENDED_DESCRIPTION": [
-			"Retain your hand this and next turn. NL Draw 1 card. NL Exhaust."
+			"2个回合 保留 你的手牌。 NL 抽1张牌。 NL 消耗 。"
 		]
 	},
 	"construct:SyphonStrike": {
-		"NAME": "Syphon Strike",
-		"DESCRIPTION": "Deal !D! damage. NL Whenever the enemy takes attack damage this turn, draw 1 card.",
-		"UPGRADE_DESCRIPTION": "Deal !D! damage. NL Whenever the enemy takes attack damage this and next turn, draw 1 card."
+		"NAME": "虹吸打击",
+		"DESCRIPTION": "造成 !D! 点伤害。 NL 本回合，敌人受到攻击伤害时，抽1张牌。",
+		"UPGRADE_DESCRIPTION": "造成 !D! 点伤害。 NL 2个本回合，敌人受到攻击伤害时，抽1张牌。"
 	},
 	"construct:Multistage": {
-		"NAME": "Multistage",
-		"DESCRIPTION": "Exhaust an Attack of cost X or less. NL At the start of your next !M! turns, play a copy of that card. NL Exhaust."
+		"NAME": "多级",
+		"DESCRIPTION": " 消耗一张能耗小于等于X的攻击牌， NL 接下来的 !M! 个回合开始时，打出这张牌的复制。 NL 消耗 。"
 	},
 	"construct:Dampening": {
-		"NAME": "Dampening",
-		"DESCRIPTION": "Cards cannot Cycle until the end of your next turn. NL Gain !B! Block. NL Draw !M! card.",
-		"UPGRADE_DESCRIPTION": "Cards cannot Cycle until the end of your next turn. NL Gain !B! Block. NL Draw !M! cards."
+		"NAME": "抑制",
+		"DESCRIPTION": "直到下一回合开始前，你不能再 循环 。 NL 获得 !B! 点 格挡 。 NL 抽 !M! 张牌。",
+		"UPGRADE_DESCRIPTION": "直到下一回合开始前，你不能再 循环 。 NL 获得 !B! 点 格挡 。 NL 抽 !M! 张牌。"
 	},
 	"construct:MoltenSmash": {
-		"NAME": "Molten Smash",
-		"DESCRIPTION": "Gain !B! Block. NL Deal !D! damage. NL Replace the cards to the left and right of this with Burns for this combat."
+		"NAME": "熔融粉碎",
+		"DESCRIPTION": "获得 !B! 点 格挡 。 NL 造成 !D! 点伤害。 NL 本场战斗将本牌左右两边的一张牌变为灼烧。"
 	},
 	"construct:ClusterMines": {
-		"NAME": "Cluster Mines",
-		"DESCRIPTION": "Deal !D! damage to a random enemy !M! times. NL Whenever your Block is broken, this card costs 0 until played.",
-		"UPGRADE_DESCRIPTION": "Deal !D! damage to a random enemy !M! times. NL Whenever your Block is broken, this card costs 0 for this combat."
+		"NAME": "地雷阵",
+		"DESCRIPTION": "对随机一名敌人造成 !D! 点伤害 !M! 次。 NL 每当你的 格挡 被突破时，本牌直到打出前费用为0。",
+		"UPGRADE_DESCRIPTION": "对随机一名敌人造成 !D! 点伤害 !M! 次。 NL 每当你的 格挡 被突破时，本牌直到打出前费用为0。"
 	},
 	"construct:LongRangeLance": {
-		"NAME": "Long-Range Lance",
-		"DESCRIPTION": "At the start of the next combat, deal !M! damage to a random enemy.",
-		"UPGRADE_DESCRIPTION": "At the start of the next 2 combats, deal !M! damage to a random enemy."
+		"NAME": "加长长枪",
+		"DESCRIPTION": "下一场战斗开始时，对随机一名敌人造成 !M! 点伤害。",
+		"UPGRADE_DESCRIPTION": "下两场战斗开始时，对随机一名敌人造成 !M! 点伤害。"
 	},
 	"construct:ShiftingStance": {
-		"NAME": "Shifting Stance",
-		"DESCRIPTION": "Every time you play !M! cards, swap your Strength and Dexterity.",
-		"UPGRADE_DESCRIPTION": "Every time you play !M! cards, swap your Strength and Dexterity, then increase the highest and decrease the lowest by 1."
+		"NAME": "转换姿态",
+		"DESCRIPTION": "每当你打出 !M! 张牌，对调你的 力量 与 敏捷 。",
+		"UPGRADE_DESCRIPTION": "每当你打出 !M! 张牌，对调你的 力量 与 敏捷 ，将最高的提高，最低的降低1点。"
 	},
 
 
 
 	"construct:PhosphorStorm": {
-		"NAME": "Phosphor Storm",
-		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Deal !D! damage twice.",
-		"UPGRADE_DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Deal !D! damage twice, then !D! damage to a random enemy."
+		"NAME": "磷光风暴",
+		"DESCRIPTION": " 过热 ： < !construct:O! > NL 造成 !D! 点伤害两次。",
+		"UPGRADE_DESCRIPTION": " 过热 ： < !construct:O! > NL 造成 !D! 点伤害两次，对随机一名敌人造成 !D! 点伤害。"
 	},
 	"construct:Agitation": {
-		"NAME": "Agitation",
-		"DESCRIPTION": "Whenever a card [#ff9900]Overheats, gain !M! Strength and !M! Dexterity.",
-		"UPGRADE_DESCRIPTION": "Innate. NL Whenever a card [#ff9900]Overheats, gain !M! Strength and !M! Dexterity.",
-		"EXTENDED_DESCRIPTION": ["Start combat with this card in play. NL Whenever a card [#ff9900]Overheats, gain !M! Strength and !M! Dexterity."]
+		"NAME": "躁动",
+		"DESCRIPTION": "每当 一张牌 过热 ， 获得 !M! 点 力量  和 !M! 点 敏捷 。",
+		"UPGRADE_DESCRIPTION": " 固有 。 NL 每当 一张牌 过热 ， 获得 !M! 点 力量  和 !M! 点 敏捷 。",
+		"EXTENDED_DESCRIPTION": ["战斗开始时打出本牌。 NL 每当 一张牌 过热 ， 获得 !M! 点 力量  和 !M! 点 敏捷 。"]
 	},
 	"construct:NuclearCore": {
-		"NAME": "Nuclear Core",
-		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Cycle. When cycled: NL Apply !M! Poison to ALL enemies.",
-		"UPGRADE_DESCRIPTION": " NL Put a Nuclear Core into your discard pile.",
+		"NAME": "原子核心",
+		"DESCRIPTION": " 过热 ： < !construct:O! > NL 循环 。  循环 时: NL 给予所有敌人 !M! 层 中毒 。",
+		"UPGRADE_DESCRIPTION": " NL 将一张 原子核心 加入你的弃牌堆。",
 		"EXTENDED_DESCRIPTION": [
-			" NL Put a Nuclear Core+ into your discard pile."
+			" NL 将一张 原子核心+ 加入你的弃牌堆。"
 		]
 	},
 	"construct:OilSpill": {
-		"NAME": "Oil Spill",
-		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Whenever a Burn hits you, target enemy takes !M! damage.",
-		"EXTENDED_DESCRIPTION": ["[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Whenever a Burn hits you, ALL enemies take !M! damage."]
+		"NAME": "漏油",
+		"DESCRIPTION": " 过热 ： < !construct:O! > NL 每当你受到 灼烧牌 的伤害时，目标敌人受到 !M! 点伤害。",
+		"EXTENDED_DESCRIPTION": [" 过热 ： < !construct:O! > NL 每当你受到 灼烧牌 的伤害时，目标敌人受到 !M! 点伤害。"]
 	},
 	"construct:FlammableFog": {
-		"NAME": "Flammable Fog",
-		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Gain !B! Block. NL Gain !B! Block next turn.",
-		"EXTENDED_DESCRIPTION": ["[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Gain !B! Block this turn, next turn, and the turn after."]
+		"NAME": "可燃浓雾",
+		"DESCRIPTION": " 过热 ： < !construct:O! > NL 获得 !B! 点 格挡 。 NL 下一回合，获得 !B! 点格挡。",
+		"EXTENDED_DESCRIPTION": [" 过热 ： < !construct:O! > NL 本3个回合。获得 !B! 点格挡。"]
 	},
 	"construct:Missile": {
-		"NAME": "Missile",
-		"DESCRIPTION": "Cycle if already played this combat. NL Deal !D! damage. NL Apply !M! Weak and !M! Vulnerable."
+		"NAME": "导弹",
+		"DESCRIPTION": "本场战斗已被打出后 循环 。 NL 造成 !D! 点伤害。 NL 给予 !M! 层 虚弱 和  !M! 层 易伤 。"
 	},
 	"construct:CreateCores": {
-		"NAME": "Create Cores",
-		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Shuffle !M! random Cores into your draw pile. NL Draw a card.",
-		"UPGRADE_DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Shuffle !M! random Cores into your draw pile, and upgrade one. NL Draw a card.",
+		"NAME": "创造核心",
+		"DESCRIPTION": " 过热 ： < !construct:O! > NL 将 !M! 张随机 核心 牌洗入你的抽牌堆。 NL 抽一张牌。",
+		"UPGRADE_DESCRIPTION": " 过热 ： < !construct:O! > NL 将 !M! 张随机 核心 牌洗入你的抽牌堆，并将其中一张 升级 。 NL 抽一张牌。",
 		"EXTENDED_DESCRIPTION": [
-			"[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Shuffle !M! random upgraded Cores into your draw pile. NL Draw a card."
+			" 过热 ： < !construct:O! > NL 将 !M! 张已 升级 的随机 核心 牌洗入你的抽牌堆。 NL 抽一张牌。"
 		]
 	},
 	"construct:BlazingSpeed": {
-		"NAME": "Blazing Speed",
-		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Deal !D! damage. NL Draw !M! cards."
+		"NAME": "闪电加速",
+		"DESCRIPTION": " 过热 ： < !construct:O! > NL 造成 !D! 点伤害。 NL 抽 !M! 张牌。"
 	},
 	"construct:Implosion": {
-		"NAME": "Implosion",
-		"DESCRIPTION": "Put ALL Burns from your exhaust pile into your hand. For each, play a random card from your draw pile.",
-		"UPGRADE_DESCRIPTION": "Retain. NL Put ALL Burns from your exhaust pile into your hand. For each, play a random card from your draw pile.",
+		"NAME": "内爆",
+		"DESCRIPTION": "将所有消耗堆的灼烧加入你的手牌。 每加入一张，打出你抽牌堆的一张牌。",
+		"UPGRADE_DESCRIPTION": " 保留 。 NL 将所有消耗堆的灼烧加入你的手牌。 每加入一张，打出你抽牌堆的一张牌。",
 		"EXTENDED_DESCRIPTION": [
-			"(Burns: ",
-			") NL "
+			"（灼烧： ",
+			"张） NL "
 			]
 	},
 	"construct:Supernova": {
-		"NAME": "Sunburst",
-		"DESCRIPTION": "Exhaust ALL Status cards and replace them with random cards. Those cards cost 0 this combat. NL Exhaust.",
-		"UPGRADE_DESCRIPTION": "Exhaust ALL Status cards and replace them with random upgraded cards. Those cards cost 0 this combat. NL Exhaust."
+		"NAME": "日冕",
+		"DESCRIPTION": " 消耗所有的状态牌并将他们替换为随机牌。本场战斗他们的费用为0。 NL 消耗 。",
+		"UPGRADE_DESCRIPTION": " 消耗所有的状态牌并将他们替换为随机已 升级 的牌。本场战斗他们的费用为0。 NL 消耗 。"
 	},
 	"construct:Rollout": {
-		"NAME": "Rollout",
-		"DESCRIPTION": "[#ff9900]OVERHEAT: [#ff9900]< !construct:O! [#ff9900]> NL Deal damage equal to !M! times the number of cards that have Cycled this turn.",
+		"NAME": "转出",
+		"DESCRIPTION": " 过热 ： < !construct:O! > NL 本回合 循环 一张牌，造成循环次数的 !M! 倍伤害。",
 		"EXTENDED_DESCRIPTION": [
-			"(Deals !D! damage.) NL "
+			"（造成 !D! 点伤害） NL "
 		]
 	},
 	"construct:Failsafe": {
-		"NAME": "Failsafe",
-		"DESCRIPTION": "The first !M! Status cards you draw each turn Cycle."
+		"NAME": "故障忽略",
+		"DESCRIPTION": " 循环 你每回合抽到的前 !M! 张状态牌。"
 	},
 	"construct:Afterburners": {
-		"NAME": "Afterburners",
-		"DESCRIPTION": "Shuffle 3 Burns into your draw pile. NL This turn, your next non-rare card is played !M! times.",
-		"UPGRADE_DESCRIPTION": "Shuffle 2 Burns into your draw pile. NL This turn, your next non-rare card is played !M! times.",
+		"NAME": "再燃装置",
+		"DESCRIPTION": "将 3 张灼烧加入你的抽牌堆。 NL 本回合，你的下一张非稀有牌将打出 !M! 次。",
+		"UPGRADE_DESCRIPTION": "将 2 张灼烧加入你的抽牌堆。 NL 本回合，你的下一张非稀有牌将打出 !M! 次。",
 		"EXTENDED_DESCRIPTION": [
-			"Shuffle 2 Burns into your draw pile. NL This turn, your next non-rare card is played !M! times."
+			"将 2 张灼烧加入你的抽牌堆。 NL 本回合，你的下一张非稀有牌将打出 !M! 次。"
 		]
 	},
 	"construct:FlashFreeze": {
-		"NAME": "Flash Freeze",
-		"DESCRIPTION": "Gain !B! Block. NL Cards cannot [#ff9900]Overheat until the end of your next turn. NL Exhaust.",
-		"UPGRADE_DESCRIPTION": "Gain !B! Block. NL Cards cannot [#ff9900]Overheat for the next !M! turns. NL Exhaust.",
+		"NAME": "快速冷却",
+		"DESCRIPTION": "获得 !B! 点 格挡 。 NL 下一回合开始前，你的牌不会 过热 。 NL 消耗 。",
+		"UPGRADE_DESCRIPTION": "获得 !B! 点 格挡 。 NL 下 !M! 个回合开始前，你的牌不会 过热 。 NL 消耗 。",
 		"EXTENDED_DESCRIPTION": [
-			"Retain. NL Gain !B! Block. NL Cards cannot [#ff9900]Overheat for the next !M! turns. NL Exhaust."
+			" 保留 。 NL 获得 !B! 点 格挡 。 NL 下 !M! 个回合开始前，你的牌不会 过热 。 NL 消耗 。"
 		]
 	},
 	"construct:DarkFlames": {
-		"NAME": "Dark Flames",
-		"DESCRIPTION": "For each Burn in your exhaust pile, deal !D! damage and gain [E]. NL Exhaust.",
-		"UPGRADE_DESCRIPTION": "For each Burn in your exhaust pile, deal !D! damage and gain [E].",
+		"NAME": "暗黑火焰",
+		"DESCRIPTION": "你的消耗堆每有一张灼烧，造成 !D! 点伤害并获得 [E]。 NL 消耗 。",
+		"UPGRADE_DESCRIPTION": "你的消耗堆每有一张灼烧，造成 !D! 点伤害并获得 [E]。",
 		"EXTENDED_DESCRIPTION": [
-			"Add !M! Burns to your exhaust pile. NL For each Burn in your exhaust pile, deal !D! damage and gain [E].",
-			"(Burns: ",
+			"向消耗堆增加 !M! 张灼烧。 NL 你的消耗堆每有一张灼烧，造成 !D! 点伤害并获得 [E]。",
+			"（灼烧： ",
 			" + ",
-			") NL "
+			"张） NL "
 		]
 	}
 }

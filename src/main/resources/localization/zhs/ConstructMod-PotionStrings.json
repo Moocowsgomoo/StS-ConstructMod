@@ -1,16 +1,16 @@
 {
   "construct:ShiftPotion": {
-    "NAME": "Shift Potion",
+    "NAME": "转换药水",
     "DESCRIPTIONS": [
-      "Swap your #yStrength and #yDexterity. Draw #b%s card.",
-      "Swap your #yStrength and #yDexterity. Draw #b%s cards."
+      "对调你的 #y力量 与 #y敏捷 。 抽 #b%s 张牌。",
+      "对调你的 #y力量 与 #y敏捷 。 抽 #b%s 张牌。"
     ]
   },
   "construct:MegaPotion": {
-    "NAME": "Mega Potion",
+    "NAME": "升级药水",
     "DESCRIPTIONS": [
-      "#yMega-upgrade #b%s random card in your hand for the rest of combat.",
-      "#yMega-upgrade #b%s random cards in your hand for the rest of combat."
+      "本场战斗，随机 #y超升级 #b%s 的手牌。",
+      "本场战斗，随机 #y超升级 #b%s 的手牌。"
     ]
   }
 }

@@ -1,217 +1,217 @@
 {
 	"construct:Afterburners": {
-		"NAME": "Afterburners",
+		"NAME": "再燃装置",
 		"DESCRIPTIONS": [
-			"Your next non-rare card is played #b%s times this turn."
+			"本回合，你的下一张费稀有牌打出 #b%s 次。"
 		]
   	},
 	"construct:Agitation": {
-		"NAME": "Agitation",
+		"NAME": "躁动",
 		"DESCRIPTIONS": [
-			"Whenever a card [#ff9900]Overheats, gain #b%s #yStrength and #b%s #yDexterity."
+			"每当一张牌 #y过热 时，获得 #b%s 点 #y力量 和 #b%s 点 #y敏捷 。"
 		]
 	},
 	"construct:Autoturret": {
-		"NAME": "Autoturret",
+		"NAME": "自动炮塔",
 		"DESCRIPTIONS": [
-			"Whenever a card #ycycles, deal #b%s damage to a random enemy."
+			"每当一张牌被 #y循环 ，对随机一名敌人造成 #b%s 点伤害。"
 		]
 	},
 	"construct:Bunker": {
-		"NAME": "Bunker",
+		"NAME": "掩体",
 		"DESCRIPTIONS": [
-			"When a card is #yRetained, gain #b%s #yBlock."
+			"每当一张牌被 #y保留，获得 #b%s 点 #y格挡 。"
 		]
 	},
 	"construct:SelfStasis": {
-		"NAME": "Self-Stasis",
+		"NAME": "自我凝滞",
 		"DESCRIPTIONS": [
 			"Holding: ",
-			". NL When Stasis is played again, add #b%s #yMega-upgraded copy to your hand.",
-			". NL When Stasis is played again, add #b%s #yMega-upgraded copies to your hand."
+			"。 NL 每当一张凝滞牌被打出，向你的手牌增加一张 #y超升级 复制品。",
+			"。 NL 每当一张凝滞牌被打出，向你的手牌增加一张 #y超升级 复制品。"
 		]
 	},
 	"construct:DoubleNextDamage": {
-		"NAME": "Double Next Damage",
+		"NAME": "双倍伤害",
 		"DESCRIPTIONS": [
-			"Your next attack this turn deals double damage.",
-			"Your next #b%s attacks this turn deal double damage."
+			"本回合，你的下一次攻击造成双倍伤害。",
+			"本回合，你的下 #b%s 次攻击造成双倍伤害。"
 		]
 	},
 	"construct:ElectricArmor": {
-		"NAME": "Electric Armor",
+		"NAME": "电动装甲",
 		"DESCRIPTIONS": [
-			"When attacked this turn, deals damage back equal to your #yDexterity.",
-			"When attacked for the next #b%s turns, deals damage back equal to your #yDexterity."
+			"本回合，每当你受到攻击，对攻击者造成等于你 #y敏捷 的伤害。",
+			"在 #b%s 个回合内，每当你受到攻击，对攻击者造成等于你 #y敏捷 的伤害。"
 		]
 	},
 	"construct:EnhanceMega": {
-		"NAME": "Enhance (Mega)",
+		"NAME": "（超强化）",
 		"DESCRIPTIONS": [
-			"At the end of your turn, #yUpgrade #b%s card in your discard pile. (Can #yMega-upgrade.)",
-			"At the end of your turn, #yUpgrade #b%s cards in your discard pile. (Can #yMega-upgrade.)"
+			"在你的回合结束时，将你的弃牌堆的 #b%s 张牌  #y升级 。（能 #y超升级 ）",
+			"在你的回合结束时，将你的弃牌堆的 #b%s 张牌  #y升级 。（能 #y超升级 ）"
 		]
 	},
 	"construct:Enhance": {
-		"NAME": "Enhance",
+		"NAME": "强化",
 		"DESCRIPTIONS": [
-			"At the end of your turn, #yUpgrade #b%s card in your discard pile.",
-			"At the end of your turn, #yUpgrade #b%s cards in your discard pile."
+			"在你的回合结束时，将你的弃牌堆的 #b%s 张牌  #y升级 。",
+			"在你的回合结束时，将你的弃牌堆的 #b%s 张牌  #y升级 。"
 		]
 	},
 	"construct:ExtraLongRangeLance": {
-		"NAME": "EXTRA-Long-Range Lance",
+		"NAME": "超长长枪",
 		"DESCRIPTIONS": [
-			"At the start of the combat after the next one, deal #b%s damage to a random enemy."
+			"后一长战斗开始时，对随机一名敌人造成 #b%s 点伤害。"
 		]
 	},
 	"construct:Failsafe": {
-		"NAME": "Failsafe",
+		"NAME": "故障忽略",
 		"DESCRIPTIONS": [
-			"The next Status card you draw will #yCycle. Resets to #b%s at the start of your turn.",
-			"The next #b%s Status cards you draw will #yCycle. Resets to #b%s at the start of your turn."
+			"你抽到的下一张状态牌将 #y循环 。 下一回合重置为 #b%s 次。",
+			"你抽到的下 #b%s 张状态牌将 #y循环 。 下一回合重置为 #b%s 次。"
 		]
 	},
 	"construct:FlashFreeze": {
-		"NAME": "Flash Freeze",
+		"NAME": "快速冷却",
 		"DESCRIPTIONS": [
-			"Your cards cannot [#ff9900]Overheat for #b%s more turn.",
-			"Your cards cannot [#ff9900]Overheat for #b%s more turns."
+			"在 #b%s 个回合内，你的牌将不会 #y过热 。",
+			"在 #b%s 个回合内，你的牌将不会 #y过热 。"
 		]
 	},
 	"construct:FutureTurnBlock": {
-		"NAME": "Next Next Turn Block",
+		"NAME": "后一回合格挡",
 		"DESCRIPTIONS": [
-			"Two turns from now, gain #b%s #yBlock."
+			"后一回合，获得 #b%s 点 #y格挡 。"
 		]
 	},
 	"construct:LongRangeLance": {
-		"NAME": "Long-Range Lance",
+		"NAME": "加长长枪",
 		"DESCRIPTIONS": [
-			"At the start of the next combat, deal #b%s damage to a random enemy."
+			"下一场战斗开始时，对随机一名敌人造成 #b%s 点伤害。"
 		]
 	},
 	"construct:MegaZapper": {
-		"NAME": "Zapper (Mega)",
+		"NAME": "（超）碾压",
 		"DESCRIPTIONS": [
-			"Whenever you lose #yStrength or #yDexterity, deal #b%s damage to a random enemy. It loses #b1 #yStrength this turn."
+			"每当你失去 #y力量 或 #y敏捷 时，对随机一名敌人造成 #b%s 点伤害。它在本回合失去 #b1 点 #y力量 "
 		]
 	},
 	"construct:Meltdown": {
-		"NAME": "Meltdown",
+		"NAME": "融毁",
 		"DESCRIPTIONS": [
-			"At the start of your turn, deal #b%s damage to ALL enemies and add a #yBurn to your hand."
+			"你的回合开始时，对所有敌人造成 #b%s 点伤害，并将一张 #y灼烧 加入你的手牌。"
 		]
 	},
 	"construct:Multistage": {
-		"NAME": "Multistage",
+		"NAME": "多级",
 		"DESCRIPTIONS": [
-			"At the start of your next turn, play a copy of %s.",
-			"At the start of your next #b%s turns, play a copy of %s."
+			"在你的下以回合开始时，将 %s 的复制品打出。",
+			"在你的下以回合开始时，将 %s 的复制品打出。"
 		]
 	},
 	"construct:NoCycle": {
-		"NAME": "No Cycle",
+		"NAME": "不能循环",
 		"DESCRIPTIONS": [
-			"Your cards cannot #yCycle for #b%s more turn.",
-			"Your cards cannot #yCycle for #b%s more turns."
+			"在 #b%s 个回合，你的牌不能被 #y循环 。",
+			"在 #b%s 个回合，你的牌不能被 #y循环 。"
 		]
 	},
 	"construct:OilSpill": {
-		"NAME": "Oil",
+		"NAME": "石油",
 		"DESCRIPTIONS": [
-			"Whenever a #yBurn card hits you, deal #b%s damage to %s."
+			"每当你受到 #y灼烧牌 的伤害时，将 #b%s 点伤害打向 %s 。"
 		]
 	},
 	"construct:Overcharge": {
-		"NAME": "Overcharge",
+		"NAME": "过载",
 		"DESCRIPTIONS": [
-			"At the start of your turn, gain #b%s [E] and add #b%s #yBurn to your hand.",
-			"At the start of your turn, gain #b%s [E] and add #b%s #yBurns to your hand."
+			"你的回合开始时，获得 #b%s 点能量并将 #b%s 张 #y灼烧 加入你的手牌。",
+			"你的回合开始时，获得 #b%s 点能量并将 #b%s 张 #y灼烧 加入你的手牌。"
 		]
 	},
 	"construct:Overclock": {
-		"NAME": "Overclock",
+		"NAME": "超频",
 		"DESCRIPTIONS": [
-			"At the start of your turn, draw #b%s cards and add #b%s #yBurn to your hand.",
-			"At the start of your turn, draw #b%s cards and add #b%s #yBurns to your hand."
+			"你的回合开始时，抽 #b%s 张牌并将 #b%s 张 #y灼烧 加入你的手牌。",
+			"你的回合开始时，抽 #b%s 张牌并将 #b%s 张 #y灼烧 加入你的手牌。"
 		]
 	},
 	"construct:PanicFire": {
-		"NAME": "Panic Fire",
+		"NAME": "慌乱开火",
 		"DESCRIPTIONS": [
-			"Whenever an non-upgraded card #ycycles, #yExhaust it and deal #b%s damage to a random enemy."
+			"每当一张未被升级的牌被 #y循环 ， #y消耗 并对随机一名敌人造成 #b%s 点伤害。"
 		]
 	},
 	"construct:PointDefense": {
-		"NAME": "Point Defense",
+		"NAME": "单点防御",
 		"DESCRIPTIONS": [
-			"Whenever a card #ycycles, gain #b1 #yBlock. Works #b%s times each turn."
+			"每当一张牌被 #y循环 时，获得 #b1 点 #y格挡 。每回合只能给触发 #b%s 次。"
 		]
 	},
 	"construct:ReactiveShield": {
-		"NAME": "Reactive Shield",
+		"NAME": "反应护盾",
 		"DESCRIPTIONS": [
-			"When you gain #yBlock, deal #b%s damage to the enemy with the lowest HP."
+			"每当你获得 #y格挡 时，对生命最低的敌人造成  #b%s 点伤害。"
 		]
 	},
 	"construct:SaveState": {
-		"NAME": "Save State",
+		"NAME": "状态保存",
 		"DESCRIPTIONS": [
-			"At the end of your turn, #yRetain your hand."
+			"你的回合结束时， #y保留 你的手牌。"
 		]
 	},
 	"construct:RetainRandom": {
-		"NAME": "Retain Random",
+		"NAME": "随机保留",
 		"DESCRIPTIONS": [
-			"At the end of your turn, #yRetain #b%s random card.",
-			"At the end of your turn, #yRetain #b%s random cards."
+			"你的回合结束时，随机 #y保留 #b%s 张牌。",
+			"你的回合结束时，随机 #y保留 #b%s 张牌。"
 		]
 	},
 	"construct:ShiftingStanceMega": {
-		"NAME": "Shifting Stance (Mega)",
+		"NAME": "（超）转换姿态",
 		"DESCRIPTIONS": [
-			"After you play #b%s more card, swap your #yStrength and #yDexterity, then increase the highest and decrease the lowest by #b1.",
-			"After you play #b%s more cards, swap your #yStrength and #yDexterity, then increase the highest and decrease the lowest by #b1."
+			"再打出 #b%s 张牌后，对调你的 #y力量 与 #y敏捷 ，并将较高的数值提高；较低的数值减少 #b1 。",
+			"再打出 #b%s 张牌后，对调你的 #y力量 与 #y敏捷 ，并将较高的数值提高；较低的数值减少 #b1 。"
 		]
 	},
 	"construct:ShiftingStance": {
-		"NAME": "Shifting Stance",
+		"NAME": "转换姿态",
 		"DESCRIPTIONS": [
-			"After you play #b%s more card, swap your #yStrength and #yDexterity.",
-			"After you play #b%s more cards, swap your #yStrength and #yDexterity."
+			"再打出 #b%s 张牌后，对调你的 #y力量 与 #y敏捷 。",
+			"再打出 #b%s 张牌后，对调你的 #y力量 与 #y敏捷 。"
 		]
 	},
 	"construct:SiegeForm": {
-		"NAME": "Siege Form",
+		"NAME": "围攻形态",
 		"DESCRIPTIONS": [
-			"After you play a card, gain #b%s #yStrength until the end of your turn.",
-			"After you play an Attack, gain #b%s #yStrength until the end of your turn."
+			"每当你打出一张牌，直到回合结束前获得 #b%s 点 #y力量 。",
+			"每当你打出一张牌，直到回合结束前获得 #b%s 点 #y力量 。"
 		]
 	},
 	"construct:SpinDrive": {
-		"NAME": "Spin Drive",
+		"NAME": "循环加速",
 		"DESCRIPTIONS": [
-			"After you play a card, draw a card. Works #b%s times each turn."
+			"每当你打出一张牌，抽一张牌。每回合只能触发 #b%s 次。"
 		]
 	},
 	"construct:Synchronize": {
-		"NAME": "Synchronize",
+		"NAME": "同调",
 		"DESCRIPTIONS": [
-			"Whenever you draw 2 of the same card in a row, deal #b%s damage to ALL enemies.",
-			" NL (Last drawn: %s)."
+			"每当你连续抽到2张相同牌，对所有敌人造成 #b%s 点伤害。",
+			" NL （上次抽到： %s ）。"
 		]
 	},
 	"construct:Syphon": {
-		"NAME": "Syphon",
+		"NAME": "虹吸",
 		"DESCRIPTIONS": [
-			"Whenever %s takes Attack damage, draw #b1 card."
+			"每当 %s 受到攻击伤害，抽 #b1 张牌。"
 		]
 	},
 	"construct:Zapper": {
-		"NAME": "Zapper",
+		"NAME": "碾压",
 		"DESCRIPTIONS": [
-			"Whenever you gain #yStrength or #yDexterity, deal #b%s damage to a random enemy. It loses #b1 #yStrength this turn."
+			"每当你获得 #y力量 或 #y敏捷 ，对随机一名敌人造成  #b%s 点伤害，并使其在本回合失去 #b1 点 #y力量 。"
 		]
 	}
 }

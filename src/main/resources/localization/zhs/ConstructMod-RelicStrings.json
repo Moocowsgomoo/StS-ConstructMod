@@ -1,140 +1,140 @@
 {
   "construct:Cogwheel": {
-    "NAME": "Cogwheel",
-    "FLAVOR": "A piece of old machinery, carefully preserved.",
+    "NAME": "老旧齿轮",
+    "FLAVOR": "一块从老旧机械上拆卸下来的部件。",
     "DESCRIPTIONS": [
-      "Gain #b1 #yArtifact at the start of each combat."
+      "每场战斗开始时，获得 #b1 层 #y人工制品 。"
     ]
   },
   "construct:MasterCore": {
-    "NAME": "Master Core",
-    "FLAVOR": "A core stolen from one of the Guardians. Summons other cores to your aid.",
+    "NAME": "大师核心",
+    "FLAVOR": "从守护者上偷出来的一个核心。能召唤其他核心协助你。",
     "DESCRIPTIONS": [
-      "At the start of combat, shuffle #b3 random #yCores into your draw pile."
+      "每场战斗开始时，向你的抽牌堆加入 #b3 张随机 #y核心牌 。"
     ]
   },
   "construct:ClockworkPhoenix": {
-    "NAME": "Clockwork Phoenix",
-    "FLAVOR": "An artificial being designed to imitate the real thing. Amazingly lifelike.",
+    "NAME": "发条凤凰",
+    "FLAVOR": "一个被设计于模仿真实事物的人造物品，栩栩如生。",
     "DESCRIPTIONS": [
-      "Your #yupgraded Construct cards can now be #yMega-upgraded outside of combat."
+      "已被 #y升级 牌能在战斗以外的时候 #y超升级 了。"
     ]
   },
   "construct:ClawGrip": {
-    "NAME": "Claw Grip",
-    "FLAVOR": "An extendable arm used to grab hard-to-reach objects.",
+    "NAME": "机械臂",
+    "FLAVOR": "用来抓住难以触及的物体的可伸展的手臂。",
     "DESCRIPTIONS": [
-      "At the end of each turn, #yRetain a random card. It costs #b1 less [E] next turn."
+      "每回合结束时，随机 #y保留 一张牌。下一回合这张牌的能耗降低 #b1 。"
     ]
   },
   "construct:FoamFinger": {
-    "NAME": "Foam Finger",
-    "FLAVOR": "Always useful when you need a helping hand.",
+    "NAME": "泡沫手指",
+    "FLAVOR": "得力助手。",
     "DESCRIPTIONS": [
-      "For the first #b3 turns of each combat, draw #b1 additional card at the start of your turn."
+      "每场战斗的前 #b3 个回合开始时，额外抽 #b1 张牌。"
     ]
   },
   "construct:MegaBattery": {
-    "NAME": "Mega Battery",
-    "FLAVOR": "Developed by gremlin inventors in an attempt to create a self-aware robot. It did not go well.",
+    "NAME": "超级电池",
+    "FLAVOR": "由地精发明家制造的电池。他想将之用于有自我意识的机器人，但似乎进展并不顺利。",
     "DESCRIPTIONS": [
-      "Upon pick up, #yMega-upgrade a random Construct card."
+      "拾起时，随机 #y超升级 一张牌。"
     ]
   },
   "construct:RocketBooster": {
-    "NAME": "Rocket Booster",
-    "FLAVOR": "It doesn't matter how weak your swing is when you're moving at 200 miles per hour.",
+    "NAME": "火箭推进器",
+    "FLAVOR": "当你能做到每小时200迈的时候，你无论以多弱的力道挥击无所谓了。",
     "DESCRIPTIONS": [
-      "When you defeat an Elite, #yUpgrade a random card."
+      "每当你几百一张精英，随机 #y升级 一张牌。"
     ]
   },
   "construct:PurpleEmber": {
-    "NAME": "Purple Ember",
-    "FLAVOR": "A ghostly, flickering flame. It seems to absorb the power of nearby fires.",
+    "NAME": "紫色灰烬",
+    "FLAVOR": "一团幽灵般闪烁的火焰。它似乎吸收了附近火焰的力量。",
     "DESCRIPTIONS": [
-      "When you enter a Rest Site, your starting hand next combat is #yMega-upgraded until the end of combat."
+      "每当你进入休息处，下一场战斗的起手牌将会被 #y超升级。"
     ]
   },
   "construct:WeddingRing": {
-    "NAME": "Wedding Ring",
-    "FLAVOR": "It's inscribed with \"FT2J\".",
+    "NAME": "结婚戒指",
+    "FLAVOR": "上面刻着“FT2J”。",
     "DESCRIPTIONS": [
-      "Upon pickup, choose 2 cards. Once per turn, after you play one of them, play the other one too.",
-      "Once per turn, after you play %s or %s, play the other one too.",
-      "Choose 2 cards to link."
+      "拾起时，选择2张牌。每场战斗一次，打出其中一张时，将另一张打出。",
+      "每场战斗一次，当你打出 %s 或者 %s 时，将另一张打出。",
+      "选择2张牌连接。"
     ]
   },
   "construct:IceCubes": {
-    "NAME": "Ice Cubes",
-    "FLAVOR": "Cool and refreshing.",
+    "NAME": "冰块",
+    "FLAVOR": "清凉爽口。",
     "DESCRIPTIONS": [
-      "Your cards cannot [#ff9900]Overheat for the first #b3 turns of combat."
+      "每场战斗的前3个回合，你将不会 #y过热 。"
     ]
   },
   "construct:BoolHorns": {
-    "NAME": "Bool Horns",
-    "FLAVOR": "Horns from a rarely-seen species. Bools are known to only show aggression towards those who speak lies.",
+    "NAME": "牛角",
+    "FLAVOR": "一种是极为罕见的品种的公牛。 众所周知，公牛只对说谎的人表现出攻击性。",
     "DESCRIPTIONS": [
-      "At the start of each combat, deal #b3 damage to a random enemy. Upon entering a non-combat space, double the damage this relic deals next combat."
+      "每场战斗开始时，对随机一名敌人造成 #b3 点伤害。拾起后，进入非战斗房间，翻倍这个遗物的伤害。"
     ]
   },
   "construct:LongRangeLance": {
-    "NAME": "Long-Range Lance",
-    "FLAVOR": "You hit exactly what you aimed at.",
+    "NAME": "加长长枪",
+    "FLAVOR": "指哪儿打哪儿。",
     "DESCRIPTIONS": [
-      "At the start of the next combat, deal #b",
-      " damage to a random enemy, then lose this relic."
+      "下一场战斗开始时，对随机一名敌人造成 #b",
+      " 点伤害，并失去这件遗物。"
     ]
   },
   "construct:ExtraLongRangeLance": {
-    "NAME": "EXTRA-Long-Range Lance",
-    "FLAVOR": "Okay, you just launched this one randomly. But it's bound to hit something!",
+    "NAME": "超长长枪",
+    "FLAVOR": "好吧，你肯定是在嘲笑这玩艺的随机性，但是最强遗物预定（）",
     "DESCRIPTIONS": [
-      "At the start of the combat after the next one, deal #b",
-      " damage to a random enemy, then lose this relic."
+      "后一场战斗开始时，对随机一名敌人造成 #b",
+      " 点伤害，并失去这件遗物。"
     ]
   },
   "construct:Challenge1": {
-    "NAME": "Challenger's Mark 1",
-    "FLAVOR": "The mark of one who chooses to undertake the Spire's toughest challenges."
+    "NAME": "挑战者印记-壹",
+    "FLAVOR": "选择高塔艰难挑战的印记。"
   },
   "construct:Challenge2": {
-    "NAME": "Challenger's Mark 2",
-    "FLAVOR": "The mark of one who chooses to undertake the Spire's toughest challenges."
+    "NAME": "挑战者印记-贰",
+    "FLAVOR": "选择高塔艰难挑战的印记。"
   },
   "construct:Challenge3": {
-    "NAME": "Challenger's Mark 3",
-    "FLAVOR": "The mark of one who chooses to undertake the Spire's toughest challenges."
+    "NAME": "挑战者印记-叁",
+    "FLAVOR": "选择高塔艰难挑战的印记。"
   },
   "construct:Challenge4": {
-    "NAME": "Challenger's Mark 4",
-    "FLAVOR": "The mark of one who chooses to undertake the Spire's toughest challenges."
+    "NAME": "挑战者印记-肆",
+    "FLAVOR": "选择高塔艰难挑战的印记。"
   },
   "construct:Challenge5": {
-    "NAME": "Challenger's Mark 5",
-    "FLAVOR": "The mark of one who chooses to undertake the Spire's toughest challenges."
+    "NAME": "挑战者印记-伍",
+    "FLAVOR": "选择高塔艰难挑战的印记。"
   },
 
 
   "construct:FreezeFrame": {
-    "NAME": "Freeze Frame",
-    "FLAVOR": "This wooden picture frame is impossibly cold to the touch.",
+    "NAME": "冻结框架",
+    "FLAVOR": "This wooden picture frame is impossibly cold to the touch。",
     "DESCRIPTIONS": [
-      "Right-click to activate or deactivate. While active, cards do not Cycle when drawn."
+      "右键激活或关闭。 激活时，牌将不会被循环。"
     ]
   },
   "construct:Bumper": {
-    "NAME": "Bumper",
+    "NAME": "保险杠",
     "FLAVOR": "BOIIING!",
     "DESCRIPTIONS": [
-      "When a card would deal damage to you, it deals that damage to a random enemy instead."
+      "每当你的牌将会对你造成伤害时，变为对随机一名敌人造成伤害。"
     ]
   },
   "construct:Photocopier": {
-    "NAME": "Photocopier",
-    "FLAVOR": "Used to copy anything 2-dimensional.",
+    "NAME": "影印机",
+    "FLAVOR": "能够复制任何的二维物品。",
     "DESCRIPTIONS": [
-      "The first time you play a non-Rare card each combat, shuffle 2 copies of that card into your draw pile."
+      "每场战斗打出的第一张非稀有牌，向你的抽牌堆加入2张复制品。"
     ]
   }
 }

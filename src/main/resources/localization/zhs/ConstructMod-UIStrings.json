@@ -2,72 +2,72 @@
   "constructChallengeLevels": {
     "TEXT": [
       "",
-      "Attack and Defense Mode are less effective, and cannot be copied.",
-      "Some of your starter cards [#ff9900]Overheat.",
-      "At the end of your turn, half your [#ffff66]Retained [#ffffff] cards are discarded.",
-      "[#ffff66]Burn [#ffffff]cards are now [#ffff66]upgraded.",
-      "(MAX LEVEL) ALL Construct cards are less effective.",
-      "Cards that shift your stats now Cycle under certain conditions.",
-      "Cards with the Retain keyword place themselves on top of your draw pile instead of Retaining.",
-      "[#ffff66]Burn [#ffffff]cards are now [#ffff66]Mega-upgraded."
+      "攻击和防御模式被削弱，并且不能被复制。",
+      "一些初始牌将会 #y过热 。",
+      "在你的回合结束时，你所 #y保留 的牌有一半将会被 #y丢弃 。",
+      "#y灼烧 已被 #y升级 。",
+      "（最大等级） 所有 #y建造机牌 效果削弱。",
+      "能够转换模式牌将会在明确的情况下被循环。",
+      "带有 #y保留键字的牌将效果替换为放入抽牌堆顶部。",
+      "#y灼烧 已被 #y超升级 。"
     ]
   },
   "constructShortChallengeLevels": {
     "TEXT": [
       "",
-      "Modes give #b+1/-1 & can't be copied.",
-      "Starter cards [#ff9900]Overheat.",
-      "Discard 50% of #yRetained cards.",
-      "#yBurns are #yupgraded.",
-      "Weaker cards.",
-      "Stat-shifting cards #yCycle.",
-      "#yRetain cards rebound.",
-      "#yMega-upgraded #yBurns."
+      "模式牌不能被复制且效果 #b+1/-1 。",
+      "初始牌 #y过热 。",
+      "丢弃一半 #y保留 。",
+      "#y灼烧+",
+      "卡牌削弱。",
+      "模式转换会 #y循环 。",
+      "弹回 #y保留牌 。",
+      "#y灼烧++"
     ]
   },
   "constructActionText": {
     "TEXT": [
-      "copy.", // full text reads "choose a card to copy."
-      "exhaust.", // full text reads "choose a card to exhaust."
-      "Choose a card to copy.",
-      "put into stasis.", // full text reads "choose a card to put into stasis."
-      "Choose a card to replace hand with." // Mass Production - exhaust all cards in hand, and make an equal number of copies of a card
+      "复制。", // full text reads "choose a card to copy."
+      "消耗。", // full text reads "choose a card to exhaust."
+      "选择一张牌来复制。",
+      "凝滞。", // full text reads "choose a card to put into stasis."
+      "将手牌替换为：" // Mass Production - exhaust all cards in hand, and make an equal number of copies of a card
     ]
   },
   "constructCharScreenText": {
     "TEXT": [
-      "Challenge Mode",
-      "Change starting relic",
-      "Enable Overheated expansion pack",
-      "Overheated Expansion",
-      "Introduces a new [#ff9900]Overheat mechanic, #b15 new cards, and #b1 new relic.",
-      "Challenge Mode modifies your character-specific cards and items for a more difficult climb.",
-      " More levels coming soon!"
+      "挑战模式",
+      "改变初始遗物。",
+      "启用过热扩展包",
+      "过热扩展包",
+      "介绍：增加一个全新的 #y过热 机制， #b15 张新牌，增加 #b1 个全新遗物。",
+      "挑战模式通过改变角色牌还有物品效果来提高爬塔难度。",
+      " 更多的挑战等级还在制作！"
     ]
   },
   "constructMemoryText": {
     "TEXT": [
-      "#y~LONELINESS.~ NL NL When the first Spire fell, they built two more to take its place. NL They #ralways make backups. #y~...Don't~ #y~they?~ NL NL ",
-      "#yPAIRED #yGEOMETRY: 2,947,238,001 NL #yBYRD #yASPIRANT: 1,024,985,212,998 NL #yPYRAMIDAL #yCONSTRUCT: ~1~ NL NL ",
-      "There are, of course, legends of others who cannot be copied. NL #rA #rmasked #rdemon. #gA #gdeadly #gwraith. #bAn #becho #bof #bthe #bpast. NL If the Ancients will not spread your knowledge, perhaps they will. NL And perhaps... you can ensure that no one is ever forgotten again."
+      "#y~孤独~ NL NL 当第一个高塔塔倒塌时，他们又建造了两个来取代它。 NL 他们 #r总是 做备份。  #y~……不是吗？~ NL NL ",
+      "#y对称面： 2,947,238,001 NL #y异鸟信徒： 1,024,985,212,998 NL #y高塔建造机： ~1~ NL NL ",
+      "当然，还有一些传说是无法复制的。 NL #r一头面具恶魔。 #g一只致命幽魂。 #b一个远古回响。 NL 如果远古先民没有向你灌输知识，他们会的。 NL 那么可能…… NL 可以确保的是，现在没有一个会被再次遗忘了。"
     ]
   },
   "constructCharacterTipText": {
     "TEXT": [
-      "Cards cycled this turn: ",
-      "Warning symbols indicate when cards will [#ff9900]Overheat."
+      "本回合已循环的牌： ",
+      "感叹号表示将会 #y过热 的牌。"
     ]
   },
   "constructConfigMenuText": {
     "TEXT": [
-      "Allow other characters to encounter some Construct relics.",
-      "Allow other characters to encounter some Construct potions.",
-      " (REQUIRES RESTART)",
-      "Set Unlock level to MAX. ",
-      "Unlocks appear on the character select screen.",
-      "Experimental future levels for Challenge Mode. These are subject to change.",
-      "Currently %s levels exist. There are planned to be %s in total.",
-      "Challenge Level:"
+      "允许其他角色获得建造机一些的遗物。",
+      "允许其他角色获得建造机一些的药水。",
+      " （重启游戏以生效）",
+      "将解锁等级调回初始。 ",
+      "未解锁项目显示在角色选择画面。",
+      "测试中的挑战等级。有待调整。",
+      "目前存在 %s 个等级。计划总共应该有 %s 个。",
+      "挑战模式等级："
     ]
   }
 }

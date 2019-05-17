@@ -1,67 +1,57 @@
 {
   "CYCLE":{
     "NAMES": [
-      "cycle",
-      "cycles"
+      "循环"
     ],
-    "DESCRIPTION": "When drawn, discard this and draw a new card. Only works once per turn."
+    "DESCRIPTION": "被抽到时，丢弃并再抽一张牌。一回合只生效一次。"
   },
   "BLUR":{
     "NAMES": [
-      "blur"
+      "残影"
     ],
-    "DESCRIPTION": "Your #yBlock is carried over between turns."
+    "DESCRIPTION": " #y格挡 不会在你的下一个回合开始时消失。"
   },
   "METALLICIZE":{
     "NAMES": [
-      "metallicize"
+      "金属化"
     ],
-    "DESCRIPTION": "Gain #yBlock at the end of each turn."
+    "DESCRIPTION": "在你的回合结束时获得 #y格挡 。"
   },
   "PLATED_ARMOR":{
-    "PROPER_NAME": "Plated Armor",
+    "PROPER_NAME": "多层护甲",
     "NAMES": [
-      "plated armor",
-      "plated_armor"
+      "多层护甲"
     ],
-    "DESCRIPTION": "Gain #yBlock at the end of each turn. Reduced when you take unblocked damage."
+    "DESCRIPTION": "在你的回合结束时获得 #y格挡 。受到攻击伤害而失去生命时， #y多层护甲 的层数将会减少。"
   },
   "SLIMED":{
     "NAMES": [
-      "slimed"
+      "黏液"
     ],
-    "DESCRIPTION": "Slimed is a status card that costs [R] to exhaust."
+    "DESCRIPTION": "黏液是一张一费消耗状态牌。"
   },
   "CORES":{
     "NAMES": [
-      "cores"
+      "核心"
     ],
-    "DESCRIPTION": "Cores are cards that #yCycle and apply a small bonus effect."
+    "DESCRIPTION": "核心的效果将会在被 #y循环 时触发 。"
   },
   "EGG":{
     "NAMES": [
-      "egg",
-      "eggs"
+      "蛋"
     ],
-    "DESCRIPTION": "Eggs are relics that automatically #yUpgrade cards when you acquire them."
+    "DESCRIPTION": "蛋是一种能在你获得牌的时候自动 #y升级 他们的遗物。"
   },
   "MEGA_UPGRADE":{
     "NAMES": [
-      "mega-upgrade",
-      "mega-upgraded"
+      "超升级"
     ],
-    "DESCRIPTION": "A second upgrade that makes Construct cards even more powerful."
+    "DESCRIPTION": "二次升级牌会让它们变得更加强大。"
   },
   "OVERHEAT":{
     "NAMES": [
-      "overheat",
-      "overheats",
-      "overheated",
-      "[#ff9900]overheat",
-      "[#ff9900]overheats",
-      "[#ff9900]overheated",
-      "[#ff9900]overheat:"
+      "过热"
     ],
-    "DESCRIPTION": "When too many cards #yCycle in one turn, transform this card into a #yBurn for this combat."
+    "DESCRIPTION": "当你在同一回合 #y循环 过多的牌时，本场战斗将这张牌变成 #y灼烧 。"
   }
 }

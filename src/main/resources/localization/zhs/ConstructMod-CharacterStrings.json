@@ -1,12 +1,12 @@
 {
   "TheConstruct": {
     "NAMES": [
-      "the Construct",
-      "The Construct"
+      "高塔建造机",
+      "高塔建造机"
     ],
     "TEXT": [
-      "Ancient machinery given new purpose by Neow. NL Reconfigures itself to adapt to any situation.",
-      "You enter self-destruct mode..."
+      "由涅奥给予新的意图的先古机械。 NL 重新配置自己以应对任何情况。",
+      "你进入自我破坏模式……"
     ]
   }
 }
